@@ -13,3 +13,15 @@
  * command-specific namespaces within this header, which can then be used where
  * they are needed.
  */
+
+ constexpr unsigned int pFrontRight = 0;
+ constexpr unsigned int pFrontLeft = 1;
+ constexpr unsigned int pBackRight = 2;
+ constexpr unsigned int pBackLeft = 3;
+ constexpr unsigned int pShooter = 4;
+ constexpr unsigned int pIntake = 5;
+ constexpr unsigned int pConveyor = 6;
+ constexpr unsigned int pElevator = 7;
+ constexpr unsigned int pClimber = 8;
+	
+
