@@ -14,14 +14,28 @@
  * they are needed.
  */
 
- constexpr unsigned int pFrontRight = 0;
- constexpr unsigned int pFrontLeft = 1;
- constexpr unsigned int pBackRight = 2;
- constexpr unsigned int pBackLeft = 3;
- constexpr unsigned int pShooter = 4;
- constexpr unsigned int pIntake = 5;
- constexpr unsigned int pConveyor = 6;
- constexpr unsigned int pElevator = 7;
- constexpr unsigned int pClimber = 8;
-	
+constexpr unsigned int pFrontRight = 0;
+constexpr unsigned int pFrontLeft = 1;
+constexpr unsigned int pBackRight = 2;
+constexpr unsigned int pBackLeft = 3;
+constexpr unsigned int pShooter = 4;
+constexpr unsigned int pIntake = 5;
+constexpr unsigned int pConveyor = 6;
+constexpr unsigned int pElevator = 7;
+constexpr unsigned int pClimber = 8;
 
+constexpr double k_moveP = 0.01;
+constexpr double k_moveI = 0.0;
+constexpr double k_moveD = 0.0;
+
+constexpr double k_turnP = 0.01;
+constexpr double k_turnI = 0.0;
+constexpr double k_turnD = 0.0;
+
+constexpr double k_alignP = 0.01;
+constexpr double k_alignI = 0.0;
+constexpr double k_alignD = 0.0;
+
+constexpr double k_distanceP = 0.01;
+constexpr double k_distanceI = 0.0;
+constexpr double k_distanceD = 0.0;
