@@ -3,99 +3,209 @@
 Drivetrain::Drivetrain()
 {
 	// Set position conversion factor for all encoders to be kDistancePerRotation
-	
 }
 
 Drivetrain::~Drivetrain()
 {
 }
 
-void Drivetrain::Periodic()
-{
+// Add definitions to all Drivetrain class functions
 
-	// Put encoder values in smartdashboard
-	SmartDashboard::PutNumber("Left Encoder", GetLeftEncoders());
-	SmartDashboard::PutNumber("Right Encoder", GetRightEncoders());
-	SmartDashboard::PutNumber("Encoder Average", GetEncoderAverage());
-	SmartDashboard::PutNumber("Gyro", GetGyro());
-}
+// --------------------- Control ----------------------
 
-// Reset that resets gyro and encoders
-void Drivetrain::Reset()
-{
-	ResetGyro();
-	ResetEncoders();
-}
-
-// Drive that gets x and y from controlers and uses chasis arcade drive
-void Drivetrain::Drive()
-{
-	double x = m_controller.GetRightXAxis();
-	double y = m_controller.GetRightYAxis();
-
-	// Chasis arcade drive x and y
-	m_chasis.ArcadeDrive(x, y);
-}
-
-// Drive that uses x and y to chasis arcade drive
 void Drivetrain::Drive(double x, double y)
 {
-	// Chasis arcade drive x and y
-	m_chasis.ArcadeDrive(x, y);
+	// Set the speed of the left and right motors based on the inputs
 }
 
-// Reset gyro
-void Drivetrain::ResetGyro()
+void Drivetrain::Reset()
 {
-	// Reset gyro
-	gyro.Reset();
+	// Set all motors to 0
 }
 
-// Reset encoders function that resets all encoders
-void Drivetrain::ResetEncoders()
+void Drivetrain::InvertSpeed(bool invert)
 {
-	
-	// Set position of front and back encoders to 0
-	frontLeftEncoder.SetPosition(0);
-	frontRightEncoder.SetPosition(0);
-	backLeftEncoder.SetPosition(0);
-	backRightEncoder.SetPosition(0);
-
+	// Set the speed inversion to the input
 }
 
-// Get encoder average
-double Drivetrain::GetEncoderAverage()
+void Drivetrain::InvertRotation(bool invert)
 {
-	// average of getright and getleft
-	return (GetRightEncoders() + GetLeftEncoders()) / 2;
+	// Set the rotation inversion to the input
 }
 
+void Drivetrain::SetSafetyEnabled(bool enabled)
+{
+	// Set the safety to the input
+}
 
-// Read right encoder average
+// ---------------------- Motors ----------------------
+
+void Drivetrain::ResetMotors()
+{
+	// Set all motors to 0
+}
+
+void Drivetrain::InvertRight(bool invert)
+{
+	// Set the right motor inversion to the input
+}
+
+void Drivetrain::InvertLeft(bool invert)
+{
+	// Set the left motor inversion to the input
+}
+
+void Drivetrain::PrintFrontRight()
+{
+	// Print the front right motor's current position
+}
+
+void Drivetrain::PrintFrontLeft()
+{
+	// Print the front left motor's current position
+}
+
+void Drivetrain::PrintBackRight()
+{
+	// Print the back right motor's current position
+}
+
+void Drivetrain::PrintBackLeft()
+{
+	// Print the back left motor's current position
+}
+
+void Drivetrain::PrintRight()
+{
+	// Print the right motor's current position
+}
+
+void Drivetrain::PrintLeft()
+{
+	// Print the left motor's current position
+}
+
+void Drivetrain::PrintMotors()
+{
+	// Print all motor positions
+}
+
+// --------------------- Encoders ---------------------
+
 double Drivetrain::GetRightEncoders()
 {
-	// Get average of right encoders
-	return -(frontRightEncoder.Get() + backRightEncoder.Get()) / 2;
+	// Return the right motor's current position
 }
 
-// Read left encoder average
 double Drivetrain::GetLeftEncoders()
 {
-	// Get average of left encoders
-	return (frontLeftEncoder.Get() + backLeftEncoder.Get()) / 2;
+	// Return the left motor's current position
 }
 
+double Drivetrain::GetEncoderAverage()
+{
+	// Return the average of the left and right motor's current positions
+}
 
-// Read gyro
+void Drivetrain::ResetEncoders()
+{
+	// Set all encoders to 0
+}
+
+void Drivetrain::InvertRightEncoders(bool invert)
+{
+	// Set the right encoder inversion to the input
+}
+
+void Drivetrain::InvertLeftEncoders(bool invert)
+{
+	// Set the left encoder inversion to the input
+}
+
+void Drivetrain::PrintFrontRightEncoder()
+{
+	// Print the front right encoder's current position
+}
+
+void Drivetrain::PrintFrontLeftEncoder()
+{
+	// Print the front left encoder's current position
+}
+
+void Drivetrain::PrintBackRightEncoder()
+{
+	// Print the back right encoder's current position
+}
+
+void Drivetrain::PrintBackLeftEncoder()
+{
+	// Print the back left encoder's current position
+}
+
+void Drivetrain::PrintRightEncoders()
+{
+	// Print the right encoder's current position
+}
+
+void Drivetrain::PrintLeftEncoders()
+{
+	// Print the left encoder's current position
+}
+
+void Drivetrain::PrintEncoders()
+{
+	// Print all encoder positions
+}
+
+// ----------------------- Gyro -----------------------
+
 double Drivetrain::GetGyro()
 {
-	// Get gyro in degrees
-	return -gyro.GetAngle().value();
+	// Return the gyro's current position
 }
 
-// read gyro in radians
 double Drivetrain::GetGyroRad()
 {
-	// Get gyro in radians
-	return -gyro.GetAngle().value() * (M_PI / 180);
-}	
+	// Return the gyro's current position in radians
+}
+
+void Drivetrain::ResetGyro()
+{
+	// Reset the gyro to 0
+}
+
+void Drivetrain::InvertGyro(bool invert)
+{
+	// Set the gyro inversion to the input
+}
+
+void Drivetrain::PrintGyro()
+{
+	// Print the gyro's current position
+}
+
+void Drivetrain::PrintGyroRad()
+{
+	// Print the gyro's current position in radians
+}
+
+// ----------------------- Auto -----------------------
+
+bool Drivetrain::Move(double distance, double speed)
+{
+	// Move the robot forward a certain distance at a certain speed
+}
+
+bool Drivetrain::Turn(double angle, double speed)
+{
+	// Turn the robot a certain angle at a certain speed
+}
+
+bool Drivetrain::MoveTo(double x, double y, double speed, double turnSpeed)
+{
+	// Move the robot to a certain position at a certain speed
+}
+
+bool Drivetrain::AlignWithTarget(double speed)
+{
+}
