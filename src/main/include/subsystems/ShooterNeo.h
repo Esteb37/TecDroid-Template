@@ -1,31 +1,31 @@
-#include "Constants.h"
-#include <rev/CANSparkMax.h>
-#include <rev/SparkMaxRelativeEncoder.h>
-#include <subsystems/Shooter.h>
+#pragma once
+#include "subsystems/Shooter.h"
 
-using namespace frc;
-using namespace rev;
-
-class ShooterNeo : public Shooter<CANSparkMax, SparkMaxRelativeEncoder>
+// Create ShooterNEo class that inherits from Shooter
+class ShooterNeo : public Shooter
 {
 
 public:
 	ShooterNeo();
 
+	void Periodic() override;
+
+	void SetMotor(double speed) override;
+
+	double GetMotor() override;
+
+	void InvertMotor(bool inverted) override;
+
+	void ResetMotor();
+
 	double GetEncoder() override;
 
-	void InvertEncoder(bool) override;
+	void ResetEncoder() override;
 
-	bool ReachRPM(double) override;
-
-	double CalculateRPM() override;
-
-	void ResetPID() override;
-
-	void PrintPIDError() override;
+	void InvertEncoder(bool inverted) override;
 
 private:
-	CANSparkMax m_motor{pShooterMotor, CANSparkMaxLowLevel::MotorType::kBrushless};
+	CANSparkMax m_motor{pShooterMotor, CANSparkMax::MotorType::kBrushless};
 
 	SparkMaxRelativeEncoder m_encoder{m_motor.GetEncoder()};
 };

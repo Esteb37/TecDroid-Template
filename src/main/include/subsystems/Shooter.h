@@ -2,8 +2,9 @@
 
 #include "Constants.h"
 #include <frc/DoubleSolenoid.h>
+#include <frc/Encoder.h>
 #include <frc/Servo.h>
-
+#include <frc/motorcontrol/VictorSP.h>
 #include <frc2/command/SubsystemBase.h>
 #include <rev/CANSparkMax.h>
 #include <subsystems/Limelight.h>
@@ -12,7 +13,6 @@ using namespace frc;
 using namespace frc2;
 using namespace rev;
 
-template <typename MotorType, typename EncoderType>
 class Shooter : public SubsystemBase
 {
 
@@ -27,13 +27,11 @@ public:
 
 	// --------- Motor ---------
 
-	void SetMotor(double);
+	virtual void SetMotor(double);
 
-	double GetMotor();
+	virtual double GetMotor();
 
-	void InvertMotor(bool);
-
-	void ResetMotor();
+	virtual void InvertMotor(bool);
 
 	void PrintMotor();
 
@@ -41,7 +39,7 @@ public:
 
 	virtual double GetEncoder();
 
-	void ResetEncoder();
+	virtual void ResetEncoder();
 
 	virtual void InvertEncoder(bool);
 
@@ -61,21 +59,13 @@ public:
 
 	void SetAngleServos(double);
 
-	void SetServos(double);
-
 	void ResetServos();
-
-	double GetServos();
 
 	double GetRightServo();
 
 	double GetLeftServo();
 
 	void PrintServos();
-
-	void PrintRightServo();
-
-	void PrintLeftServo();
 
 	// --------- Angle with Solenoids ---------
 
@@ -94,23 +84,17 @@ public:
 	void PrintSolenoids();
 
 private:
-	// --------- Motor ---------
-
-	MotorType m_motor;
-
 	// -------- Angle actuators --------
 
 	DoubleSolenoid m_rightSolenoid{PneumaticsModuleType::REVPH, pShooterRightSolenoidForward, pShooterRightSolenoidReverse};
 
-	DoubleSolenoid m_rightSolenoid{PneumaticsModuleType::REVPH, pShooterLeftSolenoidForward, pShooterLeftSolenoidReverse};
+	DoubleSolenoid m_leftSolenoid{PneumaticsModuleType::REVPH, pShooterLeftSolenoidForward, pShooterLeftSolenoidReverse};
 
 	Servo m_rightServo{pShooterRightServo};
 
 	Servo m_leftServo{pShooterLeftServo};
 
 	// --------- Sensors -------------
-
-	EncoderType m_encoder;
 
 	Limelight limelight;
 

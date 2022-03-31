@@ -4,18 +4,33 @@
 
 #include "RobotContainer.h"
 
-RobotContainer::RobotContainer() : m_autonomousCommand(&m_subsystem) {
-  // Initialize all of your commands and subsystems here
-
-  // Configure the button bindings
-  ConfigureButtonBindings();
+RobotContainer::RobotContainer()
+{
+	// Initialize all of your commands and subsystems here
 }
 
-void RobotContainer::ConfigureButtonBindings() {
-  // Configure your button bindings here
-}
+void RobotContainer::TeleopPeriodic()
+{
 
-frc2::Command* RobotContainer::GetAutonomousCommand() {
-  // An example command will be run in autonomous
-  return &m_autonomousCommand;
+	m_neoShooter.SetMotor(0);
+	m_sparkShooter.SetMotor(0);
+	m_victorShooter.SetMotor(0);
+
+	m_neoShooter.GetMotor();
+	m_sparkShooter.GetMotor();
+	m_victorShooter.GetMotor();
+
+	m_neoShooter.GetEncoder();
+	m_sparkShooter.GetEncoder();
+	m_victorShooter.GetEncoder();
+
+	m_neoShooter.ResetEncoder();
+	m_sparkShooter.ResetEncoder();
+	m_victorShooter.ResetEncoder();
+
+	m_neoShooter.InvertEncoder(false);
+	m_sparkShooter.InvertEncoder(false);
+	m_victorShooter.InvertEncoder(false);
+
+	m_neoShooter.ResetMotor();
 }

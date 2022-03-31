@@ -33,6 +33,8 @@ constexpr unsigned int pShooterLeftSolenoidReverse = 0;
 
 constexpr unsigned int pShooterRightServo = 0;
 constexpr unsigned int pShooterLeftServo = 1;
+constexpr unsigned int pShooterEncoderA = 0;
+constexpr unsigned int pShooterEncoderB = 1;
 
 constexpr double k_moveP = 0.01;
 constexpr double k_moveI = 0.0;

@@ -5,6 +5,11 @@
 #pragma once
 
 #include "subsystems/Drivetrain.h"
+
+#include "subsystems/ShooterNeo.h"
+#include "subsystems/ShooterSpark.h"
+#include "subsystems/ShooterVictor.h"
+
 #include <frc2/command/Command.h>
 
 /**
@@ -32,7 +37,11 @@ public:
 	void TeleopPeriodic();
 
 private:
-	void ConfigureButtonBindings();
-
 	Drivetrain m_drivetrain;
+
+	ShooterNeo m_neoShooter;
+
+	ShooterSpark m_sparkShooter;
+
+	ShooterVictor m_victorShooter;
 };

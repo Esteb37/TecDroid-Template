@@ -1,170 +1,139 @@
 #include "subsystems/Shooter.h"
 
-template <typename MotorType, typename EncoderType>
-Shooter<MotorType, EncoderType>::Shooter()
+Shooter::Shooter()
 {
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::Periodic()
+void Shooter::Periodic()
 {
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::Reset()
+void Shooter::Reset()
 {
-
 	ResetEncoder();
 	ResetServos();
-	ResetSolenoids();
+	SolenoidsOff();
 }
 
-template <typename MotorType, typename EncoderType>
-bool Shooter<MotorType, EncoderType>::Shoot()
+bool Shooter::Shoot()
 {
 	return false;
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::SetMotor(double speed)
+void Shooter::SetMotor(double speed)
 {
-	m_motor.Set(speed);
 }
 
-template <typename MotorType, typename EncoderType>
-double Shooter<MotorType, EncoderType>::GetMotor()
+double Shooter::GetMotor()
 {
-	m_motor.Get();
+	return 0;
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::InvertMotor(bool inverted)
+void Shooter::InvertMotor(bool inverted)
 {
-	m_motor.SetInverted(inverted);
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::ResetMotor()
-{
-	m_motor.Reset();
-}
-
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::PrintMotor()
+void Shooter::PrintMotor()
 {
 	SmartDashboard::PutNumber("Shooter Motor", GetMotor());
 }
 
-template <typename MotorType, typename EncoderType>
-double Shooter<MotorType, EncoderType>::GetEncoder()
+double Shooter::GetEncoder()
 {
 	return 0;
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::ResetEncoder()
-{
-	m_encoder.Reset();
-}
-
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::InvertEncoder(bool inverted)
+void Shooter::ResetEncoder()
 {
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::PrintEncoder()
+void Shooter::InvertEncoder(bool inverted)
+{
+}
+
+void Shooter::PrintEncoder()
 {
 	SmartDashboard::PutNumber("Shooter Encoder", GetEncoder());
 }
 
-template <typename MotorType, typename EncoderType>
-bool Shooter<MotorType, EncoderType>::ReachRPM(double rpm)
+bool Shooter::ReachRPM(double rpm)
 {
 	return false;
 }
 
-template <typename MotorType, typename EncoderType>
-double Shooter<MotorType, EncoderType>::CalculateRPM()
+double Shooter::CalculateRPM()
 {
 	return 0;
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::ResetPID()
+void Shooter::ResetPID()
 {
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::PrintPIDError()
+void Shooter::PrintPIDError()
 {
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::SetAngleServos(double angle)
+void Shooter::SetAngleServos(double angle)
 {
+	m_rightServo.Set(angle);
+	m_leftServo.Set(angle);
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::SetServos(double angle)
+void Shooter::ResetServos()
 {
+	m_rightServo.Set(0);
+	m_leftServo.Set(0);
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::ResetServos()
+double Shooter::GetRightServo()
 {
+	return m_rightServo.Get();
 }
 
-template <typename MotorType, typename EncoderType>
-double Shooter<MotorType, EncoderType>::GetServos()
+double Shooter::GetLeftServo()
 {
-	return 0;
+	return m_leftServo.Get();
 }
 
-template <typename MotorType, typename EncoderType>
-double Shooter<MotorType, EncoderType>::GetRightServo()
+void Shooter::PrintServos()
 {
-	return 0;
+	SmartDashboard::PutNumber("Shooter Right Servo", GetRightServo());
+	SmartDashboard::PutNumber("Shooter Left Servo", GetLeftServo());
 }
 
-template <typename MotorType, typename EncoderType>
-double Shooter<MotorType, EncoderType>::GetLeftServo()
+void Shooter::SetAngleSolenoids(bool forward)
 {
-	return 0;
-}
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::PrintRightServo()
-{
-}
-
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::PrintLeftServo()
-{
-}
-
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::PrintServos()
-{
+	if (forward)
+	{
+		m_rightSolenoid.Set(DoubleSolenoid::Value::kForward);
+		m_leftSolenoid.Set(DoubleSolenoid::Value::kForward);
+	}
+	else
+	{
+		m_rightSolenoid.Set(DoubleSolenoid::Value::kReverse);
+		m_leftSolenoid.Set(DoubleSolenoid::Value::kReverse);
+	}
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::SetAngleSolenoids(bool forward)
+void Shooter::SolenoidsOff()
 {
+	m_rightSolenoid.Set(DoubleSolenoid::Value::kOff);
+	m_leftSolenoid.Set(DoubleSolenoid::Value::kOff);
 }
 
-template <typename MotorType, typename EncoderType>
-bool Shooter<MotorType, EncoderType>::GetRightSolenoid()
+bool Shooter::GetRightSolenoid()
 {
-	return false;
+	return m_rightSolenoid.Get();
 }
 
-template <typename MotorType, typename EncoderType>
-bool Shooter<MotorType, EncoderType>::GetLeftSolenoid()
+bool Shooter::GetLeftSolenoid()
 {
-	return false;
+	return m_leftSolenoid.Get();
 }
 
-template <typename MotorType, typename EncoderType>
-void Shooter<MotorType, EncoderType>::PrintSolenoids()
+void Shooter::PrintSolenoids()
 {
+	SmartDashboard::PutBoolean("Shooter Right Solenoid", GetRightSolenoid());
+	SmartDashboard::PutBoolean("Shooter Left Solenoid", GetLeftSolenoid());
 }
