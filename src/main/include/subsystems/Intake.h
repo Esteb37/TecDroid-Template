@@ -8,7 +8,6 @@
 using namespace frc;
 using namespace frc2;
 using namespace rev;
-
 template <typename MotorType>
 class Intake : public SubsystemBase
 {
