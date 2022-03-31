@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Constants.h"
+#include <any>
 #include <frc/DoubleSolenoid.h>
 #include <frc/Encoder.h>
 #include <frc/Servo.h>
@@ -13,6 +14,7 @@ using namespace frc;
 using namespace frc2;
 using namespace rev;
 
+template <typename MotorType, typename EncoderType>
 class Shooter : public SubsystemBase
 {
 
@@ -84,6 +86,14 @@ public:
 	void PrintSolenoids();
 
 private:
+	// --------- Motor ---------
+
+	MotorType *m_motor;
+
+	// --------- Encoder ---------
+
+	EncoderType *m_encoder;
+
 	// -------- Angle actuators --------
 
 	DoubleSolenoid m_rightSolenoid{PneumaticsModuleType::REVPH, pShooterRightSolenoidForward, pShooterRightSolenoidReverse};

@@ -1,108 +1,189 @@
 #include "subsystems/Shooter.h"
 
-Shooter::Shooter()
+template <>
+Shooter<CANSparkMax, SparkMaxRelativeEncoder>::Shooter()
+{
+	m_motor = new CANSparkMax(pShooterMotor, CANSparkMax::MotorType::kBrushless);
+
+	m_encoder = new SparkMaxRelativeEncoder(m_motor->GetEncoder());
+}
+
+template <>
+Shooter<CANSparkMax, Encoder>::Shooter()
+{
+	m_motor = new CANSparkMax(pShooterMotor, CANSparkMax::MotorType::kBrushed);
+
+	m_encoder = new Encoder(pShooterEncoderA, pShooterEncoderB, false, Encoder::EncodingType::k4X);
+}
+
+template <>
+Shooter<VictorSP, Encoder>::Shooter()
+{
+	m_motor = new VictorSP(pShooterMotor);
+
+	m_encoder = new Encoder(pShooterEncoderA, pShooterEncoderB, false, Encoder::EncodingType::k4X);
+}
+
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::Periodic()
 {
 }
 
-void Shooter::Periodic()
-{
-}
-
-void Shooter::Reset()
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::Reset()
 {
 	ResetEncoder();
 	ResetServos();
 	SolenoidsOff();
 }
 
-bool Shooter::Shoot()
+template <typename MotorType, typename EncoderType>
+bool Shooter<MotorType, EncoderType>::Shoot()
 {
 	return false;
 }
 
-void Shooter::SetMotor(double speed)
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::SetMotor(double speed)
 {
+	m_motor->Set(speed);
 }
 
-double Shooter::GetMotor()
+template <typename MotorType, typename EncoderType>
+double Shooter<MotorType, EncoderType>::GetMotor()
 {
-	return 0;
+	return m_motor->Get();
 }
 
-void Shooter::InvertMotor(bool inverted)
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::InvertMotor(bool inverted)
 {
+	m_motor->SetInverted(inverted);
 }
 
-void Shooter::PrintMotor()
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::PrintMotor()
 {
 	SmartDashboard::PutNumber("Shooter Motor", GetMotor());
 }
 
-double Shooter::GetEncoder()
+template <>
+double Shooter<CANSparkMax, SparkMaxRelativeEncoder>::GetEncoder()
 {
-	return 0;
+	return m_encoder->GetPosition();
 }
 
-void Shooter::ResetEncoder()
+template <>
+double Shooter<CANSparkMax, Encoder>::GetEncoder()
 {
+	return m_encoder->GetDistance();
 }
 
-void Shooter::InvertEncoder(bool inverted)
+template <>
+double Shooter<VictorSP, Encoder>::GetEncoder()
 {
+	return m_encoder->GetDistance();
 }
 
-void Shooter::PrintEncoder()
+template <>
+void Shooter<CANSparkMax, SparkMaxRelativeEncoder>::ResetEncoder()
+{
+	m_encoder->SetPosition(0);
+}
+
+template <>
+void Shooter<CANSparkMax, Encoder>::ResetEncoder()
+{
+	m_encoder->Reset();
+}
+
+template <>
+void Shooter<VictorSP, Encoder>::ResetEncoder()
+{
+	m_encoder->Reset();
+}
+
+template <>
+void Shooter<CANSparkMax, SparkMaxRelativeEncoder>::InvertEncoder(bool inverted)
+{
+	m_encoder->SetInverted(inverted);
+}
+
+template <>
+void Shooter<CANSparkMax, Encoder>::InvertEncoder(bool inverted)
+{
+	m_encoder->SetReverseDirection(inverted);
+}
+
+template <>
+void Shooter<VictorSP, Encoder>::InvertEncoder(bool inverted)
+{
+	m_encoder->SetReverseDirection(inverted);
+}
+
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::PrintEncoder()
 {
 	SmartDashboard::PutNumber("Shooter Encoder", GetEncoder());
 }
 
-bool Shooter::ReachRPM(double rpm)
+template <typename MotorType, typename EncoderType>
+bool Shooter<MotorType, EncoderType>::ReachRPM(double rpm)
 {
 	return false;
 }
 
-double Shooter::CalculateRPM()
+template <typename MotorType, typename EncoderType>
+double Shooter<MotorType, EncoderType>::CalculateRPM()
 {
 	return 0;
 }
 
-void Shooter::ResetPID()
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::ResetPID()
 {
 }
 
-void Shooter::PrintPIDError()
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::PrintPIDError()
 {
 }
 
-void Shooter::SetAngleServos(double angle)
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::SetAngleServos(double angle)
 {
 	m_rightServo.Set(angle);
 	m_leftServo.Set(angle);
 }
 
-void Shooter::ResetServos()
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::ResetServos()
 {
 	m_rightServo.Set(0);
 	m_leftServo.Set(0);
 }
 
-double Shooter::GetRightServo()
+template <typename MotorType, typename EncoderType>
+double Shooter<MotorType, EncoderType>::GetRightServo()
 {
 	return m_rightServo.Get();
 }
 
-double Shooter::GetLeftServo()
+template <typename MotorType, typename EncoderType>
+double Shooter<MotorType, EncoderType>::GetLeftServo()
 {
 	return m_leftServo.Get();
 }
 
-void Shooter::PrintServos()
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::PrintServos()
 {
 	SmartDashboard::PutNumber("Shooter Right Servo", GetRightServo());
 	SmartDashboard::PutNumber("Shooter Left Servo", GetLeftServo());
 }
 
-void Shooter::SetAngleSolenoids(bool forward)
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::SetAngleSolenoids(bool forward)
 {
 	if (forward)
 	{
@@ -116,23 +197,27 @@ void Shooter::SetAngleSolenoids(bool forward)
 	}
 }
 
-void Shooter::SolenoidsOff()
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::SolenoidsOff()
 {
 	m_rightSolenoid.Set(DoubleSolenoid::Value::kOff);
 	m_leftSolenoid.Set(DoubleSolenoid::Value::kOff);
 }
 
-bool Shooter::GetRightSolenoid()
+template <typename MotorType, typename EncoderType>
+bool Shooter<MotorType, EncoderType>::GetRightSolenoid()
 {
 	return m_rightSolenoid.Get();
 }
 
-bool Shooter::GetLeftSolenoid()
+template <typename MotorType, typename EncoderType>
+bool Shooter<MotorType, EncoderType>::GetLeftSolenoid()
 {
 	return m_leftSolenoid.Get();
 }
 
-void Shooter::PrintSolenoids()
+template <typename MotorType, typename EncoderType>
+void Shooter<MotorType, EncoderType>::PrintSolenoids()
 {
 	SmartDashboard::PutBoolean("Shooter Right Solenoid", GetRightSolenoid());
 	SmartDashboard::PutBoolean("Shooter Left Solenoid", GetLeftSolenoid());
