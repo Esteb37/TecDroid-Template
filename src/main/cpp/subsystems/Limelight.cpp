@@ -89,26 +89,6 @@ void Limelight::SetLED(int led)
 	limelight->GetEntry("ledMode").SetDouble(led);
 }
 
-void Limelight::SetCamMode(int camMode)
-{
-	limelight->GetEntry("camMode").SetDouble(camMode);
-}
-
-double Limelight::GetDistanceToTarget()
-{
-	return;
-}
-
-void Limelight::SetPipeline(int pipeline)
-{
-	limelight->GetEntry("pipeline").SetDouble(pipeline);
-}
-
-void Limelight::SetLED(int led)
-{
-	limelight->GetEntry("ledMode").SetDouble(led);
-}
-
 void Limelight::SetCamMode(int mode)
 {
 	limelight->GetEntry("camMode").SetDouble(mode);
