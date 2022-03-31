@@ -76,7 +76,7 @@ double Limelight::GetLtv()
 
 double Limelight::GetDistanceToTarget()
 {
-	return (k_ObjectiveHeight - k_LimelightHeight) / tan(k_LimelightAngle + GetVerticalAngle()) - k_LimelightToFront;
+	return (k_objectiveHeight - k_limelightHeight) / tan(k_limelightAngle + GetVerticalAngle());
 }
 
 void Limelight::SetPipeline(int pipeline)

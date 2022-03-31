@@ -56,11 +56,23 @@ constexpr double k_distanceI = 0.0;
 constexpr double k_distanceD = 0.0;
 constexpr double k_distancePIDTolerance = 0.5;
 
+constexpr double k_shooterP = 0.01;
+constexpr double k_shooterI = 0.0;
+constexpr double k_shooterD = 0.0;
+constexpr double k_shooterPIDTolerance = 0.5;
+
 constexpr double k_wheelDiameter = 6 * 2.54;
 constexpr double k_wheelGearRatio = 10.71;
 constexpr double k_drivetrainDPR = k_wheelDiameter * M_PI / k_wheelGearRatio;
 
-constexpr double k_ObjectiveHeight = 1.35;
-constexpr double k_LimelightHeight = 0.35;
-constexpr double k_LimelightAngle = 45 * M_PI / 180;
-constexpr double k_LimelightToFront = 0.68;
+constexpr double k_objectiveHeight = 1.35;
+constexpr double k_limelightHeight = 0.35;
+constexpr double k_limelightAngle = 45 * M_PI / 180;
+constexpr double k_limelightToFront = 0.68;
+
+constexpr double k_shooterMaxSpeed = 1;
+
+constexpr double shooterRPMFromDistance(double distance)
+{
+	return 60; // TODO: place RPM function here
+}

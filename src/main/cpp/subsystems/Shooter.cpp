@@ -6,6 +6,8 @@ Shooter<CANSparkMax, SparkMaxRelativeEncoder>::Shooter()
 	m_motor = new CANSparkMax(pShooterMotor, CANSparkMax::MotorType::kBrushless);
 
 	m_encoder = new SparkMaxRelativeEncoder(m_motor->GetEncoder());
+
+	m_PIDController.SetTolerance(k_shooterPIDTolerance);
 }
 
 template <>
@@ -14,6 +16,8 @@ Shooter<CANSparkMax, Encoder>::Shooter()
 	m_motor = new CANSparkMax(pShooterMotor, CANSparkMax::MotorType::kBrushed);
 
 	m_encoder = new Encoder(pShooterEncoderA, pShooterEncoderB, false, Encoder::EncodingType::k4X);
+
+	m_PIDController.SetTolerance(k_shooterPIDTolerance);
 }
 
 template <>
@@ -22,6 +26,8 @@ Shooter<VictorSP, Encoder>::Shooter()
 	m_motor = new VictorSP(pShooterMotor);
 
 	m_encoder = new Encoder(pShooterEncoderA, pShooterEncoderB, false, Encoder::EncodingType::k4X);
+
+	m_PIDController.SetTolerance(k_shooterPIDTolerance);
 }
 
 template <typename MotorType, typename EncoderType>
@@ -40,13 +46,16 @@ void Shooter<MotorType, EncoderType>::Reset()
 template <typename MotorType, typename EncoderType>
 bool Shooter<MotorType, EncoderType>::Shoot()
 {
-	return false;
+	if (ReachRPM(CalculateRPM()))
+	{
+		return true; // TODO feeder.feed
+	}
 }
 
 template <typename MotorType, typename EncoderType>
 void Shooter<MotorType, EncoderType>::SetMotor(double speed)
 {
-	m_motor->Set(speed);
+	m_motor->Set(speed * m_motorDirection);
 }
 
 template <typename MotorType, typename EncoderType>
@@ -70,19 +79,19 @@ void Shooter<MotorType, EncoderType>::PrintMotor()
 template <>
 double Shooter<CANSparkMax, SparkMaxRelativeEncoder>::GetEncoder()
 {
-	return m_encoder->GetPosition();
+	return m_encoder->GetVelocity();
 }
 
 template <>
 double Shooter<CANSparkMax, Encoder>::GetEncoder()
 {
-	return m_encoder->GetDistance();
+	return m_encoder->GetRate();
 }
 
 template <>
 double Shooter<VictorSP, Encoder>::GetEncoder()
 {
-	return m_encoder->GetDistance();
+	return m_encoder->GetRate();
 }
 
 template <>
@@ -130,23 +139,31 @@ void Shooter<MotorType, EncoderType>::PrintEncoder()
 template <typename MotorType, typename EncoderType>
 bool Shooter<MotorType, EncoderType>::ReachRPM(double rpm)
 {
-	return false;
+	m_PIDController.SetSetpoint(rpm);
+
+	double output = m_PIDController.Calculate(GetEncoder());
+
+	SetMotor(std::clamp(output, -1.0, 1.0));
+
+	return m_PIDController.AtSetpoint();
 }
 
 template <typename MotorType, typename EncoderType>
 double Shooter<MotorType, EncoderType>::CalculateRPM()
 {
-	return 0;
+	return shooterRPMFromDistance(m_limelight.GetDistanceToTarget());
 }
 
 template <typename MotorType, typename EncoderType>
 void Shooter<MotorType, EncoderType>::ResetPID()
 {
+	m_PIDController.Reset();
 }
 
 template <typename MotorType, typename EncoderType>
 void Shooter<MotorType, EncoderType>::PrintPIDError()
 {
+	SmartDashboard::PutNumber("Shooter PID Error", m_PIDController.GetVelocityError());
 }
 
 template <typename MotorType, typename EncoderType>

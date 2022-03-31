@@ -5,11 +5,11 @@
 #include <frc/DoubleSolenoid.h>
 #include <frc/Encoder.h>
 #include <frc/Servo.h>
+#include <frc/controller/PIDController.h>
 #include <frc/motorcontrol/VictorSP.h>
 #include <frc2/command/SubsystemBase.h>
 #include <rev/CANSparkMax.h>
 #include <subsystems/Limelight.h>
-
 using namespace frc;
 using namespace frc2;
 using namespace rev;
@@ -94,6 +94,8 @@ private:
 
 	EncoderType *m_encoder;
 
+	PIDController m_PIDController{k_shooterP, k_shooterI, k_shooterD};
+
 	// -------- Angle actuators --------
 
 	DoubleSolenoid m_rightSolenoid{PneumaticsModuleType::REVPH, pShooterRightSolenoidForward, pShooterRightSolenoidReverse};
@@ -106,7 +108,7 @@ private:
 
 	// --------- Sensors -------------
 
-	Limelight limelight;
+	Limelight m_limelight;
 
 	int m_motorDirection = 1;
 
