@@ -153,6 +153,18 @@ public:
 	 */
 	bool SetAngleWithTarget(double, double);
 
+	double GetAbsoluteAngle(double, double);
+
+	void ResetMovePIDController();
+
+	void ResetTurnPIDController();
+
+	void ResetAlignPIDController();
+
+	void ResetDistancePIDController();
+
+	void ResetPIDControllers();
+
 	void PrintMoveError();
 
 	void PrintTurnError();
@@ -162,6 +174,8 @@ public:
 	void PrintAlignError();
 
 	void PrintSetDistanceError();
+
+	void PrintCurrentPosition();
 
 private:
 	// ----- Motors -----
@@ -196,19 +210,15 @@ private:
 
 	// ----- Auto -----
 
-	PIDController m_movePidController{k_moveP, k_moveI, k_moveD};
+	PIDController m_movePIDController{k_moveP, k_moveI, k_moveD};
 
-	PIDController m_turnPidController{k_turnP, k_turnI, k_turnD};
+	PIDController m_turnPIDController{k_turnP, k_turnI, k_turnD};
 
-	PIDController m_alignPidController{k_alignP, k_alignI, k_alignD};
+	PIDController m_alignPIDController{k_alignP, k_alignI, k_alignD};
 
-	PIDController m_distancePidController{k_distanceP, k_distanceI, k_distanceD};
+	PIDController m_distancePIDController{k_distanceP, k_distanceI, k_distanceD};
 
 	// ----- Directions -----
-
-	int m_rightDirection = 1;
-
-	int m_leftDirection = 1;
 
 	int m_gyroDirection = 1;
 
@@ -216,9 +226,9 @@ private:
 
 	int m_rotationDirection = 1;
 
-	int m_rightEncoderDirection = 1;
+	double m_currentX = 0;
 
-	int m_leftEncoderDirection = 1;
+	double m_currentY = 0;
 
-	int m_encoderDirection = 1;
+	double m_currentAngle = 0;
 };

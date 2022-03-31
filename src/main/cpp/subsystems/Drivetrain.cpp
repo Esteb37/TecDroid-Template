@@ -1,160 +1,206 @@
 #include "subsystems/Drivetrain.h"
 
+using namespace std;
+
 Drivetrain::Drivetrain()
 {
-	// Set position conversion factor for all encoders to be kDistancePerRotation
+	m_frontRightEncoder.SetPositionConversionFactor(k_drivetrainDPR);
+	m_frontLeftEncoder.SetPositionConversionFactor(k_drivetrainDPR);
+	m_backRightEncoder.SetPositionConversionFactor(k_drivetrainDPR);
+	m_backLeftEncoder.SetPositionConversionFactor(k_drivetrainDPR);
 }
-
-Drivetrain::~Drivetrain()
-{
-}
-
-// Add definitions to all Drivetrain class functions
 
 // --------------------- Control ----------------------
 
-void Drivetrain::Drive(double x, double y)
+void Drivetrain::Drive(double speed, double rotation)
 {
-	// Set the speed of the left and right motors based on the inputs
+	// Use arcade drive with m_drive
+	m_drive.ArcadeDrive(speed * m_speedDirection, rotation * m_rotationDirection);
 }
 
 void Drivetrain::Reset()
 {
-	// Set all motors to 0
+
+	ResetGyro();
+	ResetEncoders();
+
+	m_drive.SetSafetyEnabled(true);
+
+	m_speedDirection = 1;
+	m_rotationDirection = 1;
 }
 
 void Drivetrain::InvertSpeed(bool invert)
 {
-	// Set the speed inversion to the input
+	// Invert speed direction if invert is true
+
+	m_speedDirection = invert ? -1 : 1;
 }
 
 void Drivetrain::InvertRotation(bool invert)
 {
 	// Set the rotation inversion to the input
+
+	m_rotationDirection = invert ? -1 : 1;
 }
 
 void Drivetrain::SetSafetyEnabled(bool enabled)
 {
 	// Set the safety to the input
+
+	m_drive.SetSafetyEnabled(enabled);
 }
 
 // ---------------------- Motors ----------------------
 
 void Drivetrain::ResetMotors()
 {
-	// Set all motors to 0
+	// Reset all motors
+	m_frontRight.RestoreFactoryDefaults();
+	m_frontLeft.RestoreFactoryDefaults();
+	m_backRight.RestoreFactoryDefaults();
+	m_backLeft.RestoreFactoryDefaults();
 }
 
 void Drivetrain::InvertRight(bool invert)
 {
-	// Set the right motor inversion to the input
+	m_right.SetInverted(invert);
 }
 
 void Drivetrain::InvertLeft(bool invert)
 {
-	// Set the left motor inversion to the input
+	m_left.SetInverted(invert);
 }
 
 void Drivetrain::PrintFrontRight()
 {
-	// Print the front right motor's current position
+	SmartDashboard::PutNumber("Front Right", m_frontRight.Get());
 }
 
 void Drivetrain::PrintFrontLeft()
 {
-	// Print the front left motor's current position
+	SmartDashboard::PutNumber("Front Left", m_frontLeft.Get());
 }
 
 void Drivetrain::PrintBackRight()
 {
-	// Print the back right motor's current position
+	SmartDashboard::PutNumber("Back Right", m_backRight.Get());
 }
 
 void Drivetrain::PrintBackLeft()
 {
-	// Print the back left motor's current position
+	SmartDashboard::PutNumber("Back Left", m_backLeft.Get());
 }
 
 void Drivetrain::PrintRight()
 {
-	// Print the right motor's current position
+	SmartDashboard::PutNumber("Right", m_right.Get());
 }
 
 void Drivetrain::PrintLeft()
 {
-	// Print the left motor's current position
+	SmartDashboard::PutNumber("Left", m_left.Get());
 }
 
 void Drivetrain::PrintMotors()
 {
-	// Print all motor positions
+	PrintFrontRight();
+	PrintFrontLeft();
+	PrintBackRight();
+	PrintBackLeft();
 }
 
 // --------------------- Encoders ---------------------
 
 double Drivetrain::GetRightEncoders()
 {
-	// Return the right motor's current position
+	// Return the average of right encoders
+
+	return (m_frontRightEncoder.GetPosition() + m_backRightEncoder.GetPosition()) / 2;
 }
 
 double Drivetrain::GetLeftEncoders()
 {
-	// Return the left motor's current position
+	// Return the average of left encoders
+
+	return (m_frontLeftEncoder.GetPosition() + m_backLeftEncoder.GetPosition()) / 2;
 }
 
 double Drivetrain::GetEncoderAverage()
 {
-	// Return the average of the left and right motor's current positions
+	// Return the average of encoders
+
+	return (GetRightEncoders() + GetLeftEncoders()) / 2;
 }
 
 void Drivetrain::ResetEncoders()
 {
 	// Set all encoders to 0
+
+	m_frontRightEncoder.SetPosition(0);
+	m_frontLeftEncoder.SetPosition(0);
+	m_backRightEncoder.SetPosition(0);
+	m_backLeftEncoder.SetPosition(0);
 }
 
 void Drivetrain::InvertRightEncoders(bool invert)
 {
-	// Set the right encoder inversion to the input
+	// Invert front and back right encoders
+	m_frontRightEncoder.SetInverted(invert);
+	m_backRightEncoder.SetInverted(invert);
 }
 
 void Drivetrain::InvertLeftEncoders(bool invert)
 {
-	// Set the left encoder inversion to the input
+
+	// Invert front and back left encoders
+	m_frontLeftEncoder.SetInverted(invert);
+	m_backLeftEncoder.SetInverted(invert);
 }
 
 void Drivetrain::PrintFrontRightEncoder()
 {
 	// Print the front right encoder's current position
+	SmartDashboard::PutNumber("Front Right Encoder", m_frontRightEncoder.GetPosition());
 }
 
 void Drivetrain::PrintFrontLeftEncoder()
 {
 	// Print the front left encoder's current position
+	SmartDashboard::PutNumber("Front Left Encoder", m_frontLeftEncoder.GetPosition());
 }
 
 void Drivetrain::PrintBackRightEncoder()
 {
 	// Print the back right encoder's current position
+	SmartDashboard::PutNumber("Back Right Encoder", m_backRightEncoder.GetPosition());
 }
 
 void Drivetrain::PrintBackLeftEncoder()
 {
 	// Print the back left encoder's current position
+	SmartDashboard::PutNumber("Back Left Encoder", m_backLeftEncoder.GetPosition());
 }
 
 void Drivetrain::PrintRightEncoders()
 {
 	// Print the right encoder's current position
+	PrintFrontRightEncoder();
+	PrintBackRightEncoder();
 }
 
 void Drivetrain::PrintLeftEncoders()
 {
 	// Print the left encoder's current position
+	PrintFrontLeftEncoder();
+	PrintBackLeftEncoder();
 }
 
 void Drivetrain::PrintEncoders()
 {
 	// Print all encoder positions
+	PrintRightEncoders();
+	PrintLeftEncoders();
 }
 
 // ----------------------- Gyro -----------------------
@@ -162,50 +208,217 @@ void Drivetrain::PrintEncoders()
 double Drivetrain::GetGyro()
 {
 	// Return the gyro's current position
+
+	return m_gyro.GetAngle().value() * m_gyroDirection;
 }
 
 double Drivetrain::GetGyroRad()
 {
 	// Return the gyro's current position in radians
+
+	return GetGyro() * (M_PI / 180);
 }
 
 void Drivetrain::ResetGyro()
 {
 	// Reset the gyro to 0
+
+	m_gyro.Reset();
 }
 
 void Drivetrain::InvertGyro(bool invert)
 {
 	// Set the gyro inversion to the input
+
+	m_gyroDirection = invert ? -1 : 1;
 }
 
 void Drivetrain::PrintGyro()
 {
 	// Print the gyro's current position
+	SmartDashboard::PutNumber("Gyro", GetGyro());
 }
 
 void Drivetrain::PrintGyroRad()
 {
 	// Print the gyro's current position in radians
+
+	SmartDashboard::PutNumber("Gyro Rad", GetGyroRad());
 }
 
 // ----------------------- Auto -----------------------
 
 bool Drivetrain::Move(double distance, double speed)
 {
-	// Move the robot forward a certain distance at a certain speed
+	// Use m_movePIDController to move the robot to a certain distance at a certain speed
+
+	m_movePIDController.SetSetpoint(distance);
+	m_movePIDController.SetTolerance(k_movePIDTolerance);
+	double output = m_movePIDController.Calculate(-GetEncoderAverage());
+	output = clamp(output, -speed, speed);
+	Drive(output * speed, 0);
+	return m_movePIDController.AtSetpoint();
 }
 
 bool Drivetrain::Turn(double angle, double speed)
 {
-	// Turn the robot a certain angle at a certain speed
+	m_turnPIDController.SetSetpoint(angle);
+	m_turnPIDController.SetTolerance(k_turnPIDTolerance);
+	double output = m_turnPIDController.Calculate(GetGyro());
+	output = clamp(output, -speed, speed);
+	Drive(0, output * speed);
+	return m_turnPIDController.AtSetpoint();
 }
 
 bool Drivetrain::MoveTo(double x, double y, double speed, double turnSpeed)
 {
-	// Move the robot to a certain position at a certain speed
+	// Turn the robot towards the new coordinates from the current coordinates, then move to them at a certain speed
+
+	double targetX = x - m_currentX;
+	double targetY = y - m_currentY;
+
+	double angle = GetAbsoluteAngle(targetX, targetY);
+
+	if (Turn(angle, turnSpeed))
+	{
+		double distance = sqrt(pow(targetX, 2) + pow(targetY, 2));
+
+		if (Move(distance, speed))
+		{
+			ResetEncoders();
+			m_currentX = x;
+			m_currentY = y;
+			return true;
+		}
+
+		return false;
+	}
+
+	return false;
 }
 
 bool Drivetrain::AlignWithTarget(double speed)
 {
+	// Use align pid to turn drivetrain to face the target
+
+	m_alignPIDController.SetSetpoint(0);
+	m_alignPIDController.SetTolerance(k_alignPIDTolerance);
+	double output = m_alignPIDController.Calculate(m_limelight.GetHorizontalAngle());
+	output = clamp(output, -speed, speed);
+	Drive(0, output * speed);
+
+	return m_alignPIDController.AtSetpoint();
+}
+
+bool Drivetrain::SetDistanceWithTarget(double distance, double speed)
+{
+	// Use distance pid to put drivetrain at a certain distance from target calculated by the limelight
+
+	m_distancePIDController.SetSetpoint(distance);
+
+	double output = m_distancePIDController.Calculate(m_limelight.GetDistanceToTarget());
+
+	output = clamp(output, -speed, speed);
+
+	Drive(output * speed, 0);
+
+	return m_distancePIDController.AtSetpoint();
+}
+
+bool Drivetrain::SetAngleWithTarget(double angle, double speed)
+{
+	// Use angle pid to put drivetrain at a certain angle from target calculated by the limelight
+
+	m_alignPIDController.SetSetpoint(angle);
+
+	double output = m_alignPIDController.Calculate(m_limelight.GetHorizontalAngle());
+
+	output = clamp(output, -speed, speed);
+
+	Drive(0, output * speed);
+
+	return m_alignPIDController.AtSetpoint();
+}
+
+void Drivetrain::ResetMovePIDController()
+{
+	m_movePIDController.Reset();
+}
+
+void Drivetrain::ResetTurnPIDController()
+{
+	m_turnPIDController.Reset();
+}
+
+void Drivetrain::ResetAlignPIDController()
+{
+	m_alignPIDController.Reset();
+}
+
+void Drivetrain::ResetDistancePIDController()
+{
+	m_distancePIDController.Reset();
+}
+
+void Drivetrain::ResetPIDControllers()
+{
+	ResetMovePIDController();
+	ResetTurnPIDController();
+	ResetAlignPIDController();
+	ResetDistancePIDController();
+}
+
+void Drivetrain::PrintMoveError()
+{
+	// Print the current move error
+	SmartDashboard::PutNumber("Move Error", m_movePIDController.GetPositionError());
+}
+
+void Drivetrain::PrintTurnError()
+{
+	// Print the current turn error
+	SmartDashboard::PutNumber("Turn Error", m_turnPIDController.GetPositionError());
+}
+
+void Drivetrain::PrintMoveToError()
+{
+	// Print the current move to error
+	PrintMoveError();
+	PrintTurnError();
+}
+
+void Drivetrain::PrintAlignError()
+{
+	// Print the current align error
+	SmartDashboard::PutNumber("Align Error", m_alignPIDController.GetPositionError());
+}
+
+void Drivetrain::PrintSetDistanceError()
+{
+	SmartDashboard::PutNumber("Set Distance Error", m_distancePIDController.GetPositionError());
+}
+
+double Drivetrain::GetAbsoluteAngle(double x, double y)
+{
+
+	float relAngle = atan(y / (x == 0 ? 0.01 : x));
+
+	if (x < 0)
+	{
+		relAngle += M_PI;
+	}
+
+	else if (y < 0)
+	{
+		relAngle += 2 * M_PI;
+	}
+
+	return (relAngle)*180 / M_PI;
+}
+
+void Drivetrain::PrintCurrentPosition()
+{
+	// Print the current position of the robot
+	SmartDashboard::PutNumber("Current X", m_currentX);
+	SmartDashboard::PutNumber("Current Y", m_currentY);
 }

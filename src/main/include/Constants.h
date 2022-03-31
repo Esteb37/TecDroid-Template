@@ -14,6 +14,8 @@
  * they are needed.
  */
 
+#include <Math.h>
+
 constexpr unsigned int pFrontRight = 0;
 constexpr unsigned int pFrontLeft = 1;
 constexpr unsigned int pBackRight = 2;
@@ -27,15 +29,23 @@ constexpr unsigned int pClimber = 8;
 constexpr double k_moveP = 0.01;
 constexpr double k_moveI = 0.0;
 constexpr double k_moveD = 0.0;
+constexpr double k_movePIDTolerance = 0.5;
 
 constexpr double k_turnP = 0.01;
 constexpr double k_turnI = 0.0;
 constexpr double k_turnD = 0.0;
+constexpr double k_turnPIDTolerance = 0.5;
 
 constexpr double k_alignP = 0.01;
 constexpr double k_alignI = 0.0;
 constexpr double k_alignD = 0.0;
+constexpr double k_alignPIDTolerance = 0.5;
 
 constexpr double k_distanceP = 0.01;
 constexpr double k_distanceI = 0.0;
 constexpr double k_distanceD = 0.0;
+constexpr double k_distancePIDTolerance = 0.5;
+
+constexpr double k_wheelDiameter = 6 * 2.54;
+constexpr double k_wheelGearRatio = 10.71;
+constexpr double k_drivetrainDPR = k_wheelDiameter * M_PI / k_wheelGearRatio;

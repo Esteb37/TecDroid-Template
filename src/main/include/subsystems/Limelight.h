@@ -15,9 +15,9 @@ public:
 
 	void Update();
 
-	double GetX();
+	double GetHorizontalAngle();
 
-	double GetY();
+	double GetVerticalAngle();
 
 	double GetArea();
 
@@ -41,7 +41,7 @@ public:
 
 	double GetLtv();
 
-	double GetLta();
+	double GetDistanceToTarget();
 
 	void SetPipeline(int);
 
@@ -92,6 +92,4 @@ public:
 	void PrintLtp();
 
 	void PrintLtv();
-
-	void PrintLta();
 };
