@@ -20,11 +20,19 @@ constexpr unsigned int pFrontRight = 0;
 constexpr unsigned int pFrontLeft = 1;
 constexpr unsigned int pBackRight = 2;
 constexpr unsigned int pBackLeft = 3;
-constexpr unsigned int pShooter = 4;
+constexpr unsigned int pShooterMotor = 4;
 constexpr unsigned int pIntake = 5;
 constexpr unsigned int pConveyor = 6;
 constexpr unsigned int pElevator = 7;
 constexpr unsigned int pClimber = 8;
+
+constexpr unsigned int pShooterRightSolenoidForward = 0;
+constexpr unsigned int pShooterRightSolenoidReverse = 0;
+constexpr unsigned int pShooterLeftSolenoidForward = 0;
+constexpr unsigned int pShooterLeftSolenoidReverse = 0;
+
+constexpr unsigned int pShooterRightServo = 0;
+constexpr unsigned int pShooterLeftServo = 1;
 
 constexpr double k_moveP = 0.01;
 constexpr double k_moveI = 0.0;

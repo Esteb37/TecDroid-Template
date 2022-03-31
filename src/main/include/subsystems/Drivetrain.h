@@ -229,6 +229,4 @@ private:
 	double m_currentX = 0;
 
 	double m_currentY = 0;
-
-	double m_currentAngle = 0;
 };
