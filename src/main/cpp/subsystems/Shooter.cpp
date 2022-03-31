@@ -55,7 +55,7 @@ bool Shooter<MotorType, EncoderType>::Shoot()
 template <typename MotorType, typename EncoderType>
 void Shooter<MotorType, EncoderType>::SetMotor(double speed)
 {
-	m_motor->Set(speed * m_motorDirection);
+	m_motor->Set(speed * k_shooterMaxSpeed);
 }
 
 template <typename MotorType, typename EncoderType>
@@ -143,7 +143,7 @@ bool Shooter<MotorType, EncoderType>::ReachRPM(double rpm)
 
 	double output = m_PIDController.Calculate(GetEncoder());
 
-	SetMotor(std::clamp(output, -1.0, 1.0));
+	SetMotor(std::clamp(output, -k_shooterMaxSpeed, k_shooterMaxSpeed));
 
 	return m_PIDController.AtSetpoint();
 }
@@ -202,7 +202,7 @@ void Shooter<MotorType, EncoderType>::PrintServos()
 template <typename MotorType, typename EncoderType>
 void Shooter<MotorType, EncoderType>::SetAngleSolenoids(bool forward)
 {
-	if (forward)
+	if (forward ^ m_solenoidsInverted)
 	{
 		m_rightSolenoid.Set(DoubleSolenoid::Value::kForward);
 		m_leftSolenoid.Set(DoubleSolenoid::Value::kForward);
