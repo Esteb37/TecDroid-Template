@@ -21,15 +21,19 @@ constexpr unsigned int pFrontLeft = 1;
 constexpr unsigned int pBackRight = 2;
 constexpr unsigned int pBackLeft = 3;
 constexpr unsigned int pShooterMotor = 4;
-constexpr unsigned int pIntake = 5;
+constexpr unsigned int pIntakeMotor = 5;
 constexpr unsigned int pConveyor = 6;
 constexpr unsigned int pElevator = 7;
 constexpr unsigned int pClimber = 8;
 
 constexpr unsigned int pShooterRightSolenoidForward = 0;
-constexpr unsigned int pShooterRightSolenoidReverse = 0;
-constexpr unsigned int pShooterLeftSolenoidForward = 0;
-constexpr unsigned int pShooterLeftSolenoidReverse = 0;
+constexpr unsigned int pShooterRightSolenoidReverse = 1;
+constexpr unsigned int pShooterLeftSolenoidForward = 2;
+constexpr unsigned int pShooterLeftSolenoidReverse = 3;
+constexpr unsigned int pIntakeRightSolenoidForward = 0;
+constexpr unsigned int pIntakeRightSolenoidReverse = 1;
+constexpr unsigned int pIntakeLeftSolenoidForward = 2;
+constexpr unsigned int pIntakeLeftSolenoidReverse = 3;
 
 constexpr unsigned int pShooterRightServo = 0;
 constexpr unsigned int pShooterLeftServo = 1;
@@ -71,6 +75,7 @@ constexpr double k_limelightAngle = 45 * M_PI / 180;
 constexpr double k_limelightToFront = 0.68;
 
 constexpr double k_shooterMaxSpeed = 1;
+constexpr double k_intakeMaxSpeed = 1;
 
 constexpr double shooterRPMFromDistance(double distance)
 {

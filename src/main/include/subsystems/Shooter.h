@@ -73,9 +73,7 @@ public:
 
 	void SetAngleSolenoids(bool);
 
-	void OpenSolenoids();
-
-	void CloseSolenoids();
+	void InvertSolenoids();
 
 	void SolenoidsOff();
 
@@ -110,7 +108,5 @@ private:
 
 	Limelight m_limelight;
 
-	int m_motorDirection = 1;
-
-	int m_encoderDirection = 1;
+	bool m_solenoidsInverted = false;
 };
