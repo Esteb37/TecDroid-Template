@@ -17,9 +17,17 @@ public:
 
 	void Periodic() override;
 
+	// ---------- Actions -----------
+
 	void Take();
 
 	void Spit();
+
+	void Lower();
+
+	void Raise();
+
+	// ---------- Motor -----------
 
 	void SetMotor(double);
 
@@ -29,9 +37,7 @@ public:
 
 	void PrintMotor();
 
-	void Lower();
-
-	void Raise();
+	// ---------- Encoder -----------
 
 	void InvertSolenoids();
 
@@ -44,11 +50,17 @@ public:
 	void PrintSolenoids();
 
 private:
+	// ---------- Motor ----------
+
 	MotorType *m_motor;
+
+	// ---------- Solenoids ---------
 
 	DoubleSolenoid m_rightSolenoid{PneumaticsModuleType::REVPH, pIntakeRightSolenoidForward, pIntakeRightSolenoidReverse};
 
 	DoubleSolenoid m_leftSolenoid{PneumaticsModuleType::REVPH, pIntakeLeftSolenoidForward, pIntakeLeftSolenoidReverse};
+
+	// ---------- Attributes ----------
 
 	bool m_solenoidsInverted = false;
 };

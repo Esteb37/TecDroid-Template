@@ -15,6 +15,12 @@ private:
 public:
 	Limelight();
 
+	// ---------- Actions ----------
+
+	double GetDistanceToTarget();
+
+	// ---------- Getters ----------
+
 	double GetHorizontalAngle();
 
 	double GetVerticalAngle();
@@ -41,7 +47,7 @@ public:
 
 	double GetLtv();
 
-	double GetDistanceToTarget();
+	// ---------- Setters ----------
 
 	void SetPipeline(int);
 
@@ -66,6 +72,8 @@ public:
 	void SetLEDOff();
 
 	void SetLEDOn();
+
+	// ---------- Printers ----------
 
 	void PrintHorizontalAngle();
 

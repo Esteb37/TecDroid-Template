@@ -21,12 +21,9 @@ public:
 
 	~Drivetrain();
 
-	/**
-	 * Will be called periodically whenever the CommandScheduler runs.
-	 */
 	void Periodic() override;
 
-	// --------------------- Control ----------------------
+	// --------------------- Actions ----------------------
 
 	void Drive(double, double);
 
@@ -179,6 +176,7 @@ public:
 
 private:
 	// ----- Motors -----
+
 	CANSparkMax m_frontLeft{pFrontLeft, CANSparkMaxLowLevel::MotorType::kBrushless};
 
 	CANSparkMax m_frontRight{pFrontRight, CANSparkMaxLowLevel::MotorType::kBrushless};
@@ -188,14 +186,17 @@ private:
 	CANSparkMax m_backRight{pBackRight, CANSparkMaxLowLevel::MotorType::kBrushless};
 
 	// ----- Motor controller groups-----
+
 	MotorControllerGroup m_right{m_frontRight, m_backRight};
 
 	MotorControllerGroup m_left{m_frontLeft, m_backLeft};
 
 	// ----- Chasis drive object -----
+
 	DifferentialDrive m_drive{m_left, m_right};
 
 	// ----- Sensors -----
+
 	SparkMaxRelativeEncoder m_frontRightEncoder{m_frontRight.GetEncoder()};
 
 	SparkMaxRelativeEncoder m_frontLeftEncoder{m_frontLeft.GetEncoder()};
@@ -218,7 +219,7 @@ private:
 
 	PIDController m_distancePIDController{k_distanceP, k_distanceI, k_distanceD};
 
-	// ----- Directions -----
+	// ----- Attributes -----
 
 	int m_gyroDirection = 1;
 

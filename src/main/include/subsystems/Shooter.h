@@ -23,6 +23,8 @@ public:
 
 	void Periodic() override;
 
+	// ---------- Actions -----------
+
 	void Reset();
 
 	bool Shoot();
@@ -107,6 +109,8 @@ private:
 	// --------- Sensors -------------
 
 	Limelight m_limelight;
+
+	// --------- Attributes -----------
 
 	bool m_solenoidsInverted = false;
 };
