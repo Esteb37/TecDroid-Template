@@ -10,6 +10,14 @@ Drivetrain::Drivetrain()
 	m_backLeftEncoder.SetPositionConversionFactor(k_drivetrainDPR);
 }
 
+Drivetrain::~Drivetrain()
+{
+}
+
+void Drivetrain::Periodic()
+{
+}
+
 // --------------------- Control ----------------------
 
 void Drivetrain::Drive(double speed, double rotation)

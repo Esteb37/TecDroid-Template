@@ -19,6 +19,8 @@ class Drivetrain : public frc2::SubsystemBase
 public:
 	Drivetrain();
 
+	~Drivetrain();
+
 	/**
 	 * Will be called periodically whenever the CommandScheduler runs.
 	 */
@@ -101,8 +103,6 @@ public:
 	void PrintGyroRad();
 
 	// ----------------------- Auto -----------------------
-
-	void SetupLimelight();
 
 	/**
 	 * @brief Sets the drivetrain to a given heading.
