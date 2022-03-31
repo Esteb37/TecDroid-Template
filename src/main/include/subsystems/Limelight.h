@@ -4,37 +4,14 @@
 #include "networktables/NetworkTableValue.h"
 #include "wpi/span.h"
 #include <frc/smartdashboard/smartdashboard.h>
-#include <frc2/command/SubsystemBase.h>
 
-class Limelight : public frc2::SubsystemBase
+class Limelight
 {
 private:
 	std::shared_ptr<nt::NetworkTable> limelight;
 
-	double horizontalAngle;
-	double verticalAngle;
-	double area;
-	double skew;
-	double pipeline;
-	double valid;
-	double target;
-	double ltx;
-	double lty;
-	double lta;
-	double lts;
-	double ltp;
-	double ltv;
-	double distanceToTarget;
-
 public:
 	Limelight();
-
-	/**
-	 * Will be called periodically whenever the CommandScheduler runs.
-	 */
-	void Periodic() override;
-
-	void Update();
 
 	double GetHorizontalAngle();
 

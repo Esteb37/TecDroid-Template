@@ -49,3 +49,8 @@ constexpr double k_distancePIDTolerance = 0.5;
 constexpr double k_wheelDiameter = 6 * 2.54;
 constexpr double k_wheelGearRatio = 10.71;
 constexpr double k_drivetrainDPR = k_wheelDiameter * M_PI / k_wheelGearRatio;
+
+constexpr double k_ObjectiveHeight = 1.35;
+constexpr double k_LimelightHeight = 0.35;
+constexpr double k_LimelightAngle = 45 * M_PI / 180;
+constexpr double k_LimelightToFront = 0.68;

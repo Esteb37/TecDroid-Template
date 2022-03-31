@@ -1,3 +1,4 @@
+#include "Constants.h"
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <subsystems/Limelight.h>
 
@@ -8,97 +9,94 @@ Limelight::Limelight()
 	limelight = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
 }
 
-void Limelight::Periodic()
+double Limelight::GetArea()
 {
-	Update();
-}
-
-void Limelight::Update()
-{
-	horizontalAngle = limelight->GetEntry("tx").GetDouble(0);
-	verticalAngle = limelight->GetEntry("ty").GetDouble(0);
-	area = limelight->GetEntry("ta").GetDouble(0);
-	skew = limelight->GetEntry("ts").GetDouble(0);
-	pipeline = limelight->GetEntry("getpipe").GetDouble(0);
-	valid = limelight->GetEntry("tv").GetDouble(0);
-	target = limelight->GetEntry("tv").GetDouble(0);
-	ltx = limelight->GetEntry("ltx").GetDouble(0);
-	lty = limelight->GetEntry("lty").GetDouble(0);
-	lta = limelight->GetEntry("lta").GetDouble(0);
-	lts = limelight->GetEntry("lts").GetDouble(0);
-	ltp = limelight->GetEntry("ltp").GetDouble(0);
-	ltv = limelight->GetEntry("ltv").GetDouble(0);
-	distanceToTarget = limelight->GetEntry("getdistance").GetDouble(0);
+	return limelight->GetEntry("ta").GetDouble(0);
 }
 
 double Limelight::GetHorizontalAngle()
 {
-	return horizontalAngle;
+	return limelight->GetEntry("tx").GetDouble(0);
 }
 
 double Limelight::GetVerticalAngle()
 {
-	return verticalAngle;
-}
-
-double Limelight::GetArea()
-{
-	return area;
+	return limelight->GetEntry("ty").GetDouble(0);
 }
 
 double Limelight::GetSkew()
 {
-	return skew;
+	return limelight->GetEntry("ts").GetDouble(0);
 }
 
 double Limelight::GetPipeline()
 {
-	return pipeline;
+	return limelight->GetEntry("getpipe").GetDouble(0);
 }
 
 double Limelight::GetValid()
 {
-	return valid;
+	return limelight->GetEntry("tv").GetDouble(0);
 }
 
 double Limelight::GetTarget()
 {
-	return target;
+	return limelight->GetEntry("target").GetDouble(0);
 }
 
 double Limelight::GetLtx()
 {
-	return ltx;
+	return limelight->GetEntry("ltx").GetDouble(0);
 }
 
 double Limelight::GetLty()
 {
-	return lty;
+	return limelight->GetEntry("lty").GetDouble(0);
 }
 
 double Limelight::GetLta()
 {
-	return lta;
+	return limelight->GetEntry("lta").GetDouble(0);
 }
 
 double Limelight::GetLts()
 {
-	return lts;
+	return limelight->GetEntry("lts").GetDouble(0);
 }
 
 double Limelight::GetLtp()
 {
-	return ltp;
+	return limelight->GetEntry("ltp").GetDouble(0);
 }
 
 double Limelight::GetLtv()
 {
-	return ltv;
+	return limelight->GetEntry("ltv").GetDouble(0);
 }
 
 double Limelight::GetDistanceToTarget()
 {
-	return distanceToTarget;
+	return (k_ObjectiveHeight - k_LimelightHeight) / tan(k_LimelightAngle + GetVerticalAngle()) - k_LimelightToFront;
+}
+
+void Limelight::SetPipeline(int pipeline)
+{
+	limelight->GetEntry("pipeline").SetDouble(pipeline);
+}
+
+void Limelight::SetLED(int led)
+{
+	limelight->GetEntry("ledMode").SetDouble(led);
+}
+
+void Limelight::SetCamMode(int camMode)
+{
+	limelight->GetEntry("camMode").SetDouble(camMode);
+}
+
+double Limelight::GetDistanceToTarget()
+{
+	return;
 }
 
 void Limelight::SetPipeline(int pipeline)
@@ -163,70 +161,70 @@ void Limelight::SetLEDOn()
 
 void Limelight::PrintHorizontalAngle()
 {
-	SmartDashboard::PutNumber("Limelight Horizontal Angle", horizontalAngle);
+	SmartDashboard::PutNumber("Horizontal Angle", GetHorizontalAngle());
 }
 
 void Limelight::PrintVerticalAngle()
 {
-	SmartDashboard::PutNumber("Limelight Vertical Angle", verticalAngle);
+	SmartDashboard::PutNumber("Vertical Angle", GetVerticalAngle());
 }
 
 void Limelight::PrintArea()
 {
-	SmartDashboard::PutNumber("Limelight Area", area);
+	SmartDashboard::PutNumber("Area", GetArea());
 }
 
 void Limelight::PrintSkew()
 {
-	SmartDashboard::PutNumber("Limelight Skew", skew);
+	SmartDashboard::PutNumber("Skew", GetSkew());
 }
 
 void Limelight::PrintPipeline()
 {
-	SmartDashboard::PutNumber("Limelight Pipeline", pipeline);
+	SmartDashboard::PutNumber("Pipeline", GetPipeline());
 }
 
 void Limelight::PrintValid()
 {
-	SmartDashboard::PutNumber("Limelight Valid", valid);
+	SmartDashboard::PutNumber("Valid", GetValid());
 }
 
 void Limelight::PrintTarget()
 {
-	SmartDashboard::PutNumber("Limelight Target", target);
+	SmartDashboard::PutNumber("Target", GetTarget());
 }
 
 void Limelight::PrintLtx()
 {
-	SmartDashboard::PutNumber("Limelight Ltx", ltx);
+	SmartDashboard::PutNumber("Ltx", GetLtx());
 }
 
 void Limelight::PrintLty()
 {
-	SmartDashboard::PutNumber("Limelight Lty", lty);
+	SmartDashboard::PutNumber("Lty", GetLty());
 }
 
 void Limelight::PrintLta()
 {
-	SmartDashboard::PutNumber("Limelight Lta", lta);
+	SmartDashboard::PutNumber("Lta", GetLta());
 }
 
 void Limelight::PrintLts()
 {
-	SmartDashboard::PutNumber("Limelight Lts", lts);
+	SmartDashboard::PutNumber("Lts", GetLts());
 }
 
 void Limelight::PrintLtp()
 {
-	SmartDashboard::PutNumber("Limelight Ltp", ltp);
+	SmartDashboard::PutNumber("Ltp", GetLtp());
 }
 
 void Limelight::PrintLtv()
 {
-	SmartDashboard::PutNumber("Limelight Ltv", ltv);
+	SmartDashboard::PutNumber("Ltv", GetLtv());
 }
 
 void Limelight::PrintDistanceToTarget()
 {
-	SmartDashboard::PutNumber("Limelight Distance to Target", distanceToTarget);
+	SmartDashboard::PutNumber("Distance to Target", GetDistanceToTarget());
 }
