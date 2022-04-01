@@ -20,34 +20,75 @@ public:
 
 	// ---------- Actions -----------
 
+	/**
+	 * @brief Turns the intake inward
+	 */
 	void Take();
 
+	/**
+	 * @brief Turns the intake outward
+	 */
 	void Spit();
 
+	/**
+	 * @brief Lower the intake with solenoids
+	 */
 	void Lower();
 
+	/**
+	 * @brief Raise the intake with solenoids
+	 */
 	void Raise();
 
 	// ---------- Motor -----------
 
+	/**
+	 * @brief Sets the Motor speed
+	 * @param speed Speed and direction to turn
+	 */
 	void SetMotor(double);
 
+	/**
+	 * @brief Gets the Motor speed
+	 */
 	double GetMotor();
 
+	/**
+	 * @brief Invert motor direction
+	 * @param invert True to invert, false to not
+	 */
 	void InvertMotor(bool);
 
+	/**
+	 * @brief Publishes the motor's value on the SmartDashboard
+	 */
 	void PrintMotor();
 
 	// ---------- Solenoids -----------
 
+	/**
+	 * @brief Invert which value is up or down
+	 */
 	void InvertSolenoids();
 
+	/**
+	 * @brief Sets the solenoids to kOFF
+	 */
 	void SolenoidsOff();
 
+	/**
+	 * @brief Get the right solenoid state
+	 */
 	unsigned int GetRightSolenoid();
 
+	/**
+	 * @brief Get the left solenoid state
+	 */
 	unsigned int GetLeftSolenoid();
 
+	/**
+	 * @brief Publishes the solenoids' value on the SmartDashboard
+	 */
 	void PrintSolenoids();
 
 private:

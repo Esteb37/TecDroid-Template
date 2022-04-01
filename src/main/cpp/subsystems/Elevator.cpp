@@ -8,7 +8,6 @@ Elevator::Elevator()
 
 void Elevator::Periodic()
 {
-
 	if (!m_keepingStill)
 	{
 		m_height = GetHeight();

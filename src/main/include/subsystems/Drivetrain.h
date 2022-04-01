@@ -19,84 +19,142 @@ class Drivetrain : public frc2::SubsystemBase
 public:
 	Drivetrain();
 
-	~Drivetrain();
-
 	void Periodic() override;
 
 	// --------------------- Actions ----------------------
 
+	/**
+	 * @brief Use drivetrain ArcadeDrive to move the chasis
+	 * @param speed Speed and direction to move
+	 * @param rotation Rotation to turn
+	 */
 	void Drive(double, double);
 
+	/**
+	 * @brief Reset all systems
+	 */
 	void Reset();
 
+	/**
+	 * @brief Invert the direction of movement
+	 *
+	 * @param invert True to invert, false to not
+	 */
 	void InvertSpeed(bool);
 
+	/**
+	 * @brief Invert the direction of rotation
+	 * @param invert True to invert, false to not
+	 */
 	void InvertRotation(bool);
 
+	/**
+	 * @brief Enable drivetrain safety
+	 * @param enable True to enable, false to not
+	 */
 	void SetSafetyEnabled(bool);
 
 	// ---------------------- Motors ----------------------
 
+	/**
+	 * @brief Resets motor factory default
+	 * @warning Use only once and before everything else
+	 */
 	void ResetMotors();
 
+	/**
+	 * @brief Invert direction of the right motor group
+	 * @param invert True to invert, false to not
+	 */
 	void InvertRight(bool);
 
+	/**
+	 * @brief Invert direction of the left motor group
+	 * @param invert True to invert, false to not
+	 */
 	void InvertLeft(bool);
 
-	void PrintFrontRight();
-
-	void PrintFrontLeft();
-
-	void PrintBackRight();
-
-	void PrintBackLeft();
-
-	void PrintRight();
-
-	void PrintLeft();
-
+	/**
+	 * @brief Publishes all motors to the dashboard
+	 *
+	 */
 	void PrintMotors();
 
 	// --------------------- Encoders ---------------------
 
+	/**
+	 * @brief Gets the average of the right encoders
+	 * @return double average
+	 */
 	double GetRightEncoders();
 
+	/**
+	 * @brief Gets the average of the left encoders
+	 * @return double average
+	 */
 	double GetLeftEncoders();
 
+	/**
+	 * @brief Gets the average of the all encoders
+	 * @return double average
+	 */
 	double GetEncoderAverage();
 
+	/**
+	 * @brief Resets the encoders to 0
+	 */
 	void ResetEncoders();
 
+	/**
+	 * @brief Invert the direction of the right encoders
+	 * @param invert True to invert, false to not
+	 */
 	void InvertRightEncoders(bool);
 
+	/**
+	 * @brief Invert the direction of the left encoders
+	 * @param invert True to invert, false to not
+	 */
 	void InvertLeftEncoders(bool);
 
-	void PrintFrontRightEncoder();
-
-	void PrintFrontLeftEncoder();
-
-	void PrintBackRightEncoder();
-
-	void PrintBackLeftEncoder();
-
-	void PrintRightEncoders();
-
-	void PrintLeftEncoders();
-
+	/**
+	 * @brief Publish the value of the encoders to the dashboard
+	 */
 	void PrintEncoders();
 
 	// ----------------------- Gyro -----------------------
 
+	/**
+	 * @brief Gets the current angle of the gyro in degrees
+	 * @return double angle
+	 */
 	double GetGyro();
 
+	/**
+	 * @brief Get the gyro angle in radians
+	 * @return double angle radians
+	 */
 	double GetGyroRad();
 
+	/**
+	 * @brief Resets the angle to 0
+	 */
 	void ResetGyro();
 
+	/**
+	 * @brief Invert the direction of the gyro
+	 * @param invert True to invert, false to not
+	 */
 	void InvertGyro(bool);
 
+	/**
+	 * @brief Publish the value of the gyro to the dashboard
+	 */
 	void PrintGyro();
 
+	/**
+	 * @brief Publish the angle in radians to the dashboard
+	 */
 	void PrintGyroRad();
 
 	// ----------------------- Auto -----------------------
@@ -150,28 +208,67 @@ public:
 	 */
 	bool SetAngleWithTarget(double, double);
 
+	/**
+	 * @brief Get the absolute angle from a coordinate independent of quadrant
+	 * @param x The x coordinate
+	 * @param y The y coordinate
+	 * @return double the angle
+	 */
 	double GetAbsoluteAngle(double, double);
 
+	/**
+	 * @brief Resets the Move PID
+	 */
 	void ResetMovePIDController();
 
+	/**
+	 * @brief Resets the Turn PID
+	 */
 	void ResetTurnPIDController();
 
+	/**
+	 * @brief Resets the Align with target PID
+	 */
 	void ResetAlignPIDController();
 
+	/**
+	 * @brief Resets the Distance to target PID
+	 */
 	void ResetDistancePIDController();
 
+	/**
+	 * @brief Resets all PID controllers
+	 */
 	void ResetPIDControllers();
 
+	/**
+	 * @brief Prints the move PID error to the dashboard
+	 */
 	void PrintMoveError();
 
+	/**
+	 * @brief Prints the turn PID error to the dashboard
+	 */
 	void PrintTurnError();
 
+	/**
+	 * @brief Prints the move to PID error to the dashboard
+	 */
 	void PrintMoveToError();
 
+	/**
+	 * @brief Prints the align PID error to the dashboard
+	 */
 	void PrintAlignError();
 
+	/**
+	 * @brief Prints the distance PID error to the dashboard
+	 */
 	void PrintSetDistanceError();
 
+	/**
+	 * @brief Prints the current coordinates to the dashboard
+	 */
 	void PrintCurrentPosition();
 
 private:

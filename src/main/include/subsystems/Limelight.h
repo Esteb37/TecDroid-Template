@@ -35,18 +35,6 @@ public:
 
 	double GetTarget();
 
-	double GetLtx();
-
-	double GetLty();
-
-	double GetLta();
-
-	double GetLts();
-
-	double GetLtp();
-
-	double GetLtv();
-
 	// ---------- Setters ----------
 
 	void SetPipeline(int);
@@ -79,27 +67,9 @@ public:
 
 	void PrintVerticalAngle();
 
+	void PrintDistanceToTarget();
+
 	void PrintArea();
 
 	void PrintSkew();
-
-	void PrintPipeline();
-
-	void PrintValid();
-
-	void PrintTarget();
-
-	void PrintLtx();
-
-	void PrintLty();
-
-	void PrintLta();
-
-	void PrintLts();
-
-	void PrintLtp();
-
-	void PrintLtv();
-
-	void PrintDistanceToTarget();
 };

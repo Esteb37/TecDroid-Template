@@ -25,62 +25,147 @@ public:
 
 	// ---------- Actions -----------
 
+	/**
+	 * @brief Resets systems
+	 */
 	void Reset();
 
 	// --------- Motor ---------
 
-	virtual void SetMotor(double);
+	/**
+	 * @brief Sets the Motor speed
+	 * @param speed Speed and direction to turn
+	 */
+	void SetMotor(double);
 
-	virtual double GetMotor();
+	/**
+	 * @brief Gets the Motor speed
+	 */
+	double GetMotor();
 
-	virtual void InvertMotor(bool);
+	/**
+	 * @brief Invert motor direction
+	 * @param invert True to invert, false to not
+	 */
+	void InvertMotor(bool);
 
+	/**
+	 * @brief Publishes the motor speed to the dashboard
+	 */
 	void PrintMotor();
 
 	// --------- Encoder ---------
 
-	virtual double GetEncoder();
+	/**
+	 * @brief Get the Encoder value
+	 * @return double
+	 */
+	double GetEncoder();
 
-	virtual void ResetEncoder();
+	/**
+	 * @brief Sets the encoder's value to 0
+	 */
+	void ResetEncoder();
 
-	virtual void InvertEncoder(bool);
+	/**
+	 * @brief Inverts the encoder's direction
+	 * @param invert True to invert, false to not
+	 */
+	void InvertEncoder(bool);
 
+	/**
+	 * @brief Publishes the Encoder value to the dashboard
+	 */
 	void PrintEncoder();
 
 	// --------- PID ---------
 
-	virtual bool ReachRPM(double);
+	/**
+	 * @brief Sets the shooter's motor to a specified RPM
+	 * @param rpm The RPM to set the motor to
+	 * @return If the motor has reached the RPM
+	 */
+	bool ReachRPM(double);
 
-	virtual double CalculateRPM();
+	/**
+	 * @brief Calculates the required RPM depending on distance to target
+	 *
+	 * @return The required RPM
+	 */
+	double CalculateRPM();
 
-	virtual void ResetPID();
+	/**
+	 * @brief Resets RPM PID
+	 */
+	void ResetPID();
 
-	virtual void PrintPIDError();
+	/**
+	 * @brief Prints RPM PID error to the dashboard
+	 */
+	void PrintPIDError();
 
 	// --------- Angle with Servos --------
 
+	/**
+	 * @brief Sets the shooting angle by using servos
+	 * @param angle The angle to set the shooter to
+	 */
 	void SetAngleServos(double);
 
+	/**
+	 * @brief Resets the angle servos to 0
+	 */
 	void ResetServos();
 
+	/**
+	 * @brief Gets the length of the right servo
+	 * @return The length of the right servo
+	 */
 	double GetRightServo();
 
+	/**
+	 * @brief Gets the length of the left servo
+	 * @return The length of the left servo
+	 */
 	double GetLeftServo();
 
+	/**
+	 * @brief Prints the length of the servos to the dashboard
+	 */
 	void PrintServos();
 
 	// --------- Angle with Solenoids ---------
 
+	/**
+	 * @brief Sets the shooting angle by using solenoids
+	 * @param up True to set the shooter to up, false to set it to down
+	 */
+
 	void SetAngleSolenoids(bool);
 
+	/**
+	 * @brief Inverts which value is open and closed
+	 */
 	void InvertSolenoids();
 
+	/**
+	 * @brief Set the solenoids to kOff
+	 */
 	void SolenoidsOff();
 
-	bool GetRightSolenoid();
+	/**
+	 * @brief Gets the state of the right solenoid
+	 */
+	int GetRightSolenoid();
 
-	bool GetLeftSolenoid();
+	/**
+	 * @brief Gets the state of the left solenoid
+	 */
+	int GetLeftSolenoid();
 
+	/**
+	 * @brief Prints the state of the solenoids to the dashboard
+	 */
 	void PrintSolenoids();
 
 private:

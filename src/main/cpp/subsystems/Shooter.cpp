@@ -3,6 +3,7 @@
 Shooter::Shooter()
 {
 	m_PIDController.SetTolerance(k_shooterPIDTolerance);
+	m_encoder.SetVelocityConversionFactor(k_shooterVCF);
 }
 
 void Shooter::Periodic()
@@ -139,12 +140,12 @@ void Shooter::SolenoidsOff()
 	m_leftSolenoid.Set(DoubleSolenoid::Value::kOff);
 }
 
-bool Shooter::GetRightSolenoid()
+int Shooter::GetRightSolenoid()
 {
 	return m_rightSolenoid.Get();
 }
 
-bool Shooter::GetLeftSolenoid()
+int Shooter::GetLeftSolenoid()
 {
 	return m_leftSolenoid.Get();
 }

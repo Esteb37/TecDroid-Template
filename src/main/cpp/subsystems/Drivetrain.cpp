@@ -10,10 +10,6 @@ Drivetrain::Drivetrain()
 	m_backLeftEncoder.SetPositionConversionFactor(k_drivetrainDPR);
 }
 
-Drivetrain::~Drivetrain()
-{
-}
-
 void Drivetrain::Periodic()
 {
 }
@@ -72,42 +68,12 @@ void Drivetrain::InvertLeft(bool invert)
 	m_left.SetInverted(invert);
 }
 
-void Drivetrain::PrintFrontRight()
-{
-	SmartDashboard::PutNumber("Front Right", m_frontRight.Get());
-}
-
-void Drivetrain::PrintFrontLeft()
-{
-	SmartDashboard::PutNumber("Front Left", m_frontLeft.Get());
-}
-
-void Drivetrain::PrintBackRight()
-{
-	SmartDashboard::PutNumber("Back Right", m_backRight.Get());
-}
-
-void Drivetrain::PrintBackLeft()
-{
-	SmartDashboard::PutNumber("Back Left", m_backLeft.Get());
-}
-
-void Drivetrain::PrintRight()
-{
-	SmartDashboard::PutNumber("Right", m_right.Get());
-}
-
-void Drivetrain::PrintLeft()
-{
-	SmartDashboard::PutNumber("Left", m_left.Get());
-}
-
 void Drivetrain::PrintMotors()
 {
-	PrintFrontRight();
-	PrintFrontLeft();
-	PrintBackRight();
-	PrintBackLeft();
+	SmartDashboard::PutNumber("Front Right Motor", m_frontRight.Get());
+	SmartDashboard::PutNumber("Front Left Motor", m_frontLeft.Get());
+	SmartDashboard::PutNumber("Back Right Motor", m_backRight.Get());
+	SmartDashboard::PutNumber("Back Left Motor", m_backLeft.Get());
 }
 
 // --------------------- Encoders ---------------------
@@ -147,42 +113,12 @@ void Drivetrain::InvertLeftEncoders(bool invert)
 	m_backLeftEncoder.SetInverted(invert);
 }
 
-void Drivetrain::PrintFrontRightEncoder()
-{
-	SmartDashboard::PutNumber("Front Right Encoder", m_frontRightEncoder.GetPosition());
-}
-
-void Drivetrain::PrintFrontLeftEncoder()
-{
-	SmartDashboard::PutNumber("Front Left Encoder", m_frontLeftEncoder.GetPosition());
-}
-
-void Drivetrain::PrintBackRightEncoder()
-{
-	SmartDashboard::PutNumber("Back Right Encoder", m_backRightEncoder.GetPosition());
-}
-
-void Drivetrain::PrintBackLeftEncoder()
-{
-	SmartDashboard::PutNumber("Back Left Encoder", m_backLeftEncoder.GetPosition());
-}
-
-void Drivetrain::PrintRightEncoders()
-{
-	PrintFrontRightEncoder();
-	PrintBackRightEncoder();
-}
-
-void Drivetrain::PrintLeftEncoders()
-{
-	PrintFrontLeftEncoder();
-	PrintBackLeftEncoder();
-}
-
 void Drivetrain::PrintEncoders()
 {
-	PrintRightEncoders();
-	PrintLeftEncoders();
+	SmartDashboard::PutNumber("Front Right Encoder", m_frontRightEncoder.GetPosition());
+	SmartDashboard::PutNumber("Front Left Encoder", m_frontLeftEncoder.GetPosition());
+	SmartDashboard::PutNumber("Back Right Encoder", m_backRightEncoder.GetPosition());
+	SmartDashboard::PutNumber("Back Left Encoder", m_backLeftEncoder.GetPosition());
 }
 
 // ----------------------- Gyro -----------------------

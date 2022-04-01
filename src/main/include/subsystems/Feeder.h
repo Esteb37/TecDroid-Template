@@ -18,12 +18,28 @@ public:
 
 	void Periodic() override;
 
+	// ---------- Motor -----------
+
+	/**
+	 * @brief Sets the Motor speed
+	 * @param speed Speed and direction to turn
+	 */
 	void SetMotor(double);
 
+	/**
+	 * @brief Gets the Motor speed
+	 */
 	double GetMotor();
 
+	/**
+	 * @brief Invert motor direction
+	 * @param invert True to invert, false to not
+	 */
 	void InvertMotor(bool);
 
+	/**
+	 * @brief Publishes the motor speed to the dashboard
+	 */
 	void PrintMotor();
 
 private:
