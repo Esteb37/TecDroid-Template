@@ -37,6 +37,11 @@ constexpr unsigned int pIntakeRightSolenoidReverse = 5;
 constexpr unsigned int pIntakeLeftSolenoidForward = 6;
 constexpr unsigned int pIntakeLeftSolenoidReverse = 7;
 
+constexpr unsigned int pClawHandSolenoidForward = 6;
+constexpr unsigned int pClawHandSolenoidReverse = 7;
+constexpr unsigned int pClawWristSolenoidForward = 6;
+constexpr unsigned int pClawWristSolenoidReverse = 7;
+
 constexpr unsigned int pShooterRightServo = 0;
 constexpr unsigned int pShooterLeftServo = 1;
 

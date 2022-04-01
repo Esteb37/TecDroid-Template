@@ -74,18 +74,18 @@ void Intake::SolenoidsOff()
 	m_leftSolenoid.Set(DoubleSolenoid::Value::kOff);
 }
 
-bool Intake::GetRightSolenoid()
+unsigned int Intake::GetRightSolenoid()
 {
 	return m_rightSolenoid.Get();
 }
 
-bool Intake::GetLeftSolenoid()
+unsigned int Intake::GetLeftSolenoid()
 {
 	return m_leftSolenoid.Get();
 }
 
 void Intake::PrintSolenoids()
 {
-	SmartDashboard::PutBoolean("Intake Right Solenoid", GetRightSolenoid());
-	SmartDashboard::PutBoolean("Intake Left Solenoid", GetLeftSolenoid());
+	SmartDashboard::PutNumber("Intake Right Solenoid", GetRightSolenoid());
+	SmartDashboard::PutNumber("Intake Left Solenoid", GetLeftSolenoid());
 }

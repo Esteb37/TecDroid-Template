@@ -38,15 +38,15 @@ public:
 
 	void PrintMotor();
 
-	// ---------- Encoder -----------
+	// ---------- Solenoids -----------
 
 	void InvertSolenoids();
 
 	void SolenoidsOff();
 
-	bool GetRightSolenoid();
+	unsigned int GetRightSolenoid();
 
-	bool GetLeftSolenoid();
+	unsigned int GetLeftSolenoid();
 
 	void PrintSolenoids();
 
