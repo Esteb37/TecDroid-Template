@@ -191,6 +191,22 @@ void Turret::PrintAlignPIDError()
 	SmartDashboard::PutNumber("Turret Align PID Error", m_alignPID.GetPositionError());
 }
 
+bool Turret::GetRightLimit()
+{
+	return m_limitSwitchRight.Get();
+}
+
+bool Turret::GetLeftLimit()
+{
+	return m_limitSwitchLeft.Get();
+}
+
+void Turret::PrintLimits()
+{
+	SmartDashboard::PutBoolean("Turret Right Limit", GetRightLimit());
+	SmartDashboard::PutBoolean("Turret Left Limit", GetLeftLimit());
+}
+
 void Turret::SetAngleSafetyActive(bool active)
 {
 	m_angleSafety = active;

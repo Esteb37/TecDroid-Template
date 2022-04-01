@@ -4,6 +4,10 @@ Claw::Claw()
 {
 }
 
+void Claw::Periodic()
+{
+}
+
 void Claw::OpenHand()
 {
 	if (m_wristInverted)
@@ -56,7 +60,7 @@ void Claw::HandOff()
 
 unsigned int Claw::GetHand()
 {
-	m_hand.Get();
+	return m_hand.Get();
 }
 
 void Claw::PrintHand()
@@ -116,7 +120,7 @@ void Claw::WristOff()
 
 unsigned int Claw::GetWrist()
 {
-	m_wrist.Get();
+	return m_wrist.Get();
 }
 
 void Claw::PrintWrist()
