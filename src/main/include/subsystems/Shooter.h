@@ -10,11 +10,11 @@
 #include <frc2/command/SubsystemBase.h>
 #include <rev/CANSparkMax.h>
 #include <subsystems/Limelight.h>
+
 using namespace frc;
 using namespace frc2;
 using namespace rev;
 
-template <typename MotorType, typename EncoderType>
 class Shooter : public SubsystemBase
 {
 
@@ -26,8 +26,6 @@ public:
 	// ---------- Actions -----------
 
 	void Reset();
-
-	bool Shoot();
 
 	// --------- Motor ---------
 
@@ -88,11 +86,19 @@ public:
 private:
 	// --------- Motor ---------
 
-	MotorType *m_motor;
+	CANSparkMax m_motor{pShooterMotor, CANSparkMax::MotorType::kBrushless};
+
+	// TODO : define motor type
+
+	// VictorSP *m_motor;
 
 	// --------- Encoder ---------
 
-	EncoderType *m_encoder;
+	SparkMaxRelativeEncoder m_encoder{m_motor.GetEncoder()};
+
+	// TODO : define encoder type
+
+	//	Encoder m_encoder{k_shooterEncoderA, k_shooterEncoderB, false, Encoder::EncodingType::k4X};
 
 	PIDController m_PIDController{k_shooterP, k_shooterI, k_shooterD};
 

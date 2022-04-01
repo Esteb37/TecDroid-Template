@@ -1,64 +1,46 @@
 #include "subsystems/Intake.h"
-#include <frc/smartdashboard/SmartDashboard.h>
 
 using namespace frc;
 
-template <>
-Intake<CANSparkMax>::Intake()
-{
-
-	m_motor = new CANSparkMax(pIntakeMotor, CANSparkMax::MotorType::kBrushed);
-}
-
-template <>
-Intake<VictorSP>::Intake()
-{
-	m_motor = new VictorSP(pIntakeMotor);
-}
-
-template <typename MotorType>
-void Intake<MotorType>::Periodic()
+Intake::Intake()
 {
 }
 
-template <typename MotorType>
-void Intake<MotorType>::SetMotor(double speed)
+void Intake::Periodic()
 {
-	m_motor->Set(speed * k_intakeMaxSpeed);
 }
 
-template <typename MotorType>
-double Intake<MotorType>::GetMotor()
+void Intake::SetMotor(double speed)
 {
-	return m_motor->Get();
+	m_motor.Set(speed * k_intakeMaxSpeed);
 }
 
-template <typename MotorType>
-void Intake<MotorType>::InvertMotor(bool inverted)
+double Intake::GetMotor()
 {
-	m_motor->SetInverted(inverted);
+	return m_motor.Get();
 }
 
-template <typename MotorType>
-void Intake<MotorType>::PrintMotor()
+void Intake::InvertMotor(bool inverted)
+{
+	m_motor.SetInverted(inverted);
+}
+
+void Intake::PrintMotor()
 {
 	SmartDashboard::PutNumber("Intake Motor", GetMotor());
 }
 
-template <typename MotorType>
-void Intake<MotorType>::Take()
+void Intake::Take()
 {
 	SetMotor(1);
 }
 
-template <typename MotorType>
-void Intake<MotorType>::Spit()
+void Intake::Spit()
 {
 	SetMotor(-1);
 }
 
-template <typename MotorType>
-void Intake<MotorType>::Lower()
+void Intake::Lower()
 {
 	if (m_solenoidsInverted)
 	{
@@ -72,8 +54,7 @@ void Intake<MotorType>::Lower()
 	}
 }
 
-template <typename MotorType>
-void Intake<MotorType>::Raise()
+void Intake::Raise()
 {
 	if (!m_solenoidsInverted)
 	{
@@ -87,27 +68,23 @@ void Intake<MotorType>::Raise()
 	}
 }
 
-template <typename MotorType>
-void Intake<MotorType>::SolenoidsOff()
+void Intake::SolenoidsOff()
 {
 	m_rightSolenoid.Set(DoubleSolenoid::Value::kOff);
 	m_leftSolenoid.Set(DoubleSolenoid::Value::kOff);
 }
 
-template <typename MotorType>
-bool Intake<MotorType>::GetRightSolenoid()
+bool Intake::GetRightSolenoid()
 {
 	return m_rightSolenoid.Get();
 }
 
-template <typename MotorType>
-bool Intake<MotorType>::GetLeftSolenoid()
+bool Intake::GetLeftSolenoid()
 {
 	return m_leftSolenoid.Get();
 }
 
-template <typename MotorType>
-void Intake<MotorType>::PrintSolenoids()
+void Intake::PrintSolenoids()
 {
 	SmartDashboard::PutBoolean("Intake Right Solenoid", GetRightSolenoid());
 	SmartDashboard::PutBoolean("Intake Left Solenoid", GetLeftSolenoid());

@@ -2,13 +2,14 @@
 #include "Constants.h"
 #include <frc/DoubleSolenoid.h>
 #include <frc/motorcontrol/VictorSP.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/SubsystemBase.h>
 #include <rev/CANSparkMax.h>
 
 using namespace frc;
 using namespace frc2;
 using namespace rev;
-template <typename MotorType>
+
 class Intake : public SubsystemBase
 {
 
@@ -52,7 +53,11 @@ public:
 private:
 	// ---------- Motor ----------
 
-	MotorType *m_motor;
+	VictorSP m_motor{pIntakeMotor};
+
+	// TODO : change if sparkmax
+
+	// CANSparkMax m_motorSparkMax{pIntakeMotor, CANSparkMax::MotorType::kBrushed};
 
 	// ---------- Solenoids ---------
 
