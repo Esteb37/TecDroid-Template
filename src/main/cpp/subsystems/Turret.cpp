@@ -1,151 +1,93 @@
 #include "subsystems/Turret.h"
 
-template <>
-Turret<CANSparkMax, SparkMaxRelativeEncoder>::Turret()
+using namespace std;
+
+Turret::Turret()
 {
-	m_motor = new CANSparkMax(pTurretMotor, CANSparkMax::MotorType::kBrushless);
 
-	m_encoder = new SparkMaxRelativeEncoder(m_motor->GetEncoder());
+	m_encoder.SetDistancePerPulse(k_turretDPR);
 
-	m_encoder->SetPositionConversionFactor(k_turretDPR);
+	// TODO : change if spark encoder
+
+	// m_encoder.SetPositionConversionFactor(k_turretDPR);
 
 	m_alignPID.SetTolerance(k_turretAlignPIDTolerance);
 
 	m_anglePID.SetTolerance(k_turretAnglePIDTolerance);
 }
 
-template <>
-Turret<CANSparkMax, Encoder>::Turret()
-{
-	m_motor = new CANSparkMax(pTurretMotor, CANSparkMax::MotorType::kBrushed);
-
-	m_encoder = new Encoder(pShooterEncoderA, pShooterEncoderB, false, Encoder::EncodingType::k4X);
-
-	m_encoder->SetDistancePerPulse(k_turretDPR);
-
-	m_alignPID.SetTolerance(k_turretAlignPIDTolerance);
-
-	m_anglePID.SetTolerance(k_turretAnglePIDTolerance);
-}
-
-template <>
-Turret<VictorSP, Encoder>::Turret()
-{
-	m_motor = new VictorSP(pShooterMotor);
-
-	m_encoder = new Encoder(pShooterEncoderA, pShooterEncoderB, false, Encoder::EncodingType::k4X);
-
-	m_encoder->SetDistancePerPulse(k_turretDPR);
-
-	m_alignPID.SetTolerance(k_turretAlignPIDTolerance);
-
-	m_anglePID.SetTolerance(k_turretAnglePIDTolerance);
-}
-
-template <typename MotorType, typename EncoderType>
-void Turret<MotorType, EncoderType>::Periodic()
+void Turret::Periodic()
 {
 }
 
-template <typename MotorType, typename EncoderType>
-bool Turret<MotorType, EncoderType>::Turn(double speed)
+void Turret::Turn(double speed)
 {
 	SetMotor(speed);
 }
 
-template <typename MotorType, typename EncoderType>
-void Turret<MotorType, EncoderType>::Reset()
+void Turret::Reset()
 {
 	ResetEncoder();
-	ResetPID();
+	ResetAnglePID();
+	ResetAlignPID();
 }
 
-template <typename MotorType, typename EncoderType>
-void Turret<MotorType, EncoderType>::SetMotor(double speed)
+void Turret::SetMotor(double speed)
 {
 	m_motor.Set(speed * k_turretMaxSpeed);
 }
 
-template <typename MotorType, typename EncoderType>
-double Turret<MotorType, EncoderType>::GetMotor()
+double Turret::GetMotor()
 {
 	return m_motor.Get();
 }
 
-template <typename MotorType, typename EncoderType>
-void Turret<MotorType, EncoderType>::InvertMotor(bool inverted)
+void Turret::InvertMotor(bool inverted)
 {
 	m_motor.SetInverted(inverted);
 }
 
-template <typename MotorType, typename EncoderType>
-void Turret<MotorType, EncoderType>::PrintMotor()
+void Turret::PrintMotor()
 {
 	SmartDashboard::PutNumber("Turret Motor", m_motor.Get());
 }
 
-template <>
-double Turret<CANSparkMax, SparkMaxRelativeEncoder>::GetEncoder()
+double Turret::GetEncoder()
 {
-	return m_encoder->GetPosition();
+
+	// TODO : change if spark encoder
+
+	// return m_encoder.GetPosition();
+
+	return m_encoder.GetDistance();
 }
 
-template <>
-double Turret<CANSparkMax, Encoder>::GetEncoder()
+void Turret::ResetEncoder()
 {
-	return m_encoder->GetDistance();
+
+	// TODO : change if spark encoder
+
+	// m_encoder.SetPosition(0);
+
+	m_encoder.Reset();
 }
 
-template <>
-double Turret<VictorSP, Encoder>::GetEncoder()
+void Turret::InvertEncoder(bool invert)
 {
-	return m_encoder->GetDistance();
+
+	// TODO : change if spark encoder
+
+	// m_encoder.SetInverted(invert);
+
+	m_encoder.SetReverseDirection(invert);
 }
 
-template <>
-void Turret<CANSparkMax, SparkMaxRelativeEncoder>::ResetEncoder()
-{
-	m_encoder->SetPosition(0);
-}
-
-template <>
-void Turret<CANSparkMax, Encoder>::ResetEncoder()
-{
-	m_encoder->Reset();
-}
-
-template <>
-void Turret<VictorSP, Encoder>::ResetEncoder()
-{
-	m_encoder->Reset();
-}
-
-template <>
-void Turret<CANSparkMax, SparkMaxRelativeEncoder>::InvertEncoder(bool invert)
-{
-	m_encoder->SetInverted(invert);
-}
-
-template <>
-void Turret<CANSparkMax, Encoder>::InvertEncoder(bool invert)
-{
-	m_encoder->SetReverseDirection(invert);
-}
-
-template <>
-void Turret<VictorSP, Encoder>::InvertEncoder(bool invert)
-{
-	m_encoder->SetReverseDirection(invert);
-}
-
-template <typename MotorType, typename EncoderType>
-void Turret<MotorType, EncoderType>::PrintEncoder()
+void Turret::PrintEncoder()
 {
 	SmartDashboard::PutNumber("Turret Encoder", GetEncoder());
 }
 
-template <typename MotorType, typename EncoderType>
-bool Turret<MotorType, EncoderType>::SetAngle(double)
+bool Turret::SetAngle(double angle)
 {
 	m_anglePID.SetSetpoint(angle);
 
@@ -156,38 +98,33 @@ bool Turret<MotorType, EncoderType>::SetAngle(double)
 	return m_anglePID.AtSetpoint();
 }
 
-template <typename MotorType, typename EncoderType>
-bool Turret<MotorType, EncoderType>::Align()
+bool Turret::Align()
 {
 	m_alignPID.SetSetpoint(0);
 
 	double output = m_alignPID.Calculate(-m_limelight.GetHorizontalAngle());
 
-	m_motor.Set(clamp(output, -kTurretMaxSpeed, kTurretMaxSpeed));
+	m_motor.Set(clamp(output, -k_turretMaxSpeed, k_turretMaxSpeed));
 
 	return m_alignPID.AtSetpoint();
 }
 
-template <typename MotorType, typename EncoderType>
-void Turret<MotorType, EncoderType>::ResetAnglePID()
+void Turret::ResetAnglePID()
 {
 	m_anglePID.Reset();
 }
 
-template <typename MotorType, typename EncoderType>
-void Turret<MotorType, EncoderType>::ResetAlignPID()
+void Turret::ResetAlignPID()
 {
 	m_alignPID.Reset();
 }
 
-template <typename MotorType, typename EncoderType>
-void Turret<MotorType, EncoderType>::PrintAnglePIDError()
+void Turret::PrintAnglePIDError()
 {
-	SmartDashboard::PutNumber("Turret Angle PID Error", m_anglePID.GetError());
+	SmartDashboard::PutNumber("Turret Angle PID Error", m_anglePID.GetPositionError());
 }
 
-template <typename MotorType, typename EncoderType>
-void Turret<MotorType, EncoderType>::PrintAlignPIDError()
+void Turret::PrintAlignPIDError()
 {
-	SmartDashboard::PutNumber("Turret Align PID Error", m_alignPID.GetError());
+	SmartDashboard::PutNumber("Turret Align PID Error", m_alignPID.GetPositionError());
 }

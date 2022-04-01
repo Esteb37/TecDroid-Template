@@ -11,7 +11,6 @@ using namespace frc;
 using namespace frc2;
 using namespace rev;
 
-template <typename MotorType, typename EncoderType>
 class Turret : public SubsystemBase
 {
 public:
@@ -21,7 +20,7 @@ public:
 
 	// ---------- Actions -----------
 
-	bool Turn(double);
+	void Turn(double);
 
 	bool KeepStill();
 
@@ -64,11 +63,17 @@ public:
 private:
 	// ---------- Motor ----------
 
-	MotorType *m_motor;
+	CANSparkMax m_motor{pTurretMotor, CANSparkMax::MotorType::kBrushed};
+
+	// TODO : define motor type
 
 	// ---------- Sensors ---------
 
-	EncoderType *m_encoder;
+	Encoder m_encoder{pTurretEncoderA, pTurretEncoderB};
+
+	// TODO : define encoder type
+
+	// SparkMaxRelativeEncoder m_encoder{m_motor.GetEncoder()};
 
 	Limelight m_limelight;
 

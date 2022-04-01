@@ -5,8 +5,10 @@
 #pragma once
 
 #include "subsystems/Drivetrain.h"
+#include "subsystems/Feeder.h"
 #include "subsystems/Intake.h"
 #include "subsystems/Shooter.h"
+#include "subsystems/Turret.h"
 #include <frc2/command/Command.h>
 
 /**
@@ -36,7 +38,11 @@ public:
 private:
 	Drivetrain m_drivetrain;
 
-	Shooter<CANSparkMax, SparkMaxRelativeEncoder> m_shooter;
+	Shooter m_shooter;
 
-	Intake<VictorSP> m_intake;
+	Intake m_intake;
+
+	Turret m_turret;
+
+	Feeder m_feeder;
 };

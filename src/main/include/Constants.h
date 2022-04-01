@@ -32,15 +32,18 @@ constexpr unsigned int pShooterRightSolenoidForward = 0;
 constexpr unsigned int pShooterRightSolenoidReverse = 1;
 constexpr unsigned int pShooterLeftSolenoidForward = 2;
 constexpr unsigned int pShooterLeftSolenoidReverse = 3;
-constexpr unsigned int pIntakeRightSolenoidForward = 0;
-constexpr unsigned int pIntakeRightSolenoidReverse = 1;
-constexpr unsigned int pIntakeLeftSolenoidForward = 2;
-constexpr unsigned int pIntakeLeftSolenoidReverse = 3;
+constexpr unsigned int pIntakeRightSolenoidForward = 4;
+constexpr unsigned int pIntakeRightSolenoidReverse = 5;
+constexpr unsigned int pIntakeLeftSolenoidForward = 6;
+constexpr unsigned int pIntakeLeftSolenoidReverse = 7;
 
 constexpr unsigned int pShooterRightServo = 0;
 constexpr unsigned int pShooterLeftServo = 1;
+
 constexpr unsigned int pShooterEncoderA = 0;
 constexpr unsigned int pShooterEncoderB = 1;
+constexpr unsigned int pTurretEncoderA = 2;
+constexpr unsigned int pTurretEncoderB = 3;
 
 constexpr double k_moveP = 0.01;
 constexpr double k_moveI = 0.0;
