@@ -29,7 +29,9 @@ public:
 private:
 	VictorSP motor{pFeederMotor};
 
-	// TODO : change if sparkmax
+	// TODO : define motor type
 
 	// CANSparkMax m_motor{pFeederMotor, CANSparkMax::MotorType::kBrushed};
+
+	// VictorSPX m_motor{pFeederMotor};
 };

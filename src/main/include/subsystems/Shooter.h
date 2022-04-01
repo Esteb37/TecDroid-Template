@@ -90,7 +90,9 @@ private:
 
 	// TODO : define motor type
 
-	// VictorSP *m_motor;
+	// VictorSP m_motor{pShooterMotor};
+
+	// VictorSPX m_motor{pShooterMotor};
 
 	// --------- Encoder ---------
 

@@ -55,9 +55,11 @@ private:
 
 	VictorSP m_motor{pIntakeMotor};
 
-	// TODO : change if sparkmax
+	// TODO : define motor type
 
 	// CANSparkMax m_motorSparkMax{pIntakeMotor, CANSparkMax::MotorType::kBrushed};
+
+	// VictorSPX m_motor{pIntakeMotor};
 
 	// ---------- Solenoids ---------
 

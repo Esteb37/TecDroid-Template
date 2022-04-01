@@ -90,6 +90,10 @@ private:
 
 	// TODO : define motor type
 
+	// VictorSP m_motor{pTurretMotor};
+
+	// VictorSPX m_motor{pTurretMotor};
+
 	// ---------- Sensors ---------
 
 	Encoder m_encoder{pTurretEncoderA, pTurretEncoderB};
@@ -102,7 +106,7 @@ private:
 
 	DigitalInput m_limitSwitchRight{pTurretLimitSwitchRight};
 
-	DigitalInput m_limitSwitchLeft{pTurretLimitSwitchLeft};
+	DigitalInput m_limitSwitchLeft{pTurretLimitLeft};
 
 	// ---------- PID ---------
 
