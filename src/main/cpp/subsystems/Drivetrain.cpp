@@ -22,7 +22,7 @@ void Drivetrain::Periodic()
 
 void Drivetrain::Drive(double speed, double rotation)
 {
-	m_drive.ArcadeDrive(speed * m_speedDirection, rotation * m_rotationDirection);
+	m_drive.ArcadeDrive(speed * m_speedDirection * k_drivetrainMaxSpeed, rotation * m_rotationDirection * k_drivetrainMaxRotation);
 }
 
 void Drivetrain::Reset()

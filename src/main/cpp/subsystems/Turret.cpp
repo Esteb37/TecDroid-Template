@@ -56,11 +56,11 @@ void Turret::SetMotor(double speed)
 
 	if (m_limitSafety)
 	{
-		if (m_limitSwitchRight.Get())
+		if (GetRightLimit())
 		{
 			speed = fmin(speed, 0);
 		}
-		else if (m_limitSwitchLeft.Get())
+		else if (GetLeftLimit())
 		{
 			speed = fmax(speed, 0);
 		}
@@ -93,7 +93,7 @@ void Turret::InvertMotor(bool inverted)
 
 void Turret::PrintMotor()
 {
-	SmartDashboard::PutNumber("Turret Motor", m_motor.Get());
+	SmartDashboard::PutNumber("Turret Motor", GetMotor());
 }
 
 double Turret::GetEncoder()
