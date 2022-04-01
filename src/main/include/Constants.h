@@ -22,9 +22,7 @@ constexpr unsigned int pBackRight = 2;
 constexpr unsigned int pBackLeft = 3;
 constexpr unsigned int pShooterMotor = 4;
 constexpr unsigned int pIntakeMotor = 5;
-constexpr unsigned int pConveyor = 6;
-constexpr unsigned int pElevator = 7;
-constexpr unsigned int pClimber = 8;
+constexpr unsigned int pTurretMotor = 6;
 
 constexpr unsigned int pShooterRightSolenoidForward = 0;
 constexpr unsigned int pShooterRightSolenoidReverse = 1;
@@ -65,9 +63,23 @@ constexpr double k_shooterI = 0.0;
 constexpr double k_shooterD = 0.0;
 constexpr double k_shooterPIDTolerance = 0.5;
 
+constexpr double k_turretAlignP = 0.01;
+constexpr double k_turretAlignI = 0.0;
+constexpr double k_turretAlignD = 0.0;
+constexpr double k_turretAlignPIDTolerance = 0.5;
+
+constexpr double k_turretAngleP = 0.01;
+constexpr double k_turretAngleI = 0.0;
+constexpr double k_turretAngleD = 0.0;
+constexpr double k_turretAnglePIDTolerance = 0.5;
+
 constexpr double k_wheelDiameter = 6 * 2.54;
 constexpr double k_wheelGearRatio = 10.71;
 constexpr double k_drivetrainDPR = k_wheelDiameter * M_PI / k_wheelGearRatio;
+
+constexpr double k_turretDPR = 360.0; // TODO Define turret encoder to angle ratio
+
+constexpr double k_shooterVCF = 180; // TODO Define shooter conversion favcot
 
 constexpr double k_objectiveHeight = 1.35;
 constexpr double k_limelightHeight = 0.35;
@@ -76,6 +88,7 @@ constexpr double k_limelightToFront = 0.68;
 
 constexpr double k_shooterMaxSpeed = 1;
 constexpr double k_intakeMaxSpeed = 1;
+constexpr double k_turretMaxSpeed = 1;
 
 constexpr double shooterRPMFromDistance(double distance)
 {
