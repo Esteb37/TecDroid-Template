@@ -49,6 +49,8 @@ constexpr unsigned int pShooterEncoderA = 0;
 constexpr unsigned int pShooterEncoderB = 1;
 constexpr unsigned int pTurretEncoderA = 2;
 constexpr unsigned int pTurretEncoderB = 3;
+constexpr unsigned int pTurretLimitSwitchLeft = 4;
+constexpr unsigned int pTurretLimitSwitchRight = 5;
 
 constexpr double k_moveP = 0.01;
 constexpr double k_moveI = 0.0;
@@ -105,6 +107,9 @@ constexpr double k_feederMaxSpeed = 1;
 
 constexpr double k_shooterLoadTime = 2;
 constexpr double k_feederFeedTime = 5;
+
+constexpr double k_turretMaxAngle = 90;
+constexpr double k_turretMinAngle = -90;
 
 constexpr double shooterRPMFromDistance(double distance)
 {

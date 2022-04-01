@@ -1,11 +1,12 @@
 #pragma once
 #include "Constants.h"
+#include "subsystems/Limelight.h"
+#include <frc/DigitalInput.h>
 #include <frc/Encoder.h>
 #include <frc/controller/PIDController.h>
 #include <frc/motorcontrol/VictorSP.h>
 #include <frc2/command/SubsystemBase.h>
 #include <rev/CANSparkMax.h>
-#include <subsystems/Limelight.h>
 
 using namespace frc;
 using namespace frc2;
@@ -68,6 +69,20 @@ public:
 
 	void PrintAlignPIDError();
 
+	// --------- Limits ----------
+
+	bool GetRightLimit();
+
+	bool GetLeftLimit();
+
+	void PrintLimits();
+
+	// --------- Safety ----------
+
+	bool SetLimitSafetyActive(bool);
+
+	bool SetAngleSafetyActive(bool, double);
+
 private:
 	// ---------- Motor ----------
 
@@ -85,6 +100,10 @@ private:
 
 	Limelight m_limelight;
 
+	DigitalInput m_limitSwitchRight{pTurretLimitSwitchRight};
+
+	DigitalInput m_limitSwitchLeft{pTurretLimitSwitchLeft};
+
 	// ---------- PID ---------
 
 	PIDController m_alignPID{k_turretAlignP, k_turretAlignI, k_turretAlignD};
@@ -96,4 +115,8 @@ private:
 	double m_angle;
 
 	bool m_keepingStill = false;
+
+	bool m_limitSafety = false;
+
+	bool m_encoderSafety = false;
 };

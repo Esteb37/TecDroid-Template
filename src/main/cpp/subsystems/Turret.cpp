@@ -53,6 +53,31 @@ bool Turret::Center()
 
 void Turret::SetMotor(double speed)
 {
+
+	if (m_limitSafety)
+	{
+		if (m_limitSwitchRight.Get())
+		{
+			speed = fmin(speed, 0);
+		}
+		else if (m_limitSwitchLeft.Get())
+		{
+			speed = fmax(speed, 0);
+		}
+	}
+
+	if (m_encoderSafety)
+	{
+		if (GetAngle() >= k_turretMaxAngle)
+		{
+			speed = fmin(speed, 0);
+		}
+		else if (GetAngle() <= k_turretMinAngle)
+		{
+			speed = fmax(speed, 0);
+		}
+	}
+
 	m_motor.Set(speed * k_turretMaxSpeed);
 }
 
@@ -108,13 +133,21 @@ void Turret::PrintEncoder()
 
 bool Turret::SetAngle(double angle)
 {
-	m_anglePID.SetSetpoint(angle);
 
-	double output = m_anglePID.Calculate(GetAngle());
+	if (angle < k_turretMaxAngle && angle > k_turretMinAngle)
+	{
+		m_anglePID.SetSetpoint(angle);
 
-	m_motor.Set(clamp(output, -k_turretMaxSpeed, k_turretMaxSpeed));
+		double output = m_anglePID.Calculate(GetAngle());
 
-	return m_anglePID.AtSetpoint();
+		m_motor.Set(clamp(output, -k_turretMaxSpeed, k_turretMaxSpeed));
+
+		return m_anglePID.AtSetpoint();
+	}
+	else
+	{
+		return false;
+	}
 }
 
 double Turret::GetAngle()
