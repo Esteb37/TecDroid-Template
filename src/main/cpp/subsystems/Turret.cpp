@@ -66,7 +66,7 @@ void Turret::SetMotor(double speed)
 		}
 	}
 
-	if (m_encoderSafety)
+	if (m_angleSafety)
 	{
 		if (GetAngle() >= k_turretMaxAngle)
 		{
@@ -189,4 +189,14 @@ void Turret::ResetAlignPID()
 void Turret::PrintAlignPIDError()
 {
 	SmartDashboard::PutNumber("Turret Align PID Error", m_alignPID.GetPositionError());
+}
+
+void Turret::SetAngleSafetyActive(bool active)
+{
+	m_angleSafety = active;
+}
+
+void Turret::SetLimitSafetyActive(bool active)
+{
+	m_limitSafety = active;
 }

@@ -79,9 +79,9 @@ public:
 
 	// --------- Safety ----------
 
-	bool SetLimitSafetyActive(bool);
+	void SetLimitSafetyActive(bool);
 
-	bool SetAngleSafetyActive(bool, double);
+	void SetAngleSafetyActive(bool);
 
 private:
 	// ---------- Motor ----------
@@ -118,5 +118,5 @@ private:
 
 	bool m_limitSafety = false;
 
-	bool m_encoderSafety = false;
+	bool m_angleSafety = false;
 };
