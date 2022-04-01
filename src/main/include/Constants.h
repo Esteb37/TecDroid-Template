@@ -23,6 +23,10 @@ constexpr unsigned int pBackLeft = 3;
 constexpr unsigned int pShooterMotor = 4;
 constexpr unsigned int pIntakeMotor = 5;
 constexpr unsigned int pTurretMotor = 6;
+constexpr unsigned int pFeederMotor = 6;
+constexpr unsigned int pConveyor = 7;
+constexpr unsigned int pElevator = 8;
+constexpr unsigned int pClimber = 9;
 
 constexpr unsigned int pShooterRightSolenoidForward = 0;
 constexpr unsigned int pShooterRightSolenoidReverse = 1;
@@ -89,6 +93,10 @@ constexpr double k_limelightToFront = 0.68;
 constexpr double k_shooterMaxSpeed = 1;
 constexpr double k_intakeMaxSpeed = 1;
 constexpr double k_turretMaxSpeed = 1;
+constexpr double k_feederMaxSpeed = 1;
+
+constexpr double k_shooterLoadTime = 2;
+constexpr double k_feederFeedTime = 5;
 
 constexpr double shooterRPMFromDistance(double distance)
 {
