@@ -20,11 +20,13 @@ public:
 
 	// ---------- Actions -----------
 
+	void Reset();
+
 	void Turn(double);
 
-	bool KeepStill();
+	void KeepStill();
 
-	void Reset();
+	bool Center();
 
 	// --------- Motor ---------
 
@@ -46,19 +48,25 @@ public:
 
 	void PrintEncoder();
 
-	// --------- PID ---------
+	// ---------- Angle ---------
 
 	bool SetAngle(double);
+
+	double GetAngle();
+
+	void ResetAnglePID();
+
+	void PrintAngle();
+
+	void PrintAnglePIDError();
+
+	// --------- Align ---------
 
 	bool Align();
 
 	void ResetAlignPID();
 
-	void ResetAnglePID();
-
 	void PrintAlignPIDError();
-
-	void PrintAnglePIDError();
 
 private:
 	// ---------- Motor ----------
@@ -82,4 +90,10 @@ private:
 	PIDController m_alignPID{k_turretAlignP, k_turretAlignI, k_turretAlignD};
 
 	PIDController m_anglePID{k_turretAngleP, k_turretAngleI, k_turretAngleD};
+
+	// ---------- Attributes ----------
+
+	double m_angle;
+
+	bool m_keepingStill = false;
 };

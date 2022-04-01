@@ -18,6 +18,13 @@ Turret::Turret()
 
 void Turret::Periodic()
 {
+
+	if (!m_keepingStill)
+	{
+		m_angle = GetAngle();
+	}
+
+	m_keepingStill = false;
 }
 
 void Turret::Turn(double speed)
@@ -30,6 +37,18 @@ void Turret::Reset()
 	ResetEncoder();
 	ResetAnglePID();
 	ResetAlignPID();
+}
+
+void Turret::KeepStill()
+{
+	m_keepingStill = true;
+
+	SetAngle(m_angle);
+}
+
+bool Turret::Center()
+{
+	return SetAngle(0);
 }
 
 void Turret::SetMotor(double speed)
@@ -91,11 +110,31 @@ bool Turret::SetAngle(double angle)
 {
 	m_anglePID.SetSetpoint(angle);
 
-	double output = m_anglePID.Calculate(GetEncoder());
+	double output = m_anglePID.Calculate(GetAngle());
 
 	m_motor.Set(clamp(output, -k_turretMaxSpeed, k_turretMaxSpeed));
 
 	return m_anglePID.AtSetpoint();
+}
+
+double Turret::GetAngle()
+{
+	return GetEncoder() * 360;
+}
+
+void Turret::ResetAnglePID()
+{
+	m_anglePID.Reset();
+}
+
+void Turret::PrintAngle()
+{
+	SmartDashboard::PutNumber("Turret Angle", GetAngle());
+}
+
+void Turret::PrintAnglePIDError()
+{
+	SmartDashboard::PutNumber("Turret Angle PID Error", m_anglePID.GetPositionError());
 }
 
 bool Turret::Align()
@@ -109,19 +148,9 @@ bool Turret::Align()
 	return m_alignPID.AtSetpoint();
 }
 
-void Turret::ResetAnglePID()
-{
-	m_anglePID.Reset();
-}
-
 void Turret::ResetAlignPID()
 {
 	m_alignPID.Reset();
-}
-
-void Turret::PrintAnglePIDError()
-{
-	SmartDashboard::PutNumber("Turret Angle PID Error", m_anglePID.GetPositionError());
 }
 
 void Turret::PrintAlignPIDError()
