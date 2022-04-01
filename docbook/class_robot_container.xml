@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_robot_container" xml:lang="en-US">
+<title>RobotContainer Class Reference</title>
+<indexterm><primary>RobotContainer</primary></indexterm>
+<para>
+<computeroutput>#include &lt;RobotContainer.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_robot_container_1ac508e6c51edfa97eb18e3412fe83ad8f">RobotContainer</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_container_1a81e434e41996e3cb24bf02d72f580818">RobotInit</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_container_1a1d7d4782539143fce79d3721030b14cf">RobotPeriodic</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_container_1a0c39b033dfffa9b1af1f0c4989c71b58">AutonomousInit</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_container_1ad122bd45f9295595e29d42728357afc3">AutonomousPeriodic</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_container_1a2cc6961ac7f2f8655e9bb83e71368d2c">TeleopInit</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_container_1aef30241424e970a4891bb7c88631069f">TeleopPeriodic</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>This class is where the bulk of the robot should be declared. Since Command-based is a &quot;declarative&quot; paradigm, very little robot logic should actually be handled in the <computeroutput><link linkend="_class_robot">Robot</link></computeroutput> periodic methods (other than the scheduler calls). Instead, the structure of the robot (including subsystems, commands, and button mappings) should be declared here. </para>
+<para>
+Definition at line <link linkend="__robot_container_8h_source_1l00021">21</link> of file <link linkend="__robot_container_8h_source">RobotContainer.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_robot_container_1ac508e6c51edfa97eb18e3412fe83ad8f"/><section>
+    <title>RobotContainer()</title>
+<indexterm><primary>RobotContainer</primary><secondary>RobotContainer</secondary></indexterm>
+<indexterm><primary>RobotContainer</primary><secondary>RobotContainer</secondary></indexterm>
+<para><computeroutput>RobotContainer::RobotContainer ( )</computeroutput></para><para>
+Definition at line <link linkend="__robot_container_8cpp_source_1l00007">7</link> of file <link linkend="__robot_container_8cpp_source">RobotContainer.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_robot_container_1a0c39b033dfffa9b1af1f0c4989c71b58"/><section>
+    <title>AutonomousInit()</title>
+<indexterm><primary>AutonomousInit</primary><secondary>RobotContainer</secondary></indexterm>
+<indexterm><primary>RobotContainer</primary><secondary>AutonomousInit</secondary></indexterm>
+<para><computeroutput>void RobotContainer::AutonomousInit ( )</computeroutput></para></section>
+<anchor xml:id="_class_robot_container_1ad122bd45f9295595e29d42728357afc3"/><section>
+    <title>AutonomousPeriodic()</title>
+<indexterm><primary>AutonomousPeriodic</primary><secondary>RobotContainer</secondary></indexterm>
+<indexterm><primary>RobotContainer</primary><secondary>AutonomousPeriodic</secondary></indexterm>
+<para><computeroutput>void RobotContainer::AutonomousPeriodic ( )</computeroutput></para></section>
+<anchor xml:id="_class_robot_container_1a81e434e41996e3cb24bf02d72f580818"/><section>
+    <title>RobotInit()</title>
+<indexterm><primary>RobotInit</primary><secondary>RobotContainer</secondary></indexterm>
+<indexterm><primary>RobotContainer</primary><secondary>RobotInit</secondary></indexterm>
+<para><computeroutput>void RobotContainer::RobotInit ( )</computeroutput></para></section>
+<anchor xml:id="_class_robot_container_1a1d7d4782539143fce79d3721030b14cf"/><section>
+    <title>RobotPeriodic()</title>
+<indexterm><primary>RobotPeriodic</primary><secondary>RobotContainer</secondary></indexterm>
+<indexterm><primary>RobotContainer</primary><secondary>RobotPeriodic</secondary></indexterm>
+<para><computeroutput>void RobotContainer::RobotPeriodic ( )</computeroutput></para></section>
+<anchor xml:id="_class_robot_container_1a2cc6961ac7f2f8655e9bb83e71368d2c"/><section>
+    <title>TeleopInit()</title>
+<indexterm><primary>TeleopInit</primary><secondary>RobotContainer</secondary></indexterm>
+<indexterm><primary>RobotContainer</primary><secondary>TeleopInit</secondary></indexterm>
+<para><computeroutput>void RobotContainer::TeleopInit ( )</computeroutput></para></section>
+<anchor xml:id="_class_robot_container_1aef30241424e970a4891bb7c88631069f"/><section>
+    <title>TeleopPeriodic()</title>
+<indexterm><primary>TeleopPeriodic</primary><secondary>RobotContainer</secondary></indexterm>
+<indexterm><primary>RobotContainer</primary><secondary>TeleopPeriodic</secondary></indexterm>
+<para><computeroutput>void RobotContainer::TeleopPeriodic ( )</computeroutput></para><para>
+Definition at line <link linkend="__robot_container_8cpp_source_1l00012">12</link> of file <link linkend="__robot_container_8cpp_source">RobotContainer.cpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+src/main/include/<link linkend="__robot_container_8h">RobotContainer.h</link>src/main/cpp/<link linkend="__robot_container_8cpp">RobotContainer.cpp</link></section>
+</section>

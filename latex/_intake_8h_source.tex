@@ -1,0 +1,79 @@
+\hypertarget{_intake_8h_source}{}\doxysection{Intake.\+h}
+\label{_intake_8h_source}\index{src/main/include/subsystems/Intake.h@{src/main/include/subsystems/Intake.h}}
+\mbox{\hyperlink{_intake_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00001}00001 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00002}00002 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_constants_8h}{Constants.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00003}00003 \textcolor{preprocessor}{\#include <frc/DoubleSolenoid.h>}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00004}00004 \textcolor{preprocessor}{\#include <frc/motorcontrol/VictorSP.h>}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00005}00005 \textcolor{preprocessor}{\#include <frc/smartdashboard/SmartDashboard.h>}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00006}00006 \textcolor{preprocessor}{\#include <frc2/command/SubsystemBase.h>}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00007}00007 \textcolor{preprocessor}{\#include <rev/CANSparkMax.h>}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00009}00009 \textcolor{keyword}{using namespace }frc;}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00010}00010 \textcolor{keyword}{using namespace }frc2;}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00011}00011 \textcolor{keyword}{using namespace }rev;}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00013}\mbox{\hyperlink{class_intake}{00013}} \textcolor{keyword}{class }\mbox{\hyperlink{class_intake}{Intake}} : \textcolor{keyword}{public} SubsystemBase}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00014}00014 \{}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00016}00016 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00017}00017     \mbox{\hyperlink{class_intake_a8d15418ed312a36eaac04f6ee45f58a9}{Intake}}();}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00019}00019     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_intake_a51e68973418d0795f74fde607d527b45}{Periodic}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00021}00021     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Actions -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00026}00026     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_intake_ac1ae34fc447a63ee6472efaa5451aa05}{Take}}();}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00031}00031     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_intake_ad442c56ab0fd2ae81a57c5a68c6b26e4}{Spit}}();}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00036}00036     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_intake_aaaa38297b57ce1279bd7fc71e5266517}{Lower}}();}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00041}00041     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_intake_a0fcddba2e99b1105ddd51727ad6a12fc}{Raise}}();}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00043}00043     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Motor -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00049}00049     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_intake_a16ee13664c06c96e40e86ab277b4390b}{SetMotor}}(\textcolor{keywordtype}{double});}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00054}00054     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_intake_ae546a386d5e857d3e3735f6f6f1e9641}{GetMotor}}();}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00060}00060     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_intake_a953ab3a33bde9b2dba2906e1f7ac6e82}{InvertMotor}}(\textcolor{keywordtype}{bool});}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00065}00065     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_intake_a1ceb5141d0e918717a9d8fb2b8dfd52d}{PrintMotor}}();}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00067}00067     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Solenoids -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00072}\mbox{\hyperlink{class_intake_a6f3c6fafa348d84aa717c33f8e5f5cf7}{00072}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_intake_a6f3c6fafa348d84aa717c33f8e5f5cf7}{InvertSolenoids}}();}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00077}00077     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_intake_a51af1ba44cc9ab4183cf5f52f70dbf3b}{SolenoidsOff}}();}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00082}00082     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_intake_a5f824c78fb40c062e3bdfa1b127988e6}{GetRightSolenoid}}();}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00087}00087     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_intake_ac581c392a353c4ed2b7e80a3445cb948}{GetLeftSolenoid}}();}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00092}00092     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_intake_a5029eb2c22a00f819f546740928b110a}{PrintSolenoids}}();}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00094}00094 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00095}00095     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Motor -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00097}00097     VictorSP m\_motor\{\mbox{\hyperlink{_constants_8h_abe5ba4e9e6cf95934f28059352d11dba}{pIntakeMotor}}\};}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00099}00099     \textcolor{comment}{// TODO : define motor type}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00101}00101     \textcolor{comment}{// CANSparkMax m\_motorSparkMax\{pIntakeMotor, CANSparkMax::MotorType::kBrushed\};}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00103}00103     \textcolor{comment}{// VictorSPX m\_motor\{pIntakeMotor\};}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00105}00105     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Solenoids -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00107}00107     DoubleSolenoid m\_rightSolenoid\{PneumaticsModuleType::REVPH, \mbox{\hyperlink{_constants_8h_aca026156fa20a731c93c3253363c979f}{pIntakeRightSolenoidForward}}, \mbox{\hyperlink{_constants_8h_a4f1e043de906b5c91d4ab9a8f09b339f}{pIntakeRightSolenoidReverse}}\};}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00109}00109     DoubleSolenoid m\_leftSolenoid\{PneumaticsModuleType::REVPH, \mbox{\hyperlink{_constants_8h_a3cd4d167d968a530b5ef8877d4db914f}{pIntakeLeftSolenoidForward}}, \mbox{\hyperlink{_constants_8h_a0b7d9aee0704a67e4a03cf44b19f62b7}{pIntakeLeftSolenoidReverse}}\};}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00111}00111     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Attributes -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00113}00113     \textcolor{keywordtype}{bool} m\_solenoidsInverted = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_intake_8h_source_l00114}00114 \};}
+
+\end{DoxyCode}

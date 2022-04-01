@@ -150,7 +150,7 @@ public:
 private:
 	// ---------- Motor ----------
 
-	CANSparkMax m_motor{pElevatorMotor, rev::CANSparkMax::MotorType::kBrushed};
+	CANSparkMax m_motor{pElevatorMotor, CANSparkMax::MotorType::kBrushed};
 
 	// VictorSP m_motor{pElevatorMotor};
 

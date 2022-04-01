@@ -8,7 +8,7 @@
 using namespace frc2;
 
 class SpeedLoad
-	: public CommandHelper<frc2::CommandBase, SpeedLoad>
+	: public CommandHelper<CommandBase, SpeedLoad>
 {
 public:
 	explicit SpeedLoad(Shooter *shooter);

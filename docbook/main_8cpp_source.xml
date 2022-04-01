@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main_8cpp_source" xml:lang="en-US">
+<title>main.cpp</title>
+<indexterm><primary>src/test/cpp/main.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_main_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;hal/HAL.h&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00002"/>00002 
+<anchor xml:id="_main_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&quot;gtest/gtest.h&quot;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00004"/>00004 
+<anchor xml:id="_main_8cpp_source_1l00005"/><link linkend="_main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627">00005</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_main_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627">main</link>(<emphasis role="keywordtype">int</emphasis>&#32;argc,&#32;<emphasis role="keywordtype">char</emphasis>**&#32;argv)&#32;{
+<anchor xml:id="_main_8cpp_source_1l00006"/>00006 &#32;&#32;HAL_Initialize(500,&#32;0);
+<anchor xml:id="_main_8cpp_source_1l00007"/>00007 &#32;&#32;::testing::InitGoogleTest(&amp;argc,&#32;argv);
+<anchor xml:id="_main_8cpp_source_1l00008"/>00008 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;ret&#32;=&#32;RUN_ALL_TESTS();
+<anchor xml:id="_main_8cpp_source_1l00009"/>00009 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ret;
+<anchor xml:id="_main_8cpp_source_1l00010"/>00010 }
+</programlisting></section>

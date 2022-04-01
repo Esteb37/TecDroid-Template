@@ -1,0 +1,16 @@
+\hypertarget{main_8cpp_source}{}\doxysection{main.\+cpp}
+\label{main_8cpp_source}\index{src/test/cpp/main.cpp@{src/test/cpp/main.cpp}}
+\mbox{\hyperlink{main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include <hal/HAL.h>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include "{}gtest/gtest.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}\mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{00005}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}** argv) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006   HAL\_Initialize(500, 0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007   ::testing::InitGoogleTest(\&argc, argv);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008   \textcolor{keywordtype}{int} ret = RUN\_ALL\_TESTS();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009   \textcolor{keywordflow}{return} ret;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010 \}}
+
+\end{DoxyCode}

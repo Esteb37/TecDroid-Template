@@ -14,7 +14,7 @@ using namespace frc2;
 using namespace frc;
 using namespace rev;
 
-class Drivetrain : public frc2::SubsystemBase
+class Drivetrain : public SubsystemBase
 {
 public:
 	Drivetrain();

@@ -1,0 +1,130 @@
+\hypertarget{_shooter_8h_source}{}\doxysection{Shooter.\+h}
+\label{_shooter_8h_source}\index{src/main/include/subsystems/Shooter.h@{src/main/include/subsystems/Shooter.h}}
+\mbox{\hyperlink{_shooter_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00001}00001 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00003}00003 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_constants_8h}{Constants.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00004}00004 \textcolor{preprocessor}{\#include <any>}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00005}00005 \textcolor{preprocessor}{\#include <frc/DoubleSolenoid.h>}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00006}00006 \textcolor{preprocessor}{\#include <frc/Encoder.h>}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00007}00007 \textcolor{preprocessor}{\#include <frc/Servo.h>}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00008}00008 \textcolor{preprocessor}{\#include <frc/controller/PIDController.h>}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00009}00009 \textcolor{preprocessor}{\#include <frc/motorcontrol/VictorSP.h>}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00010}00010 \textcolor{preprocessor}{\#include <frc2/command/SubsystemBase.h>}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <rev/CANSparkMax.h>}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_limelight_8h}{subsystems/Limelight.h}}>}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00014}00014 \textcolor{keyword}{using namespace }frc;}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00015}00015 \textcolor{keyword}{using namespace }frc2;}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00016}00016 \textcolor{keyword}{using namespace }rev;}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00018}\mbox{\hyperlink{class_shooter}{00018}} \textcolor{keyword}{class }\mbox{\hyperlink{class_shooter}{Shooter}} : \textcolor{keyword}{public} SubsystemBase}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00019}00019 \{}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00021}00021 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00022}00022     \mbox{\hyperlink{class_shooter_acc429ebafcc36bb592c752097c22657f}{Shooter}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00024}00024     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_a2724023e11346b0bbdd9ed42006b7ff0}{Periodic}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00026}00026     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Actions -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00031}00031     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_ac7cef43d52b4164973e3e10930076794}{Reset}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00033}00033     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/ Motor -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00039}00039     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_a8aec07b9a84ed0727abddf356898e9b3}{SetMotor}}(\textcolor{keywordtype}{double});}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00044}00044     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_shooter_ae46c0d81938a14f152b5ce98f801ffdb}{GetMotor}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00050}00050     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_a5ac1a254530a93fa6fa18294f8dabe27}{InvertMotor}}(\textcolor{keywordtype}{bool});}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00055}00055     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_a66eb01e6f77792930c773702b23cee49}{PrintMotor}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00057}00057     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/ Encoder -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00063}00063     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_shooter_a84e75a932a92bd33f5d5e72f66158b03}{GetEncoder}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00068}00068     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_aa595c369250b14ef8eae01615bf2b64a}{ResetEncoder}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00074}00074     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_a6fd5aca189d08d69c22e9dec55eba416}{InvertEncoder}}(\textcolor{keywordtype}{bool});}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00079}00079     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_a3b628de0e1ad0a54b561bd566ae4b975}{PrintEncoder}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00081}00081     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/ PID -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00088}00088     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_shooter_a8288dd4cad5eb0f085745f853b25de93}{ReachRPM}}(\textcolor{keywordtype}{double});}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00095}00095     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_shooter_a705647ab4ea9b26f938a3c949a1b3b26}{CalculateRPM}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00100}00100     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_a001e7d840f9ccf3960d9889891ec2b54}{ResetPID}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00105}00105     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_ac1ddd58052880f12e939363fd0ba253b}{PrintPIDError}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00107}00107     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/ Angle with Servos -\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00113}00113     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_a34ded1f3ec76ecf22460a1c1d8f2674b}{SetAngleServos}}(\textcolor{keywordtype}{double});}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00118}00118     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_ad8e07e828ef7f4e5f1af4776436b97ae}{ResetServos}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00124}00124     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_shooter_a553e8a885139e6ad6223a6d44fa932cc}{GetRightServo}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00130}00130     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_shooter_a9741d799e6ebce9463cfd5c028f0ea63}{GetLeftServo}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00135}00135     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_a7b744be3d8430e7fd9b2a011f110d34f}{PrintServos}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00137}00137     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/ Angle with Solenoids -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00144}00144     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_a25595e8df8cc799bc991ac94faf70f33}{SetAngleSolenoids}}(\textcolor{keywordtype}{bool});}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00145}00145 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00149}\mbox{\hyperlink{class_shooter_aedf661e8bdbdcd020f4288864f7d81de}{00149}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_aedf661e8bdbdcd020f4288864f7d81de}{InvertSolenoids}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00150}00150 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00154}00154     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_a89acb718cbf766d2f606927b0601c473}{SolenoidsOff}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00155}00155 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00159}00159     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_shooter_a3b76c25f3999d3a05e710e5170f2a642}{GetRightSolenoid}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00164}00164     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_shooter_a4d070235a6b8f78255e73394b7918863}{GetLeftSolenoid}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00169}00169     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_shooter_a4c3abb0e6f70f70d87f5f2d55b624d18}{PrintSolenoids}}();}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00170}00170 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00171}00171 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00172}00172     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/ Motor -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00173}00173 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00174}00174     CANSparkMax m\_motor\{\mbox{\hyperlink{_constants_8h_a5651d2b303d890905099967ddc7264e5}{pShooterMotor}}, CANSparkMax::MotorType::kBrushless\};}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00175}00175 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00176}00176     \textcolor{comment}{// TODO : define motor type}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00177}00177 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00178}00178     \textcolor{comment}{// VictorSP m\_motor\{pShooterMotor\};}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00180}00180     \textcolor{comment}{// VictorSPX m\_motor\{pShooterMotor\};}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00182}00182     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/ Encoder -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00183}00183 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00184}00184     SparkMaxRelativeEncoder m\_encoder\{m\_motor.GetEncoder()\};}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00185}00185 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00186}00186     \textcolor{comment}{// TODO : define encoder type}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00187}00187 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00188}00188     \textcolor{comment}{//  Encoder m\_encoder\{k\_shooterEncoderA, k\_shooterEncoderB, false, Encoder::EncodingType::k4X\};}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00189}00189 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00190}00190     PIDController m\_PIDController\{\mbox{\hyperlink{_constants_8h_adcd22432e504b1d819fa4ce2c1b428ca}{k\_shooterP}}, \mbox{\hyperlink{_constants_8h_aad9a1663a2462556190e7894eb10ff43}{k\_shooterI}}, \mbox{\hyperlink{_constants_8h_aeb3b42753c87bb52f39435c6dd4712f9}{k\_shooterD}}\};}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00192}00192     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/ Angle actuators -\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00193}00193 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00194}00194     DoubleSolenoid m\_rightSolenoid\{PneumaticsModuleType::REVPH, \mbox{\hyperlink{_constants_8h_a46fc892f628137633b639a8f81a142a9}{pShooterRightSolenoidForward}}, \mbox{\hyperlink{_constants_8h_a28d3a3b02ed001d530849b909f29e54b}{pShooterRightSolenoidReverse}}\};}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00195}00195 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00196}00196     DoubleSolenoid m\_leftSolenoid\{PneumaticsModuleType::REVPH, \mbox{\hyperlink{_constants_8h_a6d3fa684f18ce924e6a276b17d022a9f}{pShooterLeftSolenoidForward}}, \mbox{\hyperlink{_constants_8h_ade3b08fcc03a3a9624d33bad41c9ac82}{pShooterLeftSolenoidReverse}}\};}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00197}00197 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00198}00198     Servo m\_rightServo\{\mbox{\hyperlink{_constants_8h_abe6213f6862a9491975b815e5721ed0b}{pShooterRightServo}}\};}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00199}00199 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00200}00200     Servo m\_leftServo\{\mbox{\hyperlink{_constants_8h_ad4f71d1858f2fb270022ed3ce0faf299}{pShooterLeftServo}}\};}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00201}00201 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00202}00202     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/ Sensors -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00203}00203 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00204}00204     \mbox{\hyperlink{class_limelight}{Limelight}} m\_limelight;}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00205}00205 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00206}00206     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/ Attributes -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00207}00207 }
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00208}00208     \textcolor{keywordtype}{bool} m\_solenoidsInverted = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_shooter_8h_source_l00209}00209 \};}
+
+\end{DoxyCode}

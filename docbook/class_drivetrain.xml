@@ -1,0 +1,1113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_drivetrain" xml:lang="en-US">
+<title>Drivetrain Class Reference</title>
+<indexterm><primary>Drivetrain</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Drivetrain.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for Drivetrain:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_drivetrain.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_drivetrain_1abfcc3eea7516b5f76422d39676adbd27">Drivetrain</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1aaab7ed6f92b39f5450595de9e49217e3">Periodic</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a2a8e83c0d0800f32573d05b7d0017517">Drive</link> (double, double)</para>
+
+<para>Use drivetrain ArcadeDrive to move the chasis. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a102e6dfdd03b5ffc3febdb34de935ec3">Reset</link> ()</para>
+
+<para>Reset all systems. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a1b36fe27e7a9e58a075d4f176f3fac0d">InvertSpeed</link> (bool)</para>
+
+<para>Invert the direction of movement. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1af20eee44b87d89348acdaf8def755284">InvertRotation</link> (bool)</para>
+
+<para>Invert the direction of rotation. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1ad6090defa5f627403c482bbeec22a8b6">SetSafetyEnabled</link> (bool)</para>
+
+<para>Enable drivetrain safety. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a632d9e57aff0453021101f3f9264d9b6">ResetMotors</link> ()</para>
+
+<para>Resets motor factory default. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1ae3e25ce7bbc97ac1912f703ca36c20e7">InvertRight</link> (bool)</para>
+
+<para>Invert direction of the right motor group. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a6248133734bb47d86d3e7d2d46d6c7be">InvertLeft</link> (bool)</para>
+
+<para>Invert direction of the left motor group. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a264fc3fd471cb02c39e26e87277ab970">PrintMotors</link> ()</para>
+
+<para>Publishes all motors to the dashboard. </para>
+</listitem>
+            <listitem><para>double <link linkend="_class_drivetrain_1a3115ec088361b83d74a4d95d7b2915e7">GetRightEncoders</link> ()</para>
+
+<para>Gets the average of the right encoders. </para>
+</listitem>
+            <listitem><para>double <link linkend="_class_drivetrain_1ac5dcbd091bee9d908aae86f989b83630">GetLeftEncoders</link> ()</para>
+
+<para>Gets the average of the left encoders. </para>
+</listitem>
+            <listitem><para>double <link linkend="_class_drivetrain_1a548f0fea9392b195712cfa7403fe44ba">GetEncoderAverage</link> ()</para>
+
+<para>Gets the average of the all encoders. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a0b14cd9cb776da62f7589da7618cdeee">ResetEncoders</link> ()</para>
+
+<para>Resets the encoders to 0. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1ade6fcfa0f1d33b5a6ab23d4d39c51c58">InvertRightEncoders</link> (bool)</para>
+
+<para>Invert the direction of the right encoders. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a90d349ff54025dec06c273b65cb0ac7b">InvertLeftEncoders</link> (bool)</para>
+
+<para>Invert the direction of the left encoders. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a7231873edf8c1be04e40f085a04b13aa">PrintEncoders</link> ()</para>
+
+<para>Publish the value of the encoders to the dashboard. </para>
+</listitem>
+            <listitem><para>double <link linkend="_class_drivetrain_1aeb0ad112fc2e33313134a352bd79ccc8">GetGyro</link> ()</para>
+
+<para>Gets the current angle of the gyro in degrees. </para>
+</listitem>
+            <listitem><para>double <link linkend="_class_drivetrain_1a281f925dba295d9d14beb932c67c3192">GetGyroRad</link> ()</para>
+
+<para>Get the gyro angle in radians. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1aa63b09496786d2472f8eb68b5b4a2063">ResetGyro</link> ()</para>
+
+<para>Resets the angle to 0. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1adbbeb7dea4c6b7d1e760fde991ca9c08">InvertGyro</link> (bool)</para>
+
+<para>Invert the direction of the gyro. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a5666edd674a1aa863c05d9402fbcce90">PrintGyro</link> ()</para>
+
+<para>Publish the value of the gyro to the dashboard. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a6715ed0bc5cde62b767b6388d9296c6f">PrintGyroRad</link> ()</para>
+
+<para>Publish the angle in radians to the dashboard. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_drivetrain_1ac50530290af4e91020bf3973310ea6af">Move</link> (double, double)</para>
+
+<para>Sets the drivetrain to a given heading. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_drivetrain_1a30e1914280c2368691008c154af6c90c">Turn</link> (double, double)</para>
+
+<para>Turns the drievtrain to a given angle. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_drivetrain_1a4a8d358bc5d5ba4b6532eb35e75ea41e">MoveTo</link> (double, double, double, double)</para>
+
+<para>Moves the drivetrain to a given coordinate in meters. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_drivetrain_1aa5a3ae0a443fb9c8eb1b7201da399358">AlignWithTarget</link> (double)</para>
+
+<para><link linkend="_class_align">Align</link> chasis to target. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_drivetrain_1a4b4a900f38437b36e6ba6ef10dac44f3">SetDistanceWithTarget</link> (double, double)</para>
+
+<para>Set drivetrain to a specific distance from the target. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_drivetrain_1aace237adc60b9d6a5c046931197ccc54">SetAngleWithTarget</link> (double, double)</para>
+
+<para>Set drivetrain to a specific angle from the target. </para>
+</listitem>
+            <listitem><para>double <link linkend="_class_drivetrain_1a6a6102b66ad56463d21c05a340861cfd">GetAbsoluteAngle</link> (double, double)</para>
+
+<para>Get the absolute angle from a coordinate independent of quadrant. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a935fa4d01b4aff480e32ed9c38259406">ResetMovePIDController</link> ()</para>
+
+<para>Resets the Move PID. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a9f741b8119353fba3dc67b5f0dbfdb89">ResetTurnPIDController</link> ()</para>
+
+<para>Resets the Turn PID. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1ac43993f933714c5be50441b911431fab">ResetAlignPIDController</link> ()</para>
+
+<para>Resets the <link linkend="_class_align">Align</link> with target PID. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a05d3f2ef24b01a62208b124a946c8cd6">ResetDistancePIDController</link> ()</para>
+
+<para>Resets the Distance to target PID. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a1f7843b5a8518c82b6671d72bceefe28">ResetPIDControllers</link> ()</para>
+
+<para>Resets all PID controllers. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a1283d1154911a913b18a87247159c895">PrintMoveError</link> ()</para>
+
+<para>Prints the move PID error to the dashboard. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1aab40ea3240ab1f0262e6f931015b868c">PrintTurnError</link> ()</para>
+
+<para>Prints the turn PID error to the dashboard. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a8acfe7793cb899720272f2438d8d7dbc">PrintMoveToError</link> ()</para>
+
+<para>Prints the move to PID error to the dashboard. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1a12b1b678aa454cc67d3494601c6347e7">PrintAlignError</link> ()</para>
+
+<para>Prints the align PID error to the dashboard. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1adee58e9d133a795610ae569f7546c365">PrintSetDistanceError</link> ()</para>
+
+<para>Prints the distance PID error to the dashboard. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_drivetrain_1ab4ea4fff1c362668bfb049eba0461192">PrintCurrentPosition</link> ()</para>
+
+<para>Prints the current coordinates to the dashboard. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__drivetrain_8h_source_1l00017">17</link> of file <link linkend="__drivetrain_8h_source">Drivetrain.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_drivetrain_1abfcc3eea7516b5f76422d39676adbd27"/><section>
+    <title>Drivetrain()</title>
+<indexterm><primary>Drivetrain</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>Drivetrain</secondary></indexterm>
+<para><computeroutput>Drivetrain::Drivetrain ( )</computeroutput></para><para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00005">5</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_drivetrain_1aa5a3ae0a443fb9c8eb1b7201da399358"/><section>
+    <title>AlignWithTarget()</title>
+<indexterm><primary>AlignWithTarget</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>AlignWithTarget</secondary></indexterm>
+<para><computeroutput>bool Drivetrain::AlignWithTarget (double speed)</computeroutput></para><para>
+
+<para><link linkend="_class_align">Align</link> chasis to target. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>speed</entry><entry>
+<para>The speed at which to drive. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Whether or not the drivetrain has aligned to the target. </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00203">203</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a2a8e83c0d0800f32573d05b7d0017517"/><section>
+    <title>Drive()</title>
+<indexterm><primary>Drive</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>Drive</secondary></indexterm>
+<para><computeroutput>void Drivetrain::Drive (double speed, double rotation)</computeroutput></para><para>
+
+<para>Use drivetrain ArcadeDrive to move the chasis. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>speed</entry><entry>
+<para>Speed and direction to move </para>
+</entry>
+                            </row>
+                            <row>
+<entry>rotation</entry><entry>
+<para>Rotation to turn </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00019">19</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a6a6102b66ad56463d21c05a340861cfd"/><section>
+    <title>GetAbsoluteAngle()</title>
+<indexterm><primary>GetAbsoluteAngle</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>GetAbsoluteAngle</secondary></indexterm>
+<para><computeroutput>double Drivetrain::GetAbsoluteAngle (double x, double y)</computeroutput></para><para>
+
+<para>Get the absolute angle from a coordinate independent of quadrant. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>x</entry><entry>
+<para>The x coordinate </para>
+</entry>
+                            </row>
+                            <row>
+<entry>y</entry><entry>
+<para>The y coordinate </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>double the angle </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00285">285</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a548f0fea9392b195712cfa7403fe44ba"/><section>
+    <title>GetEncoderAverage()</title>
+<indexterm><primary>GetEncoderAverage</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>GetEncoderAverage</secondary></indexterm>
+<para><computeroutput>double Drivetrain::GetEncoderAverage ( )</computeroutput></para><para>
+
+<para>Gets the average of the all encoders. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>double average </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00091">91</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1aeb0ad112fc2e33313134a352bd79ccc8"/><section>
+    <title>GetGyro()</title>
+<indexterm><primary>GetGyro</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>GetGyro</secondary></indexterm>
+<para><computeroutput>double Drivetrain::GetGyro ( )</computeroutput></para><para>
+
+<para>Gets the current angle of the gyro in degrees. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>double angle </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00126">126</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a281f925dba295d9d14beb932c67c3192"/><section>
+    <title>GetGyroRad()</title>
+<indexterm><primary>GetGyroRad</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>GetGyroRad</secondary></indexterm>
+<para><computeroutput>double Drivetrain::GetGyroRad ( )</computeroutput></para><para>
+
+<para>Get the gyro angle in radians. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>double angle radians </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00131">131</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1ac5dcbd091bee9d908aae86f989b83630"/><section>
+    <title>GetLeftEncoders()</title>
+<indexterm><primary>GetLeftEncoders</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>GetLeftEncoders</secondary></indexterm>
+<para><computeroutput>double Drivetrain::GetLeftEncoders ( )</computeroutput></para><para>
+
+<para>Gets the average of the left encoders. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>double average </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00086">86</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a3115ec088361b83d74a4d95d7b2915e7"/><section>
+    <title>GetRightEncoders()</title>
+<indexterm><primary>GetRightEncoders</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>GetRightEncoders</secondary></indexterm>
+<para><computeroutput>double Drivetrain::GetRightEncoders ( )</computeroutput></para><para>
+
+<para>Gets the average of the right encoders. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>double average </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00081">81</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1adbbeb7dea4c6b7d1e760fde991ca9c08"/><section>
+    <title>InvertGyro()</title>
+<indexterm><primary>InvertGyro</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>InvertGyro</secondary></indexterm>
+<para><computeroutput>void Drivetrain::InvertGyro (bool invert)</computeroutput></para><para>
+
+<para>Invert the direction of the gyro. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>invert</entry><entry>
+<para>True to invert, false to not </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00141">141</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a6248133734bb47d86d3e7d2d46d6c7be"/><section>
+    <title>InvertLeft()</title>
+<indexterm><primary>InvertLeft</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>InvertLeft</secondary></indexterm>
+<para><computeroutput>void Drivetrain::InvertLeft (bool invert)</computeroutput></para><para>
+
+<para>Invert direction of the left motor group. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>invert</entry><entry>
+<para>True to invert, false to not </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00066">66</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a90d349ff54025dec06c273b65cb0ac7b"/><section>
+    <title>InvertLeftEncoders()</title>
+<indexterm><primary>InvertLeftEncoders</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>InvertLeftEncoders</secondary></indexterm>
+<para><computeroutput>void Drivetrain::InvertLeftEncoders (bool invert)</computeroutput></para><para>
+
+<para>Invert the direction of the left encoders. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>invert</entry><entry>
+<para>True to invert, false to not </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00110">110</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1ae3e25ce7bbc97ac1912f703ca36c20e7"/><section>
+    <title>InvertRight()</title>
+<indexterm><primary>InvertRight</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>InvertRight</secondary></indexterm>
+<para><computeroutput>void Drivetrain::InvertRight (bool invert)</computeroutput></para><para>
+
+<para>Invert direction of the right motor group. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>invert</entry><entry>
+<para>True to invert, false to not </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00061">61</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1ade6fcfa0f1d33b5a6ab23d4d39c51c58"/><section>
+    <title>InvertRightEncoders()</title>
+<indexterm><primary>InvertRightEncoders</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>InvertRightEncoders</secondary></indexterm>
+<para><computeroutput>void Drivetrain::InvertRightEncoders (bool invert)</computeroutput></para><para>
+
+<para>Invert the direction of the right encoders. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>invert</entry><entry>
+<para>True to invert, false to not </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00104">104</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1af20eee44b87d89348acdaf8def755284"/><section>
+    <title>InvertRotation()</title>
+<indexterm><primary>InvertRotation</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>InvertRotation</secondary></indexterm>
+<para><computeroutput>void Drivetrain::InvertRotation (bool invert)</computeroutput></para><para>
+
+<para>Invert the direction of rotation. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>invert</entry><entry>
+<para>True to invert, false to not </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00041">41</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a1b36fe27e7a9e58a075d4f176f3fac0d"/><section>
+    <title>InvertSpeed()</title>
+<indexterm><primary>InvertSpeed</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>InvertSpeed</secondary></indexterm>
+<para><computeroutput>void Drivetrain::InvertSpeed (bool invert)</computeroutput></para><para>
+
+<para>Invert the direction of movement. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>invert</entry><entry>
+<para>True to invert, false to not </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00036">36</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1ac50530290af4e91020bf3973310ea6af"/><section>
+    <title>Move()</title>
+<indexterm><primary>Move</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>Move</secondary></indexterm>
+<para><computeroutput>bool Drivetrain::Move (double distance, double speed)</computeroutput></para><para>
+
+<para>Sets the drivetrain to a given heading. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>distance</entry><entry>
+<para>The desired heading in meters. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>speed</entry><entry>
+<para>The speed at which to drive. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Wether or not the drivetrain is at the desired heading. </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00158">158</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a4a8d358bc5d5ba4b6532eb35e75ea41e"/><section>
+    <title>MoveTo()</title>
+<indexterm><primary>MoveTo</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>MoveTo</secondary></indexterm>
+<para><computeroutput>bool Drivetrain::MoveTo (double x, double y, double speed, double turnSpeed)</computeroutput></para><para>
+
+<para>Moves the drivetrain to a given coordinate in meters. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>x</entry><entry>
+<para>The desired x coordinate. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>y</entry><entry>
+<para>The desired y coordinate. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>speed</entry><entry>
+<para>The speed at which to drive. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>turnSpeed</entry><entry>
+<para>The speed at which to turn. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Whether or not the drivetrain has reached the desired coordinate. </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00178">178</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1aaab7ed6f92b39f5450595de9e49217e3"/><section>
+    <title>Periodic()</title>
+<indexterm><primary>Periodic</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>Periodic</secondary></indexterm>
+<para><computeroutput>void Drivetrain::Periodic ( )<computeroutput>[override]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00013">13</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a12b1b678aa454cc67d3494601c6347e7"/><section>
+    <title>PrintAlignError()</title>
+<indexterm><primary>PrintAlignError</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>PrintAlignError</secondary></indexterm>
+<para><computeroutput>void Drivetrain::PrintAlignError ( )</computeroutput></para><para>
+
+<para>Prints the align PID error to the dashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00275">275</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1ab4ea4fff1c362668bfb049eba0461192"/><section>
+    <title>PrintCurrentPosition()</title>
+<indexterm><primary>PrintCurrentPosition</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>PrintCurrentPosition</secondary></indexterm>
+<para><computeroutput>void Drivetrain::PrintCurrentPosition ( )</computeroutput></para><para>
+
+<para>Prints the current coordinates to the dashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00298">298</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a7231873edf8c1be04e40f085a04b13aa"/><section>
+    <title>PrintEncoders()</title>
+<indexterm><primary>PrintEncoders</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>PrintEncoders</secondary></indexterm>
+<para><computeroutput>void Drivetrain::PrintEncoders ( )</computeroutput></para><para>
+
+<para>Publish the value of the encoders to the dashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00116">116</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a5666edd674a1aa863c05d9402fbcce90"/><section>
+    <title>PrintGyro()</title>
+<indexterm><primary>PrintGyro</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>PrintGyro</secondary></indexterm>
+<para><computeroutput>void Drivetrain::PrintGyro ( )</computeroutput></para><para>
+
+<para>Publish the value of the gyro to the dashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00146">146</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a6715ed0bc5cde62b767b6388d9296c6f"/><section>
+    <title>PrintGyroRad()</title>
+<indexterm><primary>PrintGyroRad</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>PrintGyroRad</secondary></indexterm>
+<para><computeroutput>void Drivetrain::PrintGyroRad ( )</computeroutput></para><para>
+
+<para>Publish the angle in radians to the dashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00151">151</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a264fc3fd471cb02c39e26e87277ab970"/><section>
+    <title>PrintMotors()</title>
+<indexterm><primary>PrintMotors</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>PrintMotors</secondary></indexterm>
+<para><computeroutput>void Drivetrain::PrintMotors ( )</computeroutput></para><para>
+
+<para>Publishes all motors to the dashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00071">71</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a1283d1154911a913b18a87247159c895"/><section>
+    <title>PrintMoveError()</title>
+<indexterm><primary>PrintMoveError</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>PrintMoveError</secondary></indexterm>
+<para><computeroutput>void Drivetrain::PrintMoveError ( )</computeroutput></para><para>
+
+<para>Prints the move PID error to the dashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00259">259</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a8acfe7793cb899720272f2438d8d7dbc"/><section>
+    <title>PrintMoveToError()</title>
+<indexterm><primary>PrintMoveToError</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>PrintMoveToError</secondary></indexterm>
+<para><computeroutput>void Drivetrain::PrintMoveToError ( )</computeroutput></para><para>
+
+<para>Prints the move to PID error to the dashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00269">269</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1adee58e9d133a795610ae569f7546c365"/><section>
+    <title>PrintSetDistanceError()</title>
+<indexterm><primary>PrintSetDistanceError</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>PrintSetDistanceError</secondary></indexterm>
+<para><computeroutput>void Drivetrain::PrintSetDistanceError ( )</computeroutput></para><para>
+
+<para>Prints the distance PID error to the dashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00280">280</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1aab40ea3240ab1f0262e6f931015b868c"/><section>
+    <title>PrintTurnError()</title>
+<indexterm><primary>PrintTurnError</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>PrintTurnError</secondary></indexterm>
+<para><computeroutput>void Drivetrain::PrintTurnError ( )</computeroutput></para><para>
+
+<para>Prints the turn PID error to the dashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00264">264</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a102e6dfdd03b5ffc3febdb34de935ec3"/><section>
+    <title>Reset()</title>
+<indexterm><primary>Reset</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>Reset</secondary></indexterm>
+<para><computeroutput>void Drivetrain::Reset ( )</computeroutput></para><para>
+
+<para>Reset all systems. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00024">24</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1ac43993f933714c5be50441b911431fab"/><section>
+    <title>ResetAlignPIDController()</title>
+<indexterm><primary>ResetAlignPIDController</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>ResetAlignPIDController</secondary></indexterm>
+<para><computeroutput>void Drivetrain::ResetAlignPIDController ( )</computeroutput></para><para>
+
+<para>Resets the <link linkend="_class_align">Align</link> with target PID. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00241">241</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a05d3f2ef24b01a62208b124a946c8cd6"/><section>
+    <title>ResetDistancePIDController()</title>
+<indexterm><primary>ResetDistancePIDController</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>ResetDistancePIDController</secondary></indexterm>
+<para><computeroutput>void Drivetrain::ResetDistancePIDController ( )</computeroutput></para><para>
+
+<para>Resets the Distance to target PID. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00246">246</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a0b14cd9cb776da62f7589da7618cdeee"/><section>
+    <title>ResetEncoders()</title>
+<indexterm><primary>ResetEncoders</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>ResetEncoders</secondary></indexterm>
+<para><computeroutput>void Drivetrain::ResetEncoders ( )</computeroutput></para><para>
+
+<para>Resets the encoders to 0. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00096">96</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1aa63b09496786d2472f8eb68b5b4a2063"/><section>
+    <title>ResetGyro()</title>
+<indexterm><primary>ResetGyro</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>ResetGyro</secondary></indexterm>
+<para><computeroutput>void Drivetrain::ResetGyro ( )</computeroutput></para><para>
+
+<para>Resets the angle to 0. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00136">136</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a632d9e57aff0453021101f3f9264d9b6"/><section>
+    <title>ResetMotors()</title>
+<indexterm><primary>ResetMotors</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>ResetMotors</secondary></indexterm>
+<para><computeroutput>void Drivetrain::ResetMotors ( )</computeroutput></para><para>
+
+<para>Resets motor factory default. </para>
+</para>
+
+<para><warning><title>Warning</title>
+
+<para>Use only once and before everything else </para>
+</warning>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00053">53</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a935fa4d01b4aff480e32ed9c38259406"/><section>
+    <title>ResetMovePIDController()</title>
+<indexterm><primary>ResetMovePIDController</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>ResetMovePIDController</secondary></indexterm>
+<para><computeroutput>void Drivetrain::ResetMovePIDController ( )</computeroutput></para><para>
+
+<para>Resets the Move PID. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00231">231</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a1f7843b5a8518c82b6671d72bceefe28"/><section>
+    <title>ResetPIDControllers()</title>
+<indexterm><primary>ResetPIDControllers</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>ResetPIDControllers</secondary></indexterm>
+<para><computeroutput>void Drivetrain::ResetPIDControllers ( )</computeroutput></para><para>
+
+<para>Resets all PID controllers. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00251">251</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a9f741b8119353fba3dc67b5f0dbfdb89"/><section>
+    <title>ResetTurnPIDController()</title>
+<indexterm><primary>ResetTurnPIDController</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>ResetTurnPIDController</secondary></indexterm>
+<para><computeroutput>void Drivetrain::ResetTurnPIDController ( )</computeroutput></para><para>
+
+<para>Resets the Turn PID. </para>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00236">236</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1aace237adc60b9d6a5c046931197ccc54"/><section>
+    <title>SetAngleWithTarget()</title>
+<indexterm><primary>SetAngleWithTarget</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>SetAngleWithTarget</secondary></indexterm>
+<para><computeroutput>bool Drivetrain::SetAngleWithTarget (double angle, double speed)</computeroutput></para><para>
+
+<para>Set drivetrain to a specific angle from the target. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>angle</entry><entry>
+<para>The angle to the target in degrees. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>speed</entry><entry>
+<para>The speed at which to drive. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Whether or not the drivetrain has reached the desired angle </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00222">222</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a4b4a900f38437b36e6ba6ef10dac44f3"/><section>
+    <title>SetDistanceWithTarget()</title>
+<indexterm><primary>SetDistanceWithTarget</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>SetDistanceWithTarget</secondary></indexterm>
+<para><computeroutput>bool Drivetrain::SetDistanceWithTarget (double distance, double speed)</computeroutput></para><para>
+
+<para>Set drivetrain to a specific distance from the target. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>distance</entry><entry>
+<para>The distance to the target in meters. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>speed</entry><entry>
+<para>The speed at which to drive. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Whether or not the drivetrain has reached the desired distance </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00213">213</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1ad6090defa5f627403c482bbeec22a8b6"/><section>
+    <title>SetSafetyEnabled()</title>
+<indexterm><primary>SetSafetyEnabled</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>SetSafetyEnabled</secondary></indexterm>
+<para><computeroutput>void Drivetrain::SetSafetyEnabled (bool enabled)</computeroutput></para><para>
+
+<para>Enable drivetrain safety. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>enable</entry><entry>
+<para>True to enable, false to not </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00046">46</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_drivetrain_1a30e1914280c2368691008c154af6c90c"/><section>
+    <title>Turn()</title>
+<indexterm><primary>Turn</primary><secondary>Drivetrain</secondary></indexterm>
+<indexterm><primary>Drivetrain</primary><secondary>Turn</secondary></indexterm>
+<para><computeroutput>bool Drivetrain::Turn (double angle, double speed)</computeroutput></para><para>
+
+<para>Turns the drievtrain to a given angle. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>angle</entry><entry>
+<para>The desired angle in degrees. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>speed</entry><entry>
+<para>The speed at which to turn. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>Whether or not the drivetrain has reached the desired angle </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__drivetrain_8cpp_source_1l00168">168</link> of file <link linkend="__drivetrain_8cpp_source">Drivetrain.cpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+src/main/include/subsystems/<link linkend="__drivetrain_8h">Drivetrain.h</link>src/main/cpp/subsystems/<link linkend="__drivetrain_8cpp">Drivetrain.cpp</link></section>
+</section>

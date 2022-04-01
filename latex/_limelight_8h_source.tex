@@ -1,0 +1,81 @@
+\hypertarget{_limelight_8h_source}{}\doxysection{Limelight.\+h}
+\label{_limelight_8h_source}\index{src/main/include/subsystems/Limelight.h@{src/main/include/subsystems/Limelight.h}}
+\mbox{\hyperlink{_limelight_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00001}00001 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00003}00003 \textcolor{preprocessor}{\#include "{}networktables/NetworkTable.h"{}}}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00004}00004 \textcolor{preprocessor}{\#include "{}networktables/NetworkTableEntry.h"{}}}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00005}00005 \textcolor{preprocessor}{\#include "{}networktables/NetworkTableInstance.h"{}}}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00006}00006 \textcolor{preprocessor}{\#include "{}networktables/NetworkTableValue.h"{}}}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00007}00007 \textcolor{preprocessor}{\#include "{}wpi/span.h"{}}}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00008}00008 \textcolor{preprocessor}{\#include <frc/smartdashboard/smartdashboard.h>}}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00010}\mbox{\hyperlink{class_limelight}{00010}} \textcolor{keyword}{class }\mbox{\hyperlink{class_limelight}{Limelight}}}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00011}00011 \{}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00012}00012 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00013}00013     std::shared\_ptr<nt::NetworkTable> limelight;}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00015}00015 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00016}00016     \mbox{\hyperlink{class_limelight_a15512351c40f1a0b2a858f97dfa0a67d}{Limelight}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00018}00018     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Actions -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00020}00020     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_limelight_ad05aee666ce49fe00af56b3da5ab4ae9}{GetDistanceToTarget}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00022}00022     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Getters -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00024}00024     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_limelight_ab7d744c9a6d457f9a5ed8b98d5ecdf79}{GetHorizontalAngle}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00026}00026     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_limelight_a43671130bdb3a2771fd4dd56fff679f1}{GetVerticalAngle}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00028}00028     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_limelight_acc118c1aca0c26f1d5a0637d5be5a227}{GetArea}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00030}00030     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_limelight_a52cc0493404104029f85a0a085672a25}{GetSkew}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00032}00032     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_limelight_a0d7840e3a19b783e50a861ced3c10918}{GetPipeline}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00034}00034     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_limelight_aaea4f16a17c061ec0cca0680c6bd4e51}{GetValid}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00036}00036     \textcolor{keywordtype}{double} \mbox{\hyperlink{class_limelight_a87e9a33a3c5b76e9001dde6eaafd0425}{GetTarget}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00038}00038     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Setters -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00040}00040     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_a6b0692e0e2df711400e5f1fed6412d32}{SetPipeline}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00042}00042     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_a18f8d694eeab993219d77649f3999c14}{SetLED}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00044}00044     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_ae02ec1312a8d3915ab91c6a78a763078}{SetCamMode}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00046}00046     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_a66781ad345e331fa366f63c0ec575d77}{SetStream}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00048}00048     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_ac9ee268075dde3bcbacb84f8fb79c4de}{SetSnapshot}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00050}00050     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_a10c2a8c9c5b7f112118c7877058e10b9}{SetLight}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00052}00052     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_a00e7ae04ca99ec2a960fb3bfb54548f8}{SetLEDMode}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00054}00054     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_a293eec83b14c6353a7eb04f3d9b98589}{SetLEDFrequency}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00056}00056     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_ad5358cad05b8114b57b37b3abcb66a4e}{SetLEDIntensity}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00058}00058     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_a08cbe03d863bdc11ad08b9b9b8e0358a}{SetLEDState}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00060}00060     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_a41f9a6d2175a40c271f5e430cb3c3c64}{SetLEDOff}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00062}00062     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_a7e96468ad718fc81e265962b529105d1}{SetLEDOn}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00064}00064     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Printers -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00066}00066     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_ac51f4236eacdd1935b6c873c06b5e37f}{PrintHorizontalAngle}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00068}00068     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_a61c2b59b3ea4502d21c11fe0e4b62223}{PrintVerticalAngle}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00070}00070     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_ad8900633032afe59b51e5cad3ff9e60d}{PrintDistanceToTarget}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00072}00072     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_ad7452e27445d9bdb7c5a72399aa684b3}{PrintArea}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00074}00074     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_limelight_a6bf87ecb0d2b0d3c727d5b4ab69909c1}{PrintSkew}}();}
+\DoxyCodeLine{\Hypertarget{_limelight_8h_source_l00075}00075 \};}
+
+\end{DoxyCode}

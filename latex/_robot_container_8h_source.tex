@@ -1,0 +1,47 @@
+\hypertarget{_robot_container_8h_source}{}\doxysection{Robot\+Container.\+h}
+\label{_robot_container_8h_source}\index{src/main/include/RobotContainer.h@{src/main/include/RobotContainer.h}}
+\mbox{\hyperlink{_robot_container_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00001}00001 \textcolor{comment}{// Copyright (c) FIRST and other WPILib contributors.}}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00002}00002 \textcolor{comment}{// Open Source Software; you can modify and/or share it under the terms of}}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00003}00003 \textcolor{comment}{// the WPILib BSD license file in the root directory of this project.}}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00005}00005 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00007}00007 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_drivetrain_8h}{subsystems/Drivetrain.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00008}00008 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_feeder_8h}{subsystems/Feeder.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00009}00009 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_intake_8h}{subsystems/Intake.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00010}00010 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_shooter_8h}{subsystems/Shooter.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00011}00011 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_turret_8h}{subsystems/Turret.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <frc2/command/Command.h>}}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00021}\mbox{\hyperlink{class_robot_container}{00021}} \textcolor{keyword}{class }\mbox{\hyperlink{class_robot_container}{RobotContainer}}}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00022}00022 \{}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00023}00023 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00024}00024     \mbox{\hyperlink{class_robot_container_ac508e6c51edfa97eb18e3412fe83ad8f}{RobotContainer}}();}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00026}\mbox{\hyperlink{class_robot_container_a81e434e41996e3cb24bf02d72f580818}{00026}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_container_a81e434e41996e3cb24bf02d72f580818}{RobotInit}}();}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00028}\mbox{\hyperlink{class_robot_container_a1d7d4782539143fce79d3721030b14cf}{00028}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_container_a1d7d4782539143fce79d3721030b14cf}{RobotPeriodic}}();}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00030}\mbox{\hyperlink{class_robot_container_a0c39b033dfffa9b1af1f0c4989c71b58}{00030}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_container_a0c39b033dfffa9b1af1f0c4989c71b58}{AutonomousInit}}();}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00032}\mbox{\hyperlink{class_robot_container_ad122bd45f9295595e29d42728357afc3}{00032}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_container_ad122bd45f9295595e29d42728357afc3}{AutonomousPeriodic}}();}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00034}\mbox{\hyperlink{class_robot_container_a2cc6961ac7f2f8655e9bb83e71368d2c}{00034}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_container_a2cc6961ac7f2f8655e9bb83e71368d2c}{TeleopInit}}();}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00036}00036     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_robot_container_aef30241424e970a4891bb7c88631069f}{TeleopPeriodic}}();}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00038}00038 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00039}00039     \mbox{\hyperlink{class_drivetrain}{Drivetrain}} m\_drivetrain;}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00041}00041     \mbox{\hyperlink{class_shooter}{Shooter}} m\_shooter;}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00043}00043     \mbox{\hyperlink{class_intake}{Intake}} m\_intake;}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00045}00045     \mbox{\hyperlink{class_turret}{Turret}} m\_turret;}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00047}00047     \mbox{\hyperlink{class_feeder}{Feeder}} m\_feeder;}
+\DoxyCodeLine{\Hypertarget{_robot_container_8h_source_l00048}00048 \};}
+
+\end{DoxyCode}

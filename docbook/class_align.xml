@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_align" xml:lang="en-US">
+<title>Align Class Reference</title>
+<indexterm><primary>Align</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Align.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for Align:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_align.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_align_1aaac0516a2d3d9deeda6c32e7147705f1">Align</link> (<link linkend="_class_turret">Turret</link> *turret)</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_align_1aa3f997a8b1eec48c627d75c537531743">IsFinished</link> () override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__align_8h_source_1l00010">10</link> of file <link linkend="__align_8h_source">Align.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_align_1aaac0516a2d3d9deeda6c32e7147705f1"/><section>
+    <title>Align()</title>
+<indexterm><primary>Align</primary><secondary>Align</secondary></indexterm>
+<indexterm><primary>Align</primary><secondary>Align</secondary></indexterm>
+<para><computeroutput>Align::Align (<link linkend="_class_turret">Turret</link> * turret)<computeroutput>[explicit]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__align_8cpp_source_1l00003">3</link> of file <link linkend="__align_8cpp_source">Align.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_align_1aa3f997a8b1eec48c627d75c537531743"/><section>
+    <title>IsFinished()</title>
+<indexterm><primary>IsFinished</primary><secondary>Align</secondary></indexterm>
+<indexterm><primary>Align</primary><secondary>IsFinished</secondary></indexterm>
+<para><computeroutput>bool Align::IsFinished ( )<computeroutput>[override]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__align_8cpp_source_1l00008">8</link> of file <link linkend="__align_8cpp_source">Align.cpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+src/main/include/commands/<link linkend="__align_8h">Align.h</link>src/main/cpp/commands/<link linkend="__align_8cpp">Align.cpp</link></section>
+</section>

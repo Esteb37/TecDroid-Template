@@ -1,0 +1,444 @@
+\hypertarget{class_elevator}{}\doxysection{Elevator Class Reference}
+\label{class_elevator}\index{Elevator@{Elevator}}
+
+
+{\ttfamily \#include $<$Elevator.\+h$>$}
+
+Inheritance diagram for Elevator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_elevator}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_elevator_a42ec2949d6e5f9bf90c361933562eb5f}{Elevator}} ()
+\item 
+void \mbox{\hyperlink{class_elevator_a12003fa3be947d811a004cb0b69d9a69}{Periodic}} () override
+\item 
+void \mbox{\hyperlink{class_elevator_a1e734d3f2a97bbec15f1fd0a8a9760ae}{Reset}} ()
+\begin{DoxyCompactList}\small\item\em Resets sensors and PIDs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_a51844ef540f210c16fafb8323eefa3cf}{Move}} (double)
+\begin{DoxyCompactList}\small\item\em Moves the elevator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_a689bff16dc6190ae073abc72ab15f11f}{Keep\+Still}} ()
+\begin{DoxyCompactList}\small\item\em Keeps the elevator at the current position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_a0c5262a47e8afdfdaf45af1e39518244}{Set\+Motor}} (double)
+\begin{DoxyCompactList}\small\item\em Sets the Motor speed. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_elevator_a72c67a1690571e255c2d0518bd8fd170}{Get\+Motor}} ()
+\begin{DoxyCompactList}\small\item\em Gets the Motor speed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_a93c1e8836f021d0bf252d53bcc8bebe2}{Invert\+Motor}} (bool)
+\begin{DoxyCompactList}\small\item\em Invert motor direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_a97e1607efd1c33580091049eca0f58f0}{Print\+Motor}} ()
+\begin{DoxyCompactList}\small\item\em Publishes the motor speed to the dashboard. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_elevator_a16bfdaa2dbf0dbdbe5c2183616c0bbc1}{Get\+Encoder}} ()
+\begin{DoxyCompactList}\small\item\em Get the Encoder value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_a6d3f621dae6f07c3a45be0a83139f635}{Reset\+Encoder}} ()
+\begin{DoxyCompactList}\small\item\em Sets the encoder\textquotesingle{}s value to 0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_ab1dcbf97fc77cc45df007d7a06a574c7}{Invert\+Encoder}} (bool)
+\begin{DoxyCompactList}\small\item\em Inverts the encoder\textquotesingle{}s direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_ad17b7cbd77ca1aec9e94705fb4142694}{Print\+Encoder}} ()
+\begin{DoxyCompactList}\small\item\em Publishes the Encoder value to the dashboard. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_elevator_a0bc80fbc45bfb0bc8eacfe43217b2b8b}{Set\+Height}} (double)
+\begin{DoxyCompactList}\small\item\em Set the elevator to a specific height. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_elevator_acee7586b6e918e0d39aad91ca88f6d15}{Get\+Height}} ()
+\begin{DoxyCompactList}\small\item\em Get the elevator\textquotesingle{}s height. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_a598ec942f895c71b6397b9d4c1d92e84}{Reset\+Height\+PID}} ()
+\begin{DoxyCompactList}\small\item\em Resets the height PID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_aa0127947145b4b422c71df50596bb603}{Print\+Height}} ()
+\begin{DoxyCompactList}\small\item\em Publishes the elevator\textquotesingle{}s height to the dashboard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_a297e8d759f282ad37dddb8b1d2c4cbd5}{Print\+Height\+PIDError}} ()
+\begin{DoxyCompactList}\small\item\em Publishes the height PID error to the dashboard. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_elevator_ad4e88b3752b1c5afea34bea0b10a8d1b}{Get\+Top\+Limit}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the elevator is at the top. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_elevator_adfb113f3762495292f318880ef7f4002}{Get\+Bottom\+Limit}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the elevator is at the bottom. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_a323c2178986e3aa87e40abd7c225c376}{Print\+Limits}} ()
+\begin{DoxyCompactList}\small\item\em Publishes the limits to the dashboard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_a688309e16233723a4b71a6776d5c1d9f}{Set\+Limit\+Safety\+Active}} (bool)
+\begin{DoxyCompactList}\small\item\em Enable safety with limit switches. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_elevator_afae4e27835b0ca27d6578c024df41576}{Set\+Height\+Safety\+Active}} (bool)
+\begin{DoxyCompactList}\small\item\em Enable safety with encoder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_elevator_8h_source_l00014}{14}} of file \mbox{\hyperlink{_elevator_8h_source}{Elevator.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_elevator_a42ec2949d6e5f9bf90c361933562eb5f}\label{class_elevator_a42ec2949d6e5f9bf90c361933562eb5f}} 
+\index{Elevator@{Elevator}!Elevator@{Elevator}}
+\index{Elevator@{Elevator}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{Elevator()}{Elevator()}}
+{\footnotesize\ttfamily Elevator\+::\+Elevator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_elevator_adfb113f3762495292f318880ef7f4002}\label{class_elevator_adfb113f3762495292f318880ef7f4002}} 
+\index{Elevator@{Elevator}!GetBottomLimit@{GetBottomLimit}}
+\index{GetBottomLimit@{GetBottomLimit}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{GetBottomLimit()}{GetBottomLimit()}}
+{\footnotesize\ttfamily bool Elevator\+::\+Get\+Bottom\+Limit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the elevator is at the bottom. 
+
+\begin{DoxyReturn}{Returns}
+If the elevator is at the bottom 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00166}{166}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a16bfdaa2dbf0dbdbe5c2183616c0bbc1}\label{class_elevator_a16bfdaa2dbf0dbdbe5c2183616c0bbc1}} 
+\index{Elevator@{Elevator}!GetEncoder@{GetEncoder}}
+\index{GetEncoder@{GetEncoder}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{GetEncoder()}{GetEncoder()}}
+{\footnotesize\ttfamily double Elevator\+::\+Get\+Encoder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Encoder value. 
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00088}{88}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_acee7586b6e918e0d39aad91ca88f6d15}\label{class_elevator_acee7586b6e918e0d39aad91ca88f6d15}} 
+\index{Elevator@{Elevator}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily double Elevator\+::\+Get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the elevator\textquotesingle{}s height. 
+
+\begin{DoxyReturn}{Returns}
+The elevator\textquotesingle{}s height in meters 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00139}{139}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a72c67a1690571e255c2d0518bd8fd170}\label{class_elevator_a72c67a1690571e255c2d0518bd8fd170}} 
+\index{Elevator@{Elevator}!GetMotor@{GetMotor}}
+\index{GetMotor@{GetMotor}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{GetMotor()}{GetMotor()}}
+{\footnotesize\ttfamily double Elevator\+::\+Get\+Motor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the Motor speed. 
+
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_ad4e88b3752b1c5afea34bea0b10a8d1b}\label{class_elevator_ad4e88b3752b1c5afea34bea0b10a8d1b}} 
+\index{Elevator@{Elevator}!GetTopLimit@{GetTopLimit}}
+\index{GetTopLimit@{GetTopLimit}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{GetTopLimit()}{GetTopLimit()}}
+{\footnotesize\ttfamily bool Elevator\+::\+Get\+Top\+Limit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the elevator is at the top. 
+
+\begin{DoxyReturn}{Returns}
+If the elevator is at the top 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00161}{161}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_ab1dcbf97fc77cc45df007d7a06a574c7}\label{class_elevator_ab1dcbf97fc77cc45df007d7a06a574c7}} 
+\index{Elevator@{Elevator}!InvertEncoder@{InvertEncoder}}
+\index{InvertEncoder@{InvertEncoder}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{InvertEncoder()}{InvertEncoder()}}
+{\footnotesize\ttfamily void Elevator\+::\+Invert\+Encoder (\begin{DoxyParamCaption}\item[{bool}]{invert }\end{DoxyParamCaption})}
+
+
+
+Inverts the encoder\textquotesingle{}s direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invert} & True to invert, false to not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00108}{108}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a93c1e8836f021d0bf252d53bcc8bebe2}\label{class_elevator_a93c1e8836f021d0bf252d53bcc8bebe2}} 
+\index{Elevator@{Elevator}!InvertMotor@{InvertMotor}}
+\index{InvertMotor@{InvertMotor}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{InvertMotor()}{InvertMotor()}}
+{\footnotesize\ttfamily void Elevator\+::\+Invert\+Motor (\begin{DoxyParamCaption}\item[{bool}]{invert }\end{DoxyParamCaption})}
+
+
+
+Invert motor direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invert} & True to invert, false to not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a689bff16dc6190ae073abc72ab15f11f}\label{class_elevator_a689bff16dc6190ae073abc72ab15f11f}} 
+\index{Elevator@{Elevator}!KeepStill@{KeepStill}}
+\index{KeepStill@{KeepStill}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{KeepStill()}{KeepStill()}}
+{\footnotesize\ttfamily void Elevator\+::\+Keep\+Still (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Keeps the elevator at the current position. 
+
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a51844ef540f210c16fafb8323eefa3cf}\label{class_elevator_a51844ef540f210c16fafb8323eefa3cf}} 
+\index{Elevator@{Elevator}!Move@{Move}}
+\index{Move@{Move}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{Move()}{Move()}}
+{\footnotesize\ttfamily void Elevator\+::\+Move (\begin{DoxyParamCaption}\item[{double}]{speed }\end{DoxyParamCaption})}
+
+
+
+Moves the elevator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & Speed and direction to move \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a12003fa3be947d811a004cb0b69d9a69}\label{class_elevator_a12003fa3be947d811a004cb0b69d9a69}} 
+\index{Elevator@{Elevator}!Periodic@{Periodic}}
+\index{Periodic@{Periodic}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{Periodic()}{Periodic()}}
+{\footnotesize\ttfamily void Elevator\+::\+Periodic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_ad17b7cbd77ca1aec9e94705fb4142694}\label{class_elevator_ad17b7cbd77ca1aec9e94705fb4142694}} 
+\index{Elevator@{Elevator}!PrintEncoder@{PrintEncoder}}
+\index{PrintEncoder@{PrintEncoder}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{PrintEncoder()}{PrintEncoder()}}
+{\footnotesize\ttfamily void Elevator\+::\+Print\+Encoder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Publishes the Encoder value to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00117}{117}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_aa0127947145b4b422c71df50596bb603}\label{class_elevator_aa0127947145b4b422c71df50596bb603}} 
+\index{Elevator@{Elevator}!PrintHeight@{PrintHeight}}
+\index{PrintHeight@{PrintHeight}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{PrintHeight()}{PrintHeight()}}
+{\footnotesize\ttfamily void Elevator\+::\+Print\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Publishes the elevator\textquotesingle{}s height to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00149}{149}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a297e8d759f282ad37dddb8b1d2c4cbd5}\label{class_elevator_a297e8d759f282ad37dddb8b1d2c4cbd5}} 
+\index{Elevator@{Elevator}!PrintHeightPIDError@{PrintHeightPIDError}}
+\index{PrintHeightPIDError@{PrintHeightPIDError}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{PrintHeightPIDError()}{PrintHeightPIDError()}}
+{\footnotesize\ttfamily void Elevator\+::\+Print\+Height\+PIDError (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Publishes the height PID error to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00154}{154}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a323c2178986e3aa87e40abd7c225c376}\label{class_elevator_a323c2178986e3aa87e40abd7c225c376}} 
+\index{Elevator@{Elevator}!PrintLimits@{PrintLimits}}
+\index{PrintLimits@{PrintLimits}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{PrintLimits()}{PrintLimits()}}
+{\footnotesize\ttfamily void Elevator\+::\+Print\+Limits (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Publishes the limits to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00171}{171}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a97e1607efd1c33580091049eca0f58f0}\label{class_elevator_a97e1607efd1c33580091049eca0f58f0}} 
+\index{Elevator@{Elevator}!PrintMotor@{PrintMotor}}
+\index{PrintMotor@{PrintMotor}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{PrintMotor()}{PrintMotor()}}
+{\footnotesize\ttfamily void Elevator\+::\+Print\+Motor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Publishes the motor speed to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a1e734d3f2a97bbec15f1fd0a8a9760ae}\label{class_elevator_a1e734d3f2a97bbec15f1fd0a8a9760ae}} 
+\index{Elevator@{Elevator}!Reset@{Reset}}
+\index{Reset@{Reset}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Elevator\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets sensors and PIDs. 
+
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a6d3f621dae6f07c3a45be0a83139f635}\label{class_elevator_a6d3f621dae6f07c3a45be0a83139f635}} 
+\index{Elevator@{Elevator}!ResetEncoder@{ResetEncoder}}
+\index{ResetEncoder@{ResetEncoder}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{ResetEncoder()}{ResetEncoder()}}
+{\footnotesize\ttfamily void Elevator\+::\+Reset\+Encoder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets the encoder\textquotesingle{}s value to 0. 
+
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a598ec942f895c71b6397b9d4c1d92e84}\label{class_elevator_a598ec942f895c71b6397b9d4c1d92e84}} 
+\index{Elevator@{Elevator}!ResetHeightPID@{ResetHeightPID}}
+\index{ResetHeightPID@{ResetHeightPID}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{ResetHeightPID()}{ResetHeightPID()}}
+{\footnotesize\ttfamily void Elevator\+::\+Reset\+Height\+PID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the height PID. 
+
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00144}{144}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a0bc80fbc45bfb0bc8eacfe43217b2b8b}\label{class_elevator_a0bc80fbc45bfb0bc8eacfe43217b2b8b}} 
+\index{Elevator@{Elevator}!SetHeight@{SetHeight}}
+\index{SetHeight@{SetHeight}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{SetHeight()}{SetHeight()}}
+{\footnotesize\ttfamily bool Elevator\+::\+Set\+Height (\begin{DoxyParamCaption}\item[{double}]{height }\end{DoxyParamCaption})}
+
+
+
+Set the elevator to a specific height. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em height} & The height to set the elevator to in meters \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If the elevator has reached the height 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00124}{124}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_afae4e27835b0ca27d6578c024df41576}\label{class_elevator_afae4e27835b0ca27d6578c024df41576}} 
+\index{Elevator@{Elevator}!SetHeightSafetyActive@{SetHeightSafetyActive}}
+\index{SetHeightSafetyActive@{SetHeightSafetyActive}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{SetHeightSafetyActive()}{SetHeightSafetyActive()}}
+{\footnotesize\ttfamily void Elevator\+::\+Set\+Height\+Safety\+Active (\begin{DoxyParamCaption}\item[{bool}]{active }\end{DoxyParamCaption})}
+
+
+
+Enable safety with encoder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enable} & True to enable, false to not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00184}{184}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a688309e16233723a4b71a6776d5c1d9f}\label{class_elevator_a688309e16233723a4b71a6776d5c1d9f}} 
+\index{Elevator@{Elevator}!SetLimitSafetyActive@{SetLimitSafetyActive}}
+\index{SetLimitSafetyActive@{SetLimitSafetyActive}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{SetLimitSafetyActive()}{SetLimitSafetyActive()}}
+{\footnotesize\ttfamily void Elevator\+::\+Set\+Limit\+Safety\+Active (\begin{DoxyParamCaption}\item[{bool}]{active }\end{DoxyParamCaption})}
+
+
+
+Enable safety with limit switches. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enable} & True to enable, false to not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00179}{179}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+\mbox{\Hypertarget{class_elevator_a0c5262a47e8afdfdaf45af1e39518244}\label{class_elevator_a0c5262a47e8afdfdaf45af1e39518244}} 
+\index{Elevator@{Elevator}!SetMotor@{SetMotor}}
+\index{SetMotor@{SetMotor}!Elevator@{Elevator}}
+\doxysubsubsection{\texorpdfstring{SetMotor()}{SetMotor()}}
+{\footnotesize\ttfamily void Elevator\+::\+Set\+Motor (\begin{DoxyParamCaption}\item[{double}]{speed }\end{DoxyParamCaption})}
+
+
+
+Sets the Motor speed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & Speed and direction to turn \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_elevator_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_elevator_8cpp_source}{Elevator.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/main/include/subsystems/\mbox{\hyperlink{_elevator_8h}{Elevator.\+h}}\item 
+src/main/cpp/subsystems/\mbox{\hyperlink{_elevator_8cpp}{Elevator.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,132 @@
+\hypertarget{class_feeder}{}\doxysection{Feeder Class Reference}
+\label{class_feeder}\index{Feeder@{Feeder}}
+
+
+{\ttfamily \#include $<$Feeder.\+h$>$}
+
+Inheritance diagram for Feeder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_feeder}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_feeder_a6e19de83bb7db588512f6ca8772a944e}{Feeder}} ()
+\item 
+void \mbox{\hyperlink{class_feeder_ada3cba130afa1b68d25741d68fd24184}{Periodic}} () override
+\item 
+void \mbox{\hyperlink{class_feeder_a06980f926992f2c2c110556e2fa28ad2}{Set\+Motor}} (double)
+\begin{DoxyCompactList}\small\item\em Sets the Motor speed. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_feeder_a3a01f288d0e35fa0956f24ce90a3e0f5}{Get\+Motor}} ()
+\begin{DoxyCompactList}\small\item\em Gets the Motor speed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_feeder_a0bf044d7a57300e64b74e2f2cd8e7d09}{Invert\+Motor}} (bool)
+\begin{DoxyCompactList}\small\item\em Invert motor direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_feeder_a2db2368dc4de4c6ca7d531a43d0f206f}{Print\+Motor}} ()
+\begin{DoxyCompactList}\small\item\em Publishes the motor speed to the dashboard. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_feeder_8h_source_l00013}{13}} of file \mbox{\hyperlink{_feeder_8h_source}{Feeder.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_feeder_a6e19de83bb7db588512f6ca8772a944e}\label{class_feeder_a6e19de83bb7db588512f6ca8772a944e}} 
+\index{Feeder@{Feeder}!Feeder@{Feeder}}
+\index{Feeder@{Feeder}!Feeder@{Feeder}}
+\doxysubsubsection{\texorpdfstring{Feeder()}{Feeder()}}
+{\footnotesize\ttfamily Feeder\+::\+Feeder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_feeder_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_feeder_8cpp_source}{Feeder.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_feeder_a3a01f288d0e35fa0956f24ce90a3e0f5}\label{class_feeder_a3a01f288d0e35fa0956f24ce90a3e0f5}} 
+\index{Feeder@{Feeder}!GetMotor@{GetMotor}}
+\index{GetMotor@{GetMotor}!Feeder@{Feeder}}
+\doxysubsubsection{\texorpdfstring{GetMotor()}{GetMotor()}}
+{\footnotesize\ttfamily double Feeder\+::\+Get\+Motor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the Motor speed. 
+
+
+
+Definition at line \mbox{\hyperlink{_feeder_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{_feeder_8cpp_source}{Feeder.\+cpp}}.
+
+\mbox{\Hypertarget{class_feeder_a0bf044d7a57300e64b74e2f2cd8e7d09}\label{class_feeder_a0bf044d7a57300e64b74e2f2cd8e7d09}} 
+\index{Feeder@{Feeder}!InvertMotor@{InvertMotor}}
+\index{InvertMotor@{InvertMotor}!Feeder@{Feeder}}
+\doxysubsubsection{\texorpdfstring{InvertMotor()}{InvertMotor()}}
+{\footnotesize\ttfamily void Feeder\+::\+Invert\+Motor (\begin{DoxyParamCaption}\item[{bool}]{inverted }\end{DoxyParamCaption})}
+
+
+
+Invert motor direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invert} & True to invert, false to not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_feeder_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_feeder_8cpp_source}{Feeder.\+cpp}}.
+
+\mbox{\Hypertarget{class_feeder_ada3cba130afa1b68d25741d68fd24184}\label{class_feeder_ada3cba130afa1b68d25741d68fd24184}} 
+\index{Feeder@{Feeder}!Periodic@{Periodic}}
+\index{Periodic@{Periodic}!Feeder@{Feeder}}
+\doxysubsubsection{\texorpdfstring{Periodic()}{Periodic()}}
+{\footnotesize\ttfamily void Feeder\+::\+Periodic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{_feeder_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{_feeder_8cpp_source}{Feeder.\+cpp}}.
+
+\mbox{\Hypertarget{class_feeder_a2db2368dc4de4c6ca7d531a43d0f206f}\label{class_feeder_a2db2368dc4de4c6ca7d531a43d0f206f}} 
+\index{Feeder@{Feeder}!PrintMotor@{PrintMotor}}
+\index{PrintMotor@{PrintMotor}!Feeder@{Feeder}}
+\doxysubsubsection{\texorpdfstring{PrintMotor()}{PrintMotor()}}
+{\footnotesize\ttfamily void Feeder\+::\+Print\+Motor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Publishes the motor speed to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_feeder_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{_feeder_8cpp_source}{Feeder.\+cpp}}.
+
+\mbox{\Hypertarget{class_feeder_a06980f926992f2c2c110556e2fa28ad2}\label{class_feeder_a06980f926992f2c2c110556e2fa28ad2}} 
+\index{Feeder@{Feeder}!SetMotor@{SetMotor}}
+\index{SetMotor@{SetMotor}!Feeder@{Feeder}}
+\doxysubsubsection{\texorpdfstring{SetMotor()}{SetMotor()}}
+{\footnotesize\ttfamily void Feeder\+::\+Set\+Motor (\begin{DoxyParamCaption}\item[{double}]{speed }\end{DoxyParamCaption})}
+
+
+
+Sets the Motor speed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & Speed and direction to turn \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_feeder_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_feeder_8cpp_source}{Feeder.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/main/include/subsystems/\mbox{\hyperlink{_feeder_8h}{Feeder.\+h}}\item 
+src/main/cpp/subsystems/\mbox{\hyperlink{_feeder_8cpp}{Feeder.\+cpp}}\end{DoxyCompactItemize}

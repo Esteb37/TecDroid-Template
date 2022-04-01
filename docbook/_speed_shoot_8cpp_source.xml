@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__speed_shoot_8cpp_source" xml:lang="en-US">
+<title>SpeedShoot.cpp</title>
+<indexterm><primary>src/main/cpp/commands/SpeedShoot.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__speed_shoot_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__speed_shoot_8h">commands/SpeedShoot.h</link>&quot;</emphasis>
+<anchor xml:id="__speed_shoot_8cpp_source_1l00002"/>00002 
+<anchor xml:id="__speed_shoot_8cpp_source_1l00003"/><link linkend="_class_speed_shoot_1a15212bc2eba808781bbc519b10c75d1c">00003</link> <link linkend="_class_speed_shoot_1a15212bc2eba808781bbc519b10c75d1c">SpeedShoot::SpeedShoot</link>(<link linkend="_class_shooter">Shooter</link>&#32;*shooter,&#32;<link linkend="_class_feeder">Feeder</link>&#32;*feeder)
+<anchor xml:id="__speed_shoot_8cpp_source_1l00004"/>00004 {
+<anchor xml:id="__speed_shoot_8cpp_source_1l00005"/>00005 &#32;&#32;&#32;&#32;AddCommands(<link linkend="_class_speed_load">SpeedLoad</link>(shooter),&#32;<link linkend="_class_feed">Feed</link>(feeder));
+<anchor xml:id="__speed_shoot_8cpp_source_1l00006"/>00006 }
+</programlisting></section>

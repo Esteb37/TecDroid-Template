@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['raise_0',['Raise',['../class_intake.html#a0fcddba2e99b1105ddd51727ad6a12fc',1,'Intake']]],
+  ['raisewrist_1',['RaiseWrist',['../class_claw.html#ae031406a37f960b6a4410d3fe0d258ba',1,'Claw']]],
+  ['reachrpm_2',['ReachRPM',['../class_shooter.html#a8288dd4cad5eb0f085745f853b25de93',1,'Shooter']]],
+  ['reset_3',['Reset',['../class_drivetrain.html#a102e6dfdd03b5ffc3febdb34de935ec3',1,'Drivetrain::Reset()'],['../class_elevator.html#a1e734d3f2a97bbec15f1fd0a8a9760ae',1,'Elevator::Reset()'],['../class_shooter.html#ac7cef43d52b4164973e3e10930076794',1,'Shooter::Reset()'],['../class_turret.html#a67239926e9d9f7861ed4703d56778860',1,'Turret::Reset()']]],
+  ['resetalignpid_4',['ResetAlignPID',['../class_turret.html#ab15c596c80b5395d3c91de7eab59aa14',1,'Turret']]],
+  ['resetalignpidcontroller_5',['ResetAlignPIDController',['../class_drivetrain.html#ac43993f933714c5be50441b911431fab',1,'Drivetrain']]],
+  ['resetanglepid_6',['ResetAnglePID',['../class_turret.html#a64110a61bd1f885f3a41dc92856e541a',1,'Turret']]],
+  ['resetdistancepidcontroller_7',['ResetDistancePIDController',['../class_drivetrain.html#a05d3f2ef24b01a62208b124a946c8cd6',1,'Drivetrain']]],
+  ['resetencoder_8',['ResetEncoder',['../class_elevator.html#a6d3f621dae6f07c3a45be0a83139f635',1,'Elevator::ResetEncoder()'],['../class_shooter.html#aa595c369250b14ef8eae01615bf2b64a',1,'Shooter::ResetEncoder()'],['../class_turret.html#a3735033e9fdac249677a315f085269cc',1,'Turret::ResetEncoder()']]],
+  ['resetencoders_9',['ResetEncoders',['../class_drivetrain.html#a0b14cd9cb776da62f7589da7618cdeee',1,'Drivetrain']]],
+  ['resetgyro_10',['ResetGyro',['../class_drivetrain.html#aa63b09496786d2472f8eb68b5b4a2063',1,'Drivetrain']]],
+  ['resetheightpid_11',['ResetHeightPID',['../class_elevator.html#a598ec942f895c71b6397b9d4c1d92e84',1,'Elevator']]],
+  ['resetmotors_12',['ResetMotors',['../class_drivetrain.html#a632d9e57aff0453021101f3f9264d9b6',1,'Drivetrain']]],
+  ['resetmovepidcontroller_13',['ResetMovePIDController',['../class_drivetrain.html#a935fa4d01b4aff480e32ed9c38259406',1,'Drivetrain']]],
+  ['resetpid_14',['ResetPID',['../class_shooter.html#a001e7d840f9ccf3960d9889891ec2b54',1,'Shooter']]],
+  ['resetpidcontrollers_15',['ResetPIDControllers',['../class_drivetrain.html#a1f7843b5a8518c82b6671d72bceefe28',1,'Drivetrain']]],
+  ['resetservos_16',['ResetServos',['../class_shooter.html#ad8e07e828ef7f4e5f1af4776436b97ae',1,'Shooter']]],
+  ['resetturnpidcontroller_17',['ResetTurnPIDController',['../class_drivetrain.html#a9f741b8119353fba3dc67b5f0dbfdb89',1,'Drivetrain']]],
+  ['robotcontainer_18',['RobotContainer',['../class_robot_container.html#ac508e6c51edfa97eb18e3412fe83ad8f',1,'RobotContainer']]],
+  ['robotinit_19',['RobotInit',['../class_robot.html#a66f23dae271748d525cf3ab046375f79',1,'Robot::RobotInit()'],['../class_robot_container.html#a81e434e41996e3cb24bf02d72f580818',1,'RobotContainer::RobotInit()']]],
+  ['robotperiodic_20',['RobotPeriodic',['../class_robot.html#a8fad82c2250bcfb83b743b5c0dd6ed27',1,'Robot::RobotPeriodic()'],['../class_robot_container.html#a1d7d4782539143fce79d3721030b14cf',1,'RobotContainer::RobotPeriodic()']]]
+];

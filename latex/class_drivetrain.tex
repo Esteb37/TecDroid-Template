@@ -1,0 +1,835 @@
+\hypertarget{class_drivetrain}{}\doxysection{Drivetrain Class Reference}
+\label{class_drivetrain}\index{Drivetrain@{Drivetrain}}
+
+
+{\ttfamily \#include $<$Drivetrain.\+h$>$}
+
+Inheritance diagram for Drivetrain\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_drivetrain}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_drivetrain_abfcc3eea7516b5f76422d39676adbd27}{Drivetrain}} ()
+\item 
+void \mbox{\hyperlink{class_drivetrain_aaab7ed6f92b39f5450595de9e49217e3}{Periodic}} () override
+\item 
+void \mbox{\hyperlink{class_drivetrain_a2a8e83c0d0800f32573d05b7d0017517}{Drive}} (double, double)
+\begin{DoxyCompactList}\small\item\em Use drivetrain Arcade\+Drive to move the chasis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a102e6dfdd03b5ffc3febdb34de935ec3}{Reset}} ()
+\begin{DoxyCompactList}\small\item\em Reset all systems. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a1b36fe27e7a9e58a075d4f176f3fac0d}{Invert\+Speed}} (bool)
+\begin{DoxyCompactList}\small\item\em Invert the direction of movement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_af20eee44b87d89348acdaf8def755284}{Invert\+Rotation}} (bool)
+\begin{DoxyCompactList}\small\item\em Invert the direction of rotation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_ad6090defa5f627403c482bbeec22a8b6}{Set\+Safety\+Enabled}} (bool)
+\begin{DoxyCompactList}\small\item\em Enable drivetrain safety. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a632d9e57aff0453021101f3f9264d9b6}{Reset\+Motors}} ()
+\begin{DoxyCompactList}\small\item\em Resets motor factory default. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_ae3e25ce7bbc97ac1912f703ca36c20e7}{Invert\+Right}} (bool)
+\begin{DoxyCompactList}\small\item\em Invert direction of the right motor group. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a6248133734bb47d86d3e7d2d46d6c7be}{Invert\+Left}} (bool)
+\begin{DoxyCompactList}\small\item\em Invert direction of the left motor group. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a264fc3fd471cb02c39e26e87277ab970}{Print\+Motors}} ()
+\begin{DoxyCompactList}\small\item\em Publishes all motors to the dashboard. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_drivetrain_a3115ec088361b83d74a4d95d7b2915e7}{Get\+Right\+Encoders}} ()
+\begin{DoxyCompactList}\small\item\em Gets the average of the right encoders. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_drivetrain_ac5dcbd091bee9d908aae86f989b83630}{Get\+Left\+Encoders}} ()
+\begin{DoxyCompactList}\small\item\em Gets the average of the left encoders. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_drivetrain_a548f0fea9392b195712cfa7403fe44ba}{Get\+Encoder\+Average}} ()
+\begin{DoxyCompactList}\small\item\em Gets the average of the all encoders. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a0b14cd9cb776da62f7589da7618cdeee}{Reset\+Encoders}} ()
+\begin{DoxyCompactList}\small\item\em Resets the encoders to 0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_ade6fcfa0f1d33b5a6ab23d4d39c51c58}{Invert\+Right\+Encoders}} (bool)
+\begin{DoxyCompactList}\small\item\em Invert the direction of the right encoders. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a90d349ff54025dec06c273b65cb0ac7b}{Invert\+Left\+Encoders}} (bool)
+\begin{DoxyCompactList}\small\item\em Invert the direction of the left encoders. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a7231873edf8c1be04e40f085a04b13aa}{Print\+Encoders}} ()
+\begin{DoxyCompactList}\small\item\em Publish the value of the encoders to the dashboard. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_drivetrain_aeb0ad112fc2e33313134a352bd79ccc8}{Get\+Gyro}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current angle of the gyro in degrees. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_drivetrain_a281f925dba295d9d14beb932c67c3192}{Get\+Gyro\+Rad}} ()
+\begin{DoxyCompactList}\small\item\em Get the gyro angle in radians. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_aa63b09496786d2472f8eb68b5b4a2063}{Reset\+Gyro}} ()
+\begin{DoxyCompactList}\small\item\em Resets the angle to 0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_adbbeb7dea4c6b7d1e760fde991ca9c08}{Invert\+Gyro}} (bool)
+\begin{DoxyCompactList}\small\item\em Invert the direction of the gyro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a5666edd674a1aa863c05d9402fbcce90}{Print\+Gyro}} ()
+\begin{DoxyCompactList}\small\item\em Publish the value of the gyro to the dashboard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a6715ed0bc5cde62b767b6388d9296c6f}{Print\+Gyro\+Rad}} ()
+\begin{DoxyCompactList}\small\item\em Publish the angle in radians to the dashboard. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_drivetrain_ac50530290af4e91020bf3973310ea6af}{Move}} (double, double)
+\begin{DoxyCompactList}\small\item\em Sets the drivetrain to a given heading. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_drivetrain_a30e1914280c2368691008c154af6c90c}{Turn}} (double, double)
+\begin{DoxyCompactList}\small\item\em Turns the drievtrain to a given angle. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_drivetrain_a4a8d358bc5d5ba4b6532eb35e75ea41e}{Move\+To}} (double, double, double, double)
+\begin{DoxyCompactList}\small\item\em Moves the drivetrain to a given coordinate in meters. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_drivetrain_aa5a3ae0a443fb9c8eb1b7201da399358}{Align\+With\+Target}} (double)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_align}{Align}} chasis to target. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_drivetrain_a4b4a900f38437b36e6ba6ef10dac44f3}{Set\+Distance\+With\+Target}} (double, double)
+\begin{DoxyCompactList}\small\item\em Set drivetrain to a specific distance from the target. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_drivetrain_aace237adc60b9d6a5c046931197ccc54}{Set\+Angle\+With\+Target}} (double, double)
+\begin{DoxyCompactList}\small\item\em Set drivetrain to a specific angle from the target. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_drivetrain_a6a6102b66ad56463d21c05a340861cfd}{Get\+Absolute\+Angle}} (double, double)
+\begin{DoxyCompactList}\small\item\em Get the absolute angle from a coordinate independent of quadrant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a935fa4d01b4aff480e32ed9c38259406}{Reset\+Move\+PIDController}} ()
+\begin{DoxyCompactList}\small\item\em Resets the Move PID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a9f741b8119353fba3dc67b5f0dbfdb89}{Reset\+Turn\+PIDController}} ()
+\begin{DoxyCompactList}\small\item\em Resets the Turn PID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_ac43993f933714c5be50441b911431fab}{Reset\+Align\+PIDController}} ()
+\begin{DoxyCompactList}\small\item\em Resets the \mbox{\hyperlink{class_align}{Align}} with target PID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a05d3f2ef24b01a62208b124a946c8cd6}{Reset\+Distance\+PIDController}} ()
+\begin{DoxyCompactList}\small\item\em Resets the Distance to target PID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a1f7843b5a8518c82b6671d72bceefe28}{Reset\+PIDControllers}} ()
+\begin{DoxyCompactList}\small\item\em Resets all PID controllers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a1283d1154911a913b18a87247159c895}{Print\+Move\+Error}} ()
+\begin{DoxyCompactList}\small\item\em Prints the move PID error to the dashboard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_aab40ea3240ab1f0262e6f931015b868c}{Print\+Turn\+Error}} ()
+\begin{DoxyCompactList}\small\item\em Prints the turn PID error to the dashboard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a8acfe7793cb899720272f2438d8d7dbc}{Print\+Move\+To\+Error}} ()
+\begin{DoxyCompactList}\small\item\em Prints the move to PID error to the dashboard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_a12b1b678aa454cc67d3494601c6347e7}{Print\+Align\+Error}} ()
+\begin{DoxyCompactList}\small\item\em Prints the align PID error to the dashboard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_adee58e9d133a795610ae569f7546c365}{Print\+Set\+Distance\+Error}} ()
+\begin{DoxyCompactList}\small\item\em Prints the distance PID error to the dashboard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_drivetrain_ab4ea4fff1c362668bfb049eba0461192}{Print\+Current\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Prints the current coordinates to the dashboard. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8h_source_l00017}{17}} of file \mbox{\hyperlink{_drivetrain_8h_source}{Drivetrain.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_drivetrain_abfcc3eea7516b5f76422d39676adbd27}\label{class_drivetrain_abfcc3eea7516b5f76422d39676adbd27}} 
+\index{Drivetrain@{Drivetrain}!Drivetrain@{Drivetrain}}
+\index{Drivetrain@{Drivetrain}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{Drivetrain()}{Drivetrain()}}
+{\footnotesize\ttfamily Drivetrain\+::\+Drivetrain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_drivetrain_aa5a3ae0a443fb9c8eb1b7201da399358}\label{class_drivetrain_aa5a3ae0a443fb9c8eb1b7201da399358}} 
+\index{Drivetrain@{Drivetrain}!AlignWithTarget@{AlignWithTarget}}
+\index{AlignWithTarget@{AlignWithTarget}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{AlignWithTarget()}{AlignWithTarget()}}
+{\footnotesize\ttfamily bool Drivetrain\+::\+Align\+With\+Target (\begin{DoxyParamCaption}\item[{double}]{speed }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_align}{Align}} chasis to target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & The speed at which to drive. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether or not the drivetrain has aligned to the target. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00203}{203}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a2a8e83c0d0800f32573d05b7d0017517}\label{class_drivetrain_a2a8e83c0d0800f32573d05b7d0017517}} 
+\index{Drivetrain@{Drivetrain}!Drive@{Drive}}
+\index{Drive@{Drive}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{Drive()}{Drive()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Drive (\begin{DoxyParamCaption}\item[{double}]{speed,  }\item[{double}]{rotation }\end{DoxyParamCaption})}
+
+
+
+Use drivetrain Arcade\+Drive to move the chasis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & Speed and direction to move \\
+\hline
+{\em rotation} & Rotation to turn \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a6a6102b66ad56463d21c05a340861cfd}\label{class_drivetrain_a6a6102b66ad56463d21c05a340861cfd}} 
+\index{Drivetrain@{Drivetrain}!GetAbsoluteAngle@{GetAbsoluteAngle}}
+\index{GetAbsoluteAngle@{GetAbsoluteAngle}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{GetAbsoluteAngle()}{GetAbsoluteAngle()}}
+{\footnotesize\ttfamily double Drivetrain\+::\+Get\+Absolute\+Angle (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})}
+
+
+
+Get the absolute angle from a coordinate independent of quadrant. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x coordinate \\
+\hline
+{\em y} & The y coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double the angle 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00285}{285}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a548f0fea9392b195712cfa7403fe44ba}\label{class_drivetrain_a548f0fea9392b195712cfa7403fe44ba}} 
+\index{Drivetrain@{Drivetrain}!GetEncoderAverage@{GetEncoderAverage}}
+\index{GetEncoderAverage@{GetEncoderAverage}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{GetEncoderAverage()}{GetEncoderAverage()}}
+{\footnotesize\ttfamily double Drivetrain\+::\+Get\+Encoder\+Average (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the average of the all encoders. 
+
+\begin{DoxyReturn}{Returns}
+double average 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_aeb0ad112fc2e33313134a352bd79ccc8}\label{class_drivetrain_aeb0ad112fc2e33313134a352bd79ccc8}} 
+\index{Drivetrain@{Drivetrain}!GetGyro@{GetGyro}}
+\index{GetGyro@{GetGyro}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{GetGyro()}{GetGyro()}}
+{\footnotesize\ttfamily double Drivetrain\+::\+Get\+Gyro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the current angle of the gyro in degrees. 
+
+\begin{DoxyReturn}{Returns}
+double angle 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00126}{126}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a281f925dba295d9d14beb932c67c3192}\label{class_drivetrain_a281f925dba295d9d14beb932c67c3192}} 
+\index{Drivetrain@{Drivetrain}!GetGyroRad@{GetGyroRad}}
+\index{GetGyroRad@{GetGyroRad}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{GetGyroRad()}{GetGyroRad()}}
+{\footnotesize\ttfamily double Drivetrain\+::\+Get\+Gyro\+Rad (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the gyro angle in radians. 
+
+\begin{DoxyReturn}{Returns}
+double angle radians 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_ac5dcbd091bee9d908aae86f989b83630}\label{class_drivetrain_ac5dcbd091bee9d908aae86f989b83630}} 
+\index{Drivetrain@{Drivetrain}!GetLeftEncoders@{GetLeftEncoders}}
+\index{GetLeftEncoders@{GetLeftEncoders}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{GetLeftEncoders()}{GetLeftEncoders()}}
+{\footnotesize\ttfamily double Drivetrain\+::\+Get\+Left\+Encoders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the average of the left encoders. 
+
+\begin{DoxyReturn}{Returns}
+double average 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a3115ec088361b83d74a4d95d7b2915e7}\label{class_drivetrain_a3115ec088361b83d74a4d95d7b2915e7}} 
+\index{Drivetrain@{Drivetrain}!GetRightEncoders@{GetRightEncoders}}
+\index{GetRightEncoders@{GetRightEncoders}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{GetRightEncoders()}{GetRightEncoders()}}
+{\footnotesize\ttfamily double Drivetrain\+::\+Get\+Right\+Encoders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the average of the right encoders. 
+
+\begin{DoxyReturn}{Returns}
+double average 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_adbbeb7dea4c6b7d1e760fde991ca9c08}\label{class_drivetrain_adbbeb7dea4c6b7d1e760fde991ca9c08}} 
+\index{Drivetrain@{Drivetrain}!InvertGyro@{InvertGyro}}
+\index{InvertGyro@{InvertGyro}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{InvertGyro()}{InvertGyro()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Invert\+Gyro (\begin{DoxyParamCaption}\item[{bool}]{invert }\end{DoxyParamCaption})}
+
+
+
+Invert the direction of the gyro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invert} & True to invert, false to not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00141}{141}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a6248133734bb47d86d3e7d2d46d6c7be}\label{class_drivetrain_a6248133734bb47d86d3e7d2d46d6c7be}} 
+\index{Drivetrain@{Drivetrain}!InvertLeft@{InvertLeft}}
+\index{InvertLeft@{InvertLeft}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{InvertLeft()}{InvertLeft()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Invert\+Left (\begin{DoxyParamCaption}\item[{bool}]{invert }\end{DoxyParamCaption})}
+
+
+
+Invert direction of the left motor group. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invert} & True to invert, false to not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a90d349ff54025dec06c273b65cb0ac7b}\label{class_drivetrain_a90d349ff54025dec06c273b65cb0ac7b}} 
+\index{Drivetrain@{Drivetrain}!InvertLeftEncoders@{InvertLeftEncoders}}
+\index{InvertLeftEncoders@{InvertLeftEncoders}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{InvertLeftEncoders()}{InvertLeftEncoders()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Invert\+Left\+Encoders (\begin{DoxyParamCaption}\item[{bool}]{invert }\end{DoxyParamCaption})}
+
+
+
+Invert the direction of the left encoders. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invert} & True to invert, false to not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_ae3e25ce7bbc97ac1912f703ca36c20e7}\label{class_drivetrain_ae3e25ce7bbc97ac1912f703ca36c20e7}} 
+\index{Drivetrain@{Drivetrain}!InvertRight@{InvertRight}}
+\index{InvertRight@{InvertRight}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{InvertRight()}{InvertRight()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Invert\+Right (\begin{DoxyParamCaption}\item[{bool}]{invert }\end{DoxyParamCaption})}
+
+
+
+Invert direction of the right motor group. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invert} & True to invert, false to not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_ade6fcfa0f1d33b5a6ab23d4d39c51c58}\label{class_drivetrain_ade6fcfa0f1d33b5a6ab23d4d39c51c58}} 
+\index{Drivetrain@{Drivetrain}!InvertRightEncoders@{InvertRightEncoders}}
+\index{InvertRightEncoders@{InvertRightEncoders}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{InvertRightEncoders()}{InvertRightEncoders()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Invert\+Right\+Encoders (\begin{DoxyParamCaption}\item[{bool}]{invert }\end{DoxyParamCaption})}
+
+
+
+Invert the direction of the right encoders. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invert} & True to invert, false to not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_af20eee44b87d89348acdaf8def755284}\label{class_drivetrain_af20eee44b87d89348acdaf8def755284}} 
+\index{Drivetrain@{Drivetrain}!InvertRotation@{InvertRotation}}
+\index{InvertRotation@{InvertRotation}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{InvertRotation()}{InvertRotation()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Invert\+Rotation (\begin{DoxyParamCaption}\item[{bool}]{invert }\end{DoxyParamCaption})}
+
+
+
+Invert the direction of rotation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invert} & True to invert, false to not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a1b36fe27e7a9e58a075d4f176f3fac0d}\label{class_drivetrain_a1b36fe27e7a9e58a075d4f176f3fac0d}} 
+\index{Drivetrain@{Drivetrain}!InvertSpeed@{InvertSpeed}}
+\index{InvertSpeed@{InvertSpeed}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{InvertSpeed()}{InvertSpeed()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Invert\+Speed (\begin{DoxyParamCaption}\item[{bool}]{invert }\end{DoxyParamCaption})}
+
+
+
+Invert the direction of movement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em invert} & True to invert, false to not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_ac50530290af4e91020bf3973310ea6af}\label{class_drivetrain_ac50530290af4e91020bf3973310ea6af}} 
+\index{Drivetrain@{Drivetrain}!Move@{Move}}
+\index{Move@{Move}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{Move()}{Move()}}
+{\footnotesize\ttfamily bool Drivetrain\+::\+Move (\begin{DoxyParamCaption}\item[{double}]{distance,  }\item[{double}]{speed }\end{DoxyParamCaption})}
+
+
+
+Sets the drivetrain to a given heading. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance} & The desired heading in meters. \\
+\hline
+{\em speed} & The speed at which to drive. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Wether or not the drivetrain is at the desired heading. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00158}{158}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a4a8d358bc5d5ba4b6532eb35e75ea41e}\label{class_drivetrain_a4a8d358bc5d5ba4b6532eb35e75ea41e}} 
+\index{Drivetrain@{Drivetrain}!MoveTo@{MoveTo}}
+\index{MoveTo@{MoveTo}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{MoveTo()}{MoveTo()}}
+{\footnotesize\ttfamily bool Drivetrain\+::\+Move\+To (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{double}]{speed,  }\item[{double}]{turn\+Speed }\end{DoxyParamCaption})}
+
+
+
+Moves the drivetrain to a given coordinate in meters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The desired x coordinate. \\
+\hline
+{\em y} & The desired y coordinate. \\
+\hline
+{\em speed} & The speed at which to drive. \\
+\hline
+{\em turn\+Speed} & The speed at which to turn. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether or not the drivetrain has reached the desired coordinate. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00178}{178}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_aaab7ed6f92b39f5450595de9e49217e3}\label{class_drivetrain_aaab7ed6f92b39f5450595de9e49217e3}} 
+\index{Drivetrain@{Drivetrain}!Periodic@{Periodic}}
+\index{Periodic@{Periodic}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{Periodic()}{Periodic()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Periodic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a12b1b678aa454cc67d3494601c6347e7}\label{class_drivetrain_a12b1b678aa454cc67d3494601c6347e7}} 
+\index{Drivetrain@{Drivetrain}!PrintAlignError@{PrintAlignError}}
+\index{PrintAlignError@{PrintAlignError}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{PrintAlignError()}{PrintAlignError()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Print\+Align\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Prints the align PID error to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00275}{275}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_ab4ea4fff1c362668bfb049eba0461192}\label{class_drivetrain_ab4ea4fff1c362668bfb049eba0461192}} 
+\index{Drivetrain@{Drivetrain}!PrintCurrentPosition@{PrintCurrentPosition}}
+\index{PrintCurrentPosition@{PrintCurrentPosition}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{PrintCurrentPosition()}{PrintCurrentPosition()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Print\+Current\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Prints the current coordinates to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00298}{298}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a7231873edf8c1be04e40f085a04b13aa}\label{class_drivetrain_a7231873edf8c1be04e40f085a04b13aa}} 
+\index{Drivetrain@{Drivetrain}!PrintEncoders@{PrintEncoders}}
+\index{PrintEncoders@{PrintEncoders}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{PrintEncoders()}{PrintEncoders()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Print\+Encoders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Publish the value of the encoders to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a5666edd674a1aa863c05d9402fbcce90}\label{class_drivetrain_a5666edd674a1aa863c05d9402fbcce90}} 
+\index{Drivetrain@{Drivetrain}!PrintGyro@{PrintGyro}}
+\index{PrintGyro@{PrintGyro}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{PrintGyro()}{PrintGyro()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Print\+Gyro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Publish the value of the gyro to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00146}{146}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a6715ed0bc5cde62b767b6388d9296c6f}\label{class_drivetrain_a6715ed0bc5cde62b767b6388d9296c6f}} 
+\index{Drivetrain@{Drivetrain}!PrintGyroRad@{PrintGyroRad}}
+\index{PrintGyroRad@{PrintGyroRad}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{PrintGyroRad()}{PrintGyroRad()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Print\+Gyro\+Rad (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Publish the angle in radians to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00151}{151}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a264fc3fd471cb02c39e26e87277ab970}\label{class_drivetrain_a264fc3fd471cb02c39e26e87277ab970}} 
+\index{Drivetrain@{Drivetrain}!PrintMotors@{PrintMotors}}
+\index{PrintMotors@{PrintMotors}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{PrintMotors()}{PrintMotors()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Print\+Motors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Publishes all motors to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a1283d1154911a913b18a87247159c895}\label{class_drivetrain_a1283d1154911a913b18a87247159c895}} 
+\index{Drivetrain@{Drivetrain}!PrintMoveError@{PrintMoveError}}
+\index{PrintMoveError@{PrintMoveError}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{PrintMoveError()}{PrintMoveError()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Print\+Move\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Prints the move PID error to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00259}{259}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a8acfe7793cb899720272f2438d8d7dbc}\label{class_drivetrain_a8acfe7793cb899720272f2438d8d7dbc}} 
+\index{Drivetrain@{Drivetrain}!PrintMoveToError@{PrintMoveToError}}
+\index{PrintMoveToError@{PrintMoveToError}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{PrintMoveToError()}{PrintMoveToError()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Print\+Move\+To\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Prints the move to PID error to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00269}{269}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_adee58e9d133a795610ae569f7546c365}\label{class_drivetrain_adee58e9d133a795610ae569f7546c365}} 
+\index{Drivetrain@{Drivetrain}!PrintSetDistanceError@{PrintSetDistanceError}}
+\index{PrintSetDistanceError@{PrintSetDistanceError}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{PrintSetDistanceError()}{PrintSetDistanceError()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Print\+Set\+Distance\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Prints the distance PID error to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00280}{280}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_aab40ea3240ab1f0262e6f931015b868c}\label{class_drivetrain_aab40ea3240ab1f0262e6f931015b868c}} 
+\index{Drivetrain@{Drivetrain}!PrintTurnError@{PrintTurnError}}
+\index{PrintTurnError@{PrintTurnError}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{PrintTurnError()}{PrintTurnError()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Print\+Turn\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Prints the turn PID error to the dashboard. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00264}{264}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a102e6dfdd03b5ffc3febdb34de935ec3}\label{class_drivetrain_a102e6dfdd03b5ffc3febdb34de935ec3}} 
+\index{Drivetrain@{Drivetrain}!Reset@{Reset}}
+\index{Reset@{Reset}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reset all systems. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_ac43993f933714c5be50441b911431fab}\label{class_drivetrain_ac43993f933714c5be50441b911431fab}} 
+\index{Drivetrain@{Drivetrain}!ResetAlignPIDController@{ResetAlignPIDController}}
+\index{ResetAlignPIDController@{ResetAlignPIDController}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{ResetAlignPIDController()}{ResetAlignPIDController()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Reset\+Align\+PIDController (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the \mbox{\hyperlink{class_align}{Align}} with target PID. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00241}{241}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a05d3f2ef24b01a62208b124a946c8cd6}\label{class_drivetrain_a05d3f2ef24b01a62208b124a946c8cd6}} 
+\index{Drivetrain@{Drivetrain}!ResetDistancePIDController@{ResetDistancePIDController}}
+\index{ResetDistancePIDController@{ResetDistancePIDController}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{ResetDistancePIDController()}{ResetDistancePIDController()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Reset\+Distance\+PIDController (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the Distance to target PID. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00246}{246}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a0b14cd9cb776da62f7589da7618cdeee}\label{class_drivetrain_a0b14cd9cb776da62f7589da7618cdeee}} 
+\index{Drivetrain@{Drivetrain}!ResetEncoders@{ResetEncoders}}
+\index{ResetEncoders@{ResetEncoders}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{ResetEncoders()}{ResetEncoders()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Reset\+Encoders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the encoders to 0. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00096}{96}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_aa63b09496786d2472f8eb68b5b4a2063}\label{class_drivetrain_aa63b09496786d2472f8eb68b5b4a2063}} 
+\index{Drivetrain@{Drivetrain}!ResetGyro@{ResetGyro}}
+\index{ResetGyro@{ResetGyro}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{ResetGyro()}{ResetGyro()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Reset\+Gyro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the angle to 0. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00136}{136}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a632d9e57aff0453021101f3f9264d9b6}\label{class_drivetrain_a632d9e57aff0453021101f3f9264d9b6}} 
+\index{Drivetrain@{Drivetrain}!ResetMotors@{ResetMotors}}
+\index{ResetMotors@{ResetMotors}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{ResetMotors()}{ResetMotors()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Reset\+Motors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets motor factory default. 
+
+\begin{DoxyWarning}{Warning}
+Use only once and before everything else 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a935fa4d01b4aff480e32ed9c38259406}\label{class_drivetrain_a935fa4d01b4aff480e32ed9c38259406}} 
+\index{Drivetrain@{Drivetrain}!ResetMovePIDController@{ResetMovePIDController}}
+\index{ResetMovePIDController@{ResetMovePIDController}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{ResetMovePIDController()}{ResetMovePIDController()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Reset\+Move\+PIDController (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the Move PID. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00231}{231}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a1f7843b5a8518c82b6671d72bceefe28}\label{class_drivetrain_a1f7843b5a8518c82b6671d72bceefe28}} 
+\index{Drivetrain@{Drivetrain}!ResetPIDControllers@{ResetPIDControllers}}
+\index{ResetPIDControllers@{ResetPIDControllers}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{ResetPIDControllers()}{ResetPIDControllers()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Reset\+PIDControllers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets all PID controllers. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00251}{251}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a9f741b8119353fba3dc67b5f0dbfdb89}\label{class_drivetrain_a9f741b8119353fba3dc67b5f0dbfdb89}} 
+\index{Drivetrain@{Drivetrain}!ResetTurnPIDController@{ResetTurnPIDController}}
+\index{ResetTurnPIDController@{ResetTurnPIDController}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{ResetTurnPIDController()}{ResetTurnPIDController()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Reset\+Turn\+PIDController (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the Turn PID. 
+
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00236}{236}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_aace237adc60b9d6a5c046931197ccc54}\label{class_drivetrain_aace237adc60b9d6a5c046931197ccc54}} 
+\index{Drivetrain@{Drivetrain}!SetAngleWithTarget@{SetAngleWithTarget}}
+\index{SetAngleWithTarget@{SetAngleWithTarget}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{SetAngleWithTarget()}{SetAngleWithTarget()}}
+{\footnotesize\ttfamily bool Drivetrain\+::\+Set\+Angle\+With\+Target (\begin{DoxyParamCaption}\item[{double}]{angle,  }\item[{double}]{speed }\end{DoxyParamCaption})}
+
+
+
+Set drivetrain to a specific angle from the target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & The angle to the target in degrees. \\
+\hline
+{\em speed} & The speed at which to drive. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether or not the drivetrain has reached the desired angle 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00222}{222}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a4b4a900f38437b36e6ba6ef10dac44f3}\label{class_drivetrain_a4b4a900f38437b36e6ba6ef10dac44f3}} 
+\index{Drivetrain@{Drivetrain}!SetDistanceWithTarget@{SetDistanceWithTarget}}
+\index{SetDistanceWithTarget@{SetDistanceWithTarget}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{SetDistanceWithTarget()}{SetDistanceWithTarget()}}
+{\footnotesize\ttfamily bool Drivetrain\+::\+Set\+Distance\+With\+Target (\begin{DoxyParamCaption}\item[{double}]{distance,  }\item[{double}]{speed }\end{DoxyParamCaption})}
+
+
+
+Set drivetrain to a specific distance from the target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em distance} & The distance to the target in meters. \\
+\hline
+{\em speed} & The speed at which to drive. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether or not the drivetrain has reached the desired distance 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00213}{213}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_ad6090defa5f627403c482bbeec22a8b6}\label{class_drivetrain_ad6090defa5f627403c482bbeec22a8b6}} 
+\index{Drivetrain@{Drivetrain}!SetSafetyEnabled@{SetSafetyEnabled}}
+\index{SetSafetyEnabled@{SetSafetyEnabled}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{SetSafetyEnabled()}{SetSafetyEnabled()}}
+{\footnotesize\ttfamily void Drivetrain\+::\+Set\+Safety\+Enabled (\begin{DoxyParamCaption}\item[{bool}]{enabled }\end{DoxyParamCaption})}
+
+
+
+Enable drivetrain safety. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enable} & True to enable, false to not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+\mbox{\Hypertarget{class_drivetrain_a30e1914280c2368691008c154af6c90c}\label{class_drivetrain_a30e1914280c2368691008c154af6c90c}} 
+\index{Drivetrain@{Drivetrain}!Turn@{Turn}}
+\index{Turn@{Turn}!Drivetrain@{Drivetrain}}
+\doxysubsubsection{\texorpdfstring{Turn()}{Turn()}}
+{\footnotesize\ttfamily bool Drivetrain\+::\+Turn (\begin{DoxyParamCaption}\item[{double}]{angle,  }\item[{double}]{speed }\end{DoxyParamCaption})}
+
+
+
+Turns the drievtrain to a given angle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle} & The desired angle in degrees. \\
+\hline
+{\em speed} & The speed at which to turn. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether or not the drivetrain has reached the desired angle 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_drivetrain_8cpp_source_l00168}{168}} of file \mbox{\hyperlink{_drivetrain_8cpp_source}{Drivetrain.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/main/include/subsystems/\mbox{\hyperlink{_drivetrain_8h}{Drivetrain.\+h}}\item 
+src/main/cpp/subsystems/\mbox{\hyperlink{_drivetrain_8cpp}{Drivetrain.\+cpp}}\end{DoxyCompactItemize}

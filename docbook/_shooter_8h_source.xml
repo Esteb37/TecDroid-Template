@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__shooter_8h_source" xml:lang="en-US">
+<title>Shooter.h</title>
+<indexterm><primary>src/main/include/subsystems/Shooter.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__shooter_8h_source_1l00001"/>00001 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00002"/>00002 
+<anchor xml:id="__shooter_8h_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__constants_8h">Constants.h</link>&quot;</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&lt;any&gt;</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&lt;frc/DoubleSolenoid.h&gt;</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00006"/>00006 <emphasis role="preprocessor">#include&#32;&lt;frc/Encoder.h&gt;</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&lt;frc/Servo.h&gt;</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&lt;frc/controller/PIDController.h&gt;</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&lt;frc/motorcontrol/VictorSP.h&gt;</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&lt;frc2/command/SubsystemBase.h&gt;</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00011"/>00011 <emphasis role="preprocessor">#include&#32;&lt;rev/CANSparkMax.h&gt;</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00012"/>00012 <emphasis role="preprocessor">#include&#32;&lt;<link linkend="__limelight_8h">subsystems/Limelight.h</link>&gt;</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00013"/>00013 
+<anchor xml:id="__shooter_8h_source_1l00014"/>00014 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>frc;
+<anchor xml:id="__shooter_8h_source_1l00015"/>00015 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>frc2;
+<anchor xml:id="__shooter_8h_source_1l00016"/>00016 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>rev;
+<anchor xml:id="__shooter_8h_source_1l00017"/>00017 
+<anchor xml:id="__shooter_8h_source_1l00018"/><link linkend="_class_shooter">00018</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_shooter">Shooter</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;SubsystemBase
+<anchor xml:id="__shooter_8h_source_1l00019"/>00019 {
+<anchor xml:id="__shooter_8h_source_1l00020"/>00020 
+<anchor xml:id="__shooter_8h_source_1l00021"/>00021 <emphasis role="keyword">public</emphasis>:
+<anchor xml:id="__shooter_8h_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<link linkend="_class_shooter_1acc429ebafcc36bb592c752097c22657f">Shooter</link>();
+<anchor xml:id="__shooter_8h_source_1l00023"/>00023 
+<anchor xml:id="__shooter_8h_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1a2724023e11346b0bbdd9ed42006b7ff0">Periodic</link>()&#32;<emphasis role="keyword">override</emphasis>;
+<anchor xml:id="__shooter_8h_source_1l00025"/>00025 
+<anchor xml:id="__shooter_8h_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;Actions&#32;-----------</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00027"/>00027 
+<anchor xml:id="__shooter_8h_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1ac7cef43d52b4164973e3e10930076794">Reset</link>();
+<anchor xml:id="__shooter_8h_source_1l00032"/>00032 
+<anchor xml:id="__shooter_8h_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------&#32;Motor&#32;---------</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00034"/>00034 
+<anchor xml:id="__shooter_8h_source_1l00039"/>00039 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1a8aec07b9a84ed0727abddf356898e9b3">SetMotor</link>(<emphasis role="keywordtype">double</emphasis>);
+<anchor xml:id="__shooter_8h_source_1l00040"/>00040 
+<anchor xml:id="__shooter_8h_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_shooter_1ae46c0d81938a14f152b5ce98f801ffdb">GetMotor</link>();
+<anchor xml:id="__shooter_8h_source_1l00045"/>00045 
+<anchor xml:id="__shooter_8h_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1a5ac1a254530a93fa6fa18294f8dabe27">InvertMotor</link>(<emphasis role="keywordtype">bool</emphasis>);
+<anchor xml:id="__shooter_8h_source_1l00051"/>00051 
+<anchor xml:id="__shooter_8h_source_1l00055"/>00055 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1a66eb01e6f77792930c773702b23cee49">PrintMotor</link>();
+<anchor xml:id="__shooter_8h_source_1l00056"/>00056 
+<anchor xml:id="__shooter_8h_source_1l00057"/>00057 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------&#32;Encoder&#32;---------</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00058"/>00058 
+<anchor xml:id="__shooter_8h_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_shooter_1a84e75a932a92bd33f5d5e72f66158b03">GetEncoder</link>();
+<anchor xml:id="__shooter_8h_source_1l00064"/>00064 
+<anchor xml:id="__shooter_8h_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1aa595c369250b14ef8eae01615bf2b64a">ResetEncoder</link>();
+<anchor xml:id="__shooter_8h_source_1l00069"/>00069 
+<anchor xml:id="__shooter_8h_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1a6fd5aca189d08d69c22e9dec55eba416">InvertEncoder</link>(<emphasis role="keywordtype">bool</emphasis>);
+<anchor xml:id="__shooter_8h_source_1l00075"/>00075 
+<anchor xml:id="__shooter_8h_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1a3b628de0e1ad0a54b561bd566ae4b975">PrintEncoder</link>();
+<anchor xml:id="__shooter_8h_source_1l00080"/>00080 
+<anchor xml:id="__shooter_8h_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------&#32;PID&#32;---------</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00082"/>00082 
+<anchor xml:id="__shooter_8h_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_shooter_1a8288dd4cad5eb0f085745f853b25de93">ReachRPM</link>(<emphasis role="keywordtype">double</emphasis>);
+<anchor xml:id="__shooter_8h_source_1l00089"/>00089 
+<anchor xml:id="__shooter_8h_source_1l00095"/>00095 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_shooter_1a705647ab4ea9b26f938a3c949a1b3b26">CalculateRPM</link>();
+<anchor xml:id="__shooter_8h_source_1l00096"/>00096 
+<anchor xml:id="__shooter_8h_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1a001e7d840f9ccf3960d9889891ec2b54">ResetPID</link>();
+<anchor xml:id="__shooter_8h_source_1l00101"/>00101 
+<anchor xml:id="__shooter_8h_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1ac1ddd58052880f12e939363fd0ba253b">PrintPIDError</link>();
+<anchor xml:id="__shooter_8h_source_1l00106"/>00106 
+<anchor xml:id="__shooter_8h_source_1l00107"/>00107 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------&#32;Angle&#32;with&#32;Servos&#32;--------</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00108"/>00108 
+<anchor xml:id="__shooter_8h_source_1l00113"/>00113 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1a34ded1f3ec76ecf22460a1c1d8f2674b">SetAngleServos</link>(<emphasis role="keywordtype">double</emphasis>);
+<anchor xml:id="__shooter_8h_source_1l00114"/>00114 
+<anchor xml:id="__shooter_8h_source_1l00118"/>00118 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1ad8e07e828ef7f4e5f1af4776436b97ae">ResetServos</link>();
+<anchor xml:id="__shooter_8h_source_1l00119"/>00119 
+<anchor xml:id="__shooter_8h_source_1l00124"/>00124 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_shooter_1a553e8a885139e6ad6223a6d44fa932cc">GetRightServo</link>();
+<anchor xml:id="__shooter_8h_source_1l00125"/>00125 
+<anchor xml:id="__shooter_8h_source_1l00130"/>00130 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_shooter_1a9741d799e6ebce9463cfd5c028f0ea63">GetLeftServo</link>();
+<anchor xml:id="__shooter_8h_source_1l00131"/>00131 
+<anchor xml:id="__shooter_8h_source_1l00135"/>00135 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1a7b744be3d8430e7fd9b2a011f110d34f">PrintServos</link>();
+<anchor xml:id="__shooter_8h_source_1l00136"/>00136 
+<anchor xml:id="__shooter_8h_source_1l00137"/>00137 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------&#32;Angle&#32;with&#32;Solenoids&#32;---------</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00138"/>00138 
+<anchor xml:id="__shooter_8h_source_1l00144"/>00144 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1a25595e8df8cc799bc991ac94faf70f33">SetAngleSolenoids</link>(<emphasis role="keywordtype">bool</emphasis>);
+<anchor xml:id="__shooter_8h_source_1l00145"/>00145 
+<anchor xml:id="__shooter_8h_source_1l00149"/><link linkend="_class_shooter_1aedf661e8bdbdcd020f4288864f7d81de">00149</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1aedf661e8bdbdcd020f4288864f7d81de">InvertSolenoids</link>();
+<anchor xml:id="__shooter_8h_source_1l00150"/>00150 
+<anchor xml:id="__shooter_8h_source_1l00154"/>00154 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1a89acb718cbf766d2f606927b0601c473">SolenoidsOff</link>();
+<anchor xml:id="__shooter_8h_source_1l00155"/>00155 
+<anchor xml:id="__shooter_8h_source_1l00159"/>00159 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_shooter_1a3b76c25f3999d3a05e710e5170f2a642">GetRightSolenoid</link>();
+<anchor xml:id="__shooter_8h_source_1l00160"/>00160 
+<anchor xml:id="__shooter_8h_source_1l00164"/>00164 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_shooter_1a4d070235a6b8f78255e73394b7918863">GetLeftSolenoid</link>();
+<anchor xml:id="__shooter_8h_source_1l00165"/>00165 
+<anchor xml:id="__shooter_8h_source_1l00169"/>00169 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_shooter_1a4c3abb0e6f70f70d87f5f2d55b624d18">PrintSolenoids</link>();
+<anchor xml:id="__shooter_8h_source_1l00170"/>00170 
+<anchor xml:id="__shooter_8h_source_1l00171"/>00171 <emphasis role="keyword">private</emphasis>:
+<anchor xml:id="__shooter_8h_source_1l00172"/>00172 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------&#32;Motor&#32;---------</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00173"/>00173 
+<anchor xml:id="__shooter_8h_source_1l00174"/>00174 &#32;&#32;&#32;&#32;CANSparkMax&#32;m_motor{<link linkend="__constants_8h_1a5651d2b303d890905099967ddc7264e5">pShooterMotor</link>,&#32;CANSparkMax::MotorType::kBrushless};
+<anchor xml:id="__shooter_8h_source_1l00175"/>00175 
+<anchor xml:id="__shooter_8h_source_1l00176"/>00176 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;TODO&#32;:&#32;define&#32;motor&#32;type</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00177"/>00177 
+<anchor xml:id="__shooter_8h_source_1l00178"/>00178 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;VictorSP&#32;m_motor{pShooterMotor};</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00179"/>00179 
+<anchor xml:id="__shooter_8h_source_1l00180"/>00180 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;VictorSPX&#32;m_motor{pShooterMotor};</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00181"/>00181 
+<anchor xml:id="__shooter_8h_source_1l00182"/>00182 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------&#32;Encoder&#32;---------</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00183"/>00183 
+<anchor xml:id="__shooter_8h_source_1l00184"/>00184 &#32;&#32;&#32;&#32;SparkMaxRelativeEncoder&#32;m_encoder{m_motor.GetEncoder()};
+<anchor xml:id="__shooter_8h_source_1l00185"/>00185 
+<anchor xml:id="__shooter_8h_source_1l00186"/>00186 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;TODO&#32;:&#32;define&#32;encoder&#32;type</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00187"/>00187 
+<anchor xml:id="__shooter_8h_source_1l00188"/>00188 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;Encoder&#32;m_encoder{k_shooterEncoderA,&#32;k_shooterEncoderB,&#32;false,&#32;Encoder::EncodingType::k4X};</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00189"/>00189 
+<anchor xml:id="__shooter_8h_source_1l00190"/>00190 &#32;&#32;&#32;&#32;PIDController&#32;m_PIDController{<link linkend="__constants_8h_1adcd22432e504b1d819fa4ce2c1b428ca">k_shooterP</link>,&#32;<link linkend="__constants_8h_1aad9a1663a2462556190e7894eb10ff43">k_shooterI</link>,&#32;<link linkend="__constants_8h_1aeb3b42753c87bb52f39435c6dd4712f9">k_shooterD</link>};
+<anchor xml:id="__shooter_8h_source_1l00191"/>00191 
+<anchor xml:id="__shooter_8h_source_1l00192"/>00192 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;--------&#32;Angle&#32;actuators&#32;--------</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00193"/>00193 
+<anchor xml:id="__shooter_8h_source_1l00194"/>00194 &#32;&#32;&#32;&#32;DoubleSolenoid&#32;m_rightSolenoid{PneumaticsModuleType::REVPH,&#32;<link linkend="__constants_8h_1a46fc892f628137633b639a8f81a142a9">pShooterRightSolenoidForward</link>,&#32;<link linkend="__constants_8h_1a28d3a3b02ed001d530849b909f29e54b">pShooterRightSolenoidReverse</link>};
+<anchor xml:id="__shooter_8h_source_1l00195"/>00195 
+<anchor xml:id="__shooter_8h_source_1l00196"/>00196 &#32;&#32;&#32;&#32;DoubleSolenoid&#32;m_leftSolenoid{PneumaticsModuleType::REVPH,&#32;<link linkend="__constants_8h_1a6d3fa684f18ce924e6a276b17d022a9f">pShooterLeftSolenoidForward</link>,&#32;<link linkend="__constants_8h_1ade3b08fcc03a3a9624d33bad41c9ac82">pShooterLeftSolenoidReverse</link>};
+<anchor xml:id="__shooter_8h_source_1l00197"/>00197 
+<anchor xml:id="__shooter_8h_source_1l00198"/>00198 &#32;&#32;&#32;&#32;Servo&#32;m_rightServo{<link linkend="__constants_8h_1abe6213f6862a9491975b815e5721ed0b">pShooterRightServo</link>};
+<anchor xml:id="__shooter_8h_source_1l00199"/>00199 
+<anchor xml:id="__shooter_8h_source_1l00200"/>00200 &#32;&#32;&#32;&#32;Servo&#32;m_leftServo{<link linkend="__constants_8h_1ad4f71d1858f2fb270022ed3ce0faf299">pShooterLeftServo</link>};
+<anchor xml:id="__shooter_8h_source_1l00201"/>00201 
+<anchor xml:id="__shooter_8h_source_1l00202"/>00202 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------&#32;Sensors&#32;-------------</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00203"/>00203 
+<anchor xml:id="__shooter_8h_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<link linkend="_class_limelight">Limelight</link>&#32;m_limelight;
+<anchor xml:id="__shooter_8h_source_1l00205"/>00205 
+<anchor xml:id="__shooter_8h_source_1l00206"/>00206 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------&#32;Attributes&#32;-----------</emphasis>
+<anchor xml:id="__shooter_8h_source_1l00207"/>00207 
+<anchor xml:id="__shooter_8h_source_1l00208"/>00208 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;m_solenoidsInverted&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__shooter_8h_source_1l00209"/>00209 };
+</programlisting></section>

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_feed" xml:lang="en-US">
+<title>Feed Class Reference</title>
+<indexterm><primary>Feed</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Feed.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for Feed:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_feed.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_feed_1a60b65616d5fb91643775fcec6699b466">Feed</link> (<link linkend="_class_feeder">Feeder</link> *feeder)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_feed_1a8ce1dfe7cb5413b5041f82a586f91d6f">Initialize</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_feed_1ac9820e78caa662c10926404800cc75c5">Execute</link> () override</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_feed_1ab03c49bb4662ef47be30c37ae77b54b6">IsFinished</link> () override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__feed_8h_source_1l00010">10</link> of file <link linkend="__feed_8h_source">Feed.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_feed_1a60b65616d5fb91643775fcec6699b466"/><section>
+    <title>Feed()</title>
+<indexterm><primary>Feed</primary><secondary>Feed</secondary></indexterm>
+<indexterm><primary>Feed</primary><secondary>Feed</secondary></indexterm>
+<para><computeroutput>Feed::Feed (<link linkend="_class_feeder">Feeder</link> * feeder)<computeroutput>[explicit]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__feed_8cpp_source_1l00003">3</link> of file <link linkend="__feed_8cpp_source">Feed.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_feed_1ac9820e78caa662c10926404800cc75c5"/><section>
+    <title>Execute()</title>
+<indexterm><primary>Execute</primary><secondary>Feed</secondary></indexterm>
+<indexterm><primary>Feed</primary><secondary>Execute</secondary></indexterm>
+<para><computeroutput>void Feed::Execute ( )<computeroutput>[override]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__feed_8cpp_source_1l00014">14</link> of file <link linkend="__feed_8cpp_source">Feed.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_feed_1a8ce1dfe7cb5413b5041f82a586f91d6f"/><section>
+    <title>Initialize()</title>
+<indexterm><primary>Initialize</primary><secondary>Feed</secondary></indexterm>
+<indexterm><primary>Feed</primary><secondary>Initialize</secondary></indexterm>
+<para><computeroutput>void Feed::Initialize ( )<computeroutput>[override]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__feed_8cpp_source_1l00008">8</link> of file <link linkend="__feed_8cpp_source">Feed.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_feed_1ab03c49bb4662ef47be30c37ae77b54b6"/><section>
+    <title>IsFinished()</title>
+<indexterm><primary>IsFinished</primary><secondary>Feed</secondary></indexterm>
+<indexterm><primary>Feed</primary><secondary>IsFinished</secondary></indexterm>
+<para><computeroutput>bool Feed::IsFinished ( )<computeroutput>[override]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__feed_8cpp_source_1l00019">19</link> of file <link linkend="__feed_8cpp_source">Feed.cpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+src/main/include/commands/<link linkend="__feed_8h">Feed.h</link>src/main/cpp/commands/<link linkend="__feed_8cpp">Feed.cpp</link></section>
+</section>

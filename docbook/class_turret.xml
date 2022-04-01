@@ -1,0 +1,541 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_turret" xml:lang="en-US">
+<title>Turret Class Reference</title>
+<indexterm><primary>Turret</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Turret.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for Turret:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_turret.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_turret_1a716b97b5618cc59c9b095954f92fd47c">Turret</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1ae6438eb6ae5ec2be9346b5ad774ace2d">Periodic</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1a67239926e9d9f7861ed4703d56778860">Reset</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1ae0b01f3162930716cd54bbfbec2972fb">Turn</link> (double)</para>
+
+<para>Turns the turret. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1a3d89174d5a8dca20e62d28c80b250b6e">KeepStill</link> ()</para>
+
+<para>Keeps the turret at the current angle. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_turret_1a577d4ded6aa2912c0281acd261ce4b4a">Center</link> ()</para>
+
+<para>Sets the turret to angle 0. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1ae34f9f1ee2bc4bf488e1543f1d47c18d">SetMotor</link> (double)</para>
+
+<para>Sets the Motor speed. </para>
+</listitem>
+            <listitem><para>double <link linkend="_class_turret_1ad8a6d047f8f7b7382a4f3aae01a5c011">GetMotor</link> ()</para>
+
+<para>Gets the Motor speed. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1a5717e06eca7a0fdbd9c92eb6bb7dfe81">InvertMotor</link> (bool)</para>
+
+<para>Invert motor direction. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1af52c29af0886cca0e24c278bca72a85a">PrintMotor</link> ()</para>
+
+<para>Publishes the motor&apos;s value on the SmartDashboard. </para>
+</listitem>
+            <listitem><para>double <link linkend="_class_turret_1ae3d7d4170a7755d24b8624adec4a26db">GetEncoder</link> ()</para>
+
+<para>Gets the encoder value. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1a3735033e9fdac249677a315f085269cc">ResetEncoder</link> ()</para>
+
+<para>Sets the current encoder value to 0. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1af07791415230178b22ba2dff75d866a7">InvertEncoder</link> (bool)</para>
+
+<para>Invert encoder direction. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1ae154268736c97c75ad42dd7e73fc35f0">PrintEncoder</link> ()</para>
+
+<para>Publishes the encoder&apos;s value on the SmartDashboard. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_turret_1a69bdd8f0a95d6667a8d554cbea80cf1f">SetAngle</link> (double)</para>
+
+<para>Sets the turret to a specific angle. </para>
+</listitem>
+            <listitem><para>double <link linkend="_class_turret_1a9a955b5d8d8569b9059dbf98db7be6aa">GetAngle</link> ()</para>
+
+<para>Gets the turret&apos;s current angle. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1a64110a61bd1f885f3a41dc92856e541a">ResetAnglePID</link> ()</para>
+
+<para>Resets the PID controller for setting angle. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1a8e9064e74fda14f1dc9a0958503d752a">PrintAngle</link> ()</para>
+
+<para>Publishes the turret&apos;s current angle on the SmartDashboard. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1aa811c66bcde148e0e44b9010c596eea8">PrintAnglePIDError</link> ()</para>
+
+<para>Publishes the anglepid error on the SmartDashboard. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_turret_1ade826b7d94686eb26a22240e6bf5cef5">Align</link> ()</para>
+
+<para>Aligns the turret to the target. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1ab15c596c80b5395d3c91de7eab59aa14">ResetAlignPID</link> ()</para>
+
+<para>Resets the PID controller for aligning to target. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1a0ed916a9383e4dd28e6d95ba4629fc2f">PrintAlignPIDError</link> ()</para>
+
+<para>Publishes the alignPID error on the SmartDashboard. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_turret_1a17c79f3bd5017e8927195523b8819356">GetRightLimit</link> ()</para>
+
+<para>Checks if the turret is at the right limit. </para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_turret_1a0cd77f0b81e7df1ca3a20d1ac38cf856">GetLeftLimit</link> ()</para>
+
+<para>Checks if the turret is at the left limit. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1a696d8b95e79c9093d7fa41a5dfd584a8">PrintLimits</link> ()</para>
+
+<para>Publish limit values to the SmartDashboard. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1a86ec06bd5b2f24bab0360c8c0661f66f">SetLimitSafetyActive</link> (bool)</para>
+
+<para>Enables safety with limits. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_turret_1a9237ad362784e3950e9057746fa43797">SetAngleSafetyActive</link> (bool)</para>
+
+<para>Enables safety with encoder. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__turret_8h_source_1l00015">15</link> of file <link linkend="__turret_8h_source">Turret.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_turret_1a716b97b5618cc59c9b095954f92fd47c"/><section>
+    <title>Turret()</title>
+<indexterm><primary>Turret</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>Turret</secondary></indexterm>
+<para><computeroutput>Turret::Turret ( )</computeroutput></para><para>
+Definition at line <link linkend="__turret_8cpp_source_1l00005">5</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_turret_1ade826b7d94686eb26a22240e6bf5cef5"/><section>
+    <title>Align()</title>
+<indexterm><primary>Align</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>Align</secondary></indexterm>
+<para><computeroutput>bool Turret::Align ( )</computeroutput></para><para>
+
+<para>Aligns the turret to the target. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Has the turret reached the target </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00173">173</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a577d4ded6aa2912c0281acd261ce4b4a"/><section>
+    <title>Center()</title>
+<indexterm><primary>Center</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>Center</secondary></indexterm>
+<para><computeroutput>bool Turret::Center ( )</computeroutput></para><para>
+
+<para>Sets the turret to angle 0. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00049">49</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a9a955b5d8d8569b9059dbf98db7be6aa"/><section>
+    <title>GetAngle()</title>
+<indexterm><primary>GetAngle</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>GetAngle</secondary></indexterm>
+<para><computeroutput>double Turret::GetAngle ( )</computeroutput></para><para>
+
+<para>Gets the turret&apos;s current angle. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>The turret&apos;s current angle </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00153">153</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1ae3d7d4170a7755d24b8624adec4a26db"/><section>
+    <title>GetEncoder()</title>
+<indexterm><primary>GetEncoder</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>GetEncoder</secondary></indexterm>
+<para><computeroutput>double Turret::GetEncoder ( )</computeroutput></para><para>
+
+<para>Gets the encoder value. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00099">99</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a0cd77f0b81e7df1ca3a20d1ac38cf856"/><section>
+    <title>GetLeftLimit()</title>
+<indexterm><primary>GetLeftLimit</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>GetLeftLimit</secondary></indexterm>
+<para><computeroutput>bool Turret::GetLeftLimit ( )</computeroutput></para><para>
+
+<para>Checks if the turret is at the left limit. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>True if the turret is at the left limit, false if not </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00199">199</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1ad8a6d047f8f7b7382a4f3aae01a5c011"/><section>
+    <title>GetMotor()</title>
+<indexterm><primary>GetMotor</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>GetMotor</secondary></indexterm>
+<para><computeroutput>double Turret::GetMotor ( )</computeroutput></para><para>
+
+<para>Gets the Motor speed. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00084">84</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a17c79f3bd5017e8927195523b8819356"/><section>
+    <title>GetRightLimit()</title>
+<indexterm><primary>GetRightLimit</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>GetRightLimit</secondary></indexterm>
+<para><computeroutput>bool Turret::GetRightLimit ( )</computeroutput></para><para>
+
+<para>Checks if the turret is at the right limit. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>True if the turret is at the right limit, false if not </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00194">194</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1af07791415230178b22ba2dff75d866a7"/><section>
+    <title>InvertEncoder()</title>
+<indexterm><primary>InvertEncoder</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>InvertEncoder</secondary></indexterm>
+<para><computeroutput>void Turret::InvertEncoder (bool invert)</computeroutput></para><para>
+
+<para>Invert encoder direction. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>invert</entry><entry>
+<para>True to invert, false to not </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00119">119</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a5717e06eca7a0fdbd9c92eb6bb7dfe81"/><section>
+    <title>InvertMotor()</title>
+<indexterm><primary>InvertMotor</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>InvertMotor</secondary></indexterm>
+<para><computeroutput>void Turret::InvertMotor (bool inverted)</computeroutput></para><para>
+
+<para>Invert motor direction. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>invert</entry><entry>
+<para>True to invert, false to not </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00089">89</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a3d89174d5a8dca20e62d28c80b250b6e"/><section>
+    <title>KeepStill()</title>
+<indexterm><primary>KeepStill</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>KeepStill</secondary></indexterm>
+<para><computeroutput>void Turret::KeepStill ( )</computeroutput></para><para>
+
+<para>Keeps the turret at the current angle. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00042">42</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1ae6438eb6ae5ec2be9346b5ad774ace2d"/><section>
+    <title>Periodic()</title>
+<indexterm><primary>Periodic</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>Periodic</secondary></indexterm>
+<para><computeroutput>void Turret::Periodic ( )<computeroutput>[override]</computeroutput></computeroutput></para>
+<para>Will be called periodically whenever the CommandScheduler runs. </para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00019">19</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a0ed916a9383e4dd28e6d95ba4629fc2f"/><section>
+    <title>PrintAlignPIDError()</title>
+<indexterm><primary>PrintAlignPIDError</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>PrintAlignPIDError</secondary></indexterm>
+<para><computeroutput>void Turret::PrintAlignPIDError ( )</computeroutput></para><para>
+
+<para>Publishes the alignPID error on the SmartDashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00189">189</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a8e9064e74fda14f1dc9a0958503d752a"/><section>
+    <title>PrintAngle()</title>
+<indexterm><primary>PrintAngle</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>PrintAngle</secondary></indexterm>
+<para><computeroutput>void Turret::PrintAngle ( )</computeroutput></para><para>
+
+<para>Publishes the turret&apos;s current angle on the SmartDashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00163">163</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1aa811c66bcde148e0e44b9010c596eea8"/><section>
+    <title>PrintAnglePIDError()</title>
+<indexterm><primary>PrintAnglePIDError</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>PrintAnglePIDError</secondary></indexterm>
+<para><computeroutput>void Turret::PrintAnglePIDError ( )</computeroutput></para><para>
+
+<para>Publishes the anglepid error on the SmartDashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00168">168</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1ae154268736c97c75ad42dd7e73fc35f0"/><section>
+    <title>PrintEncoder()</title>
+<indexterm><primary>PrintEncoder</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>PrintEncoder</secondary></indexterm>
+<para><computeroutput>void Turret::PrintEncoder ( )</computeroutput></para><para>
+
+<para>Publishes the encoder&apos;s value on the SmartDashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00129">129</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a696d8b95e79c9093d7fa41a5dfd584a8"/><section>
+    <title>PrintLimits()</title>
+<indexterm><primary>PrintLimits</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>PrintLimits</secondary></indexterm>
+<para><computeroutput>void Turret::PrintLimits ( )</computeroutput></para><para>
+
+<para>Publish limit values to the SmartDashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00204">204</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1af52c29af0886cca0e24c278bca72a85a"/><section>
+    <title>PrintMotor()</title>
+<indexterm><primary>PrintMotor</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>PrintMotor</secondary></indexterm>
+<para><computeroutput>void Turret::PrintMotor ( )</computeroutput></para><para>
+
+<para>Publishes the motor&apos;s value on the SmartDashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00094">94</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a67239926e9d9f7861ed4703d56778860"/><section>
+    <title>Reset()</title>
+<indexterm><primary>Reset</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>Reset</secondary></indexterm>
+<para><computeroutput>void Turret::Reset ( )</computeroutput></para><para>
+Definition at line <link linkend="__turret_8cpp_source_1l00035">35</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1ab15c596c80b5395d3c91de7eab59aa14"/><section>
+    <title>ResetAlignPID()</title>
+<indexterm><primary>ResetAlignPID</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>ResetAlignPID</secondary></indexterm>
+<para><computeroutput>void Turret::ResetAlignPID ( )</computeroutput></para><para>
+
+<para>Resets the PID controller for aligning to target. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00184">184</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a64110a61bd1f885f3a41dc92856e541a"/><section>
+    <title>ResetAnglePID()</title>
+<indexterm><primary>ResetAnglePID</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>ResetAnglePID</secondary></indexterm>
+<para><computeroutput>void Turret::ResetAnglePID ( )</computeroutput></para><para>
+
+<para>Resets the PID controller for setting angle. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00158">158</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a3735033e9fdac249677a315f085269cc"/><section>
+    <title>ResetEncoder()</title>
+<indexterm><primary>ResetEncoder</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>ResetEncoder</secondary></indexterm>
+<para><computeroutput>void Turret::ResetEncoder ( )</computeroutput></para><para>
+
+<para>Sets the current encoder value to 0. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00109">109</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a69bdd8f0a95d6667a8d554cbea80cf1f"/><section>
+    <title>SetAngle()</title>
+<indexterm><primary>SetAngle</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>SetAngle</secondary></indexterm>
+<para><computeroutput>bool Turret::SetAngle (double angle)</computeroutput></para><para>
+
+<para>Sets the turret to a specific angle. </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>Has the turret reached the angle </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00134">134</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a9237ad362784e3950e9057746fa43797"/><section>
+    <title>SetAngleSafetyActive()</title>
+<indexterm><primary>SetAngleSafetyActive</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>SetAngleSafetyActive</secondary></indexterm>
+<para><computeroutput>void Turret::SetAngleSafetyActive (bool active)</computeroutput></para><para>
+
+<para>Enables safety with encoder. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00210">210</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1a86ec06bd5b2f24bab0360c8c0661f66f"/><section>
+    <title>SetLimitSafetyActive()</title>
+<indexterm><primary>SetLimitSafetyActive</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>SetLimitSafetyActive</secondary></indexterm>
+<para><computeroutput>void Turret::SetLimitSafetyActive (bool active)</computeroutput></para><para>
+
+<para>Enables safety with limits. </para>
+</para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00215">215</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1ae34f9f1ee2bc4bf488e1543f1d47c18d"/><section>
+    <title>SetMotor()</title>
+<indexterm><primary>SetMotor</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>SetMotor</secondary></indexterm>
+<para><computeroutput>void Turret::SetMotor (double speed)</computeroutput></para><para>
+
+<para>Sets the Motor speed. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>speed</entry><entry>
+<para>Speed and direction to turn </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00054">54</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_turret_1ae0b01f3162930716cd54bbfbec2972fb"/><section>
+    <title>Turn()</title>
+<indexterm><primary>Turn</primary><secondary>Turret</secondary></indexterm>
+<indexterm><primary>Turret</primary><secondary>Turn</secondary></indexterm>
+<para><computeroutput>void Turret::Turn (double speed)</computeroutput></para><para>
+
+<para>Turns the turret. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>speed</entry><entry>
+<para>Speed and direction to turn </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__turret_8cpp_source_1l00030">30</link> of file <link linkend="__turret_8cpp_source">Turret.cpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+src/main/include/subsystems/<link linkend="__turret_8h">Turret.h</link>src/main/cpp/subsystems/<link linkend="__turret_8cpp">Turret.cpp</link></section>
+</section>

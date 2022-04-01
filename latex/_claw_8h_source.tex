@@ -1,0 +1,74 @@
+\hypertarget{_claw_8h_source}{}\doxysection{Claw.\+h}
+\label{_claw_8h_source}\index{src/main/include/subsystems/Claw.h@{src/main/include/subsystems/Claw.h}}
+\mbox{\hyperlink{_claw_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00001}00001 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00002}00002 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_constants_8h}{Constants.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00003}00003 \textcolor{preprocessor}{\#include <frc/DoubleSolenoid.h>}}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00004}00004 \textcolor{preprocessor}{\#include <frc/smartdashboard/SmartDashboard.h>}}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00005}00005 \textcolor{preprocessor}{\#include <frc2/command/SubsystemBase.h>}}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00007}00007 \textcolor{keyword}{using namespace }frc;}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00008}00008 \textcolor{keyword}{using namespace }frc2;}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00010}\mbox{\hyperlink{class_claw}{00010}} \textcolor{keyword}{class }\mbox{\hyperlink{class_claw}{Claw}} : \textcolor{keyword}{public} SubsystemBase}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00011}00011 \{}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00013}00013 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00014}00014     \mbox{\hyperlink{class_claw_a8b3a92a9d71ffc3c055925859f86cac7}{Claw}}();}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00016}00016     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_claw_a8f59aedc61ab5cc13cac52e3627edea3}{Periodic}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00018}00018     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Actions -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00023}00023     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_claw_ad87b5cb832e2f552389a9b5a63e24323}{OpenHand}}();}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00028}00028     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_claw_ab7feb9949f79f7ac25ef176f93bf2e3d}{CloseHand}}();}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00033}00033     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_claw_a3641fbd05fd576d0a9522b82df1c5af2}{ToggleHand}}();}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00038}00038     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_claw_a027be32445067ee0a6c2d59ebb8df3ea}{LowerWrist}}();}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00043}00043     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_claw_ae031406a37f960b6a4410d3fe0d258ba}{RaiseWrist}}();}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00048}00048     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_claw_ab59ae0fec3b08867efcab2f6c76ae36c}{ToggleWrist}}();}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00050}00050     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Hand Solenoid -\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00056}00056     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_claw_a3762c56f1350a032b23199a9f2d7eb02}{InvertHand}}(\textcolor{keywordtype}{bool});}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00061}00061     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_claw_a35572e4b83e0bd1e7ffdc9e21aa52ee7}{HandOff}}();}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00067}00067     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_claw_ae07f3c3cfa089dd194bcf84361087ea8}{GetHand}}();}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00072}00072     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_claw_a59def511e4ddc290acf328ed86f7ea8b}{PrintHand}}();}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00074}00074     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Wrist Solenoid -\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00080}00080     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_claw_a3e2e32c78e78d39f2a77968d3df70a9c}{InvertWrist}}(\textcolor{keywordtype}{bool});}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00085}00085     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_claw_a011b295de15225a8a4348ff14c38724f}{WristOff}}();}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00091}00091     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_claw_a565e6a702b0742b978a54af8f077db80}{GetWrist}}();}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00096}00096     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_claw_aabe0d464cd410c56957b5570319d55bc}{PrintWrist}}();}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00098}00098 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00099}00099     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Solenoids -\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00101}00101     DoubleSolenoid m\_hand\{PneumaticsModuleType::REVPH, \mbox{\hyperlink{_constants_8h_afd957756d3865d0d5e9887d0a2de9066}{pClawHandSolenoidForward}}, \mbox{\hyperlink{_constants_8h_a0106215a681f5ab154c2cf8130b36c04}{pClawHandSolenoidReverse}}\};}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00103}00103     DoubleSolenoid m\_wrist\{PneumaticsModuleType::REVPH, \mbox{\hyperlink{_constants_8h_a1a2d846f543a98e33c43fda30256f8a3}{pClawWristSolenoidForward}}, \mbox{\hyperlink{_constants_8h_a0ab750f5668cc55380c764977e23ab85}{pClawWristSolenoidReverse}}\};}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00105}00105     \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Attributes -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00107}00107     \textcolor{keywordtype}{bool} m\_handInverted = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00109}00109     \textcolor{keywordtype}{bool} m\_wristInverted = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00111}00111     \textcolor{keywordtype}{bool} m\_handOpen = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00113}00113     \textcolor{keywordtype}{bool} m\_wristLowered = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_claw_8h_source_l00114}00114 \};}
+
+\end{DoxyCode}

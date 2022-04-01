@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__elevator_8h_source" xml:lang="en-US">
+<title>Elevator.h</title>
+<indexterm><primary>src/main/include/subsystems/Elevator.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__elevator_8h_source_1l00001"/>00001 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00002"/>00002 
+<anchor xml:id="__elevator_8h_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__constants_8h">Constants.h</link>&quot;</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&lt;frc/DigitalInput.h&gt;</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&lt;frc/Encoder.h&gt;</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00006"/>00006 <emphasis role="preprocessor">#include&#32;&lt;frc/controller/PIDController.h&gt;</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&lt;frc2/command/SubsystemBase.h&gt;</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&lt;rev/CANSparkMax.h&gt;</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00009"/>00009 
+<anchor xml:id="__elevator_8h_source_1l00010"/>00010 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>frc;
+<anchor xml:id="__elevator_8h_source_1l00011"/>00011 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>frc2;
+<anchor xml:id="__elevator_8h_source_1l00012"/>00012 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>rev;
+<anchor xml:id="__elevator_8h_source_1l00013"/>00013 
+<anchor xml:id="__elevator_8h_source_1l00014"/><link linkend="_class_elevator">00014</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_elevator">Elevator</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;SubsystemBase
+<anchor xml:id="__elevator_8h_source_1l00015"/>00015 {
+<anchor xml:id="__elevator_8h_source_1l00016"/>00016 <emphasis role="keyword">public</emphasis>:
+<anchor xml:id="__elevator_8h_source_1l00017"/>00017 &#32;&#32;&#32;&#32;<link linkend="_class_elevator_1a42ec2949d6e5f9bf90c361933562eb5f">Elevator</link>();
+<anchor xml:id="__elevator_8h_source_1l00018"/>00018 
+<anchor xml:id="__elevator_8h_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1a12003fa3be947d811a004cb0b69d9a69">Periodic</link>()&#32;<emphasis role="keyword">override</emphasis>;
+<anchor xml:id="__elevator_8h_source_1l00020"/>00020 
+<anchor xml:id="__elevator_8h_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;Actions&#32;-----------</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00022"/>00022 
+<anchor xml:id="__elevator_8h_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1a1e734d3f2a97bbec15f1fd0a8a9760ae">Reset</link>();
+<anchor xml:id="__elevator_8h_source_1l00027"/>00027 
+<anchor xml:id="__elevator_8h_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1a51844ef540f210c16fafb8323eefa3cf">Move</link>(<emphasis role="keywordtype">double</emphasis>);
+<anchor xml:id="__elevator_8h_source_1l00033"/>00033 
+<anchor xml:id="__elevator_8h_source_1l00037"/>00037 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1a689bff16dc6190ae073abc72ab15f11f">KeepStill</link>();
+<anchor xml:id="__elevator_8h_source_1l00038"/>00038 
+<anchor xml:id="__elevator_8h_source_1l00039"/>00039 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------&#32;Motor&#32;---------</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00040"/>00040 
+<anchor xml:id="__elevator_8h_source_1l00045"/>00045 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1a0c5262a47e8afdfdaf45af1e39518244">SetMotor</link>(<emphasis role="keywordtype">double</emphasis>);
+<anchor xml:id="__elevator_8h_source_1l00046"/>00046 
+<anchor xml:id="__elevator_8h_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_elevator_1a72c67a1690571e255c2d0518bd8fd170">GetMotor</link>();
+<anchor xml:id="__elevator_8h_source_1l00051"/>00051 
+<anchor xml:id="__elevator_8h_source_1l00056"/>00056 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1a93c1e8836f021d0bf252d53bcc8bebe2">InvertMotor</link>(<emphasis role="keywordtype">bool</emphasis>);
+<anchor xml:id="__elevator_8h_source_1l00057"/>00057 
+<anchor xml:id="__elevator_8h_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1a97e1607efd1c33580091049eca0f58f0">PrintMotor</link>();
+<anchor xml:id="__elevator_8h_source_1l00062"/>00062 
+<anchor xml:id="__elevator_8h_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------&#32;Encoder&#32;---------</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00064"/>00064 
+<anchor xml:id="__elevator_8h_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_elevator_1a16bfdaa2dbf0dbdbe5c2183616c0bbc1">GetEncoder</link>();
+<anchor xml:id="__elevator_8h_source_1l00070"/>00070 
+<anchor xml:id="__elevator_8h_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1a6d3f621dae6f07c3a45be0a83139f635">ResetEncoder</link>();
+<anchor xml:id="__elevator_8h_source_1l00075"/>00075 
+<anchor xml:id="__elevator_8h_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1ab1dcbf97fc77cc45df007d7a06a574c7">InvertEncoder</link>(<emphasis role="keywordtype">bool</emphasis>);
+<anchor xml:id="__elevator_8h_source_1l00081"/>00081 
+<anchor xml:id="__elevator_8h_source_1l00085"/>00085 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1ad17b7cbd77ca1aec9e94705fb4142694">PrintEncoder</link>();
+<anchor xml:id="__elevator_8h_source_1l00086"/>00086 
+<anchor xml:id="__elevator_8h_source_1l00087"/>00087 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;Height&#32;---------</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00088"/>00088 
+<anchor xml:id="__elevator_8h_source_1l00094"/>00094 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_elevator_1a0bc80fbc45bfb0bc8eacfe43217b2b8b">SetHeight</link>(<emphasis role="keywordtype">double</emphasis>);
+<anchor xml:id="__elevator_8h_source_1l00095"/>00095 
+<anchor xml:id="__elevator_8h_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_elevator_1acee7586b6e918e0d39aad91ca88f6d15">GetHeight</link>();
+<anchor xml:id="__elevator_8h_source_1l00101"/>00101 
+<anchor xml:id="__elevator_8h_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1a598ec942f895c71b6397b9d4c1d92e84">ResetHeightPID</link>();
+<anchor xml:id="__elevator_8h_source_1l00106"/>00106 
+<anchor xml:id="__elevator_8h_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1aa0127947145b4b422c71df50596bb603">PrintHeight</link>();
+<anchor xml:id="__elevator_8h_source_1l00111"/>00111 
+<anchor xml:id="__elevator_8h_source_1l00115"/>00115 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1a297e8d759f282ad37dddb8b1d2c4cbd5">PrintHeightPIDError</link>();
+<anchor xml:id="__elevator_8h_source_1l00116"/>00116 
+<anchor xml:id="__elevator_8h_source_1l00117"/>00117 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;Limits&#32;---------</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00118"/>00118 
+<anchor xml:id="__elevator_8h_source_1l00123"/>00123 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_elevator_1ad4e88b3752b1c5afea34bea0b10a8d1b">GetTopLimit</link>();
+<anchor xml:id="__elevator_8h_source_1l00124"/>00124 
+<anchor xml:id="__elevator_8h_source_1l00129"/>00129 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_elevator_1adfb113f3762495292f318880ef7f4002">GetBottomLimit</link>();
+<anchor xml:id="__elevator_8h_source_1l00130"/>00130 
+<anchor xml:id="__elevator_8h_source_1l00134"/>00134 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1a323c2178986e3aa87e40abd7c225c376">PrintLimits</link>();
+<anchor xml:id="__elevator_8h_source_1l00135"/>00135 
+<anchor xml:id="__elevator_8h_source_1l00136"/>00136 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;---------&#32;Safety&#32;----------</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00137"/>00137 
+<anchor xml:id="__elevator_8h_source_1l00142"/>00142 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1a688309e16233723a4b71a6776d5c1d9f">SetLimitSafetyActive</link>(<emphasis role="keywordtype">bool</emphasis>);
+<anchor xml:id="__elevator_8h_source_1l00143"/>00143 
+<anchor xml:id="__elevator_8h_source_1l00148"/>00148 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_elevator_1afae4e27835b0ca27d6578c024df41576">SetHeightSafetyActive</link>(<emphasis role="keywordtype">bool</emphasis>);
+<anchor xml:id="__elevator_8h_source_1l00149"/>00149 
+<anchor xml:id="__elevator_8h_source_1l00150"/>00150 <emphasis role="keyword">private</emphasis>:
+<anchor xml:id="__elevator_8h_source_1l00151"/>00151 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;Motor&#32;----------</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00152"/>00152 
+<anchor xml:id="__elevator_8h_source_1l00153"/>00153 &#32;&#32;&#32;&#32;CANSparkMax&#32;m_motor{<link linkend="__constants_8h_1ae616b522a616e27feebbb02fff5bd26e">pElevatorMotor</link>,&#32;CANSparkMax::MotorType::kBrushed};
+<anchor xml:id="__elevator_8h_source_1l00154"/>00154 
+<anchor xml:id="__elevator_8h_source_1l00155"/>00155 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;VictorSP&#32;m_motor{pElevatorMotor};</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00156"/>00156 
+<anchor xml:id="__elevator_8h_source_1l00157"/>00157 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;VictorSPX&#32;m_motor{pElevatorMotor};</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00158"/>00158 
+<anchor xml:id="__elevator_8h_source_1l00159"/>00159 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;Encoder&#32;----------</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00160"/>00160 
+<anchor xml:id="__elevator_8h_source_1l00161"/>00161 &#32;&#32;&#32;&#32;Encoder&#32;m_encoder{<link linkend="__constants_8h_1aa24ac89c04a5fca672f5a39a5d5fac12">pElevatorEncoderA</link>,&#32;<link linkend="__constants_8h_1aa6c5cfbda75d8ccaa538370dc57380e5">pElevatorEncoderB</link>,&#32;<emphasis role="keyword">false</emphasis>,&#32;Encoder::EncodingType::k4X};
+<anchor xml:id="__elevator_8h_source_1l00162"/>00162 
+<anchor xml:id="__elevator_8h_source_1l00163"/>00163 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;PID&#32;----------</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00164"/>00164 
+<anchor xml:id="__elevator_8h_source_1l00165"/>00165 &#32;&#32;&#32;&#32;PIDController&#32;m_heightPID{<link linkend="__constants_8h_1a8dc1ece58a703e11f4cf3b17e70bfdbb">k_elevatorHeightP</link>,&#32;<link linkend="__constants_8h_1aeaeb6dc468a9bef81b703396d668fca8">k_elevatorHeightI</link>,&#32;<link linkend="__constants_8h_1aa1b8105fa241610064b2042574e14446">k_elevatorHeightD</link>};
+<anchor xml:id="__elevator_8h_source_1l00166"/>00166 
+<anchor xml:id="__elevator_8h_source_1l00167"/>00167 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;Limits&#32;----------</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00168"/>00168 
+<anchor xml:id="__elevator_8h_source_1l00169"/>00169 &#32;&#32;&#32;&#32;DigitalInput&#32;m_limitSwitchTop{<link linkend="__constants_8h_1ac6fa371583917364b6a26dc2e999b264">pElevatorLimitTop</link>};
+<anchor xml:id="__elevator_8h_source_1l00170"/>00170 
+<anchor xml:id="__elevator_8h_source_1l00171"/>00171 &#32;&#32;&#32;&#32;DigitalInput&#32;m_limitSwitchBottom{<link linkend="__constants_8h_1ab791836d0acea73e97d46d6cdb7abcd8">pElevatorLimitBottom</link>};
+<anchor xml:id="__elevator_8h_source_1l00172"/>00172 
+<anchor xml:id="__elevator_8h_source_1l00173"/>00173 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;Safety&#32;----------</emphasis>
+<anchor xml:id="__elevator_8h_source_1l00174"/>00174 
+<anchor xml:id="__elevator_8h_source_1l00175"/>00175 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;m_height;
+<anchor xml:id="__elevator_8h_source_1l00176"/>00176 
+<anchor xml:id="__elevator_8h_source_1l00177"/>00177 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;m_keepingStill&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__elevator_8h_source_1l00178"/>00178 
+<anchor xml:id="__elevator_8h_source_1l00179"/>00179 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;m_limitSafety&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__elevator_8h_source_1l00180"/>00180 
+<anchor xml:id="__elevator_8h_source_1l00181"/>00181 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;m_heightSafety&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__elevator_8h_source_1l00182"/>00182 };
+</programlisting></section>

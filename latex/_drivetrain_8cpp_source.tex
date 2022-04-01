@@ -1,0 +1,308 @@
+\hypertarget{_drivetrain_8cpp_source}{}\doxysection{Drivetrain.\+cpp}
+\label{_drivetrain_8cpp_source}\index{src/main/cpp/subsystems/Drivetrain.cpp@{src/main/cpp/subsystems/Drivetrain.cpp}}
+\mbox{\hyperlink{_drivetrain_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_drivetrain_8h}{subsystems/Drivetrain.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00003}00003 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00005}\mbox{\hyperlink{class_drivetrain_abfcc3eea7516b5f76422d39676adbd27}{00005}} \mbox{\hyperlink{class_drivetrain_abfcc3eea7516b5f76422d39676adbd27}{Drivetrain::Drivetrain}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00006}00006 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00007}00007     m\_frontRightEncoder.SetPositionConversionFactor(\mbox{\hyperlink{_constants_8h_a895b330b47c4cda862d6a83355445746}{k\_drivetrainDPR}});}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00008}00008     m\_frontLeftEncoder.SetPositionConversionFactor(\mbox{\hyperlink{_constants_8h_a895b330b47c4cda862d6a83355445746}{k\_drivetrainDPR}});}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00009}00009     m\_backRightEncoder.SetPositionConversionFactor(\mbox{\hyperlink{_constants_8h_a895b330b47c4cda862d6a83355445746}{k\_drivetrainDPR}});}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00010}00010     m\_backLeftEncoder.SetPositionConversionFactor(\mbox{\hyperlink{_constants_8h_a895b330b47c4cda862d6a83355445746}{k\_drivetrainDPR}});}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00011}00011 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00013}\mbox{\hyperlink{class_drivetrain_aaab7ed6f92b39f5450595de9e49217e3}{00013}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_aaab7ed6f92b39f5450595de9e49217e3}{Drivetrain::Periodic}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00014}00014 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00015}00015 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00017}00017 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Control -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00019}\mbox{\hyperlink{class_drivetrain_a2a8e83c0d0800f32573d05b7d0017517}{00019}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a2a8e83c0d0800f32573d05b7d0017517}{Drivetrain::Drive}}(\textcolor{keywordtype}{double} speed, \textcolor{keywordtype}{double} rotation)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00021}00021     m\_drive.ArcadeDrive(speed * m\_speedDirection * \mbox{\hyperlink{_constants_8h_ae9208af5f2d2b5058f64a0f2b42ddfa3}{k\_drivetrainMaxSpeed}}, rotation * m\_rotationDirection * \mbox{\hyperlink{_constants_8h_a11de03f501a5134e925510eb491140c4}{k\_drivetrainMaxRotation}});}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00022}00022 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00024}\mbox{\hyperlink{class_drivetrain_a102e6dfdd03b5ffc3febdb34de935ec3}{00024}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a102e6dfdd03b5ffc3febdb34de935ec3}{Drivetrain::Reset}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00025}00025 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00027}00027     \mbox{\hyperlink{class_drivetrain_aa63b09496786d2472f8eb68b5b4a2063}{ResetGyro}}();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00028}00028     \mbox{\hyperlink{class_drivetrain_a0b14cd9cb776da62f7589da7618cdeee}{ResetEncoders}}();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00030}00030     m\_drive.SetSafetyEnabled(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00032}00032     m\_speedDirection = 1;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00033}00033     m\_rotationDirection = 1;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00034}00034 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00036}\mbox{\hyperlink{class_drivetrain_a1b36fe27e7a9e58a075d4f176f3fac0d}{00036}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a1b36fe27e7a9e58a075d4f176f3fac0d}{Drivetrain::InvertSpeed}}(\textcolor{keywordtype}{bool} invert)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00037}00037 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00038}00038     m\_speedDirection = invert ? -\/1 : 1;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00039}00039 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00041}\mbox{\hyperlink{class_drivetrain_af20eee44b87d89348acdaf8def755284}{00041}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_af20eee44b87d89348acdaf8def755284}{Drivetrain::InvertRotation}}(\textcolor{keywordtype}{bool} invert)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00042}00042 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00043}00043     m\_rotationDirection = invert ? -\/1 : 1;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00044}00044 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00046}\mbox{\hyperlink{class_drivetrain_ad6090defa5f627403c482bbeec22a8b6}{00046}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_ad6090defa5f627403c482bbeec22a8b6}{Drivetrain::SetSafetyEnabled}}(\textcolor{keywordtype}{bool} enabled)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00047}00047 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00048}00048     m\_drive.SetSafetyEnabled(enabled);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00049}00049 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00051}00051 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Motors -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00053}\mbox{\hyperlink{class_drivetrain_a632d9e57aff0453021101f3f9264d9b6}{00053}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a632d9e57aff0453021101f3f9264d9b6}{Drivetrain::ResetMotors}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00054}00054 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00055}00055     m\_frontRight.RestoreFactoryDefaults();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00056}00056     m\_frontLeft.RestoreFactoryDefaults();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00057}00057     m\_backRight.RestoreFactoryDefaults();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00058}00058     m\_backLeft.RestoreFactoryDefaults();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00059}00059 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00061}\mbox{\hyperlink{class_drivetrain_ae3e25ce7bbc97ac1912f703ca36c20e7}{00061}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_ae3e25ce7bbc97ac1912f703ca36c20e7}{Drivetrain::InvertRight}}(\textcolor{keywordtype}{bool} invert)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00062}00062 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00063}00063     m\_right.SetInverted(invert);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00064}00064 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00066}\mbox{\hyperlink{class_drivetrain_a6248133734bb47d86d3e7d2d46d6c7be}{00066}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a6248133734bb47d86d3e7d2d46d6c7be}{Drivetrain::InvertLeft}}(\textcolor{keywordtype}{bool} invert)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00067}00067 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00068}00068     m\_left.SetInverted(invert);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00069}00069 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00071}\mbox{\hyperlink{class_drivetrain_a264fc3fd471cb02c39e26e87277ab970}{00071}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a264fc3fd471cb02c39e26e87277ab970}{Drivetrain::PrintMotors}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00072}00072 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00073}00073     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Front Right Motor"{}}, m\_frontRight.Get());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00074}00074     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Front Left Motor"{}}, m\_frontLeft.Get());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00075}00075     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Back Right Motor"{}}, m\_backRight.Get());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00076}00076     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Back Left Motor"{}}, m\_backLeft.Get());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00077}00077 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00079}00079 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Encoders -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00081}\mbox{\hyperlink{class_drivetrain_a3115ec088361b83d74a4d95d7b2915e7}{00081}} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_drivetrain_a3115ec088361b83d74a4d95d7b2915e7}{Drivetrain::GetRightEncoders}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00082}00082 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00083}00083     \textcolor{keywordflow}{return} (m\_frontRightEncoder.GetPosition() + m\_backRightEncoder.GetPosition()) / 2;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00084}00084 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00086}\mbox{\hyperlink{class_drivetrain_ac5dcbd091bee9d908aae86f989b83630}{00086}} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_drivetrain_ac5dcbd091bee9d908aae86f989b83630}{Drivetrain::GetLeftEncoders}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00087}00087 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00088}00088     \textcolor{keywordflow}{return} (m\_frontLeftEncoder.GetPosition() + m\_backLeftEncoder.GetPosition()) / 2;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00089}00089 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00091}\mbox{\hyperlink{class_drivetrain_a548f0fea9392b195712cfa7403fe44ba}{00091}} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_drivetrain_a548f0fea9392b195712cfa7403fe44ba}{Drivetrain::GetEncoderAverage}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00092}00092 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00093}00093     \textcolor{keywordflow}{return} (\mbox{\hyperlink{class_drivetrain_a3115ec088361b83d74a4d95d7b2915e7}{GetRightEncoders}}() + \mbox{\hyperlink{class_drivetrain_ac5dcbd091bee9d908aae86f989b83630}{GetLeftEncoders}}()) / 2;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00094}00094 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00096}\mbox{\hyperlink{class_drivetrain_a0b14cd9cb776da62f7589da7618cdeee}{00096}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a0b14cd9cb776da62f7589da7618cdeee}{Drivetrain::ResetEncoders}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00097}00097 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00098}00098     m\_frontRightEncoder.SetPosition(0);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00099}00099     m\_frontLeftEncoder.SetPosition(0);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00100}00100     m\_backRightEncoder.SetPosition(0);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00101}00101     m\_backLeftEncoder.SetPosition(0);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00102}00102 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00104}\mbox{\hyperlink{class_drivetrain_ade6fcfa0f1d33b5a6ab23d4d39c51c58}{00104}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_ade6fcfa0f1d33b5a6ab23d4d39c51c58}{Drivetrain::InvertRightEncoders}}(\textcolor{keywordtype}{bool} invert)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00105}00105 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00106}00106     m\_frontRightEncoder.SetInverted(invert);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00107}00107     m\_backRightEncoder.SetInverted(invert);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00108}00108 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00110}\mbox{\hyperlink{class_drivetrain_a90d349ff54025dec06c273b65cb0ac7b}{00110}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a90d349ff54025dec06c273b65cb0ac7b}{Drivetrain::InvertLeftEncoders}}(\textcolor{keywordtype}{bool} invert)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00111}00111 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00112}00112     m\_frontLeftEncoder.SetInverted(invert);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00113}00113     m\_backLeftEncoder.SetInverted(invert);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00114}00114 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00116}\mbox{\hyperlink{class_drivetrain_a7231873edf8c1be04e40f085a04b13aa}{00116}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a7231873edf8c1be04e40f085a04b13aa}{Drivetrain::PrintEncoders}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00117}00117 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00118}00118     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Front Right Encoder"{}}, m\_frontRightEncoder.GetPosition());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00119}00119     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Front Left Encoder"{}}, m\_frontLeftEncoder.GetPosition());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00120}00120     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Back Right Encoder"{}}, m\_backRightEncoder.GetPosition());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00121}00121     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Back Left Encoder"{}}, m\_backLeftEncoder.GetPosition());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00122}00122 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00124}00124 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Gyro -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00126}\mbox{\hyperlink{class_drivetrain_aeb0ad112fc2e33313134a352bd79ccc8}{00126}} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_drivetrain_aeb0ad112fc2e33313134a352bd79ccc8}{Drivetrain::GetGyro}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00127}00127 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00128}00128     \textcolor{keywordflow}{return} m\_gyro.GetAngle().value() * m\_gyroDirection;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00129}00129 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00131}\mbox{\hyperlink{class_drivetrain_a281f925dba295d9d14beb932c67c3192}{00131}} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_drivetrain_a281f925dba295d9d14beb932c67c3192}{Drivetrain::GetGyroRad}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00132}00132 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00133}00133     \textcolor{keywordflow}{return} \mbox{\hyperlink{class_drivetrain_aeb0ad112fc2e33313134a352bd79ccc8}{GetGyro}}() * (M\_PI / 180);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00134}00134 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00136}\mbox{\hyperlink{class_drivetrain_aa63b09496786d2472f8eb68b5b4a2063}{00136}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_aa63b09496786d2472f8eb68b5b4a2063}{Drivetrain::ResetGyro}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00137}00137 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00138}00138     m\_gyro.Reset();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00139}00139 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00141}\mbox{\hyperlink{class_drivetrain_adbbeb7dea4c6b7d1e760fde991ca9c08}{00141}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_adbbeb7dea4c6b7d1e760fde991ca9c08}{Drivetrain::InvertGyro}}(\textcolor{keywordtype}{bool} invert)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00142}00142 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00143}00143     m\_gyroDirection = invert ? -\/1 : 1;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00144}00144 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00145}00145 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00146}\mbox{\hyperlink{class_drivetrain_a5666edd674a1aa863c05d9402fbcce90}{00146}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a5666edd674a1aa863c05d9402fbcce90}{Drivetrain::PrintGyro}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00147}00147 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00148}00148     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Gyro"{}}, \mbox{\hyperlink{class_drivetrain_aeb0ad112fc2e33313134a352bd79ccc8}{GetGyro}}());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00149}00149 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00150}00150 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00151}\mbox{\hyperlink{class_drivetrain_a6715ed0bc5cde62b767b6388d9296c6f}{00151}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a6715ed0bc5cde62b767b6388d9296c6f}{Drivetrain::PrintGyroRad}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00152}00152 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00153}00153     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Gyro Rad"{}}, \mbox{\hyperlink{class_drivetrain_a281f925dba295d9d14beb932c67c3192}{GetGyroRad}}());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00154}00154 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00155}00155 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00156}00156 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ Auto -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00158}\mbox{\hyperlink{class_drivetrain_ac50530290af4e91020bf3973310ea6af}{00158}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_drivetrain_ac50530290af4e91020bf3973310ea6af}{Drivetrain::Move}}(\textcolor{keywordtype}{double} distance, \textcolor{keywordtype}{double} speed)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00159}00159 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00160}00160     m\_movePIDController.SetSetpoint(distance);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00161}00161     m\_movePIDController.SetTolerance(\mbox{\hyperlink{_constants_8h_ac38626902ef25c26780c0093be545bef}{k\_movePIDTolerance}});}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00162}00162     \textcolor{keywordtype}{double} output = m\_movePIDController.Calculate(-\/\mbox{\hyperlink{class_drivetrain_a548f0fea9392b195712cfa7403fe44ba}{GetEncoderAverage}}());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00163}00163     output = clamp(output, -\/speed, speed);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00164}00164     \mbox{\hyperlink{class_drivetrain_a2a8e83c0d0800f32573d05b7d0017517}{Drive}}(output * speed, 0);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00165}00165     \textcolor{keywordflow}{return} m\_movePIDController.AtSetpoint();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00166}00166 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00168}\mbox{\hyperlink{class_drivetrain_a30e1914280c2368691008c154af6c90c}{00168}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_drivetrain_a30e1914280c2368691008c154af6c90c}{Drivetrain::Turn}}(\textcolor{keywordtype}{double} angle, \textcolor{keywordtype}{double} speed)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00169}00169 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00170}00170     m\_turnPIDController.SetSetpoint(angle);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00171}00171     m\_turnPIDController.SetTolerance(\mbox{\hyperlink{_constants_8h_a3cfe81e470008c293ab42cadab63f15b}{k\_turnPIDTolerance}});}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00172}00172     \textcolor{keywordtype}{double} output = m\_turnPIDController.Calculate(\mbox{\hyperlink{class_drivetrain_aeb0ad112fc2e33313134a352bd79ccc8}{GetGyro}}());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00173}00173     output = clamp(output, -\/speed, speed);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00174}00174     \mbox{\hyperlink{class_drivetrain_a2a8e83c0d0800f32573d05b7d0017517}{Drive}}(0, output * speed);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00175}00175     \textcolor{keywordflow}{return} m\_turnPIDController.AtSetpoint();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00176}00176 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00177}00177 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00178}\mbox{\hyperlink{class_drivetrain_a4a8d358bc5d5ba4b6532eb35e75ea41e}{00178}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_drivetrain_a4a8d358bc5d5ba4b6532eb35e75ea41e}{Drivetrain::MoveTo}}(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} speed, \textcolor{keywordtype}{double} turnSpeed)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00179}00179 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00180}00180     \textcolor{keywordtype}{double} targetX = x -\/ m\_currentX;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00181}00181     \textcolor{keywordtype}{double} targetY = y -\/ m\_currentY;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00182}00182 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00183}00183     \textcolor{keywordtype}{double} angle = \mbox{\hyperlink{class_drivetrain_a6a6102b66ad56463d21c05a340861cfd}{GetAbsoluteAngle}}(targetX, targetY);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00185}00185     \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_drivetrain_a30e1914280c2368691008c154af6c90c}{Turn}}(angle, turnSpeed))}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00186}00186     \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00187}00187         \textcolor{keywordtype}{double} distance = sqrt(pow(targetX, 2) + pow(targetY, 2));}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00188}00188 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00189}00189         \textcolor{keywordflow}{if} (\mbox{\hyperlink{class_drivetrain_ac50530290af4e91020bf3973310ea6af}{Move}}(distance, speed))}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00190}00190         \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00191}00191             \mbox{\hyperlink{class_drivetrain_a0b14cd9cb776da62f7589da7618cdeee}{ResetEncoders}}();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00192}00192             m\_currentX = x;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00193}00193             m\_currentY = y;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00194}00194             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00195}00195         \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00197}00197         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00198}00198     \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00199}00199 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00200}00200     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00201}00201 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00202}00202 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00203}\mbox{\hyperlink{class_drivetrain_aa5a3ae0a443fb9c8eb1b7201da399358}{00203}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_drivetrain_aa5a3ae0a443fb9c8eb1b7201da399358}{Drivetrain::AlignWithTarget}}(\textcolor{keywordtype}{double} speed)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00204}00204 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00205}00205     m\_alignPIDController.SetSetpoint(0);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00206}00206     m\_alignPIDController.SetTolerance(\mbox{\hyperlink{_constants_8h_adbe3a016245505112626d93c8b62bb19}{k\_alignPIDTolerance}});}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00207}00207     \textcolor{keywordtype}{double} output = m\_alignPIDController.Calculate(m\_limelight.\mbox{\hyperlink{class_limelight_ab7d744c9a6d457f9a5ed8b98d5ecdf79}{GetHorizontalAngle}}());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00208}00208     output = clamp(output, -\/speed, speed);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00209}00209     \mbox{\hyperlink{class_drivetrain_a2a8e83c0d0800f32573d05b7d0017517}{Drive}}(0, output * speed);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00210}00210     \textcolor{keywordflow}{return} m\_alignPIDController.AtSetpoint();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00211}00211 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00212}00212 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00213}\mbox{\hyperlink{class_drivetrain_a4b4a900f38437b36e6ba6ef10dac44f3}{00213}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_drivetrain_a4b4a900f38437b36e6ba6ef10dac44f3}{Drivetrain::SetDistanceWithTarget}}(\textcolor{keywordtype}{double} distance, \textcolor{keywordtype}{double} speed)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00214}00214 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00215}00215     m\_distancePIDController.SetSetpoint(distance);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00216}00216     \textcolor{keywordtype}{double} output = m\_distancePIDController.Calculate(m\_limelight.\mbox{\hyperlink{class_limelight_ad05aee666ce49fe00af56b3da5ab4ae9}{GetDistanceToTarget}}());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00217}00217     output = clamp(output, -\/speed, speed);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00218}00218     \mbox{\hyperlink{class_drivetrain_a2a8e83c0d0800f32573d05b7d0017517}{Drive}}(output * speed, 0);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00219}00219     \textcolor{keywordflow}{return} m\_distancePIDController.AtSetpoint();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00220}00220 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00221}00221 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00222}\mbox{\hyperlink{class_drivetrain_aace237adc60b9d6a5c046931197ccc54}{00222}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_drivetrain_aace237adc60b9d6a5c046931197ccc54}{Drivetrain::SetAngleWithTarget}}(\textcolor{keywordtype}{double} angle, \textcolor{keywordtype}{double} speed)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00223}00223 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00224}00224     m\_alignPIDController.SetSetpoint(angle);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00225}00225     \textcolor{keywordtype}{double} output = m\_alignPIDController.Calculate(m\_limelight.\mbox{\hyperlink{class_limelight_ab7d744c9a6d457f9a5ed8b98d5ecdf79}{GetHorizontalAngle}}());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00226}00226     output = clamp(output, -\/speed, speed);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00227}00227     \mbox{\hyperlink{class_drivetrain_a2a8e83c0d0800f32573d05b7d0017517}{Drive}}(0, output * speed);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00228}00228     \textcolor{keywordflow}{return} m\_alignPIDController.AtSetpoint();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00229}00229 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00230}00230 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00231}\mbox{\hyperlink{class_drivetrain_a935fa4d01b4aff480e32ed9c38259406}{00231}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a935fa4d01b4aff480e32ed9c38259406}{Drivetrain::ResetMovePIDController}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00232}00232 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00233}00233     m\_movePIDController.Reset();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00234}00234 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00235}00235 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00236}\mbox{\hyperlink{class_drivetrain_a9f741b8119353fba3dc67b5f0dbfdb89}{00236}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a9f741b8119353fba3dc67b5f0dbfdb89}{Drivetrain::ResetTurnPIDController}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00237}00237 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00238}00238     m\_turnPIDController.Reset();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00239}00239 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00240}00240 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00241}\mbox{\hyperlink{class_drivetrain_ac43993f933714c5be50441b911431fab}{00241}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_ac43993f933714c5be50441b911431fab}{Drivetrain::ResetAlignPIDController}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00242}00242 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00243}00243     m\_alignPIDController.Reset();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00244}00244 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00245}00245 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00246}\mbox{\hyperlink{class_drivetrain_a05d3f2ef24b01a62208b124a946c8cd6}{00246}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a05d3f2ef24b01a62208b124a946c8cd6}{Drivetrain::ResetDistancePIDController}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00247}00247 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00248}00248     m\_distancePIDController.Reset();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00249}00249 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00250}00250 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00251}\mbox{\hyperlink{class_drivetrain_a1f7843b5a8518c82b6671d72bceefe28}{00251}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a1f7843b5a8518c82b6671d72bceefe28}{Drivetrain::ResetPIDControllers}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00252}00252 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00253}00253     \mbox{\hyperlink{class_drivetrain_a935fa4d01b4aff480e32ed9c38259406}{ResetMovePIDController}}();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00254}00254     \mbox{\hyperlink{class_drivetrain_a9f741b8119353fba3dc67b5f0dbfdb89}{ResetTurnPIDController}}();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00255}00255     \mbox{\hyperlink{class_drivetrain_ac43993f933714c5be50441b911431fab}{ResetAlignPIDController}}();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00256}00256     \mbox{\hyperlink{class_drivetrain_a05d3f2ef24b01a62208b124a946c8cd6}{ResetDistancePIDController}}();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00257}00257 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00258}00258 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00259}\mbox{\hyperlink{class_drivetrain_a1283d1154911a913b18a87247159c895}{00259}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a1283d1154911a913b18a87247159c895}{Drivetrain::PrintMoveError}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00260}00260 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00261}00261     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Move Error"{}}, m\_movePIDController.GetPositionError());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00262}00262 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00263}00263 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00264}\mbox{\hyperlink{class_drivetrain_aab40ea3240ab1f0262e6f931015b868c}{00264}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_aab40ea3240ab1f0262e6f931015b868c}{Drivetrain::PrintTurnError}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00265}00265 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00266}00266     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Turn Error"{}}, m\_turnPIDController.GetPositionError());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00267}00267 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00268}00268 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00269}\mbox{\hyperlink{class_drivetrain_a8acfe7793cb899720272f2438d8d7dbc}{00269}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a8acfe7793cb899720272f2438d8d7dbc}{Drivetrain::PrintMoveToError}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00270}00270 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00271}00271     \mbox{\hyperlink{class_drivetrain_a1283d1154911a913b18a87247159c895}{PrintMoveError}}();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00272}00272     \mbox{\hyperlink{class_drivetrain_aab40ea3240ab1f0262e6f931015b868c}{PrintTurnError}}();}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00273}00273 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00274}00274 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00275}\mbox{\hyperlink{class_drivetrain_a12b1b678aa454cc67d3494601c6347e7}{00275}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_a12b1b678aa454cc67d3494601c6347e7}{Drivetrain::PrintAlignError}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00276}00276 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00277}00277     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Align Error"{}}, m\_alignPIDController.GetPositionError());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00278}00278 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00279}00279 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00280}\mbox{\hyperlink{class_drivetrain_adee58e9d133a795610ae569f7546c365}{00280}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_adee58e9d133a795610ae569f7546c365}{Drivetrain::PrintSetDistanceError}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00281}00281 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00282}00282     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Set Distance Error"{}}, m\_distancePIDController.GetPositionError());}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00283}00283 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00284}00284 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00285}\mbox{\hyperlink{class_drivetrain_a6a6102b66ad56463d21c05a340861cfd}{00285}} \textcolor{keywordtype}{double} \mbox{\hyperlink{class_drivetrain_a6a6102b66ad56463d21c05a340861cfd}{Drivetrain::GetAbsoluteAngle}}(\textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00286}00286 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00287}00287     \textcolor{keywordtype}{float} relAngle = atan(y / (x == 0 ? 0.01 : x));}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00288}00288 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00289}00289     \textcolor{keywordflow}{if} (x < 0)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00290}00290         relAngle += M\_PI;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00291}00291 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00292}00292     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (y < 0)}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00293}00293         relAngle += 2 * M\_PI;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00294}00294 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00295}00295     \textcolor{keywordflow}{return} (relAngle)*180 / M\_PI;}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00296}00296 \}}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00297}00297 }
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00298}\mbox{\hyperlink{class_drivetrain_ab4ea4fff1c362668bfb049eba0461192}{00298}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_drivetrain_ab4ea4fff1c362668bfb049eba0461192}{Drivetrain::PrintCurrentPosition}}()}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00299}00299 \{}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00300}00300     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Current X"{}}, m\_currentX);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00301}00301     SmartDashboard::PutNumber(\textcolor{stringliteral}{"{}Current Y"{}}, m\_currentY);}
+\DoxyCodeLine{\Hypertarget{_drivetrain_8cpp_source_l00302}00302 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_robot" xml:lang="en-US">
+<title>Robot Class Reference</title>
+<indexterm><primary>Robot</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Robot.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for Robot:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_robot.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_class_robot_1a66f23dae271748d525cf3ab046375f79">RobotInit</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_1a8fad82c2250bcfb83b743b5c0dd6ed27">RobotPeriodic</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_1a810e6143a208a6314491366e3c714357">DisabledInit</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_1a8c7309f5f1cb242ea8c74f1abf03b540">DisabledPeriodic</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_1a2136cfc015936285218c8a8db984d6bc">AutonomousInit</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_1ac11143dd674e0e02fef5329e2df24830">AutonomousPeriodic</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_1aa3e246794bfbbb4406fc87f351762038">TeleopInit</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_1a324322627c63b3870daf7c7ddc5bea63">TeleopPeriodic</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_1af0ac44a962e609e9b042285e699d1db8">TestPeriodic</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_1a0ec3407013454a8017474d0beb756ac8">SimulationInit</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_robot_1a210b114f375fd78f0abd2c69b0e721a2">SimulationPeriodic</link> () override</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__robot_8h_source_1l00012">12</link> of file <link linkend="__robot_8h_source">Robot.h</link>.</para>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_robot_1a2136cfc015936285218c8a8db984d6bc"/><section>
+    <title>AutonomousInit()</title>
+<indexterm><primary>AutonomousInit</primary><secondary>Robot</secondary></indexterm>
+<indexterm><primary>Robot</primary><secondary>AutonomousInit</secondary></indexterm>
+<para><computeroutput>void Robot::AutonomousInit ( )<computeroutput>[override]</computeroutput></computeroutput></para>
+<para>This autonomous runs the autonomous command selected by your <computeroutput><link linkend="_class_robot_container">RobotContainer</link></computeroutput> class. </para>
+<para>
+Definition at line <link linkend="__robot_8cpp_source_1l00038">38</link> of file <link linkend="__robot_8cpp_source">Robot.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_robot_1ac11143dd674e0e02fef5329e2df24830"/><section>
+    <title>AutonomousPeriodic()</title>
+<indexterm><primary>AutonomousPeriodic</primary><secondary>Robot</secondary></indexterm>
+<indexterm><primary>Robot</primary><secondary>AutonomousPeriodic</secondary></indexterm>
+<para><computeroutput>void Robot::AutonomousPeriodic ( )<computeroutput>[override]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__robot_8cpp_source_1l00042">42</link> of file <link linkend="__robot_8cpp_source">Robot.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_robot_1a810e6143a208a6314491366e3c714357"/><section>
+    <title>DisabledInit()</title>
+<indexterm><primary>DisabledInit</primary><secondary>Robot</secondary></indexterm>
+<indexterm><primary>Robot</primary><secondary>DisabledInit</secondary></indexterm>
+<para><computeroutput>void Robot::DisabledInit ( )<computeroutput>[override]</computeroutput></computeroutput></para>
+<para>This function is called once each time the robot enters Disabled mode. You can use it to reset any subsystem information you want to clear when the robot is disabled. </para>
+<para>
+Definition at line <link linkend="__robot_8cpp_source_1l00030">30</link> of file <link linkend="__robot_8cpp_source">Robot.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_robot_1a8c7309f5f1cb242ea8c74f1abf03b540"/><section>
+    <title>DisabledPeriodic()</title>
+<indexterm><primary>DisabledPeriodic</primary><secondary>Robot</secondary></indexterm>
+<indexterm><primary>Robot</primary><secondary>DisabledPeriodic</secondary></indexterm>
+<para><computeroutput>void Robot::DisabledPeriodic ( )<computeroutput>[override]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__robot_8cpp_source_1l00032">32</link> of file <link linkend="__robot_8cpp_source">Robot.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_robot_1a66f23dae271748d525cf3ab046375f79"/><section>
+    <title>RobotInit()</title>
+<indexterm><primary>RobotInit</primary><secondary>Robot</secondary></indexterm>
+<indexterm><primary>Robot</primary><secondary>RobotInit</secondary></indexterm>
+<para><computeroutput>void Robot::RobotInit ( )<computeroutput>[override]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__robot_8cpp_source_1l00010">10</link> of file <link linkend="__robot_8cpp_source">Robot.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_robot_1a8fad82c2250bcfb83b743b5c0dd6ed27"/><section>
+    <title>RobotPeriodic()</title>
+<indexterm><primary>RobotPeriodic</primary><secondary>Robot</secondary></indexterm>
+<indexterm><primary>Robot</primary><secondary>RobotPeriodic</secondary></indexterm>
+<para><computeroutput>void Robot::RobotPeriodic ( )<computeroutput>[override]</computeroutput></computeroutput></para>
+<para>This function is called every 20 ms, no matter the mode. Use this for items like diagnostics that you want to run during disabled, autonomous, teleoperated and test.</para>
+
+<para>This runs after the mode specific periodic functions, but before LiveWindow and SmartDashboard integrated updating. </para>
+<para>
+Definition at line <link linkend="__robot_8cpp_source_1l00020">20</link> of file <link linkend="__robot_8cpp_source">Robot.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_robot_1a0ec3407013454a8017474d0beb756ac8"/><section>
+    <title>SimulationInit()</title>
+<indexterm><primary>SimulationInit</primary><secondary>Robot</secondary></indexterm>
+<indexterm><primary>Robot</primary><secondary>SimulationInit</secondary></indexterm>
+<para><computeroutput>void Robot::SimulationInit ( )<computeroutput>[override]</computeroutput></computeroutput></para>
+<para>This function is called once when the robot is first started up. </para>
+<para>
+Definition at line <link linkend="__robot_8cpp_source_1l00063">63</link> of file <link linkend="__robot_8cpp_source">Robot.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_robot_1a210b114f375fd78f0abd2c69b0e721a2"/><section>
+    <title>SimulationPeriodic()</title>
+<indexterm><primary>SimulationPeriodic</primary><secondary>Robot</secondary></indexterm>
+<indexterm><primary>Robot</primary><secondary>SimulationPeriodic</secondary></indexterm>
+<para><computeroutput>void Robot::SimulationPeriodic ( )<computeroutput>[override]</computeroutput></computeroutput></para>
+<para>This function is called periodically whilst in simulation. </para>
+<para>
+Definition at line <link linkend="__robot_8cpp_source_1l00068">68</link> of file <link linkend="__robot_8cpp_source">Robot.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_robot_1aa3e246794bfbbb4406fc87f351762038"/><section>
+    <title>TeleopInit()</title>
+<indexterm><primary>TeleopInit</primary><secondary>Robot</secondary></indexterm>
+<indexterm><primary>Robot</primary><secondary>TeleopInit</secondary></indexterm>
+<para><computeroutput>void Robot::TeleopInit ( )<computeroutput>[override]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__robot_8cpp_source_1l00044">44</link> of file <link linkend="__robot_8cpp_source">Robot.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_robot_1a324322627c63b3870daf7c7ddc5bea63"/><section>
+    <title>TeleopPeriodic()</title>
+<indexterm><primary>TeleopPeriodic</primary><secondary>Robot</secondary></indexterm>
+<indexterm><primary>Robot</primary><secondary>TeleopPeriodic</secondary></indexterm>
+<para><computeroutput>void Robot::TeleopPeriodic ( )<computeroutput>[override]</computeroutput></computeroutput></para>
+<para>This function is called periodically during operator control. </para>
+<para>
+Definition at line <link linkend="__robot_8cpp_source_1l00051">51</link> of file <link linkend="__robot_8cpp_source">Robot.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_robot_1af0ac44a962e609e9b042285e699d1db8"/><section>
+    <title>TestPeriodic()</title>
+<indexterm><primary>TestPeriodic</primary><secondary>Robot</secondary></indexterm>
+<indexterm><primary>Robot</primary><secondary>TestPeriodic</secondary></indexterm>
+<para><computeroutput>void Robot::TestPeriodic ( )<computeroutput>[override]</computeroutput></computeroutput></para>
+<para>This function is called periodically during test mode. </para>
+<para>
+Definition at line <link linkend="__robot_8cpp_source_1l00058">58</link> of file <link linkend="__robot_8cpp_source">Robot.cpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+src/main/include/<link linkend="__robot_8h">Robot.h</link>src/main/cpp/<link linkend="__robot_8cpp">Robot.cpp</link></section>
+</section>

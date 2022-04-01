@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__limelight_8cpp_source" xml:lang="en-US">
+<title>Limelight.cpp</title>
+<indexterm><primary>src/main/cpp/subsystems/Limelight.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__limelight_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__constants_8h">Constants.h</link>&quot;</emphasis>
+<anchor xml:id="__limelight_8cpp_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&lt;frc/smartdashboard/SmartDashboard.h&gt;</emphasis>
+<anchor xml:id="__limelight_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&lt;<link linkend="__limelight_8h">subsystems/Limelight.h</link>&gt;</emphasis>
+<anchor xml:id="__limelight_8cpp_source_1l00004"/>00004 
+<anchor xml:id="__limelight_8cpp_source_1l00005"/>00005 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>frc;
+<anchor xml:id="__limelight_8cpp_source_1l00006"/>00006 
+<anchor xml:id="__limelight_8cpp_source_1l00007"/><link linkend="_class_limelight_1a15512351c40f1a0b2a858f97dfa0a67d">00007</link> <link linkend="_class_limelight_1a15512351c40f1a0b2a858f97dfa0a67d">Limelight::Limelight</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00008"/>00008 {
+<anchor xml:id="__limelight_8cpp_source_1l00009"/>00009 &#32;&#32;&#32;&#32;limelight&#32;=&#32;nt::NetworkTableInstance::GetDefault().GetTable(<emphasis role="stringliteral">&quot;limelight&quot;</emphasis>);
+<anchor xml:id="__limelight_8cpp_source_1l00010"/>00010 }
+<anchor xml:id="__limelight_8cpp_source_1l00011"/>00011 
+<anchor xml:id="__limelight_8cpp_source_1l00012"/><link linkend="_class_limelight_1acc118c1aca0c26f1d5a0637d5be5a227">00012</link> <emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_limelight_1acc118c1aca0c26f1d5a0637d5be5a227">Limelight::GetArea</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00013"/>00013 {
+<anchor xml:id="__limelight_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;ta&quot;</emphasis>).GetDouble(0);
+<anchor xml:id="__limelight_8cpp_source_1l00015"/>00015 }
+<anchor xml:id="__limelight_8cpp_source_1l00016"/>00016 
+<anchor xml:id="__limelight_8cpp_source_1l00017"/><link linkend="_class_limelight_1ab7d744c9a6d457f9a5ed8b98d5ecdf79">00017</link> <emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_limelight_1ab7d744c9a6d457f9a5ed8b98d5ecdf79">Limelight::GetHorizontalAngle</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00018"/>00018 {
+<anchor xml:id="__limelight_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;tx&quot;</emphasis>).GetDouble(0);
+<anchor xml:id="__limelight_8cpp_source_1l00020"/>00020 }
+<anchor xml:id="__limelight_8cpp_source_1l00021"/>00021 
+<anchor xml:id="__limelight_8cpp_source_1l00022"/><link linkend="_class_limelight_1a43671130bdb3a2771fd4dd56fff679f1">00022</link> <emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_limelight_1a43671130bdb3a2771fd4dd56fff679f1">Limelight::GetVerticalAngle</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00023"/>00023 {
+<anchor xml:id="__limelight_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;ty&quot;</emphasis>).GetDouble(0);
+<anchor xml:id="__limelight_8cpp_source_1l00025"/>00025 }
+<anchor xml:id="__limelight_8cpp_source_1l00026"/>00026 
+<anchor xml:id="__limelight_8cpp_source_1l00027"/><link linkend="_class_limelight_1a52cc0493404104029f85a0a085672a25">00027</link> <emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_limelight_1a52cc0493404104029f85a0a085672a25">Limelight::GetSkew</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00028"/>00028 {
+<anchor xml:id="__limelight_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;ts&quot;</emphasis>).GetDouble(0);
+<anchor xml:id="__limelight_8cpp_source_1l00030"/>00030 }
+<anchor xml:id="__limelight_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__limelight_8cpp_source_1l00032"/><link linkend="_class_limelight_1a0d7840e3a19b783e50a861ced3c10918">00032</link> <emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_limelight_1a0d7840e3a19b783e50a861ced3c10918">Limelight::GetPipeline</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00033"/>00033 {
+<anchor xml:id="__limelight_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;getpipe&quot;</emphasis>).GetDouble(0);
+<anchor xml:id="__limelight_8cpp_source_1l00035"/>00035 }
+<anchor xml:id="__limelight_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__limelight_8cpp_source_1l00037"/><link linkend="_class_limelight_1aaea4f16a17c061ec0cca0680c6bd4e51">00037</link> <emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_limelight_1aaea4f16a17c061ec0cca0680c6bd4e51">Limelight::GetValid</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00038"/>00038 {
+<anchor xml:id="__limelight_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;tv&quot;</emphasis>).GetDouble(0);
+<anchor xml:id="__limelight_8cpp_source_1l00040"/>00040 }
+<anchor xml:id="__limelight_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__limelight_8cpp_source_1l00042"/><link linkend="_class_limelight_1a87e9a33a3c5b76e9001dde6eaafd0425">00042</link> <emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_limelight_1a87e9a33a3c5b76e9001dde6eaafd0425">Limelight::GetTarget</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00043"/>00043 {
+<anchor xml:id="__limelight_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;target&quot;</emphasis>).GetDouble(0);
+<anchor xml:id="__limelight_8cpp_source_1l00045"/>00045 }
+<anchor xml:id="__limelight_8cpp_source_1l00046"/>00046 
+<anchor xml:id="__limelight_8cpp_source_1l00047"/><link linkend="_class_limelight_1ad05aee666ce49fe00af56b3da5ab4ae9">00047</link> <emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_limelight_1ad05aee666ce49fe00af56b3da5ab4ae9">Limelight::GetDistanceToTarget</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00048"/>00048 {
+<anchor xml:id="__limelight_8cpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<link linkend="__constants_8h_1a5d219ccf953c4b2f1fe976c372bebc2a">k_objectiveHeight</link>&#32;-&#32;<link linkend="__constants_8h_1aca0fd297392b22fc9d06d3ddfe5a039c">k_limelightHeight</link>)&#32;/&#32;tan(<link linkend="__constants_8h_1ab06b898cf956356dd76b86b7eb4a0fa3">k_limelightAngle</link>&#32;+&#32;<link linkend="_class_limelight_1a43671130bdb3a2771fd4dd56fff679f1">GetVerticalAngle</link>());
+<anchor xml:id="__limelight_8cpp_source_1l00050"/>00050 }
+<anchor xml:id="__limelight_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__limelight_8cpp_source_1l00052"/><link linkend="_class_limelight_1a6b0692e0e2df711400e5f1fed6412d32">00052</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1a6b0692e0e2df711400e5f1fed6412d32">Limelight::SetPipeline</link>(<emphasis role="keywordtype">int</emphasis>&#32;pipeline)
+<anchor xml:id="__limelight_8cpp_source_1l00053"/>00053 {
+<anchor xml:id="__limelight_8cpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;pipeline&quot;</emphasis>).SetDouble(pipeline);
+<anchor xml:id="__limelight_8cpp_source_1l00055"/>00055 }
+<anchor xml:id="__limelight_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__limelight_8cpp_source_1l00057"/><link linkend="_class_limelight_1a18f8d694eeab993219d77649f3999c14">00057</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1a18f8d694eeab993219d77649f3999c14">Limelight::SetLED</link>(<emphasis role="keywordtype">int</emphasis>&#32;led)
+<anchor xml:id="__limelight_8cpp_source_1l00058"/>00058 {
+<anchor xml:id="__limelight_8cpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;ledMode&quot;</emphasis>).SetDouble(led);
+<anchor xml:id="__limelight_8cpp_source_1l00060"/>00060 }
+<anchor xml:id="__limelight_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__limelight_8cpp_source_1l00062"/><link linkend="_class_limelight_1ae02ec1312a8d3915ab91c6a78a763078">00062</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1ae02ec1312a8d3915ab91c6a78a763078">Limelight::SetCamMode</link>(<emphasis role="keywordtype">int</emphasis>&#32;mode)
+<anchor xml:id="__limelight_8cpp_source_1l00063"/>00063 {
+<anchor xml:id="__limelight_8cpp_source_1l00064"/>00064 &#32;&#32;&#32;&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;camMode&quot;</emphasis>).SetDouble(mode);
+<anchor xml:id="__limelight_8cpp_source_1l00065"/>00065 }
+<anchor xml:id="__limelight_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__limelight_8cpp_source_1l00067"/><link linkend="_class_limelight_1a66781ad345e331fa366f63c0ec575d77">00067</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1a66781ad345e331fa366f63c0ec575d77">Limelight::SetStream</link>(<emphasis role="keywordtype">int</emphasis>&#32;stream)
+<anchor xml:id="__limelight_8cpp_source_1l00068"/>00068 {
+<anchor xml:id="__limelight_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;stream&quot;</emphasis>).SetDouble(stream);
+<anchor xml:id="__limelight_8cpp_source_1l00070"/>00070 }
+<anchor xml:id="__limelight_8cpp_source_1l00071"/>00071 
+<anchor xml:id="__limelight_8cpp_source_1l00072"/><link linkend="_class_limelight_1ac9ee268075dde3bcbacb84f8fb79c4de">00072</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1ac9ee268075dde3bcbacb84f8fb79c4de">Limelight::SetSnapshot</link>(<emphasis role="keywordtype">int</emphasis>&#32;snapshot)
+<anchor xml:id="__limelight_8cpp_source_1l00073"/>00073 {
+<anchor xml:id="__limelight_8cpp_source_1l00074"/>00074 &#32;&#32;&#32;&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;snapshot&quot;</emphasis>).SetDouble(snapshot);
+<anchor xml:id="__limelight_8cpp_source_1l00075"/>00075 }
+<anchor xml:id="__limelight_8cpp_source_1l00076"/>00076 
+<anchor xml:id="__limelight_8cpp_source_1l00077"/><link linkend="_class_limelight_1a10c2a8c9c5b7f112118c7877058e10b9">00077</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1a10c2a8c9c5b7f112118c7877058e10b9">Limelight::SetLight</link>(<emphasis role="keywordtype">int</emphasis>&#32;light)
+<anchor xml:id="__limelight_8cpp_source_1l00078"/>00078 {
+<anchor xml:id="__limelight_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;light&quot;</emphasis>).SetDouble(light);
+<anchor xml:id="__limelight_8cpp_source_1l00080"/>00080 }
+<anchor xml:id="__limelight_8cpp_source_1l00081"/>00081 
+<anchor xml:id="__limelight_8cpp_source_1l00082"/><link linkend="_class_limelight_1a00e7ae04ca99ec2a960fb3bfb54548f8">00082</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1a00e7ae04ca99ec2a960fb3bfb54548f8">Limelight::SetLEDMode</link>(<emphasis role="keywordtype">int</emphasis>&#32;mode)
+<anchor xml:id="__limelight_8cpp_source_1l00083"/>00083 {
+<anchor xml:id="__limelight_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;ledMode&quot;</emphasis>).SetDouble(mode);
+<anchor xml:id="__limelight_8cpp_source_1l00085"/>00085 }
+<anchor xml:id="__limelight_8cpp_source_1l00086"/>00086 
+<anchor xml:id="__limelight_8cpp_source_1l00087"/><link linkend="_class_limelight_1a293eec83b14c6353a7eb04f3d9b98589">00087</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1a293eec83b14c6353a7eb04f3d9b98589">Limelight::SetLEDFrequency</link>(<emphasis role="keywordtype">int</emphasis>&#32;freq)
+<anchor xml:id="__limelight_8cpp_source_1l00088"/>00088 {
+<anchor xml:id="__limelight_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;ledFrequency&quot;</emphasis>).SetDouble(freq);
+<anchor xml:id="__limelight_8cpp_source_1l00090"/>00090 }
+<anchor xml:id="__limelight_8cpp_source_1l00091"/>00091 
+<anchor xml:id="__limelight_8cpp_source_1l00092"/><link linkend="_class_limelight_1ad5358cad05b8114b57b37b3abcb66a4e">00092</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1ad5358cad05b8114b57b37b3abcb66a4e">Limelight::SetLEDIntensity</link>(<emphasis role="keywordtype">int</emphasis>&#32;intensity)
+<anchor xml:id="__limelight_8cpp_source_1l00093"/>00093 {
+<anchor xml:id="__limelight_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;ledIntensity&quot;</emphasis>).SetDouble(intensity);
+<anchor xml:id="__limelight_8cpp_source_1l00095"/>00095 }
+<anchor xml:id="__limelight_8cpp_source_1l00096"/>00096 
+<anchor xml:id="__limelight_8cpp_source_1l00097"/><link linkend="_class_limelight_1a08cbe03d863bdc11ad08b9b9b8e0358a">00097</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1a08cbe03d863bdc11ad08b9b9b8e0358a">Limelight::SetLEDState</link>(<emphasis role="keywordtype">int</emphasis>&#32;state)
+<anchor xml:id="__limelight_8cpp_source_1l00098"/>00098 {
+<anchor xml:id="__limelight_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;ledState&quot;</emphasis>).SetDouble(state);
+<anchor xml:id="__limelight_8cpp_source_1l00100"/>00100 }
+<anchor xml:id="__limelight_8cpp_source_1l00101"/>00101 
+<anchor xml:id="__limelight_8cpp_source_1l00102"/><link linkend="_class_limelight_1a41f9a6d2175a40c271f5e430cb3c3c64">00102</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1a41f9a6d2175a40c271f5e430cb3c3c64">Limelight::SetLEDOff</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00103"/>00103 {
+<anchor xml:id="__limelight_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;ledMode&quot;</emphasis>).SetDouble(0);
+<anchor xml:id="__limelight_8cpp_source_1l00105"/>00105 }
+<anchor xml:id="__limelight_8cpp_source_1l00106"/>00106 
+<anchor xml:id="__limelight_8cpp_source_1l00107"/><link linkend="_class_limelight_1a7e96468ad718fc81e265962b529105d1">00107</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1a7e96468ad718fc81e265962b529105d1">Limelight::SetLEDOn</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00108"/>00108 {
+<anchor xml:id="__limelight_8cpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;limelight-&gt;GetEntry(<emphasis role="stringliteral">&quot;ledMode&quot;</emphasis>).SetDouble(1);
+<anchor xml:id="__limelight_8cpp_source_1l00110"/>00110 }
+<anchor xml:id="__limelight_8cpp_source_1l00111"/>00111 
+<anchor xml:id="__limelight_8cpp_source_1l00112"/><link linkend="_class_limelight_1ac51f4236eacdd1935b6c873c06b5e37f">00112</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1ac51f4236eacdd1935b6c873c06b5e37f">Limelight::PrintHorizontalAngle</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00113"/>00113 {
+<anchor xml:id="__limelight_8cpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;SmartDashboard::PutNumber(<emphasis role="stringliteral">&quot;Horizontal&#32;Angle&quot;</emphasis>,&#32;<link linkend="_class_limelight_1ab7d744c9a6d457f9a5ed8b98d5ecdf79">GetHorizontalAngle</link>());
+<anchor xml:id="__limelight_8cpp_source_1l00115"/>00115 }
+<anchor xml:id="__limelight_8cpp_source_1l00116"/>00116 
+<anchor xml:id="__limelight_8cpp_source_1l00117"/><link linkend="_class_limelight_1a61c2b59b3ea4502d21c11fe0e4b62223">00117</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1a61c2b59b3ea4502d21c11fe0e4b62223">Limelight::PrintVerticalAngle</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00118"/>00118 {
+<anchor xml:id="__limelight_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;SmartDashboard::PutNumber(<emphasis role="stringliteral">&quot;Vertical&#32;Angle&quot;</emphasis>,&#32;<link linkend="_class_limelight_1a43671130bdb3a2771fd4dd56fff679f1">GetVerticalAngle</link>());
+<anchor xml:id="__limelight_8cpp_source_1l00120"/>00120 }
+<anchor xml:id="__limelight_8cpp_source_1l00121"/>00121 
+<anchor xml:id="__limelight_8cpp_source_1l00122"/><link linkend="_class_limelight_1ad7452e27445d9bdb7c5a72399aa684b3">00122</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1ad7452e27445d9bdb7c5a72399aa684b3">Limelight::PrintArea</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00123"/>00123 {
+<anchor xml:id="__limelight_8cpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;SmartDashboard::PutNumber(<emphasis role="stringliteral">&quot;Area&quot;</emphasis>,&#32;<link linkend="_class_limelight_1acc118c1aca0c26f1d5a0637d5be5a227">GetArea</link>());
+<anchor xml:id="__limelight_8cpp_source_1l00125"/>00125 }
+<anchor xml:id="__limelight_8cpp_source_1l00126"/>00126 
+<anchor xml:id="__limelight_8cpp_source_1l00127"/><link linkend="_class_limelight_1a6bf87ecb0d2b0d3c727d5b4ab69909c1">00127</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1a6bf87ecb0d2b0d3c727d5b4ab69909c1">Limelight::PrintSkew</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00128"/>00128 {
+<anchor xml:id="__limelight_8cpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;SmartDashboard::PutNumber(<emphasis role="stringliteral">&quot;Skew&quot;</emphasis>,&#32;<link linkend="_class_limelight_1a52cc0493404104029f85a0a085672a25">GetSkew</link>());
+<anchor xml:id="__limelight_8cpp_source_1l00130"/>00130 }
+<anchor xml:id="__limelight_8cpp_source_1l00131"/>00131 
+<anchor xml:id="__limelight_8cpp_source_1l00132"/><link linkend="_class_limelight_1ad8900633032afe59b51e5cad3ff9e60d">00132</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_limelight_1ad8900633032afe59b51e5cad3ff9e60d">Limelight::PrintDistanceToTarget</link>()
+<anchor xml:id="__limelight_8cpp_source_1l00133"/>00133 {
+<anchor xml:id="__limelight_8cpp_source_1l00134"/>00134 &#32;&#32;&#32;&#32;SmartDashboard::PutNumber(<emphasis role="stringliteral">&quot;Distance&#32;to&#32;Target&quot;</emphasis>,&#32;<link linkend="_class_limelight_1ad05aee666ce49fe00af56b3da5ab4ae9">GetDistanceToTarget</link>());
+<anchor xml:id="__limelight_8cpp_source_1l00135"/>00135 }
+</programlisting></section>

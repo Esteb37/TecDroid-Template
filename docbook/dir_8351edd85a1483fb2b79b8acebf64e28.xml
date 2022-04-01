@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_8351edd85a1483fb2b79b8acebf64e28" xml:lang="en-US">
+<title>src/main/include/commands Directory Reference</title>
+<indexterm><primary>src/main/include/commands Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="__align_8h">Align.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__feed_8h">Feed.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__speed_load_8h">SpeedLoad.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__speed_shoot_8h">SpeedShoot.h</link></para>
+</listitem>
+            <listitem><para>file <link linkend="__timed_load_8h">TimedLoad.h</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

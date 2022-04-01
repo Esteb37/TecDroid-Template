@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__claw_8h_source" xml:lang="en-US">
+<title>Claw.h</title>
+<indexterm><primary>src/main/include/subsystems/Claw.h</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__claw_8h_source_1l00001"/>00001 <emphasis role="preprocessor">#pragma&#32;once</emphasis>
+<anchor xml:id="__claw_8h_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__constants_8h">Constants.h</link>&quot;</emphasis>
+<anchor xml:id="__claw_8h_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&lt;frc/DoubleSolenoid.h&gt;</emphasis>
+<anchor xml:id="__claw_8h_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&lt;frc/smartdashboard/SmartDashboard.h&gt;</emphasis>
+<anchor xml:id="__claw_8h_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&lt;frc2/command/SubsystemBase.h&gt;</emphasis>
+<anchor xml:id="__claw_8h_source_1l00006"/>00006 
+<anchor xml:id="__claw_8h_source_1l00007"/>00007 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>frc;
+<anchor xml:id="__claw_8h_source_1l00008"/>00008 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>frc2;
+<anchor xml:id="__claw_8h_source_1l00009"/>00009 
+<anchor xml:id="__claw_8h_source_1l00010"/><link linkend="_class_claw">00010</link> <emphasis role="keyword">class&#32;</emphasis><link linkend="_class_claw">Claw</link>&#32;:&#32;<emphasis role="keyword">public</emphasis>&#32;SubsystemBase
+<anchor xml:id="__claw_8h_source_1l00011"/>00011 {
+<anchor xml:id="__claw_8h_source_1l00012"/>00012 
+<anchor xml:id="__claw_8h_source_1l00013"/>00013 <emphasis role="keyword">public</emphasis>:
+<anchor xml:id="__claw_8h_source_1l00014"/>00014 &#32;&#32;&#32;&#32;<link linkend="_class_claw_1a8b3a92a9d71ffc3c055925859f86cac7">Claw</link>();
+<anchor xml:id="__claw_8h_source_1l00015"/>00015 
+<anchor xml:id="__claw_8h_source_1l00016"/>00016 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_claw_1a8f59aedc61ab5cc13cac52e3627edea3">Periodic</link>()&#32;<emphasis role="keyword">override</emphasis>;
+<anchor xml:id="__claw_8h_source_1l00017"/>00017 
+<anchor xml:id="__claw_8h_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;Actions&#32;-----------</emphasis>
+<anchor xml:id="__claw_8h_source_1l00019"/>00019 
+<anchor xml:id="__claw_8h_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_claw_1ad87b5cb832e2f552389a9b5a63e24323">OpenHand</link>();
+<anchor xml:id="__claw_8h_source_1l00024"/>00024 
+<anchor xml:id="__claw_8h_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_claw_1ab7feb9949f79f7ac25ef176f93bf2e3d">CloseHand</link>();
+<anchor xml:id="__claw_8h_source_1l00029"/>00029 
+<anchor xml:id="__claw_8h_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_claw_1a3641fbd05fd576d0a9522b82df1c5af2">ToggleHand</link>();
+<anchor xml:id="__claw_8h_source_1l00034"/>00034 
+<anchor xml:id="__claw_8h_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_claw_1a027be32445067ee0a6c2d59ebb8df3ea">LowerWrist</link>();
+<anchor xml:id="__claw_8h_source_1l00039"/>00039 
+<anchor xml:id="__claw_8h_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_claw_1ae031406a37f960b6a4410d3fe0d258ba">RaiseWrist</link>();
+<anchor xml:id="__claw_8h_source_1l00044"/>00044 
+<anchor xml:id="__claw_8h_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_claw_1ab59ae0fec3b08867efcab2f6c76ae36c">ToggleWrist</link>();
+<anchor xml:id="__claw_8h_source_1l00049"/>00049 
+<anchor xml:id="__claw_8h_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;Hand&#32;Solenoid&#32;--------</emphasis>
+<anchor xml:id="__claw_8h_source_1l00051"/>00051 
+<anchor xml:id="__claw_8h_source_1l00056"/>00056 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_claw_1a3762c56f1350a032b23199a9f2d7eb02">InvertHand</link>(<emphasis role="keywordtype">bool</emphasis>);
+<anchor xml:id="__claw_8h_source_1l00057"/>00057 
+<anchor xml:id="__claw_8h_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_claw_1a35572e4b83e0bd1e7ffdc9e21aa52ee7">HandOff</link>();
+<anchor xml:id="__claw_8h_source_1l00062"/>00062 
+<anchor xml:id="__claw_8h_source_1l00067"/>00067 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_claw_1ae07f3c3cfa089dd194bcf84361087ea8">GetHand</link>();
+<anchor xml:id="__claw_8h_source_1l00068"/>00068 
+<anchor xml:id="__claw_8h_source_1l00072"/>00072 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_claw_1a59def511e4ddc290acf328ed86f7ea8b">PrintHand</link>();
+<anchor xml:id="__claw_8h_source_1l00073"/>00073 
+<anchor xml:id="__claw_8h_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;Wrist&#32;Solenoid&#32;--------</emphasis>
+<anchor xml:id="__claw_8h_source_1l00075"/>00075 
+<anchor xml:id="__claw_8h_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_claw_1a3e2e32c78e78d39f2a77968d3df70a9c">InvertWrist</link>(<emphasis role="keywordtype">bool</emphasis>);
+<anchor xml:id="__claw_8h_source_1l00081"/>00081 
+<anchor xml:id="__claw_8h_source_1l00085"/>00085 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_claw_1a011b295de15225a8a4348ff14c38724f">WristOff</link>();
+<anchor xml:id="__claw_8h_source_1l00086"/>00086 
+<anchor xml:id="__claw_8h_source_1l00091"/>00091 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_claw_1a565e6a702b0742b978a54af8f077db80">GetWrist</link>();
+<anchor xml:id="__claw_8h_source_1l00092"/>00092 
+<anchor xml:id="__claw_8h_source_1l00096"/>00096 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_claw_1aabe0d464cd410c56957b5570319d55bc">PrintWrist</link>();
+<anchor xml:id="__claw_8h_source_1l00097"/>00097 
+<anchor xml:id="__claw_8h_source_1l00098"/>00098 <emphasis role="keyword">private</emphasis>:
+<anchor xml:id="__claw_8h_source_1l00099"/>00099 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;Solenoids&#32;---------</emphasis>
+<anchor xml:id="__claw_8h_source_1l00100"/>00100 
+<anchor xml:id="__claw_8h_source_1l00101"/>00101 &#32;&#32;&#32;&#32;DoubleSolenoid&#32;m_hand{PneumaticsModuleType::REVPH,&#32;<link linkend="__constants_8h_1afd957756d3865d0d5e9887d0a2de9066">pClawHandSolenoidForward</link>,&#32;<link linkend="__constants_8h_1a0106215a681f5ab154c2cf8130b36c04">pClawHandSolenoidReverse</link>};
+<anchor xml:id="__claw_8h_source_1l00102"/>00102 
+<anchor xml:id="__claw_8h_source_1l00103"/>00103 &#32;&#32;&#32;&#32;DoubleSolenoid&#32;m_wrist{PneumaticsModuleType::REVPH,&#32;<link linkend="__constants_8h_1a1a2d846f543a98e33c43fda30256f8a3">pClawWristSolenoidForward</link>,&#32;<link linkend="__constants_8h_1a0ab750f5668cc55380c764977e23ab85">pClawWristSolenoidReverse</link>};
+<anchor xml:id="__claw_8h_source_1l00104"/>00104 
+<anchor xml:id="__claw_8h_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;----------&#32;Attributes&#32;----------</emphasis>
+<anchor xml:id="__claw_8h_source_1l00106"/>00106 
+<anchor xml:id="__claw_8h_source_1l00107"/>00107 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;m_handInverted&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__claw_8h_source_1l00108"/>00108 
+<anchor xml:id="__claw_8h_source_1l00109"/>00109 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;m_wristInverted&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__claw_8h_source_1l00110"/>00110 
+<anchor xml:id="__claw_8h_source_1l00111"/>00111 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;m_handOpen&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__claw_8h_source_1l00112"/>00112 
+<anchor xml:id="__claw_8h_source_1l00113"/>00113 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;m_wristLowered&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__claw_8h_source_1l00114"/>00114 };
+</programlisting></section>

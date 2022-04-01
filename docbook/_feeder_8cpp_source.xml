@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__feeder_8cpp_source" xml:lang="en-US">
+<title>Feeder.cpp</title>
+<indexterm><primary>src/main/cpp/subsystems/Feeder.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__feeder_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__feeder_8h">subsystems/Feeder.h</link>&quot;</emphasis>
+<anchor xml:id="__feeder_8cpp_source_1l00002"/>00002 
+<anchor xml:id="__feeder_8cpp_source_1l00003"/><link linkend="_class_feeder_1a6e19de83bb7db588512f6ca8772a944e">00003</link> <link linkend="_class_feeder_1a6e19de83bb7db588512f6ca8772a944e">Feeder::Feeder</link>()
+<anchor xml:id="__feeder_8cpp_source_1l00004"/>00004 {
+<anchor xml:id="__feeder_8cpp_source_1l00005"/>00005 }
+<anchor xml:id="__feeder_8cpp_source_1l00006"/>00006 
+<anchor xml:id="__feeder_8cpp_source_1l00007"/><link linkend="_class_feeder_1ada3cba130afa1b68d25741d68fd24184">00007</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_feeder_1ada3cba130afa1b68d25741d68fd24184">Feeder::Periodic</link>()
+<anchor xml:id="__feeder_8cpp_source_1l00008"/>00008 {
+<anchor xml:id="__feeder_8cpp_source_1l00009"/>00009 }
+<anchor xml:id="__feeder_8cpp_source_1l00010"/>00010 
+<anchor xml:id="__feeder_8cpp_source_1l00011"/><link linkend="_class_feeder_1a06980f926992f2c2c110556e2fa28ad2">00011</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_feeder_1a06980f926992f2c2c110556e2fa28ad2">Feeder::SetMotor</link>(<emphasis role="keywordtype">double</emphasis>&#32;speed)
+<anchor xml:id="__feeder_8cpp_source_1l00012"/>00012 {
+<anchor xml:id="__feeder_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;motor.Set(speed&#32;*&#32;<link linkend="__constants_8h_1a43df73c91beb4b75e37ad856e8499278">k_feederMaxSpeed</link>);
+<anchor xml:id="__feeder_8cpp_source_1l00014"/>00014 }
+<anchor xml:id="__feeder_8cpp_source_1l00015"/>00015 
+<anchor xml:id="__feeder_8cpp_source_1l00016"/><link linkend="_class_feeder_1a3a01f288d0e35fa0956f24ce90a3e0f5">00016</link> <emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_class_feeder_1a3a01f288d0e35fa0956f24ce90a3e0f5">Feeder::GetMotor</link>()
+<anchor xml:id="__feeder_8cpp_source_1l00017"/>00017 {
+<anchor xml:id="__feeder_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;motor.Get();
+<anchor xml:id="__feeder_8cpp_source_1l00019"/>00019 }
+<anchor xml:id="__feeder_8cpp_source_1l00020"/>00020 
+<anchor xml:id="__feeder_8cpp_source_1l00021"/><link linkend="_class_feeder_1a0bf044d7a57300e64b74e2f2cd8e7d09">00021</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_feeder_1a0bf044d7a57300e64b74e2f2cd8e7d09">Feeder::InvertMotor</link>(<emphasis role="keywordtype">bool</emphasis>&#32;inverted)
+<anchor xml:id="__feeder_8cpp_source_1l00022"/>00022 {
+<anchor xml:id="__feeder_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;motor.SetInverted(inverted);
+<anchor xml:id="__feeder_8cpp_source_1l00024"/>00024 }
+<anchor xml:id="__feeder_8cpp_source_1l00025"/>00025 
+<anchor xml:id="__feeder_8cpp_source_1l00026"/><link linkend="_class_feeder_1a2db2368dc4de4c6ca7d531a43d0f206f">00026</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_feeder_1a2db2368dc4de4c6ca7d531a43d0f206f">Feeder::PrintMotor</link>()
+<anchor xml:id="__feeder_8cpp_source_1l00027"/>00027 {
+<anchor xml:id="__feeder_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;SmartDashboard::PutNumber(<emphasis role="stringliteral">&quot;Feeder&#32;Motor&quot;</emphasis>,&#32;<link linkend="_class_feeder_1a3a01f288d0e35fa0956f24ce90a3e0f5">GetMotor</link>());
+<anchor xml:id="__feeder_8cpp_source_1l00029"/>00029 }
+</programlisting></section>

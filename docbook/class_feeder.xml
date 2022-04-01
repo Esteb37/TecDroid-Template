@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_feeder" xml:lang="en-US">
+<title>Feeder Class Reference</title>
+<indexterm><primary>Feeder</primary></indexterm>
+<para>
+<computeroutput>#include &lt;Feeder.h&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for Feeder:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_feeder.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_feeder_1a6e19de83bb7db588512f6ca8772a944e">Feeder</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_feeder_1ada3cba130afa1b68d25741d68fd24184">Periodic</link> () override</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_feeder_1a06980f926992f2c2c110556e2fa28ad2">SetMotor</link> (double)</para>
+
+<para>Sets the Motor speed. </para>
+</listitem>
+            <listitem><para>double <link linkend="_class_feeder_1a3a01f288d0e35fa0956f24ce90a3e0f5">GetMotor</link> ()</para>
+
+<para>Gets the Motor speed. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_feeder_1a0bf044d7a57300e64b74e2f2cd8e7d09">InvertMotor</link> (bool)</para>
+
+<para>Invert motor direction. </para>
+</listitem>
+            <listitem><para>void <link linkend="_class_feeder_1a2db2368dc4de4c6ca7d531a43d0f206f">PrintMotor</link> ()</para>
+
+<para>Publishes the motor speed to the dashboard. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="__feeder_8h_source_1l00013">13</link> of file <link linkend="__feeder_8h_source">Feeder.h</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_class_feeder_1a6e19de83bb7db588512f6ca8772a944e"/><section>
+    <title>Feeder()</title>
+<indexterm><primary>Feeder</primary><secondary>Feeder</secondary></indexterm>
+<indexterm><primary>Feeder</primary><secondary>Feeder</secondary></indexterm>
+<para><computeroutput>Feeder::Feeder ( )</computeroutput></para><para>
+Definition at line <link linkend="__feeder_8cpp_source_1l00003">3</link> of file <link linkend="__feeder_8cpp_source">Feeder.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_class_feeder_1a3a01f288d0e35fa0956f24ce90a3e0f5"/><section>
+    <title>GetMotor()</title>
+<indexterm><primary>GetMotor</primary><secondary>Feeder</secondary></indexterm>
+<indexterm><primary>Feeder</primary><secondary>GetMotor</secondary></indexterm>
+<para><computeroutput>double Feeder::GetMotor ( )</computeroutput></para><para>
+
+<para>Gets the Motor speed. </para>
+</para>
+<para>
+Definition at line <link linkend="__feeder_8cpp_source_1l00016">16</link> of file <link linkend="__feeder_8cpp_source">Feeder.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_feeder_1a0bf044d7a57300e64b74e2f2cd8e7d09"/><section>
+    <title>InvertMotor()</title>
+<indexterm><primary>InvertMotor</primary><secondary>Feeder</secondary></indexterm>
+<indexterm><primary>Feeder</primary><secondary>InvertMotor</secondary></indexterm>
+<para><computeroutput>void Feeder::InvertMotor (bool inverted)</computeroutput></para><para>
+
+<para>Invert motor direction. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>invert</entry><entry>
+<para>True to invert, false to not </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__feeder_8cpp_source_1l00021">21</link> of file <link linkend="__feeder_8cpp_source">Feeder.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_feeder_1ada3cba130afa1b68d25741d68fd24184"/><section>
+    <title>Periodic()</title>
+<indexterm><primary>Periodic</primary><secondary>Feeder</secondary></indexterm>
+<indexterm><primary>Feeder</primary><secondary>Periodic</secondary></indexterm>
+<para><computeroutput>void Feeder::Periodic ( )<computeroutput>[override]</computeroutput></computeroutput></para><para>
+Definition at line <link linkend="__feeder_8cpp_source_1l00007">7</link> of file <link linkend="__feeder_8cpp_source">Feeder.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_feeder_1a2db2368dc4de4c6ca7d531a43d0f206f"/><section>
+    <title>PrintMotor()</title>
+<indexterm><primary>PrintMotor</primary><secondary>Feeder</secondary></indexterm>
+<indexterm><primary>Feeder</primary><secondary>PrintMotor</secondary></indexterm>
+<para><computeroutput>void Feeder::PrintMotor ( )</computeroutput></para><para>
+
+<para>Publishes the motor speed to the dashboard. </para>
+</para>
+<para>
+Definition at line <link linkend="__feeder_8cpp_source_1l00026">26</link> of file <link linkend="__feeder_8cpp_source">Feeder.cpp</link>.</para>
+</section>
+<anchor xml:id="_class_feeder_1a06980f926992f2c2c110556e2fa28ad2"/><section>
+    <title>SetMotor()</title>
+<indexterm><primary>SetMotor</primary><secondary>Feeder</secondary></indexterm>
+<indexterm><primary>Feeder</primary><secondary>SetMotor</secondary></indexterm>
+<para><computeroutput>void Feeder::SetMotor (double speed)</computeroutput></para><para>
+
+<para>Sets the Motor speed. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>speed</entry><entry>
+<para>Speed and direction to turn </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="__feeder_8cpp_source_1l00011">11</link> of file <link linkend="__feeder_8cpp_source">Feeder.cpp</link>.</para>
+</section>
+<para>
+The documentation for this class was generated from the following files:</para>
+src/main/include/subsystems/<link linkend="__feeder_8h">Feeder.h</link>src/main/cpp/subsystems/<link linkend="__feeder_8cpp">Feeder.cpp</link></section>
+</section>
