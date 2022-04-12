@@ -67,14 +67,14 @@ double ElevatorBase::GetAbsoluteHeight()
 	return GetPosition() + m_heightToFloor;
 }
 
-bool ElevatorBase::SetRelativeHeight(double height, bool inverted)
+bool ElevatorBase::SetRelativeHeight(double height, double speed)
 {
-	return SetPosition(height, inverted);
+	return SetPosition(height, speed);
 }
 
-bool ElevatorBase::SetAbsoluteHeight(double height, bool inverted)
+bool ElevatorBase::SetAbsoluteHeight(double height, double speed)
 {
-	return SetPosition(height - m_heightToFloor, inverted);
+	return SetPosition(height - m_heightToFloor, speed);
 }
 
 void ElevatorBase::SetMinMaxHeight(double min, double max)
