@@ -14,20 +14,20 @@ using namespace frc;
 using namespace frc2;
 using namespace rev;
 
-class Elevator : public EncoderSubsystem
+class ElevatorBase : public EncoderSubsystem
 {
 public:
-	Elevator(MotorConfig, unsigned int);
+	ElevatorBase(MotorConfig, unsigned int);
 
-	Elevator(MotorConfig, vector<unsigned int>);
+	ElevatorBase(MotorConfig, vector<unsigned int>);
 
-	Elevator(MotorConfig, EncoderConfig, unsigned int);
+	ElevatorBase(MotorConfig, EncoderConfig, unsigned int);
 
-	Elevator(MotorConfig, EncoderConfig, vector<unsigned int>);
+	ElevatorBase(MotorConfig, EncoderConfig, vector<unsigned int>);
 
-	Elevator(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
+	ElevatorBase(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
 
-	Elevator(MotorConfig, EncoderConfig, vector<unsigned int>, unsigned int, unsigned int);
+	ElevatorBase(MotorConfig, EncoderConfig, vector<unsigned int>, unsigned int, unsigned int);
 
 	void Periodic() override;
 

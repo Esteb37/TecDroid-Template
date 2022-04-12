@@ -7,15 +7,15 @@
 using namespace frc;
 using namespace frc2;
 
-class Claw : public SubsystemBase
+class ClawBase : public SubsystemBase
 {
 
 public:
-	Claw();
+	ClawBase();
 
-	Claw(unsigned int, unsigned int);
+	ClawBase(unsigned int, unsigned int);
 
-	Claw(unsigned int, unsigned int, unsigned int, unsigned int);
+	ClawBase(unsigned int, unsigned int, unsigned int, unsigned int);
 
 	void Periodic() override;
 

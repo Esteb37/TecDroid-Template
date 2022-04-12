@@ -13,7 +13,7 @@ using namespace frc;
 using namespace frc2;
 using namespace rev;
 
-class Turret : public EncoderSubsystem
+class TurretBase : public EncoderSubsystem
 {
 public:
 	/**
@@ -23,7 +23,7 @@ public:
 	 * @param encoderConfig The encoder configuration
 	 * @param motorPort The motor port
 	 */
-	Turret(MotorConfig, EncoderConfig, unsigned int);
+	TurretBase(MotorConfig, EncoderConfig, unsigned int);
 
 	/**
 	 * @brief Construct a new Turret object with an FRC encoder
@@ -34,7 +34,7 @@ public:
 	 * @param encoderA The encoder A port
 	 * @param encoderB The encoder B port
 	 */
-	Turret(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
+	TurretBase(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
 
 	void Periodic() override;
 

@@ -1,18 +1,18 @@
-#include "subsystems/Turret.h"
+#include "subsystems/TurretBase.h"
 
 using namespace std;
 
-Turret::Turret(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort) : EncoderSubsystem(motorConfig, encoderConfig, motorPort), MotorSubsystem(motorConfig, motorPort)
+TurretBase::TurretBase(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort) : EncoderSubsystem(motorConfig, encoderConfig, motorPort), MotorSubsystem(motorConfig, motorPort)
 {
 	SetName("Turret");
 }
 
-Turret::Turret(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort, unsigned int encoderA, unsigned int encoderB) : EncoderSubsystem(motorConfig, encoderConfig, motorPort, encoderA, encoderB), MotorSubsystem(motorConfig, motorPort)
+TurretBase::TurretBase(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort, unsigned int encoderA, unsigned int encoderB) : EncoderSubsystem(motorConfig, encoderConfig, motorPort, encoderA, encoderB), MotorSubsystem(motorConfig, motorPort)
 {
 	SetName("Turret");
 }
 
-void Turret::Periodic()
+void TurretBase::Periodic()
 {
 
 	if (!m_keepingStill)
@@ -23,31 +23,31 @@ void Turret::Periodic()
 	m_keepingStill = false;
 }
 
-void Turret::Turn(double speed)
+void TurretBase::Turn(double speed)
 {
 	SetMotor(speed);
 }
 
-void Turret::Reset()
+void TurretBase::Reset()
 {
 	ResetEncoder();
 	ResetPositionPID();
 	ResetAlignPID();
 }
 
-void Turret::KeepStill(double speed)
+void TurretBase::KeepStill(double speed)
 {
 	m_keepingStill = true;
 
 	SetAngle(m_angle, speed);
 }
 
-bool Turret::Center(double speed)
+bool TurretBase::Center(double speed)
 {
 	return SetAngle(0, speed);
 }
 
-bool Turret::SetAngle(double angle, double speed)
+bool TurretBase::SetAngle(double angle, double speed)
 {
 
 	if (angle > m_freedom / 2 && angle < -m_freedom / 2)
@@ -60,27 +60,27 @@ bool Turret::SetAngle(double angle, double speed)
 	}
 }
 
-double Turret::GetAngle()
+double TurretBase::GetAngle()
 {
 	return GetPosition();
 }
 
-void Turret::ConfigureAnglePID(double p, double i, double d, double tolerance, bool inverted)
+void TurretBase::ConfigureAnglePID(double p, double i, double d, double tolerance, bool inverted)
 {
 	ConfigurePositionPID(p, i, d, tolerance, inverted);
 }
 
-void Turret::PrintAngle()
+void TurretBase::PrintAngle()
 {
 	SmartDashboard::PutNumber(GetName() + " Angle", GetAngle());
 }
 
-void Turret::PrintAnglePIDError()
+void TurretBase::PrintAnglePIDError()
 {
 	SmartDashboard::PutNumber(GetName() + " Angle PID Error", m_positionPID->GetPositionError());
 }
 
-bool Turret::Align(double speed)
+bool TurretBase::Align(double speed)
 {
 	m_alignPID.SetSetpoint(0);
 
@@ -91,24 +91,24 @@ bool Turret::Align(double speed)
 	return m_alignPID.AtSetpoint();
 }
 
-void Turret::ConfigureAlignPID(double p, double i, double d, double tolerance, bool inverted)
+void TurretBase::ConfigureAlignPID(double p, double i, double d, double tolerance, bool inverted)
 {
 	m_alignPID.SetPID(p, i, d);
 	m_alignPID.SetTolerance(tolerance);
 	m_alignPIDDirection = inverted ? -1 : 1;
 }
 
-void Turret::ResetAlignPID()
+void TurretBase::ResetAlignPID()
 {
 	m_alignPID.Reset();
 }
 
-void Turret::PrintAlignPIDError()
+void TurretBase::PrintAlignPIDError()
 {
 	SmartDashboard::PutNumber(GetName() + " Align PID Error", m_alignPID.GetPositionError());
 }
 
-void Turret::SetFreedom(double freedom)
+void TurretBase::SetFreedom(double freedom)
 {
 	m_freedom = freedom;
 	SetMinMaxPosition(-freedom / 2, freedom / 2);

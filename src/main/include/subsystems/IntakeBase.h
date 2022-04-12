@@ -12,7 +12,7 @@ using namespace frc;
 using namespace frc2;
 using namespace rev;
 
-class Intake : public MotorSubsystem, public SolenoidSubsystem
+class IntakeBase : public MotorSubsystem, public SolenoidSubsystem
 {
 
 public:
@@ -22,7 +22,7 @@ public:
 	 * @param motorConfig The motor configuration
 	 * @param motorPort The motor port
 	 */
-	Intake(MotorConfig, unsigned int);
+	IntakeBase(MotorConfig, unsigned int);
 
 	/**
 	 * @brief Construct a new Intake object with multiple motors
@@ -30,7 +30,7 @@ public:
 	 * @param motorConfig The motor configuration
 	 * @param motorPorts The motor ports
 	 */
-	Intake(MotorConfig, vector<unsigned int>);
+	IntakeBase(MotorConfig, vector<unsigned int>);
 
 	/**
 	 * @brief Construct a new Intake object with a single motor and a single solenoid
@@ -40,7 +40,7 @@ public:
 	 * @param solenoidForward The solenoid forward port
 	 * @param solenoidReverse The solenoid reverse port
 	 */
-	Intake(MotorConfig, unsigned int, unsigned int, unsigned int);
+	IntakeBase(MotorConfig, unsigned int, unsigned int, unsigned int);
 
 	/**
 	 * @brief Construct a new Intake object with multiple motors and a single solenoid
@@ -50,7 +50,7 @@ public:
 	 * @param solenoidForward The solenoid forward port
 	 * @param solenoidReverse The solenoid reverse port
 	 */
-	Intake(MotorConfig, vector<unsigned int>, unsigned int, unsigned int);
+	IntakeBase(MotorConfig, vector<unsigned int>, unsigned int, unsigned int);
 
 	/**
 	 * @brief Construct a new Intake object with a single motor and multiple solenoids
@@ -62,7 +62,7 @@ public:
 	 * @param leftSolenoidForward The left solenoid forward port
 	 * @param leftSolenoidReverse The left solenoid reverse port
 	 */
-	Intake(MotorConfig, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+	IntakeBase(MotorConfig, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 
 	/**
 	 * @brief Construct a new Intake object with multiple motors and multiple solenoids
@@ -74,7 +74,7 @@ public:
 	 * @param leftSolenoidForward The left solenoid forward port
 	 * @param leftSolenoidReverse The left solenoid reverse port
 	 */
-	Intake(MotorConfig, vector<unsigned int>, unsigned int, unsigned int, unsigned int, unsigned int);
+	IntakeBase(MotorConfig, vector<unsigned int>, unsigned int, unsigned int, unsigned int, unsigned int);
 
 	void Periodic() override;
 

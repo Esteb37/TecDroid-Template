@@ -4,13 +4,13 @@
 
 #pragma once
 
-#include "subsystems/Claw.h"
+#include "subsystems/ClawBase.h"
 #include "subsystems/Drivetrain.h"
-#include "subsystems/Elevator.h"
-#include "subsystems/Feeder.h"
-#include "subsystems/Intake.h"
-#include "subsystems/Shooter.h"
-#include "subsystems/Turret.h"
+#include "subsystems/ElevatorBase.h"
+#include "subsystems/FeederBase.h"
+#include "subsystems/IntakeBase.h"
+#include "subsystems/ShooterBase.h"
+#include "subsystems/TurretBase.h"
 
 #include <frc2/command/Command.h>
 
@@ -41,15 +41,15 @@ public:
 private:
 	Drivetrain m_drivetrain{can_frontRight, can_frontLeft, can_backRight, can_backLeft};
 
-	Shooter m_shooter{MotorConfig::kSpark, EncoderConfig::kFrc, can_shooterMotor, dio_shooterEncoderA, dio_shooterEncoderB};
+	ShooterBase m_shooter{MotorConfig::kSpark, EncoderConfig::kFrc, can_shooterMotor, dio_shooterEncoderA, dio_shooterEncoderB};
 
-	Intake m_intake{MotorConfig::kSpark, pwm_intakeMotor, sl_intakeRightForward, sl_intakeRightReverse, sl_intakeLeftForward, sl_intakeLeftReverse};
+	IntakeBase m_intake{MotorConfig::kSpark, pwm_intakeMotor, sl_intakeRightForward, sl_intakeRightReverse, sl_intakeLeftForward, sl_intakeLeftReverse};
 
-	Feeder m_feeder{MotorConfig::kVictorPWM, pwm_feederMotor};
+	FeederBase m_feeder{MotorConfig::kVictorPWM, pwm_feederMotor};
 
-	Elevator m_elevator{MotorConfig::kSpark, EncoderConfig::kFrc, {can_elevatorLeftMotor, can_elevatorRightMotor}, dio_elevatorEncoderA, dio_elevatorEncoderB};
+	ElevatorBase m_elevator{MotorConfig::kSpark, EncoderConfig::kFrc, {can_elevatorLeftMotor, can_elevatorRightMotor}, dio_elevatorEncoderA, dio_elevatorEncoderB};
 
-	Claw m_claw{sl_clawForward, sl_clawReverse, sl_wristForward, sl_wristReverse};
+	ClawBase m_claw{sl_clawForward, sl_clawReverse, sl_wristForward, sl_wristReverse};
 
-	Turret m_turret{MotorConfig::kSpark, EncoderConfig::kFrc, pwm_turretMotor, dio_turretEncoderA, dio_turretEncoderB};
+	TurretBase m_turret{MotorConfig::kSpark, EncoderConfig::kFrc, pwm_turretMotor, dio_turretEncoderA, dio_turretEncoderB};
 };

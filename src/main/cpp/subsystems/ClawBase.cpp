@@ -1,17 +1,17 @@
-#include "subsystems/Claw.h"
+#include "subsystems/ClawBase.h"
 
-Claw::Claw()
+ClawBase::ClawBase()
 {
 	SetName("Claw");
 }
 
-Claw::Claw(unsigned int solenoidA, unsigned int solenoidB)
+ClawBase::ClawBase(unsigned int solenoidA, unsigned int solenoidB)
 {
 	m_hand.SetName("Claw Hand");
 	m_hand.ConfigureSolenoid(solenoidA, solenoidB);
 }
 
-Claw::Claw(unsigned int handA, unsigned int handB, unsigned int wristA, unsigned int wristB)
+ClawBase::ClawBase(unsigned int handA, unsigned int handB, unsigned int wristA, unsigned int wristB)
 {
 	m_hand.SetName("Claw Hand");
 	m_wrist.SetName("Claw Wrist");
@@ -19,76 +19,76 @@ Claw::Claw(unsigned int handA, unsigned int handB, unsigned int wristA, unsigned
 	m_wrist.ConfigureSolenoid(wristA, wristB);
 }
 
-void Claw::Periodic()
+void ClawBase::Periodic()
 {
 }
 
-void Claw::OpenHand()
+void ClawBase::OpenHand()
 {
 	m_hand.OpenSolenoids();
 }
 
-void Claw::CloseHand()
+void ClawBase::CloseHand()
 {
 	m_hand.CloseSolenoids();
 }
 
-void Claw::ToggleHand()
+void ClawBase::ToggleHand()
 {
 	m_hand.ToggleSolenoids();
 }
 
-void Claw::InvertHand(bool invert)
+void ClawBase::InvertHand(bool invert)
 {
 	m_hand.InvertSolenoids(invert);
 }
 
-void Claw::HandOff()
+void ClawBase::HandOff()
 {
 	m_hand.SolenoidsOff();
 }
 
-unsigned int Claw::GetHand()
+unsigned int ClawBase::GetHand()
 {
 	return m_hand.GetSolenoid();
 }
 
-void Claw::PrintHand()
+void ClawBase::PrintHand()
 {
 	m_hand.PrintSolenoids();
 }
 
-void Claw::RaiseWrist()
+void ClawBase::RaiseWrist()
 {
 	m_wrist.CloseSolenoids();
 }
 
-void Claw::LowerWrist()
+void ClawBase::LowerWrist()
 {
 	m_wrist.OpenSolenoids();
 }
 
-void Claw::ToggleWrist()
+void ClawBase::ToggleWrist()
 {
 	m_wrist.ToggleSolenoids();
 }
 
-void Claw::InvertWrist(bool invert)
+void ClawBase::InvertWrist(bool invert)
 {
 	m_wrist.InvertSolenoids(invert);
 }
 
-void Claw::WristOff()
+void ClawBase::WristOff()
 {
 	m_wrist.SolenoidsOff();
 }
 
-unsigned int Claw::GetWrist()
+unsigned int ClawBase::GetWrist()
 {
 	return m_wrist.GetSolenoid();
 }
 
-void Claw::PrintWrist()
+void ClawBase::PrintWrist()
 {
 	m_wrist.PrintSolenoids();
 }

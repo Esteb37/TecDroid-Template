@@ -18,29 +18,29 @@ using namespace frc;
 using namespace frc2;
 using namespace rev;
 
-class Shooter : public EncoderSubsystem, public SolenoidSubsystem
+class ShooterBase : public EncoderSubsystem, public SolenoidSubsystem
 {
 
 public:
 	/**
-	 * @brief Construct a new Shooter object without encoder
+	 * @brief Construct a new ShooterBase object without encoder
 	 *
 	 * @param motorConfig The motor configuration
 	 * @param motorPort The motor port
 	 */
-	Shooter(MotorConfig, unsigned int);
+	ShooterBase(MotorConfig, unsigned int);
 
 	/**
-	 * @brief Construct a new Shooter object with REV encoder
+	 * @brief Construct a new ShooterBase object with REV encoder
 	 *
 	 * @param motorConfig The motor configuration
 	 * @param encoderConfig The encoder configuration
 	 * @param motorPort The motor port
 	 */
-	Shooter(MotorConfig, EncoderConfig, unsigned int);
+	ShooterBase(MotorConfig, EncoderConfig, unsigned int);
 
 	/**
-	 * @brief Construct a new Shooter object with FRC encoder
+	 * @brief Construct a new ShooterBase object with FRC encoder
 	 *
 	 * @param motorConfig The motor configuration
 	 * @param encoderConfig The encoder configuration
@@ -48,7 +48,7 @@ public:
 	 * @param encoderA The encoder A port
 	 * @param encoderB The encoder B port
 	 */
-	Shooter(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
+	ShooterBase(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
 
 	void Periodic() override;
 

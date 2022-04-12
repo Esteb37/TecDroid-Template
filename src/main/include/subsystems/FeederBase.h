@@ -11,7 +11,7 @@ using namespace frc;
 using namespace frc2;
 using namespace rev;
 
-class Feeder : public MotorSubsystem
+class FeederBase : public MotorSubsystem
 {
 
 public:
@@ -21,7 +21,7 @@ public:
 	 * @param motorConfig The motor configuration
 	 * @param motorPort The motor port
 	 */
-	Feeder(MotorConfig, unsigned int);
+	FeederBase(MotorConfig, unsigned int);
 
 	/**
 	 * @brief Construct a new Feeder object with multiple motors
@@ -29,7 +29,7 @@ public:
 	 * @param motorConfig The motor configuration
 	 * @param motorPorts The motor ports
 	 */
-	Feeder(MotorConfig, vector<unsigned int>);
+	FeederBase(MotorConfig, vector<unsigned int>);
 
 	void Periodic() override;
 
