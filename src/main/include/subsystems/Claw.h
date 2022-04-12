@@ -1,8 +1,8 @@
 #pragma once
 #include "Constants.h"
-#include <frc/DoubleSolenoid.h>
+
+#include "subsystems/SolenoidSubsystem.h";
 #include <frc/smartdashboard/SmartDashboard.h>
-#include <frc2/command/SubsystemBase.h>
 
 using namespace frc;
 using namespace frc2;
@@ -12,6 +12,10 @@ class Claw : public SubsystemBase
 
 public:
 	Claw();
+
+	Claw(unsigned int, unsigned int);
+
+	Claw(unsigned int, unsigned int, unsigned int, unsigned int);
 
 	void Periodic() override;
 
@@ -96,19 +100,9 @@ public:
 	void PrintWrist();
 
 private:
-	// ---------- Solenoids ---------
-
-	DoubleSolenoid m_hand{PneumaticsModuleType::REVPH, pClawHandSolenoidForward, pClawHandSolenoidReverse};
-
-	DoubleSolenoid m_wrist{PneumaticsModuleType::REVPH, pClawWristSolenoidForward, pClawWristSolenoidReverse};
-
-	// ---------- Attributes ----------
-
-	bool m_handInverted = false;
-
-	bool m_wristInverted = false;
-
-	bool m_handOpen = false;
+	SolenoidSubsystem m_hand;
+	SolenoidSubsystem m_wrist;
 
 	bool m_wristLowered = false;
+	bool m_handOpen = false;
 };

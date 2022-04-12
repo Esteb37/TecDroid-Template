@@ -2,6 +2,21 @@
 
 Claw::Claw()
 {
+	SetName("Claw");
+}
+
+Claw::Claw(unsigned int solenoidA, unsigned int solenoidB)
+{
+	m_hand.SetName("Claw Hand");
+	m_hand.ConfigureSolenoid(solenoidA, solenoidB);
+}
+
+Claw::Claw(unsigned int handA, unsigned int handB, unsigned int wristA, unsigned int wristB)
+{
+	m_hand.SetName("Claw Hand");
+	m_wrist.SetName("Claw Wrist");
+	m_hand.ConfigureSolenoid(handA, handB);
+	m_wrist.ConfigureSolenoid(wristA, wristB);
 }
 
 void Claw::Periodic()
@@ -10,120 +25,70 @@ void Claw::Periodic()
 
 void Claw::OpenHand()
 {
-	if (m_wristInverted)
-	{
-		m_wrist.Set(DoubleSolenoid::Value::kReverse);
-	}
-	else
-	{
-		m_wrist.Set(DoubleSolenoid::Value::kForward);
-	}
-
-	m_handOpen = true;
+	m_hand.OpenSolenoids();
 }
 
 void Claw::CloseHand()
 {
-	if (m_wristInverted)
-	{
-		m_wrist.Set(DoubleSolenoid::Value::kForward);
-	}
-	else
-	{
-		m_wrist.Set(DoubleSolenoid::Value::kReverse);
-	}
-
-	m_handOpen = false;
+	m_hand.CloseSolenoids();
 }
 
 void Claw::ToggleHand()
 {
-	if (m_handOpen)
-	{
-		CloseHand();
-	}
-	else
-	{
-		OpenHand();
-	}
+	m_hand.ToggleSolenoids();
 }
 
 void Claw::InvertHand(bool invert)
 {
-	m_handInverted = invert;
+	m_hand.InvertSolenoids(invert);
 }
 
 void Claw::HandOff()
 {
-	m_hand.Set(DoubleSolenoid::Value::kOff);
+	m_hand.SolenoidsOff();
 }
 
 unsigned int Claw::GetHand()
 {
-	return m_hand.Get();
+	return m_hand.GetSolenoid();
 }
 
 void Claw::PrintHand()
 {
-	SmartDashboard::PutNumber("Claw Hand", GetHand());
+	m_hand.PrintSolenoids();
 }
 
 void Claw::RaiseWrist()
 {
-	if (m_wristInverted)
-	{
-		m_wrist.Set(DoubleSolenoid::Value::kForward);
-	}
-	else
-	{
-		m_wrist.Set(DoubleSolenoid::Value::kReverse);
-	}
-
-	m_wristLowered = false;
+	m_wrist.CloseSolenoids();
 }
 
 void Claw::LowerWrist()
 {
-	if (m_wristInverted)
-	{
-		m_wrist.Set(DoubleSolenoid::Value::kReverse);
-	}
-	else
-	{
-		m_wrist.Set(DoubleSolenoid::Value::kForward);
-	}
-
-	m_wristLowered = true;
+	m_wrist.OpenSolenoids();
 }
 
 void Claw::ToggleWrist()
 {
-	if (m_wristLowered)
-	{
-		RaiseWrist();
-	}
-	else
-	{
-		LowerWrist();
-	}
+	m_wrist.ToggleSolenoids();
 }
 
 void Claw::InvertWrist(bool invert)
 {
-	m_wristInverted = invert;
+	m_wrist.InvertSolenoids(invert);
 }
 
 void Claw::WristOff()
 {
-	m_wrist.Set(DoubleSolenoid::Value::kOff);
+	m_wrist.SolenoidsOff();
 }
 
 unsigned int Claw::GetWrist()
 {
-	return m_wrist.Get();
+	return m_wrist.GetSolenoid();
 }
 
 void Claw::PrintWrist()
 {
-	SmartDashboard::PutNumber("Claw Wrist", GetWrist());
+	m_wrist.PrintSolenoids();
 }
