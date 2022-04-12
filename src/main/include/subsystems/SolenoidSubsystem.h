@@ -111,7 +111,7 @@ namespace TecDroid
 
 		DoubleSolenoid *m_leftSolenoid;
 
-	private:
+	protected:
 		bool m_isDoubleSolenoid = false;
 
 		bool m_solenoidsInverted = false;

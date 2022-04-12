@@ -125,7 +125,7 @@ namespace TecDroid
 
 		Limelight m_limelight;
 
-	private:
+	protected:
 		double (*m_rpmCalculationFunction)(double);
 	};
 }

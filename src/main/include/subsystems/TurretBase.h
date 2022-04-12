@@ -142,7 +142,7 @@ namespace TecDroid
 
 		PIDController m_alignPID{0.1, 0, 0};
 
-	private:
+	protected:
 		// ---------- Attributes ----------
 
 		double m_angle;

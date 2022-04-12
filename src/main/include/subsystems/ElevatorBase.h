@@ -53,7 +53,7 @@ namespace TecDroid
 
 		void SetMinMaxHeight(double, double);
 
-	private:
+	protected:
 		double m_heightToFloor;
 	};
 }

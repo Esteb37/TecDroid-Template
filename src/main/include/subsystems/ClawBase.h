@@ -13,10 +13,27 @@ namespace TecDroid
 	{
 
 	public:
+		/**
+		 * @brief Construct a new Claw object with no solenoids attached
+		 */
 		ClawBase();
 
+		/**
+		 * @brief Construct a new Claw object with a single solenoid
+		 *
+		 * @param solenoidForward The solenoid forward port
+		 * @param solenoidReverse The solenoid reverse port
+		 */
 		ClawBase(unsigned int, unsigned int);
 
+		/**
+		 * @brief Construct a new Claw object with hand and wrist solenoids
+		 *
+		 * @param solenoidHandForward The hand solenoid forward port
+		 * @param solenoidHandReverse The hand solenoid reverse port
+		 * @param solenoidWristForward The wrist solenoid forward port
+		 * @param solenoidWristReverse The wrist solenoid reverse port
+		 */
 		ClawBase(unsigned int, unsigned int, unsigned int, unsigned int);
 
 		void Periodic() override;
@@ -101,10 +118,11 @@ namespace TecDroid
 		 */
 		void PrintWrist();
 
-	private:
+		// ---------- Components ----------
 		SolenoidSubsystem m_hand;
 		SolenoidSubsystem m_wrist;
 
+	protected:
 		bool m_wristLowered = false;
 		bool m_handOpen = false;
 	};

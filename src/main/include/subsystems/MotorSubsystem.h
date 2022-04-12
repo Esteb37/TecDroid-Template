@@ -77,7 +77,8 @@ namespace TecDroid
 
 		void PrintLimits();
 
-	protected:
+		// ---------- Components -----------
+
 		CANSparkMax *m_motorSpark;
 
 		VictorSPX *m_motorVictorCAN;
@@ -90,13 +91,14 @@ namespace TecDroid
 
 		vector<VictorSP *> m_motorVictorPWMList;
 
-		MotorConfig m_motorConfig;
-
-		double m_maxSpeed;
-
 		DigitalInput *m_upperLimit;
 
 		DigitalInput *m_lowerLimit;
+
+	protected:
+		MotorConfig m_motorConfig;
+
+		double m_maxSpeed;
 
 		bool m_limitSafetyActive = false;
 

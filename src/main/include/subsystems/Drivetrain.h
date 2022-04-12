@@ -377,7 +377,7 @@ namespace TecDroid
 
 		PIDController m_distancePIDController{0.1, 0, 0};
 
-	private:
+	protected:
 		// ----- Attributes -----
 
 		int m_gyroDirection = 1;
