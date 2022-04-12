@@ -7,5 +7,5 @@ Align::Align(Turret *turret)
 
 bool Align::IsFinished()
 {
-	return m_turret->Align();
+	return m_turret->Align(false);
 }
