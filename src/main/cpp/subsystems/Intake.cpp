@@ -7,12 +7,27 @@ Intake::Intake(MotorConfig config, unsigned int port) : MotorSubsystem(config, p
 	SetName("Intake");
 }
 
+Intake::Intake(MotorConfig config, vector<unsigned int> ports) : MotorSubsystem(config, ports)
+{
+	SetName("Intake");
+}
+
 Intake::Intake(MotorConfig config, unsigned int port, unsigned int solenoidA, unsigned int solenoidB) : MotorSubsystem(config, port), SolenoidSubsystem(solenoidA, solenoidB)
 {
 	SetName("Intake");
 }
 
+Intake::Intake(MotorConfig config, vector<unsigned int> ports, unsigned int solenoidA, unsigned int solenoidB) : MotorSubsystem(config, ports), SolenoidSubsystem(solenoidA, solenoidB)
+{
+	SetName("Intake");
+}
+
 Intake::Intake(MotorConfig config, unsigned int port, unsigned int rightA, unsigned int rightB, unsigned int leftA, unsigned int leftB) : MotorSubsystem(config, port), SolenoidSubsystem(rightA, rightB, leftA, leftB)
+{
+	SetName("Intake");
+}
+
+Intake::Intake(MotorConfig config, vector<unsigned int> ports, unsigned int rightA, unsigned int rightB, unsigned int leftA, unsigned int leftB) : MotorSubsystem(config, ports), SolenoidSubsystem(rightA, rightB, leftA, leftB)
 {
 	SetName("Intake");
 }
@@ -23,12 +38,28 @@ void Intake::Periodic()
 
 void Intake::Take()
 {
-	SetMotor(1);
+	if (m_motorCount > 1)
+	{
+		vector<double> speeds(m_motorCount, 1.0);
+		SetMotors(speeds);
+	}
+	else
+	{
+		SetMotor(1);
+	}
 }
 
 void Intake::Spit()
 {
-	SetMotor(-1);
+	if (m_motorCount > 1)
+	{
+		vector<double> speeds(m_motorCount, -1.0);
+		SetMotors(speeds);
+	}
+	else
+	{
+		SetMotor(-1);
+	}
 }
 
 void Intake::Lower()

@@ -17,6 +17,8 @@ class Feeder : public MotorSubsystem
 public:
 	Feeder(MotorConfig, unsigned int);
 
+	Feeder(MotorConfig, vector<unsigned int>);
+
 	void Periodic() override;
 
 	// ---------- Actions -----------

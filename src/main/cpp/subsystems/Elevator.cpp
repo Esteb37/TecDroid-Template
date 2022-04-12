@@ -1,11 +1,33 @@
 #include "subsystems/Elevator.h"
 
+Elevator::Elevator(MotorConfig mconfig, unsigned int motorPort)
+	: EncoderSubsystem(mconfig, motorPort), MotorSubsystem(mconfig, motorPort)
+{
+	SetName("Elevator");
+}
+
+Elevator::Elevator(MotorConfig mconfig, vector<unsigned int> motorPorts)
+	: EncoderSubsystem(mconfig, motorPorts), MotorSubsystem(mconfig, motorPorts)
+{
+	SetName("Elevator");
+}
+
 Elevator::Elevator(MotorConfig mconfig, EncoderConfig econfig, unsigned int mport) : EncoderSubsystem(mconfig, econfig, mport), MotorSubsystem(mconfig, mport)
 {
 	SetName("Elevator");
 }
 
+Elevator::Elevator(MotorConfig mconfig, EncoderConfig econfig, vector<unsigned int> mports) : EncoderSubsystem(mconfig, econfig, mports), MotorSubsystem(mconfig, mports)
+{
+	SetName("Elevator");
+}
+
 Elevator::Elevator(MotorConfig mconfig, EncoderConfig econfig, unsigned int mport, unsigned int encoderA, unsigned int encoderB) : EncoderSubsystem(mconfig, econfig, mport, encoderA, encoderB), MotorSubsystem(mconfig, mport)
+{
+	SetName("Elevator");
+}
+
+Elevator::Elevator(MotorConfig mconfig, EncoderConfig econfig, vector<unsigned int> mports, unsigned int encoderA, unsigned int encoderB) : EncoderSubsystem(mconfig, econfig, mports, encoderA, encoderB), MotorSubsystem(mconfig, mports)
 {
 	SetName("Elevator");
 }
@@ -18,7 +40,14 @@ void Elevator::Periodic()
 
 void Elevator::Move(double speed)
 {
-	SetMotor(speed);
+	if (m_motorCount > 1)
+	{
+		vector<double> speeds(m_motorCount, speed);
+		SetMotors(speeds);
+	}
+
+	else
+		SetMotor(speed);
 }
 
 void Elevator::SetHeightToFloor(double height)

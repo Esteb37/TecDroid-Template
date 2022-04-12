@@ -18,9 +18,15 @@ class Intake : public MotorSubsystem, public SolenoidSubsystem
 public:
 	Intake(MotorConfig, unsigned int);
 
+	Intake(MotorConfig, vector<unsigned int>);
+
 	Intake(MotorConfig, unsigned int, unsigned int, unsigned int);
 
+	Intake(MotorConfig, vector<unsigned int>, unsigned int, unsigned int);
+
 	Intake(MotorConfig, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+
+	Intake(MotorConfig, vector<unsigned int>, unsigned int, unsigned int, unsigned int, unsigned int);
 
 	void Periodic() override;
 

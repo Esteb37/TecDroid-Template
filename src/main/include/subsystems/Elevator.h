@@ -17,9 +17,17 @@ using namespace rev;
 class Elevator : public EncoderSubsystem
 {
 public:
+	Elevator(MotorConfig, unsigned int);
+
+	Elevator(MotorConfig, vector<unsigned int>);
+
 	Elevator(MotorConfig, EncoderConfig, unsigned int);
 
+	Elevator(MotorConfig, EncoderConfig, vector<unsigned int>);
+
 	Elevator(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
+
+	Elevator(MotorConfig, EncoderConfig, vector<unsigned int>, unsigned int, unsigned int);
 
 	void Periodic() override;
 
