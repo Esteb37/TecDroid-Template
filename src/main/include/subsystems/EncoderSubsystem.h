@@ -128,7 +128,7 @@ public:
 	 * @param tolerance The tolerance of the position
 	 * @param inverted Invert PID calculation
 	 */
-	void ConfigurePositionPID(double, double, double, double, bool);
+	void ConfigurePositionPID(double, double, double, double, bool = false);
 
 	/**
 	 * @brief Set the encoder's Position Conversion Factor
@@ -186,7 +186,7 @@ public:
 	 * @param tolerance The tolerance of the speed
 	 * @param inverted Invert PID calculation
 	 */
-	void ConfigureSpeedPID(double, double, double, double, bool);
+	void ConfigureSpeedPID(double, double, double, double, bool = false);
 
 	/**
 	 * @brief Set the encoder's Speed Conversion Factor

@@ -204,7 +204,7 @@ public:
 	 * @param tolerance The tolerance value
 	 * @param inverted Invert output calculation
 	 */
-	void ConfigureMovePID(double, double, double, double, bool);
+	void ConfigureMovePID(double, double, double, double, bool = false);
 
 	/**
 	 * @brief Turns the drievtrain to a given angle.
@@ -232,7 +232,7 @@ public:
 	 * @param tolerance The tolerance value
 	 * @param inverted Invert output calculation
 	 */
-	void ConfigureTurnPID(double, double, double, double, bool);
+	void ConfigureTurnPID(double, double, double, double, bool = false);
 
 	/**
 	 * @brief Moves the drivetrain to a given coordinate in meters
@@ -287,7 +287,7 @@ public:
 	 * @param tolerance The tolerance value
 	 * @param inverted Invert output calculation
 	 */
-	void ConfigureAlignPID(double, double, double, double, bool);
+	void ConfigureAlignPID(double, double, double, double, bool = false);
 
 	/**
 	 * @brief Set drivetrain to a specific distance from the target
@@ -315,7 +315,7 @@ public:
 	 * @param tolerance The tolerance value
 	 * @param inverted Invert output calculation
 	 */
-	void ConfigureDistancePID(double, double, double, double, bool);
+	void ConfigureDistancePID(double, double, double, double, bool = false);
 
 	/**
 	 * @brief Get the absolute angle from a coordinate independent of quadrant
