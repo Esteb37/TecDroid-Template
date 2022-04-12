@@ -29,6 +29,10 @@
 		"type_traits": "cpp",
 		"utility": "cpp",
 		"*.inc": "cpp",
-		"cmath": "cpp"
+		"cmath": "cpp",
+		"stdexcept": "cpp",
+		"memory_resource": "cpp",
+		"limits": "cpp",
+		"memory": "cpp"
 	}
 }
