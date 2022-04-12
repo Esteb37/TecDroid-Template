@@ -108,6 +108,13 @@ public:
 	 */
 	double CalculateRPM();
 
+	/**
+	 * @brief Sets the function that will be used to calculate rpm according to distance
+	 *
+	 * @param func The function to set
+	 */
+	void SetRPMCalculationFunction(double (*func)(double));
+
 	// ---------- Components ----------
 
 	Servo *m_rightServo;
@@ -115,4 +122,7 @@ public:
 	Servo *m_leftServo;
 
 	Limelight m_limelight;
+
+private:
+	double (*m_rpmCalculationFunction)(double);
 };

@@ -29,7 +29,7 @@ void Shooter::Reset()
 
 double Shooter::CalculateRPM()
 {
-	return shooterRPMFromDistance(m_limelight.GetDistanceToTarget());
+	return m_rpmCalculationFunction(m_limelight.GetDistanceToTarget());
 }
 
 void Shooter::SetAngleServos(double angle)
@@ -69,9 +69,4 @@ void Shooter::PrintServos()
 void Shooter::Shoot()
 {
 	SetMotor(1);
-}
-
-Limelight Shooter::GetLimelight()
-{
-	return m_limelight;
 }
