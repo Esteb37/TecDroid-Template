@@ -2,7 +2,7 @@
 
 #include "Constants.h"
 
-#include "subsystems/MotorSubsystem.h"
+#include "subsystems/EncoderSubsystem.h"
 #include <ctre/Phoenix.h>
 #include <frc/DigitalInput.h>
 #include <frc/Encoder.h>
@@ -17,16 +17,13 @@ using namespace rev;
 class Elevator : public EncoderSubsystem
 {
 public:
-	Elevator(MotorConfig, unsigned int);
+	Elevator(MotorConfig, EncoderConfig, unsigned int);
+
+	Elevator(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
 
 	void Periodic() override;
 
 	// ---------- Actions -----------
-
-	/**
-	 * @brief Resets sensors and PIDs
-	 */
-	void Reset();
 
 	/**
 	 * @brief Moves the elevator
@@ -34,56 +31,16 @@ public:
 	 */
 	void Move(double);
 
-	/**
-	 * @brief Keeps the elevator at the current position
-	 */
-	void KeepStill();
+	void SetHeightToFloor(double);
 
-	// ---------- Limits ---------
+	double GetRelativeHeight();
 
-	/**
-	 * @brief Checks if the elevator is at the top
-	 * @return If the elevator is at the top
-	 */
-	bool GetTopLimit();
+	double GetAbsoluteHeight();
 
-	/**
-	 * @brief Checks if the elevator is at the bottom
-	 * @return If the elevator is at the bottom
-	 */
-	bool GetBottomLimit();
+	bool SetRelativeHeight(double, bool);
 
-	/**
-	 * @brief Publishes the limits to the dashboard
-	 */
-	void PrintLimits();
-
-	// --------- Safety ----------
-
-	/**
-	 * @brief Enable safety with limit switches
-	 * @param enable True to enable, false to not
-	 */
-	void SetLimitSafetyActive(bool);
+	bool SetAbsoluteHeight(double, bool);
 
 private:
-	PIDController m_heightPID{k_elevatorHeightP, k_elevatorHeightI, k_elevatorHeightD};
-
-	// ---------- Limits ----------
-
-	DigitalInput m_limitSwitchTop{pElevatorLimitTop};
-
-	DigitalInput m_limitSwitchBottom{pElevatorLimitBottom};
-
-	// ---------- Safety ----------
-
-	double m_height;
-
-	bool m_keepingStill = false;
-
-	bool m_limitSafety = false;
-
-	bool m_heightSafety = false;
-
-	MotorConfig m_config;
+	double m_heightToFloor;
 };
