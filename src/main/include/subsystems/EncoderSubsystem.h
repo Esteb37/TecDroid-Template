@@ -9,7 +9,7 @@
 using namespace frc2;
 using namespace frc;
 
-class EncoderSubsystem : public MotorSubsystem
+class EncoderSubsystem : virtual public MotorSubsystem
 {
 public:
 	EncoderSubsystem(MotorConfig, EncoderConfig, unsigned int);
@@ -18,11 +18,9 @@ public:
 
 	void Periodic() override;
 
-	/**
-	 * @brief Get the Encoder value
-	 * @return double
-	 */
-	double GetEncoder();
+	void SetMotor(double);
+
+	void Reset();
 
 	/**
 	 * @brief Sets the encoder's value to 0
@@ -35,16 +33,17 @@ public:
 	 */
 	void InvertEncoder(bool);
 
-	/**
-	 * @brief Publishes the Encoder value to the dashboard
-	 */
-	void PrintEncoder();
+	void SetEncoderPorts(unsigned int, unsigned int);
 
 	// ---------- Position PID -----------
 
-	bool SetPosition(double);
+	bool SetPosition(double, bool);
 
 	double GetPosition();
+
+	void ConfigurePositionPID(double, double, double, double);
+
+	void SetPositionConversionFactor(double);
 
 	void ResetPositionPID();
 
@@ -52,13 +51,17 @@ public:
 
 	void PrintPositionError();
 
-	void SetMaxPosition()
+	void SetPositionSafety(bool);
 
-		// ---------- Speed PID -----------
+	// ---------- Speed PID -----------
 
-		bool SetSpeed(double);
+	bool SetSpeed(double, bool);
 
 	double GetSpeed();
+
+	void ConfigureSpeedPID(double, double, double, double);
+
+	void SetSpeedConversionFactor(double);
 
 	void ResetSpeedPID();
 
@@ -66,16 +69,16 @@ public:
 
 	void PrintSpeedError();
 
-private:
+protected:
 	SparkMaxRelativeEncoder *m_encoderSpark;
 
 	Encoder *m_encoder;
 
-	EncoderConfig m_config;
+	EncoderConfig m_encoderConfig;
 
-	PIDController m_positionPID;
+	PIDController *m_positionPID;
 
-	PIDController m_speedPID;
+	PIDController *m_speedPID;
 
 	double m_positionPIDSpeed;
 
@@ -85,5 +88,13 @@ private:
 
 	double m_minPosition;
 
-	bool m_safetyActive = false;
+	double m_maxRPM;
+
+	double m_speedCF;
+
+	bool m_keepingStill;
+
+	bool m_speedSafetyActive = false;
+
+	bool m_positionSafetyActive = false;
 };
