@@ -74,3 +74,8 @@ bool Elevator::SetAbsoluteHeight(double height, bool inverted)
 {
 	return SetPosition(height - m_heightToFloor, inverted);
 }
+
+void Elevator::SetMinMaxHeight(double min, double max)
+{
+	return SetMinMaxPosition(min, max);
+}

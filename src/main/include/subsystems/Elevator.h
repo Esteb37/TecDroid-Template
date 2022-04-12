@@ -49,6 +49,8 @@ public:
 
 	bool SetAbsoluteHeight(double, bool);
 
+	void SetMinMaxHeight(double, double);
+
 private:
 	double m_heightToFloor;
 };

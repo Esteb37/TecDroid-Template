@@ -63,6 +63,8 @@ public:
 
 	void SetPositionSafety(bool);
 
+	void SetMinMaxPosition(double, double);
+
 	// ---------- Speed PID -----------
 
 	bool SetSpeed(double, bool);

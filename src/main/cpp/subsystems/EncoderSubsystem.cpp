@@ -359,3 +359,9 @@ void EncoderSubsystem::PrintSpeedError()
 {
 	SmartDashboard::PutNumber(GetName() + " Encoder Speed Error", m_speedPID->GetPositionError());
 }
+
+void EncoderSubsystem::SetMinMaxPosition(double min, double max)
+{
+	m_minPosition = min;
+	m_maxPosition = max;
+}
