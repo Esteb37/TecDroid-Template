@@ -17,7 +17,7 @@ using namespace rev;
 class Drivetrain : public SubsystemBase
 {
 public:
-	Drivetrain();
+	Drivetrain(unsigned int, unsigned int, unsigned int, unsigned int);
 
 	void Periodic() override;
 
@@ -29,6 +29,8 @@ public:
 	 * @param rotation Rotation to turn
 	 */
 	void Drive(double, double);
+
+	void SetMaxSpeeds(double, double);
 
 	/**
 	 * @brief Reset all systems
@@ -121,6 +123,8 @@ public:
 	 * @brief Publish the value of the encoders to the dashboard
 	 */
 	void PrintEncoders();
+
+	void SetPositionConversionFactor(double);
 
 	// ----------------------- Gyro -----------------------
 
@@ -221,20 +225,28 @@ public:
 	 */
 	void ResetMovePIDController();
 
+	void ConfigureMovePID(double, double, double, double);
+
 	/**
 	 * @brief Resets the Turn PID
 	 */
 	void ResetTurnPIDController();
+
+	void ConfigureTurnPID(double, double, double, double);
 
 	/**
 	 * @brief Resets the Align with target PID
 	 */
 	void ResetAlignPIDController();
 
+	void ConfigureAlignPID(double, double, double, double);
+
 	/**
 	 * @brief Resets the Distance to target PID
 	 */
 	void ResetDistancePIDController();
+
+	void ConfigureDistancePID(double, double, double, double);
 
 	/**
 	 * @brief Resets all PID controllers
@@ -271,22 +283,24 @@ public:
 	 */
 	void PrintCurrentPosition();
 
+	Limelight GetLimelight();
+
 private:
 	// ----- Motors -----
 
-	CANSparkMax m_frontLeft{pFrontLeft, CANSparkMaxLowLevel::MotorType::kBrushless};
+	CANSparkMax *m_frontLeft;
 
-	CANSparkMax m_frontRight{pFrontRight, CANSparkMaxLowLevel::MotorType::kBrushless};
+	CANSparkMax *m_frontRight;
 
-	CANSparkMax m_backLeft{pBackLeft, CANSparkMaxLowLevel::MotorType::kBrushless};
+	CANSparkMax *m_backLeft;
 
-	CANSparkMax m_backRight{pBackRight, CANSparkMaxLowLevel::MotorType::kBrushless};
+	CANSparkMax *m_backRight;
 
 	// ----- Motor controller groups-----
 
-	MotorControllerGroup m_right{m_frontRight, m_backRight};
+	MotorControllerGroup m_right{*m_frontRight, *m_backRight};
 
-	MotorControllerGroup m_left{m_frontLeft, m_backLeft};
+	MotorControllerGroup m_left{*m_frontLeft, *m_backLeft};
 
 	// ----- Chasis drive object -----
 
@@ -294,13 +308,13 @@ private:
 
 	// ----- Sensors -----
 
-	SparkMaxRelativeEncoder m_frontRightEncoder{m_frontRight.GetEncoder()};
+	SparkMaxRelativeEncoder m_frontRightEncoder{m_frontRight->GetEncoder()};
 
-	SparkMaxRelativeEncoder m_frontLeftEncoder{m_frontLeft.GetEncoder()};
+	SparkMaxRelativeEncoder m_frontLeftEncoder{m_frontLeft->GetEncoder()};
 
-	SparkMaxRelativeEncoder m_backRightEncoder{m_backRight.GetEncoder()};
+	SparkMaxRelativeEncoder m_backRightEncoder{m_backRight->GetEncoder()};
 
-	SparkMaxRelativeEncoder m_backLeftEncoder{m_backLeft.GetEncoder()};
+	SparkMaxRelativeEncoder m_backLeftEncoder{m_backLeft->GetEncoder()};
 
 	ADIS16448_IMU m_gyro;
 
@@ -308,13 +322,13 @@ private:
 
 	// ----- Auto -----
 
-	PIDController m_movePIDController{k_moveP, k_moveI, k_moveD};
+	PIDController m_movePIDController{0.1, 0, 0};
 
-	PIDController m_turnPIDController{k_turnP, k_turnI, k_turnD};
+	PIDController m_turnPIDController{0.1, 0, 0};
 
-	PIDController m_alignPIDController{k_alignP, k_alignI, k_alignD};
+	PIDController m_alignPIDController{0.1, 0, 0};
 
-	PIDController m_distancePIDController{k_distanceP, k_distanceI, k_distanceD};
+	PIDController m_distancePIDController{0.1, 0, 0};
 
 	// ----- Attributes -----
 
@@ -327,4 +341,8 @@ private:
 	double m_currentX = 0;
 
 	double m_currentY = 0;
+
+	double m_maxMoveSpeed = 1;
+
+	double m_maxTurnSpeed = 1;
 };

@@ -2,12 +2,12 @@
 
 using namespace std;
 
-Drivetrain::Drivetrain()
+Drivetrain::Drivetrain(unsigned int mFrontRight, unsigned int mFrontLeft, unsigned int mBackRight, unsigned int mBackLeft)
 {
-	m_frontRightEncoder.SetPositionConversionFactor(k_drivetrainDPR);
-	m_frontLeftEncoder.SetPositionConversionFactor(k_drivetrainDPR);
-	m_backRightEncoder.SetPositionConversionFactor(k_drivetrainDPR);
-	m_backLeftEncoder.SetPositionConversionFactor(k_drivetrainDPR);
+	m_frontRight = new CANSparkMax(mFrontRight, CANSparkMaxLowLevel::MotorType::kBrushless);
+	m_frontLeft = new CANSparkMax(mFrontLeft, CANSparkMaxLowLevel::MotorType::kBrushless);
+	m_backRight = new CANSparkMax(mBackRight, CANSparkMaxLowLevel::MotorType::kBrushless);
+	m_backLeft = new CANSparkMax(mBackLeft, CANSparkMaxLowLevel::MotorType::kBrushless);
 
 	SetName("DT");
 }
@@ -20,7 +20,13 @@ void Drivetrain::Periodic()
 
 void Drivetrain::Drive(double speed, double rotation)
 {
-	m_drive.ArcadeDrive(speed * m_speedDirection * k_drivetrainMaxSpeed, rotation * m_rotationDirection * k_drivetrainMaxRotation);
+	m_drive.ArcadeDrive(speed * m_speedDirection * m_maxMoveSpeed, rotation * m_rotationDirection * m_maxTurnSpeed);
+}
+
+void Drivetrain::SetMaxSpeeds(double speed, double rotation)
+{
+	m_maxMoveSpeed = speed;
+	m_maxTurnSpeed = rotation;
 }
 
 void Drivetrain::Reset()
@@ -54,10 +60,10 @@ void Drivetrain::SetSafetyEnabled(bool enabled)
 
 void Drivetrain::ResetMotors()
 {
-	m_frontRight.RestoreFactoryDefaults();
-	m_frontLeft.RestoreFactoryDefaults();
-	m_backRight.RestoreFactoryDefaults();
-	m_backLeft.RestoreFactoryDefaults();
+	m_frontRight->RestoreFactoryDefaults();
+	m_frontLeft->RestoreFactoryDefaults();
+	m_backRight->RestoreFactoryDefaults();
+	m_backLeft->RestoreFactoryDefaults();
 }
 
 void Drivetrain::InvertRight(bool invert)
@@ -72,10 +78,10 @@ void Drivetrain::InvertLeft(bool invert)
 
 void Drivetrain::PrintMotors()
 {
-	SmartDashboard::PutNumber(GetName() + " FR Motor", m_frontRight.Get());
-	SmartDashboard::PutNumber(GetName() + " FL Motor", m_frontLeft.Get());
-	SmartDashboard::PutNumber(GetName() + " BR Motor", m_backRight.Get());
-	SmartDashboard::PutNumber(GetName() + " BL Motor", m_backLeft.Get());
+	SmartDashboard::PutNumber(GetName() + " FR Motor", m_frontRight->Get());
+	SmartDashboard::PutNumber(GetName() + " FL Motor", m_frontLeft->Get());
+	SmartDashboard::PutNumber(GetName() + " BR Motor", m_backRight->Get());
+	SmartDashboard::PutNumber(GetName() + " BL Motor", m_backLeft->Get());
 }
 
 // --------------------- Encoders ---------------------
@@ -123,6 +129,14 @@ void Drivetrain::PrintEncoders()
 	SmartDashboard::PutNumber(GetName() + " BL Encoder", m_backLeftEncoder.GetPosition());
 }
 
+void Drivetrain::SetPositionConversionFactor(double pcf)
+{
+
+	m_backRightEncoder.SetPositionConversionFactor(pcf);
+	m_backLeftEncoder.SetPositionConversionFactor(pcf);
+	m_frontRightEncoder.SetPositionConversionFactor(pcf);
+	m_frontLeftEncoder.SetPositionConversionFactor(pcf);
+}
 // ----------------------- Gyro -----------------------
 
 double Drivetrain::GetGyro()
@@ -160,7 +174,6 @@ void Drivetrain::PrintGyroRad()
 bool Drivetrain::Move(double distance, double speed)
 {
 	m_movePIDController.SetSetpoint(distance);
-	m_movePIDController.SetTolerance(k_movePIDTolerance);
 	double output = m_movePIDController.Calculate(-GetEncoderAverage());
 	output = clamp(output, -speed, speed);
 	Drive(output * speed, 0);
@@ -170,7 +183,6 @@ bool Drivetrain::Move(double distance, double speed)
 bool Drivetrain::Turn(double angle, double speed)
 {
 	m_turnPIDController.SetSetpoint(angle);
-	m_turnPIDController.SetTolerance(k_turnPIDTolerance);
 	double output = m_turnPIDController.Calculate(GetGyro());
 	output = clamp(output, -speed, speed);
 	Drive(0, output * speed);
@@ -205,7 +217,6 @@ bool Drivetrain::MoveTo(double x, double y, double speed, double turnSpeed)
 bool Drivetrain::AlignWithTarget(double speed)
 {
 	m_alignPIDController.SetSetpoint(0);
-	m_alignPIDController.SetTolerance(k_alignPIDTolerance);
 	double output = m_alignPIDController.Calculate(m_limelight.GetHorizontalAngle());
 	output = clamp(output, -speed, speed);
 	Drive(0, output * speed);
@@ -235,9 +246,21 @@ void Drivetrain::ResetMovePIDController()
 	m_movePIDController.Reset();
 }
 
+void Drivetrain::ConfigureMovePID(double p, double i, double d, double tolerance)
+{
+	m_movePIDController.SetPID(p, i, d);
+	m_movePIDController.SetTolerance(tolerance);
+}
+
 void Drivetrain::ResetTurnPIDController()
 {
 	m_turnPIDController.Reset();
+}
+
+void Drivetrain::ConfigureTurnPID(double p, double i, double d, double tolerance)
+{
+	m_turnPIDController.SetPID(p, i, d);
+	m_turnPIDController.SetTolerance(tolerance);
 }
 
 void Drivetrain::ResetAlignPIDController()
@@ -245,9 +268,21 @@ void Drivetrain::ResetAlignPIDController()
 	m_alignPIDController.Reset();
 }
 
+void Drivetrain::ConfigureAlignPID(double p, double i, double d, double tolerance)
+{
+	m_alignPIDController.SetPID(p, i, d);
+	m_alignPIDController.SetTolerance(tolerance);
+}
+
 void Drivetrain::ResetDistancePIDController()
 {
 	m_distancePIDController.Reset();
+}
+
+void Drivetrain::ConfigureDistancePID(double p, double i, double d, double tolerance)
+{
+	m_distancePIDController.SetPID(p, i, d);
+	m_distancePIDController.SetTolerance(tolerance);
 }
 
 void Drivetrain::ResetPIDControllers()
@@ -301,4 +336,9 @@ void Drivetrain::PrintCurrentPosition()
 {
 	SmartDashboard::PutNumber(GetName() + " Current X", m_currentX);
 	SmartDashboard::PutNumber(GetName() + " Current Y", m_currentY);
+}
+
+Limelight Drivetrain::GetLimelight()
+{
+	return m_limelight;
 }
