@@ -44,6 +44,8 @@ public:
 	 */
 	void SetAngleServos(double);
 
+	void ConfigureServos(unsigned int, unsigned int);
+
 	/**
 	 * @brief Resets the angle servos to 0
 	 */
@@ -68,10 +70,12 @@ public:
 
 	double CalculateRPM();
 
-private:
-	Servo m_rightServo{pShooterRightServo};
+	Limelight GetLimelight();
 
-	Servo m_leftServo{pShooterLeftServo};
+private:
+	Servo *m_rightServo;
+
+	Servo *m_leftServo;
 
 	Limelight m_limelight;
 
