@@ -9,6 +9,12 @@
 using namespace frc2;
 using namespace frc;
 
+enum class EncoderConfig
+{
+	kFrc,
+	kRev
+};
+
 class EncoderSubsystem : virtual public MotorSubsystem
 {
 public:

@@ -125,20 +125,6 @@ constexpr double shooterRPMFromDistance(double distance)
 	return 60; // TODO: place RPM function here
 }
 
-enum class MotorConfig
-{
-	kNeo,
-	kSpark,
-	kVictorPWM,
-	kVictorCAN,
-};
-
-enum class EncoderConfig
-{
-	kFrc,
-	kRev
-};
-
 enum class GyroConfig
 {
 	kADXRS450,

@@ -13,6 +13,14 @@ using namespace frc2;
 using namespace rev;
 using namespace std;
 
+enum class MotorConfig
+{
+	kNeo,
+	kSpark,
+	kVictorPWM,
+	kVictorCAN,
+};
+
 class MotorSubsystem : virtual public SubsystemBase
 {
 
