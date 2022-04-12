@@ -2,18 +2,14 @@
 
 using namespace std;
 
-Turret::Turret()
+Turret::Turret(MotorConfig mconfig, EncoderConfig econfig, unsigned int mport) : EncoderSubsystem(mconfig, econfig, mport), MotorSubsystem(mconfig, mport)
 {
+	SetName("Turret");
+}
 
-	m_encoder.SetDistancePerPulse(k_turretDPR);
-
-	// TODO : change if spark encoder
-
-	// m_encoder.SetPositionConversionFactor(k_turretDPR);
-
-	m_alignPID.SetTolerance(k_turretAlignPIDTolerance);
-
-	m_anglePID.SetTolerance(k_turretAnglePIDTolerance);
+Turret::Turret(MotorConfig mconfig, EncoderConfig econfig, unsigned int mport, unsigned int encoderA, unsigned int encoderB) : EncoderSubsystem(mconfig, econfig, mport, encoderA, encoderB), MotorSubsystem(mconfig, mport)
+{
+	SetName("Turret");
 }
 
 void Turret::Periodic()
@@ -35,150 +31,65 @@ void Turret::Turn(double speed)
 void Turret::Reset()
 {
 	ResetEncoder();
-	ResetAnglePID();
+	ResetPositionPID();
 	ResetAlignPID();
 }
 
-void Turret::KeepStill()
+void Turret::KeepStill(bool inverted)
 {
 	m_keepingStill = true;
 
-	SetAngle(m_angle);
+	SetAngle(m_angle, inverted);
 }
 
-bool Turret::Center()
+bool Turret::Center(bool inverted)
 {
-	return SetAngle(0);
+	return SetAngle(0, inverted);
 }
 
-void Turret::SetMotor(double speed)
+bool Turret::SetAngle(double angle, bool invert)
 {
 
-	if (m_limitSafety)
+	if (angle > m_freedom / 2 && angle < -m_freedom / 2)
 	{
-		if (GetRightLimit())
-		{
-			speed = fmin(speed, 0);
-		}
-		else if (GetLeftLimit())
-		{
-			speed = fmax(speed, 0);
-		}
-	}
-
-	if (m_angleSafety)
-	{
-		if (GetAngle() >= k_turretMaxAngle)
-		{
-			speed = fmin(speed, 0);
-		}
-		else if (GetAngle() <= k_turretMinAngle)
-		{
-			speed = fmax(speed, 0);
-		}
-	}
-
-	m_motor.Set(speed * k_turretMaxSpeed);
-}
-
-double Turret::GetMotor()
-{
-	return m_motor.Get();
-}
-
-void Turret::InvertMotor(bool inverted)
-{
-	m_motor.SetInverted(inverted);
-}
-
-void Turret::PrintMotor()
-{
-	SmartDashboard::PutNumber("Turret Motor", GetMotor());
-}
-
-double Turret::GetEncoder()
-{
-
-	// TODO : change if spark encoder
-
-	// return m_encoder.GetPosition();
-
-	return m_encoder.GetDistance();
-}
-
-void Turret::ResetEncoder()
-{
-
-	// TODO : change if spark encoder
-
-	// m_encoder.SetPosition(0);
-
-	m_encoder.Reset();
-}
-
-void Turret::InvertEncoder(bool invert)
-{
-
-	// TODO : change if spark encoder
-
-	// m_encoder.SetInverted(invert);
-
-	m_encoder.SetReverseDirection(invert);
-}
-
-void Turret::PrintEncoder()
-{
-	SmartDashboard::PutNumber("Turret Encoder", GetEncoder());
-}
-
-bool Turret::SetAngle(double angle)
-{
-
-	if (angle < k_turretMaxAngle && angle > k_turretMinAngle)
-	{
-		m_anglePID.SetSetpoint(angle);
-
-		double output = m_anglePID.Calculate(GetAngle());
-
-		m_motor.Set(clamp(output, -k_turretMaxSpeed, k_turretMaxSpeed));
-
-		return m_anglePID.AtSetpoint();
+		throw std::invalid_argument("Turret angle must be within " + to_string(m_freedom / 2) + " degrees of the center");
 	}
 	else
 	{
-		return false;
+		return SetPosition(angle, invert);
 	}
 }
 
 double Turret::GetAngle()
 {
-	return GetEncoder() * 360;
-}
-
-void Turret::ResetAnglePID()
-{
-	m_anglePID.Reset();
+	return GetPosition();
 }
 
 void Turret::PrintAngle()
 {
-	SmartDashboard::PutNumber("Turret Angle", GetAngle());
+	SmartDashboard::PutNumber(GetName() + " Angle", GetAngle());
 }
 
 void Turret::PrintAnglePIDError()
 {
-	SmartDashboard::PutNumber("Turret Angle PID Error", m_anglePID.GetPositionError());
+	SmartDashboard::PutNumber(GetName() + " Angle PID Error", m_positionPID->GetPositionError());
 }
 
-bool Turret::Align()
+bool Turret::Align(bool inverted)
 {
 	m_alignPID.SetSetpoint(0);
 
 	double output = m_alignPID.Calculate(-m_limelight.GetHorizontalAngle());
 
-	m_motor.Set(clamp(output, -k_turretMaxSpeed, k_turretMaxSpeed));
+	SetMotor((inverted ? -1 : 1) * output);
 
 	return m_alignPID.AtSetpoint();
+}
+
+void Turret::ConfigureAlignPID(double p, double i, double d, double tolerance)
+{
+	m_alignPID.SetPID(p, i, d);
+	m_alignPID.SetTolerance(tolerance);
 }
 
 void Turret::ResetAlignPID()
@@ -188,31 +99,16 @@ void Turret::ResetAlignPID()
 
 void Turret::PrintAlignPIDError()
 {
-	SmartDashboard::PutNumber("Turret Align PID Error", m_alignPID.GetPositionError());
+	SmartDashboard::PutNumber(GetName() + " Align PID Error", m_alignPID.GetPositionError());
 }
 
-bool Turret::GetRightLimit()
+Limelight Turret::GetLimelight()
 {
-	return m_limitSwitchRight.Get();
+	return m_limelight;
 }
 
-bool Turret::GetLeftLimit()
+void Turret::SetFreedom(double freedom)
 {
-	return m_limitSwitchLeft.Get();
-}
-
-void Turret::PrintLimits()
-{
-	SmartDashboard::PutBoolean("Turret Right Limit", GetRightLimit());
-	SmartDashboard::PutBoolean("Turret Left Limit", GetLeftLimit());
-}
-
-void Turret::SetAngleSafetyActive(bool active)
-{
-	m_angleSafety = active;
-}
-
-void Turret::SetLimitSafetyActive(bool active)
-{
-	m_limitSafety = active;
+	m_freedom = freedom;
+	SetMinMaxPosition(-freedom / 2, freedom / 2);
 }

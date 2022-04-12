@@ -14,55 +14,41 @@
  * they are needed.
  */
 
-#include <ctre/phoenix/motorcontrol/can/VictorSPX.h>
-#include <frc/Encoder.h>
-#include <frc/motorcontrol/VictorSP.h>
-#include <rev/CANSparkMax.h>
-
-using namespace frc;
-using namespace rev;
-using namespace ctre;
-
 #include <Math.h>
 
-constexpr unsigned int pFrontRight = 0;
-constexpr unsigned int pFrontLeft = 1;
-constexpr unsigned int pBackRight = 2;
-constexpr unsigned int pBackLeft = 3;
-constexpr unsigned int pShooterMotor = 4;
-constexpr unsigned int pIntakeMotor = 5;
-constexpr unsigned int pTurretMotor = 6;
-constexpr unsigned int pFeederMotor = 6;
-constexpr unsigned int pConveyor = 7;
-constexpr unsigned int pElevatorMotor = 8;
-constexpr unsigned int pClimber = 9;
+constexpr unsigned int can_frontRight = 0;
+constexpr unsigned int can_frontLeft = 1;
+constexpr unsigned int can_backRight = 2;
+constexpr unsigned int can_backLeft = 3;
+constexpr unsigned int can_shooterMotor = 4;
+constexpr unsigned int can_elevatorRightMotor = 5;
+constexpr unsigned int can_elevatorLeftMotor = 6;
 
-constexpr unsigned int pShooterRightSolenoidForward = 0;
-constexpr unsigned int pShooterRightSolenoidReverse = 1;
-constexpr unsigned int pShooterLeftSolenoidForward = 2;
-constexpr unsigned int pShooterLeftSolenoidReverse = 3;
-constexpr unsigned int pIntakeRightSolenoidForward = 4;
-constexpr unsigned int pIntakeRightSolenoidReverse = 5;
-constexpr unsigned int pIntakeLeftSolenoidForward = 6;
-constexpr unsigned int pIntakeLeftSolenoidReverse = 7;
-constexpr unsigned int pClawHandSolenoidForward = 8;
-constexpr unsigned int pClawHandSolenoidReverse = 9;
-constexpr unsigned int pClawWristSolenoidForward = 10;
-constexpr unsigned int pClawWristSolenoidReverse = 11;
+constexpr unsigned int pwm_intakeMotor = 1;
+constexpr unsigned int pwm_feederMotor = 2;
+constexpr unsigned int pwm_turretMotor = 3;
+constexpr unsigned int pwm_shooterRightServo = 4;
+constexpr unsigned int pwm_shooterLeftServo = 5;
 
-constexpr unsigned int pShooterRightServo = 0;
-constexpr unsigned int pShooterLeftServo = 1;
+constexpr unsigned int sl_clawForward = 0;
+constexpr unsigned int sl_clawReverse = 1;
+constexpr unsigned int sl_wristForward = 2;
+constexpr unsigned int sl_wristReverse = 3;
+constexpr unsigned int sl_intakeRightForward = 4;
+constexpr unsigned int sl_intakeRightReverse = 5;
+constexpr unsigned int sl_intakeLeftForward = 6;
+constexpr unsigned int sl_intakeLeftReverse = 7;
 
-constexpr unsigned int pShooterEncoderA = 0;
-constexpr unsigned int pShooterEncoderB = 1;
-constexpr unsigned int pTurretEncoderA = 2;
-constexpr unsigned int pTurretEncoderB = 3;
-constexpr unsigned int pTurretLimitLeft = 4;
-constexpr unsigned int pTurretLimitSwitchRight = 5;
-constexpr unsigned int pElevatorEncoderA = 6;
-constexpr unsigned int pElevatorEncoderB = 7;
-constexpr unsigned int pElevatorLimitTop = 8;
-constexpr unsigned int pElevatorLimitBottom = 9;
+constexpr unsigned int dio_shooterEncoderA = 0;
+constexpr unsigned int dio_shooterEncoderB = 1;
+constexpr unsigned int dio_turretEncoderA = 2;
+constexpr unsigned int dio_turretEncoderB = 3;
+constexpr unsigned int dio_turretLimitLeft = 4;
+constexpr unsigned int dio_turretLimitRight = 5;
+constexpr unsigned int dio_elevatorEncoderA = 6;
+constexpr unsigned int dio_elevatorEncoderB = 7;
+constexpr unsigned int dio_elevatorLimitTop = 8;
+constexpr unsigned int dio_elevatorLimitBottom = 9;
 
 constexpr double k_moveP = 0.01;
 constexpr double k_moveI = 0.0;
