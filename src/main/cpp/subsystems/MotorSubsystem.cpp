@@ -321,7 +321,7 @@ bool MotorSubsystem::GetLowerLimit()
 	return m_lowerLimit->Get();
 }
 
-void MotorSubsystem::SetLimitPorts(unsigned int upperLimitPort, unsigned int lowerLimitPort)
+void MotorSubsystem::ConfigureLimitSwitches(unsigned int upperLimitPort, unsigned int lowerLimitPort)
 {
 	m_upperLimit = new DigitalInput(upperLimitPort);
 	m_lowerLimit = new DigitalInput(lowerLimitPort);
@@ -333,8 +333,13 @@ void MotorSubsystem::SetLimitSafety(bool active)
 }
 
 // print limits
-void MotorSubsystem::PrimtLimits()
+void MotorSubsystem::PrintLimits()
 {
 	SmartDashboard::PutBoolean(GetName() + " Upper Limit", GetUpperLimit());
 	SmartDashboard::PutBoolean(GetName() + " Lower Limit", GetLowerLimit());
+}
+
+void MotorSubsystem::SetMaxSpeed(double maxSpeed)
+{
+	m_maxSpeed = maxSpeed;
 }

@@ -61,11 +61,11 @@ public:
 
 	bool GetLowerLimit();
 
-	void SetLimitPorts(unsigned int, unsigned int);
+	void ConfigureLimitSwitches(unsigned int, unsigned int);
 
 	void SetLimitSafety(bool);
 
-	void PrimtLimits();
+	void PrintLimits();
 
 protected:
 	CANSparkMax *m_motorSpark;
@@ -90,5 +90,5 @@ protected:
 
 	bool m_limitSafetyActive = false;
 
-	bool m_motorCount = 1;
+	unsigned int m_motorCount = 1;
 };
