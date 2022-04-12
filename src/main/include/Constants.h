@@ -14,6 +14,15 @@
  * they are needed.
  */
 
+#include <ctre/phoenix/motorcontrol/can/VictorSPX.h>
+#include <frc/Encoder.h>
+#include <frc/motorcontrol/VictorSP.h>
+#include <rev/CANSparkMax.h>
+
+using namespace frc;
+using namespace rev;
+using namespace ctre;
+
 #include <Math.h>
 
 constexpr unsigned int pFrontRight = 0;
@@ -129,3 +138,17 @@ constexpr double shooterRPMFromDistance(double distance)
 {
 	return 60; // TODO: place RPM function here
 }
+
+enum class MotorConfig
+{
+	kNeo,
+	kSpark,
+	kVictorPWM,
+	kVictorCAN,
+};
+
+enum class EncoderConfig
+{
+	kFrc,
+	kRev
+};

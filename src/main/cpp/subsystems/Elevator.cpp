@@ -1,9 +1,31 @@
 #include "subsystems/Elevator.h"
 #include <frc/smartdashboard/SmartDashboard.h>
 
-Elevator::Elevator()
+Elevator::Elevator(MotorConfig config, unsigned int port) : MotorSubsystem(config, port)
 {
-	m_encoder.SetDistancePerPulse(k_elevatorDPR);
+	m_config = config;
+
+	switch (config)
+	{
+	case MotorConfig::kNeo:
+		m_motorSpark = new CANSparkMax(pElevatorMotor, CANSparkMaxLowLevel::MotorType::kBrushless);
+		m_encoderSpark = new SparkMaxRelativeEncoder(m_motorSpark->GetEncoder());
+		break;
+	case MotorConfig::kSpark:
+		m_motorSpark = new CANSparkMax(pElevatorMotor, CANSparkMaxLowLevel::MotorType::kBrushless);
+		m_encoder = new Encoder(pElevatorEncoderA, pElevatorEncoderB, false, Encoder::EncodingType::k4X);
+		break;
+
+	case MotorConfig::kVictorCAN:
+		m_motorVictorCAN = new VictorSPX(pElevatorMotor);
+		m_encoder = new Encoder(pElevatorEncoderA, pElevatorEncoderB, false, Encoder::EncodingType::k4X);
+		break;
+
+	case MotorConfig::kVictorPWM:
+		m_motorVictorPWM = new VictorSP(pElevatorMotor);
+		m_encoder = new Encoder(pElevatorEncoderA, pElevatorEncoderB, false, Encoder::EncodingType::k4X);
+		break;
+	}
 }
 
 void Elevator::Periodic()
@@ -65,17 +87,59 @@ void Elevator::SetMotor(double speed)
 		}
 	}
 
-	m_motor.Set(speed);
+	switch (m_config)
+	{
+	case MotorConfig::kNeo:
+	case MotorConfig::kSpark:
+		m_motorSpark->Set(speed);
+		break;
+
+	case MotorConfig::kVictorCAN:
+		m_motorVictorCAN->Set(VictorSPXControlMode::PercentOutput, speed);
+		break;
+
+	case MotorConfig::kVictorPWM:
+		m_motorVictorPWM->Set(speed);
+		break;
+	}
 }
 
 double Elevator::GetMotor()
 {
-	return m_motor.Get();
+	switch (m_config)
+	{
+	case MotorConfig::kNeo:
+	case MotorConfig::kSpark:
+		m_motorSpark->Get();
+		break;
+
+	case MotorConfig::kVictorCAN:
+		m_motorVictorCAN->GetMotorOutputPercent();
+		break;
+
+	case MotorConfig::kVictorPWM:
+		m_motorVictorPWM->Get();
+		break;
+	}
 }
 
 void Elevator::InvertMotor(bool invert)
 {
-	m_motor.SetInverted(invert);
+	switch (m_config)
+	{
+	case MotorConfig::kNeo:
+	case MotorConfig::kSpark:
+		m_motorSpark->SetInverted(invert);
+		break;
+
+	case MotorConfig::kVictorCAN:
+		m_motorVictorCAN->SetInverted(invert);
+		break;
+
+	case MotorConfig::kVictorPWM:
+		m_motorVictorPWM->SetInverted(invert);
+		break;
+	}
 }
 
 void Elevator::PrintMotor()
@@ -87,31 +151,46 @@ void Elevator::PrintMotor()
 
 double Elevator::GetEncoder()
 {
-
-	// TODO : change if spark encoder
-
-	// return m_encoder.GetPosition();
-
-	return m_encoder.GetDistance();
+	switch (m_config)
+	{
+	case MotorConfig::kNeo:
+		return m_encoderSpark->GetPosition();
+		break;
+	case MotorConfig::kSpark:
+	case MotorConfig::kVictorCAN:
+	case MotorConfig::kVictorPWM:
+		return m_encoder->GetDistance();
+		break;
+	}
 }
-
 void Elevator::ResetEncoder()
 {
-
-	// TODO : change if spark encoder
-
-	// m_encoder.SetPosition(0);
-
-	m_encoder.Reset();
+	switch (m_config)
+	{
+	case MotorConfig::kNeo:
+		m_encoderSpark->SetPosition(0);
+		break;
+	case MotorConfig::kSpark:
+	case MotorConfig::kVictorCAN:
+	case MotorConfig::kVictorPWM:
+		m_encoder->Reset();
+		break;
+	}
 }
 
 void Elevator::InvertEncoder(bool invert)
 {
-	// TODO : change if spark encoder
-
-	// m_encoder.SetInverted(invert);
-
-	m_encoder.SetReverseDirection(invert);
+	switch (m_config)
+	{
+	case MotorConfig::kNeo:
+		m_encoderSpark->SetInverted(invert);
+		break;
+	case MotorConfig::kSpark:
+	case MotorConfig::kVictorCAN:
+	case MotorConfig::kVictorPWM:
+		m_encoder->SetReverseDirection(invert);
+		break;
+	}
 }
 
 void Elevator::PrintEncoder()

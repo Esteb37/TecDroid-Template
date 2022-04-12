@@ -1,6 +1,6 @@
 #include "subsystems/Feeder.h"
 
-Feeder::Feeder()
+Feeder::Feeder(MotorConfig config, unsigned int motorPort) : MotorSubsystem(config, motorPort)
 {
 }
 
@@ -8,22 +8,12 @@ void Feeder::Periodic()
 {
 }
 
-void Feeder::SetMotor(double speed)
+void Feeder::Feed()
 {
-	motor.Set(speed * k_feederMaxSpeed);
+	SetMotor(k_feederMaxSpeed);
 }
 
-double Feeder::GetMotor()
+void Feeder::Unfeed()
 {
-	return motor.Get();
-}
-
-void Feeder::InvertMotor(bool inverted)
-{
-	motor.SetInverted(inverted);
-}
-
-void Feeder::PrintMotor()
-{
-	SmartDashboard::PutNumber("Feeder Motor", GetMotor());
+	SetMotor(-k_feederMaxSpeed);
 }
