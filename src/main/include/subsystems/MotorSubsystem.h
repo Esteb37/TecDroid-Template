@@ -90,5 +90,5 @@ protected:
 
 	bool m_limitSafetyActive = false;
 
-	bool m_motorCount = 0;
+	bool m_motorCount = 1;
 };

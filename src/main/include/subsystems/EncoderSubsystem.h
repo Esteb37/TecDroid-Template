@@ -14,13 +14,21 @@ class EncoderSubsystem : virtual public MotorSubsystem
 public:
 	EncoderSubsystem(MotorConfig, unsigned int);
 
+	EncoderSubsystem(MotorConfig, vector<unsigned int>);
+
 	EncoderSubsystem(MotorConfig, EncoderConfig, unsigned int);
 
+	EncoderSubsystem(MotorConfig, EncoderConfig, vector<unsigned int>);
+
 	EncoderSubsystem(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
+
+	EncoderSubsystem(MotorConfig, EncoderConfig, vector<unsigned int>, unsigned int, unsigned int);
 
 	void Periodic() override;
 
 	void SetMotor(double);
+
+	void SetMotors(vector<double>);
 
 	void Reset();
 

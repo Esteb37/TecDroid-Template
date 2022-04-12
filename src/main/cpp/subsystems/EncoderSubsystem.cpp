@@ -3,6 +3,13 @@
 EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, unsigned int motorPort)
 	: MotorSubsystem(mconfig, motorPort)
 {
+	SetName("EncoderSubsystem");
+}
+
+EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, vector<unsigned int> motorPorts)
+	: MotorSubsystem(mconfig, motorPorts)
+{
+	SetName("EncoderSubsystem");
 }
 
 EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, EncoderConfig econfig, unsigned int motorPort)
@@ -22,9 +29,47 @@ EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, EncoderConfig econfig, u
 	SetName("EncoderSubsystem");
 }
 
+EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, EncoderConfig econfig, vector<unsigned int> motorPorts)
+	: MotorSubsystem(mconfig, motorPorts)
+{
+	m_encoderConfig = econfig;
+
+	if (mconfig == MotorConfig::kNeo && econfig == EncoderConfig::kRev)
+	{
+		m_encoderSpark = new SparkMaxRelativeEncoder(m_motorSparkList[0]->GetEncoder());
+	}
+	else
+	{
+		throw std::invalid_argument("Encoder must be Spark and Motor must be Neo");
+	}
+
+	SetName("EncoderSubsystem");
+}
+
 EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, EncoderConfig econfig, unsigned int motorPort, unsigned int encoderA, unsigned int encoderB)
 	: MotorSubsystem(mconfig, motorPort)
 {
+	if (econfig == EncoderConfig::kRev)
+	{
+		throw std::invalid_argument("Encoder must be FRC");
+	}
+
+	m_encoderConfig = econfig;
+
+	m_encoder = new Encoder(encoderA, encoderB, false, Encoder::EncodingType::k4X);
+
+	SetName("EncoderSubsystem");
+}
+
+EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, EncoderConfig econfig, vector<unsigned int> motorPorts, unsigned int encoderA, unsigned int encoderB)
+	: MotorSubsystem(mconfig, motorPorts)
+{
+
+	if (econfig == EncoderConfig::kRev)
+	{
+		throw std::invalid_argument("Encoder must be FRC");
+	}
+
 	m_encoderConfig = econfig;
 
 	m_encoder = new Encoder(encoderA, encoderB, false, Encoder::EncodingType::k4X);
@@ -38,6 +83,11 @@ void EncoderSubsystem::Periodic()
 
 void EncoderSubsystem::SetMotor(double speed)
 {
+
+	if (m_motorCount > 1)
+	{
+		throw std::invalid_argument("EncoderSubsystem: SetMotor() does not support multiple motors.");
+	}
 
 	if (m_limitSafetyActive)
 	{
@@ -80,9 +130,65 @@ void EncoderSubsystem::SetMotor(double speed)
 	}
 }
 
-void EncoderSubsystem::Reset()
+void EncoderSubsystem::SetMotors(vector<double> speeds)
 {
 
+	if (m_motorCount != speeds.size())
+	{
+		throw std::invalid_argument("EncoderSubsystem: Speed vector must be the same size as the number of motors.");
+	}
+	else if (m_motorCount <= 1)
+	{
+		throw std::invalid_argument("EncoderSubsystem: This subsystem has only one motor. Use SetMotor() instead.");
+	}
+
+	for (int i = 0; i < speeds.size(); i++)
+	{
+		double speed = speeds[i];
+		if (m_limitSafetyActive)
+		{
+			if (GetUpperLimit())
+			{
+				speed = fmin(speed, 0);
+			}
+			else if (GetLowerLimit())
+			{
+				speed = fmax(speed, 0);
+			}
+		}
+
+		if (m_positionSafetyActive)
+		{
+			if (GetPosition() >= m_maxPosition)
+			{
+				speeds[i] = fmin(speed, 0);
+			}
+			else if (GetPosition() <= m_minPosition)
+			{
+				speeds[i] = fmax(speed, 0);
+			}
+		}
+
+		switch (m_motorConfig)
+		{
+		case MotorConfig::kNeo:
+		case MotorConfig::kSpark:
+			m_motorSpark->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
+			break;
+
+		case MotorConfig::kVictorCAN:
+			m_motorVictorCAN->Set(VictorSPXControlMode::PercentOutput, std::clamp(speed, -m_maxSpeed, m_maxSpeed));
+			break;
+
+		case MotorConfig::kVictorPWM:
+			m_motorVictorPWM->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
+			break;
+		}
+	}
+}
+
+void EncoderSubsystem::Reset()
+{
 	ResetEncoder();
 	ResetPositionPID();
 	ResetSpeedPID();
