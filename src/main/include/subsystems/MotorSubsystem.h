@@ -11,12 +11,15 @@
 using namespace frc;
 using namespace frc2;
 using namespace rev;
+using namespace std;
 
 class MotorSubsystem : virtual public SubsystemBase
 {
 
 public:
 	MotorSubsystem(MotorConfig, unsigned int);
+
+	MotorSubsystem(MotorConfig, vector<unsigned int>);
 
 	void Periodic() override;
 
@@ -28,6 +31,8 @@ public:
 	 */
 	void SetMotor(double);
 
+	void SetMotors(vector<double>);
+
 	void SetMaxSpeed(double);
 
 	/**
@@ -35,16 +40,22 @@ public:
 	 */
 	double GetMotor();
 
+	vector<double> GetMotors();
+
 	/**
 	 * @brief Invert motor direction
 	 * @param invert True to invert, false to not
 	 */
 	void InvertMotor(bool);
 
+	void InvertMotors(vector<bool>);
+
 	/**
 	 * @brief Publishes the motor speed to the dashboard
 	 */
 	void PrintMotor();
+
+	void PrintMotors();
 
 	bool GetUpperLimit();
 
@@ -63,15 +74,21 @@ protected:
 
 	VictorSP *m_motorVictorPWM;
 
+	vector<CANSparkMax *> m_motorSparkList;
+
+	vector<VictorSPX *> m_motorVictorCANList;
+
+	vector<VictorSP *> m_motorVictorPWMList;
+
 	MotorConfig m_motorConfig;
 
 	double m_maxSpeed;
-
-	unsigned int m_motorPort;
 
 	DigitalInput *m_upperLimit;
 
 	DigitalInput *m_lowerLimit;
 
 	bool m_limitSafetyActive = false;
+
+	bool m_motorCount = 0;
 };

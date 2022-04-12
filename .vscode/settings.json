@@ -33,6 +33,7 @@
 		"stdexcept": "cpp",
 		"memory_resource": "cpp",
 		"limits": "cpp",
-		"memory": "cpp"
+		"memory": "cpp",
+		"new": "cpp"
 	}
 }
