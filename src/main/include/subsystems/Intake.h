@@ -16,16 +16,64 @@ class Intake : public MotorSubsystem, public SolenoidSubsystem
 {
 
 public:
+	/**
+	 * @brief Construct a new Intake object with a single motor
+	 *
+	 * @param motorConfig The motor configuration
+	 * @param motorPort The motor port
+	 */
 	Intake(MotorConfig, unsigned int);
 
+	/**
+	 * @brief Construct a new Intake object with multiple motors
+	 *
+	 * @param motorConfig The motor configuration
+	 * @param motorPorts The motor ports
+	 */
 	Intake(MotorConfig, vector<unsigned int>);
 
+	/**
+	 * @brief Construct a new Intake object with a single motor and a single solenoid
+	 *
+	 * @param motorConfig The motor configuration
+	 * @param motorPort The motor port
+	 * @param solenoidForward The solenoid forward port
+	 * @param solenoidReverse The solenoid reverse port
+	 */
 	Intake(MotorConfig, unsigned int, unsigned int, unsigned int);
 
+	/**
+	 * @brief Construct a new Intake object with multiple motors and a single solenoid
+	 *
+	 * @param motorConfig The motor configuration
+	 * @param motorPorts The motor ports
+	 * @param solenoidForward The solenoid forward port
+	 * @param solenoidReverse The solenoid reverse port
+	 */
 	Intake(MotorConfig, vector<unsigned int>, unsigned int, unsigned int);
 
+	/**
+	 * @brief Construct a new Intake object with a single motor and multiple solenoids
+	 *
+	 * @param motorConfig The motor configuration
+	 * @param motorPort The motor port
+	 * @param rightSolenoidForward The right solenoid forward port
+	 * @param rightSolenoidReverse The right solenoid reverse port
+	 * @param leftSolenoidForward The left solenoid forward port
+	 * @param leftSolenoidReverse The left solenoid reverse port
+	 */
 	Intake(MotorConfig, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 
+	/**
+	 * @brief Construct a new Intake object with multiple motors and multiple solenoids
+	 *
+	 * @param motorConfig The motor configuration
+	 * @param motorPorts The motor ports
+	 * @param rightSolenoidForward The right solenoid forward port
+	 * @param rightSolenoidReverse The right solenoid reverse port
+	 * @param leftSolenoidForward The left solenoid forward port
+	 * @param leftSolenoidReverse The left solenoid reverse port
+	 */
 	Intake(MotorConfig, vector<unsigned int>, unsigned int, unsigned int, unsigned int, unsigned int);
 
 	void Periodic() override;

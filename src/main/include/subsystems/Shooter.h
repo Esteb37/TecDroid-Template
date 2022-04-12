@@ -22,18 +22,46 @@ class Shooter : public EncoderSubsystem, public SolenoidSubsystem
 {
 
 public:
+	/**
+	 * @brief Construct a new Shooter object without encoder
+	 *
+	 * @param motorConfig The motor configuration
+	 * @param motorPort The motor port
+	 */
 	Shooter(MotorConfig, unsigned int);
 
+	/**
+	 * @brief Construct a new Shooter object with REV encoder
+	 *
+	 * @param motorConfig The motor configuration
+	 * @param encoderConfig The encoder configuration
+	 * @param motorPort The motor port
+	 */
 	Shooter(MotorConfig, EncoderConfig, unsigned int);
 
+	/**
+	 * @brief Construct a new Shooter object with FRC encoder
+	 *
+	 * @param motorConfig The motor configuration
+	 * @param encoderConfig The encoder configuration
+	 * @param motorPort The motor port
+	 * @param encoderA The encoder A port
+	 * @param encoderB The encoder B port
+	 */
 	Shooter(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
 
 	void Periodic() override;
 
+	/**
+	 * @brief Resets the encoder and speed PID
+	 */
 	void Reset();
 
 	// ---------- Actions -----------
 
+	/**
+	 * @brief Sets shooter to full speed
+	 */
 	void Shoot();
 
 	// --------- Angle with Servos --------
@@ -44,6 +72,12 @@ public:
 	 */
 	void SetAngleServos(double);
 
+	/**
+	 * @brief Configure angle servo's ports
+	 *
+	 * @param rightServo The right servo port
+	 * @param leftServo The left servo port
+	 */
 	void ConfigureServos(unsigned int, unsigned int);
 
 	/**
@@ -68,18 +102,17 @@ public:
 	 */
 	void PrintServos();
 
+	/**
+	 * @brief Calculates the required RPM to shoot at the current distance
+	 * @return The required RPM
+	 */
 	double CalculateRPM();
 
-	Limelight GetLimelight();
+	// ---------- Components ----------
 
-private:
 	Servo *m_rightServo;
 
 	Servo *m_leftServo;
 
 	Limelight m_limelight;
-
-	Timer m_timer;
-
-	bool m_timerStarted;
 };

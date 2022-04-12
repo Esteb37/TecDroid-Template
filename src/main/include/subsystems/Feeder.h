@@ -15,15 +15,33 @@ class Feeder : public MotorSubsystem
 {
 
 public:
+	/**
+	 * @brief Construct a new Feeder object with a single motor
+	 *
+	 * @param motorConfig The motor configuration
+	 * @param motorPort The motor port
+	 */
 	Feeder(MotorConfig, unsigned int);
 
+	/**
+	 * @brief Construct a new Feeder object with multiple motors
+	 *
+	 * @param motorConfig The motor configuration
+	 * @param motorPorts The motor ports
+	 */
 	Feeder(MotorConfig, vector<unsigned int>);
 
 	void Periodic() override;
 
 	// ---------- Actions -----------
 
+	/**
+	 * @brief Move the feeder inwards
+	 */
 	void Feed();
 
+	/**
+	 * @brief Move the feeder outwards
+	 */
 	void Unfeed();
 };
