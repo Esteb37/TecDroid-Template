@@ -7,7 +7,7 @@ SpeedLoad::SpeedLoad(Shooter *shooter)
 
 void SpeedLoad::Initialize()
 {
-	m_shooter->ResetPID();
+	m_shooter->ResetSpeedPID();
 	m_shooter->ResetEncoder();
 
 	m_targetRPM = m_shooter->CalculateRPM();
@@ -15,5 +15,5 @@ void SpeedLoad::Initialize()
 
 bool SpeedLoad::IsFinished()
 {
-	return m_shooter->ReachRPM(m_targetRPM);
+	return m_shooter->SetSpeed(m_targetRPM, false);
 }

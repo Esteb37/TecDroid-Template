@@ -65,15 +65,15 @@ double MotorSubsystem::GetMotor()
 	{
 	case MotorConfig::kNeo:
 	case MotorConfig::kSpark:
-		m_motorSpark->Get();
+		return m_motorSpark->Get();
 		break;
 
 	case MotorConfig::kVictorCAN:
-		m_motorVictorCAN->GetMotorOutputPercent();
+		return m_motorVictorCAN->GetMotorOutputPercent();
 		break;
 
 	case MotorConfig::kVictorPWM:
-		m_motorVictorPWM->Get();
+		return m_motorVictorPWM->Get();
 		break;
 	}
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include "Constants.h"
 
-#include "subsystems/SolenoidSubsystem.h";
+#include "subsystems/SolenoidSubsystem.h"
 #include <frc/smartdashboard/SmartDashboard.h>
 
 using namespace frc;

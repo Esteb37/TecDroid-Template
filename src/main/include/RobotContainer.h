@@ -4,11 +4,14 @@
 
 #pragma once
 
+#include "subsystems/Claw.h"
 #include "subsystems/Drivetrain.h"
+#include "subsystems/Elevator.h"
 #include "subsystems/Feeder.h"
 #include "subsystems/Intake.h"
 #include "subsystems/Shooter.h"
 #include "subsystems/Turret.h"
+
 #include <frc2/command/Command.h>
 
 /**
@@ -38,11 +41,13 @@ public:
 private:
 	Drivetrain m_drivetrain;
 
-	Shooter m_shooter;
+	Shooter m_shooter{MotorConfig::kSpark, EncoderConfig::kFrc, 0, 0, 1};
 
-	Intake m_intake;
+	Intake m_intake{MotorConfig::kSpark, 1, 0, 1, 2, 3};
 
-	Turret m_turret;
+	Feeder m_feeder{MotorConfig::kVictorPWM, 2};
 
-	Feeder m_feeder;
+	Elevator m_elevator{MotorConfig::kSpark, EncoderConfig::kFrc, 3, 2, 3};
+
+	Claw m_claw{4, 5, 6, 7};
 };
