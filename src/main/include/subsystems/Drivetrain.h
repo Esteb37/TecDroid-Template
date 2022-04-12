@@ -280,7 +280,7 @@ public:
 	void ResetAlignPIDController();
 
 	/**
-	 * @brief Configures align PID values and tolerance
+	 * @brief Configures align PID values, tolerance and direction
 	 * @param p The proportional value
 	 * @param i The integral value
 	 * @param d The derivative value

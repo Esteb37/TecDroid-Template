@@ -25,7 +25,7 @@ RobotContainer::RobotContainer()
 	m_shooter.SetMaxSpeed(k_shooterMaxSpeed);
 	m_shooter.ConfigureServos(pwm_shooterRightServo, pwm_shooterLeftServo);
 	m_shooter.SetSpeedConversionFactor(k_shooterVCF);
-	m_shooter.ConfigureSpeedPID(k_shooterP, k_shooterI, k_shooterD, k_shooterPIDTolerance);
+	m_shooter.ConfigureSpeedPID(k_shooterP, k_shooterI, k_shooterD, k_shooterPIDTolerance, false);
 	m_shooter.InvertEncoder(false);
 	m_shooter.InvertMotor(false);
 
@@ -38,7 +38,7 @@ RobotContainer::RobotContainer()
 	m_elevator.SetMaxSpeed(k_elevatorMaxSpeed);
 	m_elevator.ConfigureLimitSwitches(dio_elevatorLimitTop, dio_elevatorLimitBottom);
 	m_elevator.SetPositionConversionFactor(k_elevatorDPR);
-	m_elevator.ConfigurePositionPID(k_elevatorHeightP, k_elevatorHeightI, k_elevatorHeightD, k_elevatorHeightPIDTolerance);
+	m_elevator.ConfigurePositionPID(k_elevatorHeightP, k_elevatorHeightI, k_elevatorHeightD, k_elevatorHeightPIDTolerance, false);
 	m_elevator.SetHeightToFloor(30);
 	m_elevator.SetMinMaxHeight(0, 130);
 	m_elevator.SetLimitSafety(true);
@@ -52,7 +52,7 @@ RobotContainer::RobotContainer()
 	m_turret.SetMaxSpeed(k_turretMaxSpeed);
 	m_turret.ConfigureLimitSwitches(dio_turretLimitRight, dio_turretLimitLeft);
 	m_turret.SetPositionConversionFactor(k_turretDPR);
-	m_turret.ConfigurePositionPID(k_turretAngleP, k_turretAngleI, k_turretAngleD, k_turretAnglePIDTolerance);
+	m_turret.ConfigurePositionPID(k_turretAngleP, k_turretAngleI, k_turretAngleD, k_turretAnglePIDTolerance, false);
 	m_turret.ConfigureAlignPID(k_turretAlignP, k_turretAlignI, k_turretAlignD, k_turretAlignPIDTolerance);
 	m_turret.SetFreedom(360);
 	m_turret.SetLimitSafety(true);

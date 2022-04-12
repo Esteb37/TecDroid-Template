@@ -1,23 +1,23 @@
 #include "subsystems/EncoderSubsystem.h"
 
-EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, unsigned int motorPort)
-	: MotorSubsystem(mconfig, motorPort)
+EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, unsigned int motorPort)
+	: MotorSubsystem(motorConfig, motorPort)
 {
 	SetName("EncoderSubsystem");
 }
 
-EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, vector<unsigned int> motorPorts)
-	: MotorSubsystem(mconfig, motorPorts)
+EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, vector<unsigned int> motorPorts)
+	: MotorSubsystem(motorConfig, motorPorts)
 {
 	SetName("EncoderSubsystem");
 }
 
-EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, EncoderConfig econfig, unsigned int motorPort)
-	: MotorSubsystem(mconfig, motorPort)
+EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort)
+	: MotorSubsystem(motorConfig, motorPort)
 {
-	m_encoderConfig = econfig;
+	m_encoderConfig = encoderConfig;
 
-	if (mconfig == MotorConfig::kNeo && econfig == EncoderConfig::kRev)
+	if (motorConfig == MotorConfig::kNeo && encoderConfig == EncoderConfig::kRev)
 	{
 		m_encoderSpark = new SparkMaxRelativeEncoder(m_motorSpark->GetEncoder());
 	}
@@ -29,12 +29,12 @@ EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, EncoderConfig econfig, u
 	SetName("EncoderSubsystem");
 }
 
-EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, EncoderConfig econfig, vector<unsigned int> motorPorts)
-	: MotorSubsystem(mconfig, motorPorts)
+EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts)
+	: MotorSubsystem(motorConfig, motorPorts)
 {
-	m_encoderConfig = econfig;
+	m_encoderConfig = encoderConfig;
 
-	if (mconfig == MotorConfig::kNeo && econfig == EncoderConfig::kRev)
+	if (motorConfig == MotorConfig::kNeo && encoderConfig == EncoderConfig::kRev)
 	{
 		m_encoderSpark = new SparkMaxRelativeEncoder(m_motorSparkList[0]->GetEncoder());
 	}
@@ -46,31 +46,31 @@ EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, EncoderConfig econfig, v
 	SetName("EncoderSubsystem");
 }
 
-EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, EncoderConfig econfig, unsigned int motorPort, unsigned int encoderA, unsigned int encoderB)
-	: MotorSubsystem(mconfig, motorPort)
+EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort, unsigned int encoderA, unsigned int encoderB)
+	: MotorSubsystem(motorConfig, motorPort)
 {
-	if (econfig == EncoderConfig::kRev)
+	if (encoderConfig == EncoderConfig::kRev)
 	{
 		throw std::invalid_argument("Encoder must be FRC");
 	}
 
-	m_encoderConfig = econfig;
+	m_encoderConfig = encoderConfig;
 
 	m_encoder = new Encoder(encoderA, encoderB, false, Encoder::EncodingType::k4X);
 
 	SetName("EncoderSubsystem");
 }
 
-EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, EncoderConfig econfig, vector<unsigned int> motorPorts, unsigned int encoderA, unsigned int encoderB)
-	: MotorSubsystem(mconfig, motorPorts)
+EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts, unsigned int encoderA, unsigned int encoderB)
+	: MotorSubsystem(motorConfig, motorPorts)
 {
 
-	if (econfig == EncoderConfig::kRev)
+	if (encoderConfig == EncoderConfig::kRev)
 	{
 		throw std::invalid_argument("Encoder must be FRC");
 	}
 
-	m_encoderConfig = econfig;
+	m_encoderConfig = encoderConfig;
 
 	m_encoder = new Encoder(encoderA, encoderB, false, Encoder::EncodingType::k4X);
 
@@ -79,6 +79,13 @@ EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, EncoderConfig econfig, v
 
 void EncoderSubsystem::Periodic()
 {
+}
+
+void EncoderSubsystem::Reset()
+{
+	ResetEncoder();
+	ResetPositionPID();
+	ResetSpeedPID();
 }
 
 void EncoderSubsystem::SetMotor(double speed)
@@ -187,13 +194,6 @@ void EncoderSubsystem::SetMotors(vector<double> speeds)
 	}
 }
 
-void EncoderSubsystem::Reset()
-{
-	ResetEncoder();
-	ResetPositionPID();
-	ResetSpeedPID();
-}
-
 void EncoderSubsystem::ResetEncoder()
 {
 	switch (m_encoderConfig)
@@ -234,14 +234,14 @@ void EncoderSubsystem::SetEncoderPorts(unsigned int A, unsigned int B)
 	}
 }
 
-bool EncoderSubsystem::SetPosition(double position, bool inverted)
+bool EncoderSubsystem::SetPosition(double position, double speed)
 {
 
 	m_positionPID->SetSetpoint(position);
 
-	double output = m_positionPID->Calculate((inverted ? -1 : 1) * GetPosition());
+	double output = m_positionPID->Calculate(GetPosition() * m_positionPIDDirection);
 
-	SetMotor(output);
+	SetMotor(output * speed);
 
 	return m_positionPID->AtSetpoint();
 }
@@ -260,22 +260,23 @@ double EncoderSubsystem::GetPosition()
 	}
 }
 
-void EncoderSubsystem::ConfigurePositionPID(double p, double i, double d, double tolerance)
+void EncoderSubsystem::ConfigurePositionPID(double p, double i, double d, double tolerance, bool inverted)
 {
 	m_positionPID->SetPID(p, i, d);
 	m_positionPID->SetTolerance(tolerance);
+	m_positionPIDDirection = inverted ? -1 : 1;
 }
 
-void EncoderSubsystem::SetPositionConversionFactor(double factor)
+void EncoderSubsystem::SetPositionConversionFactor(double conversionFactor)
 {
 	switch (m_encoderConfig)
 	{
 	case EncoderConfig::kRev:
-		m_encoderSpark->SetPositionConversionFactor(factor);
+		m_encoderSpark->SetPositionConversionFactor(conversionFactor);
 		break;
 
 	case EncoderConfig::kFrc:
-		m_encoder->SetDistancePerPulse(factor);
+		m_encoder->SetDistancePerPulse(conversionFactor);
 		break;
 	}
 }
@@ -300,13 +301,13 @@ void EncoderSubsystem::SetPositionSafety(bool active)
 	m_positionSafetyActive = active;
 }
 
-bool EncoderSubsystem::SetSpeed(double speed, bool inverted)
+bool EncoderSubsystem::SetSpeed(double speed, double acceleration)
 {
 	m_speedPID->SetSetpoint(speed);
 
-	double output = m_speedPID->Calculate((inverted ? -1 : 1) * GetPosition());
+	double output = m_speedPID->Calculate(GetPosition() * m_speedPIDDirection);
 
-	SetMotor(output);
+	SetMotor(output * acceleration);
 
 	return m_positionPID->AtSetpoint();
 }
@@ -320,27 +321,28 @@ double EncoderSubsystem::GetSpeed()
 		break;
 
 	case EncoderConfig::kFrc:
-		return m_encoder->GetRate() * m_speedCF;
+		return m_encoder->GetRate() * m_speedConversionFactor;
 		break;
 	}
 }
 
-void EncoderSubsystem::ConfigureSpeedPID(double p, double i, double d, double tolerance)
+void EncoderSubsystem::ConfigureSpeedPID(double p, double i, double d, double tolerance, bool inverted)
 {
 	m_speedPID->SetPID(p, i, d);
 	m_speedPID->SetTolerance(tolerance);
+	m_speedPIDDirection = inverted ? -1 : 1;
 }
 
-void EncoderSubsystem::SetSpeedConversionFactor(double factor)
+void EncoderSubsystem::SetSpeedConversionFactor(double conversionFactor)
 {
 	switch (m_encoderConfig)
 	{
 	case EncoderConfig::kRev:
-		m_encoderSpark->SetVelocityConversionFactor(factor);
+		m_encoderSpark->SetVelocityConversionFactor(conversionFactor);
 		break;
 
 	case EncoderConfig::kFrc:
-		m_speedCF = factor;
+		m_speedConversionFactor = conversionFactor;
 		break;
 	}
 }
