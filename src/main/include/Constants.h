@@ -138,3 +138,10 @@ enum class EncoderConfig
 	kFrc,
 	kRev
 };
+
+enum class GyroConfig
+{
+	kADXRS450,
+	kADIS16470,
+	kADIS16448
+};
