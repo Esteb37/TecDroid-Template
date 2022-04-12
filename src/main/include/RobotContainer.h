@@ -39,15 +39,17 @@ public:
 	void TeleopPeriodic();
 
 private:
-	Drivetrain m_drivetrain;
+	Drivetrain m_drivetrain{can_frontRight, can_frontLeft, can_backRight, can_backLeft};
 
-	Shooter m_shooter{MotorConfig::kSpark, EncoderConfig::kFrc, 0, 0, 1};
+	Shooter m_shooter{MotorConfig::kSpark, EncoderConfig::kFrc, can_shooterMotor, dio_shooterEncoderA, dio_shooterEncoderB};
 
-	Intake m_intake{MotorConfig::kSpark, 1, 0, 1, 2, 3};
+	Intake m_intake{MotorConfig::kSpark, pwm_intakeMotor, sl_intakeRightForward, sl_intakeRightReverse, sl_intakeLeftForward, sl_intakeLeftReverse};
 
-	Feeder m_feeder{MotorConfig::kVictorPWM, 2};
+	Feeder m_feeder{MotorConfig::kVictorPWM, pwm_feederMotor};
 
-	Elevator m_elevator{MotorConfig::kSpark, EncoderConfig::kFrc, 3, 2, 3};
+	Elevator m_elevator{MotorConfig::kSpark, EncoderConfig::kFrc, {can_elevatorLeftMotor, can_elevatorRightMotor}, dio_elevatorEncoderA, dio_elevatorEncoderB};
 
-	Claw m_claw{4, 5, 6, 7};
+	Claw m_claw{sl_clawForward, sl_clawReverse, sl_wristForward, sl_wristReverse};
+
+	Turret m_turret{MotorConfig::kSpark, EncoderConfig::kFrc, pwm_turretMotor, dio_turretEncoderA, dio_turretEncoderB};
 };
