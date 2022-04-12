@@ -2,6 +2,7 @@
 
 #include "Constants.h"
 #include <ctre/Phoenix.h>
+#include <frc/DigitalInput.h>
 #include <frc/motorcontrol/VictorSP.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/SubsystemBase.h>
@@ -11,7 +12,7 @@ using namespace frc;
 using namespace frc2;
 using namespace rev;
 
-class MotorSubsystem : public SubsystemBase
+class MotorSubsystem : virtual public SubsystemBase
 {
 
 public:
@@ -26,6 +27,8 @@ public:
 	 * @param speed Speed and direction to turn
 	 */
 	void SetMotor(double);
+
+	void SetMaxSpeed(double);
 
 	/**
 	 * @brief Gets the Motor speed
@@ -43,6 +46,16 @@ public:
 	 */
 	void PrintMotor();
 
+	bool GetUpperLimit();
+
+	bool GetLowerLimit();
+
+	void SetLimitPorts(unsigned int, unsigned int);
+
+	void SetLimitSafety(bool);
+
+	void PrimtLimits();
+
 protected:
 	CANSparkMax *m_motorSpark;
 
@@ -50,7 +63,15 @@ protected:
 
 	VictorSP *m_motorVictorPWM;
 
-	MotorConfig m_config;
+	MotorConfig m_motorConfig;
+
+	double m_maxSpeed;
 
 	unsigned int m_motorPort;
+
+	DigitalInput *m_upperLimit;
+
+	DigitalInput *m_lowerLimit;
+
+	bool m_limitSafetyActive = false;
 };
