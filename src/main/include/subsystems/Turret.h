@@ -16,20 +16,39 @@ using namespace rev;
 class Turret : public EncoderSubsystem
 {
 public:
+	/**
+	 * @brief Construct a new Turret object with a REV encoder
+	 *
+	 * @param motorConfig The motor configuration
+	 * @param encoderConfig The encoder configuration
+	 * @param motorPort The motor port
+	 */
 	Turret(MotorConfig, EncoderConfig, unsigned int);
 
+	/**
+	 * @brief Construct a new Turret object with an FRC encoder
+	 *
+	 * @param motorConfig The motor configuration
+	 * @param encoderConfig The encoder configuration
+	 * @param motorPort The motor port
+	 * @param encoderA The encoder A port
+	 * @param encoderB The encoder B port
+	 */
 	Turret(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
 
-	/**
-	 * Will be called periodically whenever the CommandScheduler runs.
-	 */
 	void Periodic() override;
 
 	// ---------- Actions -----------
 
+	/**
+	 * @brief Resets encoder and PID controllers
+	 */
 	void Reset();
 
-	void KeepStill(bool);
+	/**
+	 * @brief Keeps the turret at the last angle
+	 */
+	void KeepStill(double);
 
 	/**
 	 * @brief Turns the turret
@@ -39,16 +58,20 @@ public:
 
 	/**
 	 * @brief Sets the turret to angle 0
+	 * @param speed Speed and direction to turn
+	 * @return True if the turret is centered
 	 */
-	bool Center(bool);
+	bool Center(double);
 
 	// ---------- Angle ---------
 
 	/**
 	 * @brief Sets the turret to a specific angle
+	 * @param angle The angle to set the turret to
+	 * @param speed The speed to turn the turret at
 	 * @return Has the turret reached the angle
 	 */
-	bool SetAngle(double, bool);
+	bool SetAngle(double, double);
 
 	/**
 	 * @brief Gets the turret's current angle
@@ -56,41 +79,68 @@ public:
 	 */
 	double GetAngle();
 
+	/**
+	 * @brief Configure angle auto PID's values, tolerance and direction
+	 * @param p The proportional value
+	 * @param i The integral value
+	 * @param d The derivative value
+	 * @param tolerance The tolerance value
+	 * @param inverted Is the PID inverted
+	 */
+	void ConfigureAnglePID(double, double, double, double, bool = false);
+
+	/**
+	 * @brief Prints the turret's angle
+	 */
 	void PrintAngle();
 
+	/**
+	 * @brief Prints the turret's angle PID error
+	 */
 	void PrintAnglePIDError();
 
 	// --------- Align ---------
 
 	/**
 	 * @brief Aligns the turret to the target
+	 * @param speed The speed to turn the turret at
 	 * @return Has the turret reached the target
 	 */
-	bool Align(bool);
+	bool Align(double);
 
 	/**
 	 * @brief Resets the PID controller for aligning to target
 	 */
 	void ResetAlignPID();
 
-	void ConfigureAlignPID(double, double, double, double);
+	/**
+	 * @brief Configure align PID's values, tolerance and direction
+	 * @param p The proportional value
+	 * @param i The integral value
+	 * @param d The derivative value
+	 * @param tolerance The tolerance value
+	 * @param inverted Is the PID inverted
+	 */
+	void ConfigureAlignPID(double, double, double, double, bool = false);
 
 	/**
 	 * @brief Publishes the alignPID error on the SmartDashboard
 	 */
 	void PrintAlignPIDError();
 
+	/**
+	 * @brief Sets the turret's freedom of revolution
+	 *
+	 */
 	void SetFreedom(double);
 
-	Limelight GetLimelight();
+	// ---------- Components ----------
 
-private:
 	Limelight m_limelight;
-
-	// ---------- PID ---------
 
 	PIDController m_alignPID{0.1, 0, 0};
 
+private:
 	// ---------- Attributes ----------
 
 	double m_angle;
@@ -102,4 +152,8 @@ private:
 	bool m_angleSafety = false;
 
 	double m_freedom = 360;
+
+	int m_anglePIDDirection = 1;
+
+	int m_alignPIDDirection = 1;
 };
