@@ -7,102 +7,105 @@
 using namespace frc;
 using namespace frc2;
 
-class ClawBase : public SubsystemBase
+namespace TecDroid
 {
+	class ClawBase : public SubsystemBase
+	{
 
-public:
-	ClawBase();
+	public:
+		ClawBase();
 
-	ClawBase(unsigned int, unsigned int);
+		ClawBase(unsigned int, unsigned int);
 
-	ClawBase(unsigned int, unsigned int, unsigned int, unsigned int);
+		ClawBase(unsigned int, unsigned int, unsigned int, unsigned int);
 
-	void Periodic() override;
+		void Periodic() override;
 
-	// ---------- Actions -----------
+		// ---------- Actions -----------
 
-	/**
-	 * @brief Opens the claw
-	 */
-	void OpenHand();
+		/**
+		 * @brief Opens the claw
+		 */
+		void OpenHand();
 
-	/**
-	 * @brief Closes the claw
-	 */
-	void CloseHand();
+		/**
+		 * @brief Closes the claw
+		 */
+		void CloseHand();
 
-	/**
-	 * @brief Toggles between open and closed claw
-	 */
-	void ToggleHand();
+		/**
+		 * @brief Toggles between open and closed claw
+		 */
+		void ToggleHand();
 
-	/**
-	 * @brief Lowers the claw
-	 */
-	void LowerWrist();
+		/**
+		 * @brief Lowers the claw
+		 */
+		void LowerWrist();
 
-	/**
-	 * @brief Raises the claw
-	 */
-	void RaiseWrist();
+		/**
+		 * @brief Raises the claw
+		 */
+		void RaiseWrist();
 
-	/**
-	 * @brief Toggles between low and up claw
-	 */
-	void ToggleWrist();
+		/**
+		 * @brief Toggles between low and up claw
+		 */
+		void ToggleWrist();
 
-	// ---------- Hand Solenoid --------
+		// ---------- Hand Solenoid --------
 
-	/**
-	 * @brief Inverts open and close status
-	 * @param invert True to invert, false to not
-	 */
-	void InvertHand(bool);
+		/**
+		 * @brief Inverts open and close status
+		 * @param invert True to invert, false to not
+		 */
+		void InvertHand(bool);
 
-	/**
-	 * @brief Turns the hand solenoid off
-	 */
-	void HandOff();
+		/**
+		 * @brief Turns the hand solenoid off
+		 */
+		void HandOff();
 
-	/**
-	 * @brief Get the hand solenoid status
-	 * @return the solenoid status
-	 */
-	unsigned int GetHand();
+		/**
+		 * @brief Get the hand solenoid status
+		 * @return the solenoid status
+		 */
+		unsigned int GetHand();
 
-	/**
-	 * @brief Publishes the hand solenoid status to the dashboard
-	 */
-	void PrintHand();
+		/**
+		 * @brief Publishes the hand solenoid status to the dashboard
+		 */
+		void PrintHand();
 
-	// ---------- Wrist Solenoid --------
+		// ---------- Wrist Solenoid --------
 
-	/**
-	 * @brief Inverts low and up status
-	 * @param invert True to invert, false to not
-	 */
-	void InvertWrist(bool);
+		/**
+		 * @brief Inverts low and up status
+		 * @param invert True to invert, false to not
+		 */
+		void InvertWrist(bool);
 
-	/**
-	 * @brief Turns the wrist solenoid off
-	 */
-	void WristOff();
+		/**
+		 * @brief Turns the wrist solenoid off
+		 */
+		void WristOff();
 
-	/**
-	 * @brief Get the wrist solenoid status
-	 * @return the solenoid status
-	 */
-	unsigned int GetWrist();
+		/**
+		 * @brief Get the wrist solenoid status
+		 * @return the solenoid status
+		 */
+		unsigned int GetWrist();
 
-	/**
-	 * @brief Publishes the wrist solenoid status to the dashboard
-	 */
-	void PrintWrist();
+		/**
+		 * @brief Publishes the wrist solenoid status to the dashboard
+		 */
+		void PrintWrist();
 
-private:
-	SolenoidSubsystem m_hand;
-	SolenoidSubsystem m_wrist;
+	private:
+		SolenoidSubsystem m_hand;
+		SolenoidSubsystem m_wrist;
 
-	bool m_wristLowered = false;
-	bool m_handOpen = false;
-};
+		bool m_wristLowered = false;
+		bool m_handOpen = false;
+	};
+}

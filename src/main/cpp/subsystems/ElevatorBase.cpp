@@ -1,5 +1,7 @@
 #include "subsystems/ElevatorBase.h"
 
+using namespace TecDroid;
+
 ElevatorBase::ElevatorBase(MotorConfig mconfig, unsigned int motorPort)
 	: EncoderSubsystem(mconfig, motorPort), MotorSubsystem(mconfig, motorPort)
 {

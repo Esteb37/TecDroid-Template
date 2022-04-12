@@ -1,5 +1,7 @@
 #include "subsystems/MotorSubsystem.h"
 
+using namespace TecDroid;
+
 MotorSubsystem::MotorSubsystem(MotorConfig config, unsigned int motorPort)
 {
 	m_motorConfig = config;

@@ -1,5 +1,7 @@
 #include "subsystems/EncoderSubsystem.h"
 
+using namespace TecDroid;
+
 EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, unsigned int motorPort)
 	: MotorSubsystem(motorConfig, motorPort)
 {

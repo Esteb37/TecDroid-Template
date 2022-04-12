@@ -1,5 +1,7 @@
 #include "subsystems/ShooterBase.h"
 
+using namespace TecDroid;
+
 ShooterBase::ShooterBase(MotorConfig mconfig, unsigned int mport) : EncoderSubsystem(mconfig, mport), MotorSubsystem(mconfig, mport)
 {
 	SetName("Shooter");

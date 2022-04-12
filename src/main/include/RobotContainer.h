@@ -21,6 +21,9 @@
  * scheduler calls).  Instead, the structure of the robot (including subsystems,
  * commands, and button mappings) should be declared here.
  */
+
+using namespace TecDroid;
+
 class RobotContainer
 {
 public:

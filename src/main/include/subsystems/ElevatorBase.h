@@ -14,43 +14,46 @@ using namespace frc;
 using namespace frc2;
 using namespace rev;
 
-class ElevatorBase : public EncoderSubsystem
+namespace TecDroid
 {
-public:
-	ElevatorBase(MotorConfig, unsigned int);
+	class ElevatorBase : public EncoderSubsystem
+	{
+	public:
+		ElevatorBase(MotorConfig, unsigned int);
 
-	ElevatorBase(MotorConfig, vector<unsigned int>);
+		ElevatorBase(MotorConfig, vector<unsigned int>);
 
-	ElevatorBase(MotorConfig, EncoderConfig, unsigned int);
+		ElevatorBase(MotorConfig, EncoderConfig, unsigned int);
 
-	ElevatorBase(MotorConfig, EncoderConfig, vector<unsigned int>);
+		ElevatorBase(MotorConfig, EncoderConfig, vector<unsigned int>);
 
-	ElevatorBase(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
+		ElevatorBase(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
 
-	ElevatorBase(MotorConfig, EncoderConfig, vector<unsigned int>, unsigned int, unsigned int);
+		ElevatorBase(MotorConfig, EncoderConfig, vector<unsigned int>, unsigned int, unsigned int);
 
-	void Periodic() override;
+		void Periodic() override;
 
-	// ---------- Actions -----------
+		// ---------- Actions -----------
 
-	/**
-	 * @brief Moves the elevator
-	 * @param speed Speed and direction to move
-	 */
-	void Move(double);
+		/**
+		 * @brief Moves the elevator
+		 * @param speed Speed and direction to move
+		 */
+		void Move(double);
 
-	void SetHeightToFloor(double);
+		void SetHeightToFloor(double);
 
-	double GetRelativeHeight();
+		double GetRelativeHeight();
 
-	double GetAbsoluteHeight();
+		double GetAbsoluteHeight();
 
-	bool SetRelativeHeight(double, bool);
+		bool SetRelativeHeight(double, bool);
 
-	bool SetAbsoluteHeight(double, bool);
+		bool SetAbsoluteHeight(double, bool);
 
-	void SetMinMaxHeight(double, double);
+		void SetMinMaxHeight(double, double);
 
-private:
-	double m_heightToFloor;
-};
+	private:
+		double m_heightToFloor;
+	};
+}

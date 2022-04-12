@@ -1,6 +1,6 @@
 #include "subsystems/Drivetrain.h"
 
-using namespace std;
+using namespace TecDroid;
 
 Drivetrain::Drivetrain(unsigned int frontRight, unsigned int frontLeft, unsigned int backRight, unsigned int backLeft)
 {

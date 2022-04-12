@@ -1,5 +1,7 @@
 #include "subsystems/FeederBase.h"
 
+using namespace TecDroid;
+
 FeederBase::FeederBase(MotorConfig config, unsigned int motorPort) : MotorSubsystem(config, motorPort)
 {
 	SetName("Feeder");

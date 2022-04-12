@@ -1,6 +1,6 @@
 #include "subsystems/TurretBase.h"
 
-using namespace std;
+using namespace TecDroid;
 
 TurretBase::TurretBase(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort) : EncoderSubsystem(motorConfig, encoderConfig, motorPort), MotorSubsystem(motorConfig, motorPort)
 {

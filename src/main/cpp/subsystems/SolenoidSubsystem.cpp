@@ -1,5 +1,7 @@
 #include "subsystems/SolenoidSubsystem.h"
 
+using namespace TecDroid;
+
 SolenoidSubsystem::SolenoidSubsystem()
 {
 	SetName("SolenoidSubsystem");

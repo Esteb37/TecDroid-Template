@@ -7,69 +7,74 @@
 #include "wpi/span.h"
 #include <frc/smartdashboard/smartdashboard.h>
 
-class Limelight
+using namespace frc;
+
+namespace TecDroid
 {
-private:
-	std::shared_ptr<nt::NetworkTable> limelight;
+	class Limelight
+	{
+	private:
+		std::shared_ptr<nt::NetworkTable> limelight;
 
-public:
-	Limelight();
+	public:
+		Limelight();
 
-	// ---------- Actions ----------
+		// ---------- Actions ----------
 
-	double GetDistanceToTarget();
+		double GetDistanceToTarget();
 
-	// ---------- Getters ----------
+		// ---------- Getters ----------
 
-	double GetHorizontalAngle();
+		double GetHorizontalAngle();
 
-	double GetVerticalAngle();
+		double GetVerticalAngle();
 
-	double GetArea();
+		double GetArea();
 
-	double GetSkew();
+		double GetSkew();
 
-	double GetPipeline();
+		double GetPipeline();
 
-	double GetValid();
+		double GetValid();
 
-	double GetTarget();
+		double GetTarget();
 
-	// ---------- Setters ----------
+		// ---------- Setters ----------
 
-	void SetPipeline(int);
+		void SetPipeline(int);
 
-	void SetLED(int);
+		void SetLED(int);
 
-	void SetCamMode(int);
+		void SetCamMode(int);
 
-	void SetStream(int);
+		void SetStream(int);
 
-	void SetSnapshot(int);
+		void SetSnapshot(int);
 
-	void SetLight(int);
+		void SetLight(int);
 
-	void SetLEDMode(int);
+		void SetLEDMode(int);
 
-	void SetLEDFrequency(int);
+		void SetLEDFrequency(int);
 
-	void SetLEDIntensity(int);
+		void SetLEDIntensity(int);
 
-	void SetLEDState(int);
+		void SetLEDState(int);
 
-	void SetLEDOff();
+		void SetLEDOff();
 
-	void SetLEDOn();
+		void SetLEDOn();
 
-	// ---------- Printers ----------
+		// ---------- Printers ----------
 
-	void PrintHorizontalAngle();
+		void PrintHorizontalAngle();
 
-	void PrintVerticalAngle();
+		void PrintVerticalAngle();
 
-	void PrintDistanceToTarget();
+		void PrintDistanceToTarget();
 
-	void PrintArea();
+		void PrintArea();
 
-	void PrintSkew();
-};
+		void PrintSkew();
+	};
+}

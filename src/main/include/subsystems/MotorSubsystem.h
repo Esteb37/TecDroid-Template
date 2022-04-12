@@ -13,90 +13,93 @@ using namespace frc2;
 using namespace rev;
 using namespace std;
 
-enum class MotorConfig
+namespace TecDroid
 {
-	kNeo,
-	kSpark,
-	kVictorPWM,
-	kVictorCAN,
-};
+	enum class MotorConfig
+	{
+		kNeo,
+		kSpark,
+		kVictorPWM,
+		kVictorCAN,
+	};
 
-class MotorSubsystem : virtual public SubsystemBase
-{
+	class MotorSubsystem : virtual public SubsystemBase
+	{
 
-public:
-	MotorSubsystem(MotorConfig, unsigned int);
+	public:
+		MotorSubsystem(MotorConfig, unsigned int);
 
-	MotorSubsystem(MotorConfig, vector<unsigned int>);
+		MotorSubsystem(MotorConfig, vector<unsigned int>);
 
-	void Periodic() override;
+		void Periodic() override;
 
-	// ---------- Motor -----------
+		// ---------- Motor -----------
 
-	/**
-	 * @brief Sets the Motor speed
-	 * @param speed Speed and direction to turn
-	 */
-	void SetMotor(double);
+		/**
+		 * @brief Sets the Motor speed
+		 * @param speed Speed and direction to turn
+		 */
+		void SetMotor(double);
 
-	void SetMotors(vector<double>);
+		void SetMotors(vector<double>);
 
-	void SetMaxSpeed(double);
+		void SetMaxSpeed(double);
 
-	/**
-	 * @brief Gets the Motor speed
-	 */
-	double GetMotor();
+		/**
+		 * @brief Gets the Motor speed
+		 */
+		double GetMotor();
 
-	vector<double> GetMotors();
+		vector<double> GetMotors();
 
-	/**
-	 * @brief Invert motor direction
-	 * @param invert True to invert, false to not
-	 */
-	void InvertMotor(bool);
+		/**
+		 * @brief Invert motor direction
+		 * @param invert True to invert, false to not
+		 */
+		void InvertMotor(bool);
 
-	void InvertMotors(vector<bool>);
+		void InvertMotors(vector<bool>);
 
-	/**
-	 * @brief Publishes the motor speed to the dashboard
-	 */
-	void PrintMotor();
+		/**
+		 * @brief Publishes the motor speed to the dashboard
+		 */
+		void PrintMotor();
 
-	void PrintMotors();
+		void PrintMotors();
 
-	bool GetUpperLimit();
+		bool GetUpperLimit();
 
-	bool GetLowerLimit();
+		bool GetLowerLimit();
 
-	void ConfigureLimitSwitches(unsigned int, unsigned int);
+		void ConfigureLimitSwitches(unsigned int, unsigned int);
 
-	void SetLimitSafety(bool);
+		void SetLimitSafety(bool);
 
-	void PrintLimits();
+		void PrintLimits();
 
-protected:
-	CANSparkMax *m_motorSpark;
+	protected:
+		CANSparkMax *m_motorSpark;
 
-	VictorSPX *m_motorVictorCAN;
+		VictorSPX *m_motorVictorCAN;
 
-	VictorSP *m_motorVictorPWM;
+		VictorSP *m_motorVictorPWM;
 
-	vector<CANSparkMax *> m_motorSparkList;
+		vector<CANSparkMax *> m_motorSparkList;
 
-	vector<VictorSPX *> m_motorVictorCANList;
+		vector<VictorSPX *> m_motorVictorCANList;
 
-	vector<VictorSP *> m_motorVictorPWMList;
+		vector<VictorSP *> m_motorVictorPWMList;
 
-	MotorConfig m_motorConfig;
+		MotorConfig m_motorConfig;
 
-	double m_maxSpeed;
+		double m_maxSpeed;
 
-	DigitalInput *m_upperLimit;
+		DigitalInput *m_upperLimit;
 
-	DigitalInput *m_lowerLimit;
+		DigitalInput *m_lowerLimit;
 
-	bool m_limitSafetyActive = false;
+		bool m_limitSafetyActive = false;
 
-	unsigned int m_motorCount = 1;
-};
+		unsigned int m_motorCount = 1;
+	};
+}

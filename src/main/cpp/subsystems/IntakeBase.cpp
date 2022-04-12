@@ -1,6 +1,6 @@
 #include "subsystems/IntakeBase.h"
 
-using namespace frc;
+using namespace TecDroid;
 
 IntakeBase::IntakeBase(MotorConfig config, unsigned int port) : MotorSubsystem(config, port)
 {

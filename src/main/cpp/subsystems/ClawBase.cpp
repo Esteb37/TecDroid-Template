@@ -1,5 +1,7 @@
 #include "subsystems/ClawBase.h"
 
+using namespace TecDroid;
+
 ClawBase::ClawBase()
 {
 	SetName("Claw");

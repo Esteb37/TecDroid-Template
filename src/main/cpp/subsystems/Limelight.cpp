@@ -2,7 +2,7 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <subsystems/Limelight.h>
 
-using namespace frc;
+using namespace TecDroid;
 
 Limelight::Limelight()
 {
