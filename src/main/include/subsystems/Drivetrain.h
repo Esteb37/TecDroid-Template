@@ -17,6 +17,13 @@ using namespace rev;
 class Drivetrain : public SubsystemBase
 {
 public:
+	/**
+	 * @brief Construct a new Drivetrain object
+	 * @param frontRight The CAN ID of the front right motor
+	 * @param frontLeft The CAN ID of the front left motor
+	 * @param backRight The CAN ID of the back right motor
+	 * @param backLeft The CAN ID of the back left motor
+	 */
 	Drivetrain(unsigned int, unsigned int, unsigned int, unsigned int);
 
 	void Periodic() override;
@@ -29,20 +36,24 @@ public:
 	 * @param rotation Rotation to turn
 	 */
 	void Drive(double, double);
-
-	void SetMaxSpeeds(double, double);
-
 	/**
 	 * @brief Reset all systems
 	 */
 	void Reset();
 
 	/**
+	 * @brief Set maximum move and turn speed
+	 * @param moveSpeed Maximum speed to move
+	 * @param turnSpeed Maximum speed to turn
+	 */
+	void SetMaxSpeeds(double, double);
+
+	/**
 	 * @brief Invert the direction of movement
 	 *
 	 * @param invert True to invert, false to not
 	 */
-	void InvertSpeed(bool);
+	void InvertMove(bool);
 
 	/**
 	 * @brief Invert the direction of rotation
@@ -124,6 +135,10 @@ public:
 	 */
 	void PrintEncoders();
 
+	/**
+	 * @brief Sets the encoders' distance per revolution
+	 * @param pcf Position conversion factor
+	 */
 	void SetPositionConversionFactor(double);
 
 	// ----------------------- Gyro -----------------------
@@ -172,12 +187,52 @@ public:
 	bool Move(double, double);
 
 	/**
+	 * @brief Prints the move PID error to the dashboard
+	 */
+	void PrintMoveError();
+
+	/**
+	 * @brief Resets the Move PID
+	 */
+	void ResetMovePIDController();
+
+	/**
+	 * @brief Configures move auto PID values and tolerance
+	 * @param p The proportional value
+	 * @param i The integral value
+	 * @param d The derivative value
+	 * @param tolerance The tolerance value
+	 * @param inverted Invert output calculation
+	 */
+	void ConfigureMovePID(double, double, double, double, bool);
+
+	/**
 	 * @brief Turns the drievtrain to a given angle.
 	 * @param angle The desired angle in degrees.
 	 * @param speed The speed at which to turn.
 	 * @return Whether or not the drivetrain has reached the desired angle
 	 */
 	bool Turn(double, double);
+
+	/**
+	 * @brief Prints the turn PID error to the dashboard
+	 */
+	void PrintTurnError();
+
+	/**
+	 * @brief Resets the Turn PID
+	 */
+	void ResetTurnPIDController();
+
+	/**
+	 * @brief Configures turn auto PID values and tolerance
+	 * @param p The proportional value
+	 * @param i The integral value
+	 * @param d The derivative value
+	 * @param tolerance The tolerance value
+	 * @param inverted Invert output calculation
+	 */
+	void ConfigureTurnPID(double, double, double, double, bool);
 
 	/**
 	 * @brief Moves the drivetrain to a given coordinate in meters
@@ -190,19 +245,14 @@ public:
 	bool MoveTo(double, double, double, double);
 
 	/**
-	 * @brief Align chasis to target
-	 * @param speed The speed at which to drive.
-	 * @return Whether or not the drivetrain has aligned to the target.
+	 * @brief Prints the move to PID error to the dashboard
 	 */
-	bool AlignWithTarget(double);
+	void PrintMoveToError();
 
 	/**
-	 * @brief Set drivetrain to a specific distance from the target
-	 * @param distance The distance to the target in meters.
-	 * @param speed The speed at which to drive.
-	 * @return Whether or not the drivetrain has reached the desired distance
+	 * @brief Prints the current coordinates to the dashboard
 	 */
-	bool SetDistanceWithTarget(double, double);
+	void PrintCurrentPosition();
 
 	/**
 	 * @brief Set drivetrain to a specific angle from the target
@@ -213,6 +263,61 @@ public:
 	bool SetAngleWithTarget(double, double);
 
 	/**
+	 * @brief Align chasis to target
+	 * @param speed The speed at which to drive.
+	 * @return Whether or not the drivetrain has aligned to the target.
+	 */
+	bool AlignWithTarget(double);
+
+	/**
+	 * @brief Prints the align PID error to the dashboard
+	 */
+	void PrintAlignError();
+
+	/**
+	 * @brief Resets the Align with target PID
+	 */
+	void ResetAlignPIDController();
+
+	/**
+	 * @brief Configures align PID values and tolerance
+	 * @param p The proportional value
+	 * @param i The integral value
+	 * @param d The derivative value
+	 * @param tolerance The tolerance value
+	 * @param inverted Invert output calculation
+	 */
+	void ConfigureAlignPID(double, double, double, double, bool);
+
+	/**
+	 * @brief Set drivetrain to a specific distance from the target
+	 * @param distance The distance to the target in meters.
+	 * @param speed The speed at which to drive.
+	 * @return Whether or not the drivetrain has reached the desired distance
+	 */
+	bool SetDistanceWithTarget(double, double);
+
+	/**
+	 * @brief Prints the distance PID error to the dashboard
+	 */
+	void PrintSetDistanceError();
+
+	/**
+	 * @brief Resets the Distance to target PID
+	 */
+	void ResetDistancePIDController();
+
+	/**
+	 * @brief Configures distance PID values and tolerance
+	 * @param p The proportional value
+	 * @param i The integral value
+	 * @param d The derivative value
+	 * @param tolerance The tolerance value
+	 * @param inverted Invert output calculation
+	 */
+	void ConfigureDistancePID(double, double, double, double, bool);
+
+	/**
 	 * @brief Get the absolute angle from a coordinate independent of quadrant
 	 * @param x The x coordinate
 	 * @param y The y coordinate
@@ -221,71 +326,10 @@ public:
 	double GetAbsoluteAngle(double, double);
 
 	/**
-	 * @brief Resets the Move PID
-	 */
-	void ResetMovePIDController();
-
-	void ConfigureMovePID(double, double, double, double);
-
-	/**
-	 * @brief Resets the Turn PID
-	 */
-	void ResetTurnPIDController();
-
-	void ConfigureTurnPID(double, double, double, double);
-
-	/**
-	 * @brief Resets the Align with target PID
-	 */
-	void ResetAlignPIDController();
-
-	void ConfigureAlignPID(double, double, double, double);
-
-	/**
-	 * @brief Resets the Distance to target PID
-	 */
-	void ResetDistancePIDController();
-
-	void ConfigureDistancePID(double, double, double, double);
-
-	/**
 	 * @brief Resets all PID controllers
 	 */
 	void ResetPIDControllers();
 
-	/**
-	 * @brief Prints the move PID error to the dashboard
-	 */
-	void PrintMoveError();
-
-	/**
-	 * @brief Prints the turn PID error to the dashboard
-	 */
-	void PrintTurnError();
-
-	/**
-	 * @brief Prints the move to PID error to the dashboard
-	 */
-	void PrintMoveToError();
-
-	/**
-	 * @brief Prints the align PID error to the dashboard
-	 */
-	void PrintAlignError();
-
-	/**
-	 * @brief Prints the distance PID error to the dashboard
-	 */
-	void PrintSetDistanceError();
-
-	/**
-	 * @brief Prints the current coordinates to the dashboard
-	 */
-	void PrintCurrentPosition();
-
-	Limelight GetLimelight();
-
-private:
 	// ----- Motors -----
 
 	CANSparkMax *m_frontLeft;
@@ -330,13 +374,22 @@ private:
 
 	PIDController m_distancePIDController{0.1, 0, 0};
 
+private:
 	// ----- Attributes -----
 
 	int m_gyroDirection = 1;
 
-	int m_speedDirection = 1;
+	int m_moveDirection = 1;
 
 	int m_rotationDirection = 1;
+
+	int m_movePIDDirection = 1;
+
+	int m_turnPIDDirection = 1;
+
+	int m_alignPIDDirection = 1;
+
+	int m_distancePIDDirection = 1;
 
 	double m_currentX = 0;
 

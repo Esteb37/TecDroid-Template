@@ -10,11 +10,11 @@ RobotContainer::RobotContainer()
 	m_drivetrain.SetSafetyEnabled(true);
 	m_drivetrain.SetMaxSpeeds(k_drivetrainMaxSpeed, k_drivetrainMaxRotation);
 	m_drivetrain.SetPositionConversionFactor(k_drivetrainDPR);
-	m_drivetrain.ConfigureAlignPID(k_alignP, k_alignI, k_alignD, k_alignPIDTolerance);
-	m_drivetrain.ConfigureDistancePID(k_distanceP, k_distanceI, k_distanceD, k_distancePIDTolerance);
-	m_drivetrain.ConfigureTurnPID(k_turnP, k_turnI, k_turnD, k_turnPIDTolerance);
-	m_drivetrain.ConfigureMovePID(k_moveP, k_moveI, k_moveD, k_movePIDTolerance);
-	m_drivetrain.InvertSpeed(false);
+	m_drivetrain.ConfigureAlignPID(k_alignP, k_alignI, k_alignD, k_alignPIDTolerance, false);
+	m_drivetrain.ConfigureDistancePID(k_distanceP, k_distanceI, k_distanceD, k_distancePIDTolerance, false);
+	m_drivetrain.ConfigureTurnPID(k_turnP, k_turnI, k_turnD, k_turnPIDTolerance, false);
+	m_drivetrain.ConfigureMovePID(k_moveP, k_moveI, k_moveD, k_movePIDTolerance, true);
+	m_drivetrain.InvertMove(false);
 	m_drivetrain.InvertRotation(false);
 	m_drivetrain.InvertRight(false);
 	m_drivetrain.InvertLeft(false);
