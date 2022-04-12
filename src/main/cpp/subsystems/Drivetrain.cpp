@@ -8,6 +8,8 @@ Drivetrain::Drivetrain()
 	m_frontLeftEncoder.SetPositionConversionFactor(k_drivetrainDPR);
 	m_backRightEncoder.SetPositionConversionFactor(k_drivetrainDPR);
 	m_backLeftEncoder.SetPositionConversionFactor(k_drivetrainDPR);
+
+	SetName("DT");
 }
 
 void Drivetrain::Periodic()
@@ -70,10 +72,10 @@ void Drivetrain::InvertLeft(bool invert)
 
 void Drivetrain::PrintMotors()
 {
-	SmartDashboard::PutNumber("Front Right Motor", m_frontRight.Get());
-	SmartDashboard::PutNumber("Front Left Motor", m_frontLeft.Get());
-	SmartDashboard::PutNumber("Back Right Motor", m_backRight.Get());
-	SmartDashboard::PutNumber("Back Left Motor", m_backLeft.Get());
+	SmartDashboard::PutNumber(GetName() + " FR Motor", m_frontRight.Get());
+	SmartDashboard::PutNumber(GetName() + " FL Motor", m_frontLeft.Get());
+	SmartDashboard::PutNumber(GetName() + " BR Motor", m_backRight.Get());
+	SmartDashboard::PutNumber(GetName() + " BL Motor", m_backLeft.Get());
 }
 
 // --------------------- Encoders ---------------------
@@ -115,10 +117,10 @@ void Drivetrain::InvertLeftEncoders(bool invert)
 
 void Drivetrain::PrintEncoders()
 {
-	SmartDashboard::PutNumber("Front Right Encoder", m_frontRightEncoder.GetPosition());
-	SmartDashboard::PutNumber("Front Left Encoder", m_frontLeftEncoder.GetPosition());
-	SmartDashboard::PutNumber("Back Right Encoder", m_backRightEncoder.GetPosition());
-	SmartDashboard::PutNumber("Back Left Encoder", m_backLeftEncoder.GetPosition());
+	SmartDashboard::PutNumber(GetName() + " FR Encoder", m_frontRightEncoder.GetPosition());
+	SmartDashboard::PutNumber(GetName() + " FL Encoder", m_frontLeftEncoder.GetPosition());
+	SmartDashboard::PutNumber(GetName() + " BR Encoder", m_backRightEncoder.GetPosition());
+	SmartDashboard::PutNumber(GetName() + " BL Encoder", m_backLeftEncoder.GetPosition());
 }
 
 // ----------------------- Gyro -----------------------
@@ -145,12 +147,12 @@ void Drivetrain::InvertGyro(bool invert)
 
 void Drivetrain::PrintGyro()
 {
-	SmartDashboard::PutNumber("Gyro", GetGyro());
+	SmartDashboard::PutNumber(GetName() + " Gyro", GetGyro());
 }
 
 void Drivetrain::PrintGyroRad()
 {
-	SmartDashboard::PutNumber("Gyro Rad", GetGyroRad());
+	SmartDashboard::PutNumber(GetName() + "Gyro Rad", GetGyroRad());
 }
 
 // ----------------------- Auto -----------------------
@@ -258,12 +260,12 @@ void Drivetrain::ResetPIDControllers()
 
 void Drivetrain::PrintMoveError()
 {
-	SmartDashboard::PutNumber("Move Error", m_movePIDController.GetPositionError());
+	SmartDashboard::PutNumber(GetName() + " Move Error", m_movePIDController.GetPositionError());
 }
 
 void Drivetrain::PrintTurnError()
 {
-	SmartDashboard::PutNumber("Turn Error", m_turnPIDController.GetPositionError());
+	SmartDashboard::PutNumber(GetName() + " Turn Error", m_turnPIDController.GetPositionError());
 }
 
 void Drivetrain::PrintMoveToError()
@@ -274,12 +276,12 @@ void Drivetrain::PrintMoveToError()
 
 void Drivetrain::PrintAlignError()
 {
-	SmartDashboard::PutNumber("Align Error", m_alignPIDController.GetPositionError());
+	SmartDashboard::PutNumber(GetName() + " Align Error", m_alignPIDController.GetPositionError());
 }
 
 void Drivetrain::PrintSetDistanceError()
 {
-	SmartDashboard::PutNumber("Set Distance Error", m_distancePIDController.GetPositionError());
+	SmartDashboard::PutNumber(GetName() + " Set Distance Error", m_distancePIDController.GetPositionError());
 }
 
 double Drivetrain::GetAbsoluteAngle(double x, double y)
@@ -297,6 +299,6 @@ double Drivetrain::GetAbsoluteAngle(double x, double y)
 
 void Drivetrain::PrintCurrentPosition()
 {
-	SmartDashboard::PutNumber("Current X", m_currentX);
-	SmartDashboard::PutNumber("Current Y", m_currentY);
+	SmartDashboard::PutNumber(GetName() + " Current X", m_currentX);
+	SmartDashboard::PutNumber(GetName() + " Current Y", m_currentY);
 }
