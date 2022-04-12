@@ -1,5 +1,10 @@
 #include "subsystems/EncoderSubsystem.h"
 
+EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, unsigned int motorPort)
+	: MotorSubsystem(mconfig, motorPort)
+{
+}
+
 EncoderSubsystem::EncoderSubsystem(MotorConfig mconfig, EncoderConfig econfig, unsigned int motorPort)
 	: MotorSubsystem(mconfig, motorPort)
 {

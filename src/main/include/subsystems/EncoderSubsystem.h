@@ -12,6 +12,8 @@ using namespace frc;
 class EncoderSubsystem : virtual public MotorSubsystem
 {
 public:
+	EncoderSubsystem(MotorConfig, unsigned int);
+
 	EncoderSubsystem(MotorConfig, EncoderConfig, unsigned int);
 
 	EncoderSubsystem(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
