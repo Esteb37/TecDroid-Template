@@ -1,6 +1,30 @@
-#include "Constants.h"
-#include <frc/smartdashboard/SmartDashboard.h>
-#include <subsystems/Limelight.h>
+/*------------------------------------------------------------
+						&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& /&&&&,
+					.&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& /&&&&&&&&%
+				.&&&&/ &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& /&&&&&&&&&&&*
+			.%&&&(      &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&% %&&&&&&&&&&&&&
+		%&&&#     %#&&#           (&&&&&&&&&&&              %&&&&&&&&&&&&&
+	*&&&#                          (&&&&&&&&&&&    /           %&&&&&&&&&&&
+*&%  ,                           (&&&&&&&&&&&(&&&&(           &&&&&&&&&&&
+& (,..                          (&&&&&&&&&&&&&&&&            %&&&&&&&&&&
+	&*                             (&&&&&&&&&&&&&&&&            &&&&&&&&&&&
+	&/                             (&&&&&&&&&&&&&&&&%          &&&&&&&&&&&(
+	#&&    .&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#**(&&&&&&&&&&&&&#
+	&#  (&                        ......... &&&&&&&&&&&&&&&&&&&&&&&&&&
+	/&   &                                   .&&&&&&&&&&&&&&&&&&&&&&
+		%&&* &*                                   ,%&&&&&&&&&&&&&%*
+
+	Author: Esteban Padilla Cerdio
+	Email: esteban37padilla@gmail.com
+	URL: github.com/esteb37
+		 github.com/tecdroid-3354
+	Date: 12/04/2022
+	Language: cpp
+	Copyright (c) TecDroid 3354 and Esteban Padilla Cerdio
+	Open Source Software; you can modify and/or share it under the terms of
+*/
+
+#include "subsystems/Limelight.h"
 
 using namespace TecDroid;
 
@@ -46,7 +70,7 @@ double Limelight::GetTarget()
 
 double Limelight::GetDistanceToTarget()
 {
-	return (k_objectiveHeight - k_limelightHeight) / tan(k_limelightAngle + GetVerticalAngle());
+	return GetVerticalAngle();
 }
 
 void Limelight::SetPipeline(int pipeline)
