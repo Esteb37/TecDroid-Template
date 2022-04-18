@@ -247,9 +247,9 @@ namespace TecDroid
 
 		EncoderConfig m_encoderConfig;
 
-		PIDController m_positionPID;
+		PIDController m_positionPID{0.1, 0, 0};
 
-		PIDController m_speedPID;
+		PIDController m_speedPID{0.1, 0, 0};
 
 	protected:
 		int m_encoderDirection = 1;
