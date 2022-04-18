@@ -69,7 +69,7 @@ namespace TecDroid
 		/**
 		 * @brief Reset all systems
 		 */
-		void Reset();
+		void ResetSensors();
 
 		/**
 		 * @brief Set maximum move and turn speed
@@ -92,6 +92,7 @@ namespace TecDroid
 		void InvertRotation(bool);
 
 		/**
+		 *
 		 * @brief Enable drivetrain safety
 		 * @param enable True to enable, false to not
 		 */
@@ -321,11 +322,12 @@ namespace TecDroid
 
 		/**
 		 * @brief Set drivetrain to a specific distance from the target
+		 * @param targetHeight The height from the floor to the center of the target
 		 * @param distance The distance to the target in meters.
 		 * @param speed The speed at which to drive.
 		 * @return Whether or not the drivetrain has reached the desired distance
 		 */
-		bool SetDistanceWithTarget(double, double);
+		bool SetDistanceWithTarget(double, double, double);
 
 		/**
 		 * @brief Prints the distance PID error to the dashboard
@@ -432,5 +434,7 @@ namespace TecDroid
 		double m_maxMoveSpeed = 1;
 
 		double m_maxTurnSpeed = 1;
+
+		bool m_reachedAngle = false;
 	};
 }
