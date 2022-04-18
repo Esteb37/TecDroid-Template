@@ -33,6 +33,11 @@ Limelight::Limelight()
 	limelight = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
 }
 
+void Limelight::ConfigureMount(double angle, double height)
+{
+	SetMountAngle(angle);
+	SetMountHeight(height);
+}
 double Limelight::GetArea()
 {
 	return limelight->GetEntry("ta").GetDouble(0);
@@ -68,9 +73,19 @@ double Limelight::GetTarget()
 	return limelight->GetEntry("target").GetDouble(0);
 }
 
-double Limelight::GetDistanceToTarget()
+double Limelight::GetDistanceToTarget(double objectiveHeight)
 {
-	return GetVerticalAngle();
+	return (objectiveHeight - m_mountHeight) / tan(m_mountHeight + GetVerticalAngle());
+}
+
+void Limelight::SetMountAngle(double angle)
+{
+	m_mountAngle = angle * M_PI / 180;
+}
+
+void Limelight::SetMountHeight(double height)
+{
+	m_mountHeight = height;
 }
 
 void Limelight::SetPipeline(int pipeline)
@@ -153,7 +168,7 @@ void Limelight::PrintSkew()
 	SmartDashboard::PutNumber("Skew", GetSkew());
 }
 
-void Limelight::PrintDistanceToTarget()
+void Limelight::PrintDistanceToTarget(double objectiveHeight)
 {
-	SmartDashboard::PutNumber("Distance to Target", GetDistanceToTarget());
+	SmartDashboard::PutNumber("Distance to Target", GetDistanceToTarget(objectiveHeight));
 }

@@ -55,9 +55,9 @@ void ShooterBase::Reset()
 	SolenoidsOff();
 }
 
-double ShooterBase::CalculateRPM()
+double ShooterBase::CalculateRPM(double targetHeight)
 {
-	return m_rpmCalculationFunction(m_limelight.GetDistanceToTarget());
+	return m_rpmCalculationFunction(m_limelight.GetDistanceToTarget(targetHeight));
 }
 
 void ShooterBase::SetAngleServos(double angle)

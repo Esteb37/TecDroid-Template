@@ -119,9 +119,10 @@ namespace TecDroid
 
 		/**
 		 * @brief Calculates the required RPM to shoot at the current distance
+		 * @param targetHeight THe height of the shooting target marked with reflective tape
 		 * @return The required RPM
 		 */
-		double CalculateRPM();
+		double CalculateRPM(double);
 
 		/**
 		 * @brief Sets the function that will be used to calculate rpm according to distance

@@ -33,6 +33,9 @@
 #include "wpi/span.h"
 #include <frc/smartdashboard/smartdashboard.h>
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 using namespace frc;
 
 namespace TecDroid
@@ -45,9 +48,11 @@ namespace TecDroid
 	public:
 		Limelight();
 
+		void ConfigureMount(double, double);
+
 		// ---------- Actions ----------
 
-		double GetDistanceToTarget();
+		double GetDistanceToTarget(double);
 
 		// ---------- Getters ----------
 
@@ -66,6 +71,10 @@ namespace TecDroid
 		double GetTarget();
 
 		// ---------- Setters ----------
+
+		void SetMountAngle(double);
+
+		void SetMountHeight(double);
 
 		void SetPipeline(int);
 
@@ -97,10 +106,16 @@ namespace TecDroid
 
 		void PrintVerticalAngle();
 
-		void PrintDistanceToTarget();
+		void PrintDistanceToTarget(double);
 
 		void PrintArea();
 
 		void PrintSkew();
+
+	private:
+		double m_mountAngle = 45;
+
+		double m_mountHeight = 60;
 	};
+
 }

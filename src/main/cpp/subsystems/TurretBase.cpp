@@ -102,7 +102,7 @@ void TurretBase::PrintAngle()
 
 void TurretBase::PrintAnglePIDError()
 {
-	SmartDashboard::PutNumber(GetName() + " Angle PID Error", m_positionPID->GetPositionError());
+	SmartDashboard::PutNumber(GetName() + " Angle PID Error", m_positionPID.GetPositionError());
 }
 
 bool TurretBase::Align(double speed)
