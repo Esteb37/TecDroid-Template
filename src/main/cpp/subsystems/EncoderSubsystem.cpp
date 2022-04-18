@@ -160,6 +160,7 @@ void EncoderSubsystem::SetMotor(double speed)
 		break;
 
 	case MotorConfig::kVictorPWM:
+	default:
 		m_motorVictorPWM->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 		break;
 	}
@@ -177,7 +178,7 @@ void EncoderSubsystem::SetMotors(vector<double> speeds)
 		throw std::invalid_argument("EncoderSubsystem: This subsystem has only one motor. Use SetMotor() instead.");
 	}
 
-	for (int i = 0; i < speeds.size(); i++)
+	for (unsigned int i = 0; i < speeds.size(); i++)
 	{
 		double speed = speeds[i];
 		if (m_limitSafetyActive)
@@ -216,6 +217,7 @@ void EncoderSubsystem::SetMotors(vector<double> speeds)
 			break;
 
 		case MotorConfig::kVictorPWM:
+		default:
 			m_motorVictorPWM->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 			break;
 		}
@@ -230,6 +232,7 @@ void EncoderSubsystem::ResetEncoder()
 		m_encoderSpark->SetPosition(0);
 		break;
 	case EncoderConfig::kFrc:
+	default:
 		m_encoder->Reset();
 		break;
 	}
@@ -240,9 +243,19 @@ void EncoderSubsystem::InvertEncoder(bool invert)
 	switch (m_encoderConfig)
 	{
 	case EncoderConfig::kRev:
-		m_encoderSpark->SetInverted(invert);
+		if (m_motorSpark->GetMotorType() == CANSparkMaxLowLevel::MotorType::kBrushless)
+		{
+			m_encoderDirection = invert ? -1 : 1;
+		}
+		else
+		{
+			m_encoderDirection = 1;
+			m_encoderSpark->SetInverted(invert);
+		}
+
 		break;
 	case EncoderConfig::kFrc:
+	default:
 		m_encoder->SetReverseDirection(invert);
 		break;
 	}
@@ -257,6 +270,7 @@ void EncoderSubsystem::SetEncoderPorts(unsigned int A, unsigned int B)
 		break;
 
 	case EncoderConfig::kFrc:
+	default:
 		m_encoder = new Encoder(A, B, false, Encoder::EncodingType::k4X);
 		break;
 	}
@@ -265,13 +279,13 @@ void EncoderSubsystem::SetEncoderPorts(unsigned int A, unsigned int B)
 bool EncoderSubsystem::SetPosition(double position, double speed)
 {
 
-	m_positionPID->SetSetpoint(position);
+	m_positionPID.SetSetpoint(position);
 
-	double output = m_positionPID->Calculate(GetPosition() * m_positionPIDDirection);
+	double output = m_positionPID.Calculate(GetPosition() * m_positionPIDDirection);
 
 	SetMotor(output * speed);
 
-	return m_positionPID->AtSetpoint();
+	return m_positionPID.AtSetpoint();
 }
 
 double EncoderSubsystem::GetPosition()
@@ -279,10 +293,11 @@ double EncoderSubsystem::GetPosition()
 	switch (m_encoderConfig)
 	{
 	case EncoderConfig::kRev:
-		return m_encoderSpark->GetPosition();
+		return m_encoderSpark->GetPosition() * m_encoderDirection;
 		break;
 
 	case EncoderConfig::kFrc:
+	default:
 		return m_encoder->Get();
 		break;
 	}
@@ -290,8 +305,8 @@ double EncoderSubsystem::GetPosition()
 
 void EncoderSubsystem::ConfigurePositionPID(double p, double i, double d, double tolerance, bool inverted)
 {
-	m_positionPID->SetPID(p, i, d);
-	m_positionPID->SetTolerance(tolerance);
+	m_positionPID.SetPID(p, i, d);
+	m_positionPID.SetTolerance(tolerance);
 	m_positionPIDDirection = inverted ? -1 : 1;
 }
 
@@ -304,6 +319,7 @@ void EncoderSubsystem::SetPositionConversionFactor(double conversionFactor)
 		break;
 
 	case EncoderConfig::kFrc:
+	default:
 		m_encoder->SetDistancePerPulse(conversionFactor);
 		break;
 	}
@@ -311,7 +327,7 @@ void EncoderSubsystem::SetPositionConversionFactor(double conversionFactor)
 
 void EncoderSubsystem::ResetPositionPID()
 {
-	m_positionPID->Reset();
+	m_positionPID.Reset();
 }
 
 void EncoderSubsystem::PrintPosition()
@@ -321,7 +337,7 @@ void EncoderSubsystem::PrintPosition()
 
 void EncoderSubsystem::PrintPositionError()
 {
-	SmartDashboard::PutNumber(GetName() + " Encoder Position Error", m_positionPID->GetPositionError());
+	SmartDashboard::PutNumber(GetName() + " Encoder Position Error", m_positionPID.GetPositionError());
 }
 
 void EncoderSubsystem::SetPositionSafety(bool active)
@@ -331,13 +347,13 @@ void EncoderSubsystem::SetPositionSafety(bool active)
 
 bool EncoderSubsystem::SetSpeed(double speed, double acceleration)
 {
-	m_speedPID->SetSetpoint(speed);
+	m_speedPID.SetSetpoint(speed);
 
-	double output = m_speedPID->Calculate(GetPosition() * m_speedPIDDirection);
+	double output = m_speedPID.Calculate(GetPosition() * m_speedPIDDirection);
 
 	SetMotor(output * acceleration);
 
-	return m_positionPID->AtSetpoint();
+	return m_positionPID.AtSetpoint();
 }
 
 double EncoderSubsystem::GetSpeed()
@@ -345,10 +361,11 @@ double EncoderSubsystem::GetSpeed()
 	switch (m_encoderConfig)
 	{
 	case EncoderConfig::kRev:
-		return m_encoderSpark->GetVelocity();
+		return m_encoderSpark->GetVelocity() * m_encoderDirection;
 		break;
 
 	case EncoderConfig::kFrc:
+	default:
 		return m_encoder->GetRate() * m_speedConversionFactor;
 		break;
 	}
@@ -356,8 +373,8 @@ double EncoderSubsystem::GetSpeed()
 
 void EncoderSubsystem::ConfigureSpeedPID(double p, double i, double d, double tolerance, bool inverted)
 {
-	m_speedPID->SetPID(p, i, d);
-	m_speedPID->SetTolerance(tolerance);
+	m_speedPID.SetPID(p, i, d);
+	m_speedPID.SetTolerance(tolerance);
 	m_speedPIDDirection = inverted ? -1 : 1;
 }
 
@@ -370,6 +387,7 @@ void EncoderSubsystem::SetSpeedConversionFactor(double conversionFactor)
 		break;
 
 	case EncoderConfig::kFrc:
+	default:
 		m_speedConversionFactor = conversionFactor;
 		break;
 	}
@@ -377,7 +395,7 @@ void EncoderSubsystem::SetSpeedConversionFactor(double conversionFactor)
 
 void EncoderSubsystem::ResetSpeedPID()
 {
-	m_speedPID->Reset();
+	m_speedPID.Reset();
 }
 
 void EncoderSubsystem::PrintSpeed()
@@ -387,7 +405,7 @@ void EncoderSubsystem::PrintSpeed()
 
 void EncoderSubsystem::PrintSpeedError()
 {
-	SmartDashboard::PutNumber(GetName() + " Encoder Speed Error", m_speedPID->GetPositionError());
+	SmartDashboard::PutNumber(GetName() + " Encoder Speed Error", m_speedPID.GetPositionError());
 }
 
 void EncoderSubsystem::SetMinMaxPosition(double min, double max)

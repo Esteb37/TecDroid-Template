@@ -25,6 +25,7 @@
 */
 
 #include "subsystems/Drivetrain.h"
+#include <cmath>
 
 using namespace TecDroid;
 
@@ -34,6 +35,19 @@ Drivetrain::Drivetrain(unsigned int frontRight, unsigned int frontLeft, unsigned
 	m_frontLeft = new CANSparkMax(frontLeft, CANSparkMaxLowLevel::MotorType::kBrushless);
 	m_backRight = new CANSparkMax(backRight, CANSparkMaxLowLevel::MotorType::kBrushless);
 	m_backLeft = new CANSparkMax(backLeft, CANSparkMaxLowLevel::MotorType::kBrushless);
+
+	// initialize encoders
+	m_frontRightEncoder = new SparkMaxRelativeEncoder(m_frontRight->GetEncoder());
+	m_frontLeftEncoder = new SparkMaxRelativeEncoder(m_frontLeft->GetEncoder());
+	m_backRightEncoder = new SparkMaxRelativeEncoder(m_backRight->GetEncoder());
+	m_backLeftEncoder = new SparkMaxRelativeEncoder(m_backLeft->GetEncoder());
+
+	// initialize motorcontrollergroups
+	m_right = new MotorControllerGroup(*m_frontRight, *m_backRight);
+	m_left = new MotorControllerGroup(*m_frontLeft, *m_backLeft);
+
+	// initialize drivetrain
+	m_drive = new DifferentialDrive(*m_left, *m_right);
 
 	SetName("DT");
 }
@@ -46,7 +60,7 @@ void Drivetrain::Periodic()
 
 void Drivetrain::Drive(double speed, double rotation)
 {
-	m_drive.ArcadeDrive(speed * m_moveDirection * m_maxMoveSpeed, rotation * m_rotationDirection * m_maxTurnSpeed);
+	m_drive->ArcadeDrive(speed * m_moveDirection * m_maxMoveSpeed, rotation * m_rotationDirection * m_maxTurnSpeed);
 }
 
 void Drivetrain::Reset()
@@ -76,7 +90,7 @@ void Drivetrain::InvertRotation(bool invert)
 
 void Drivetrain::SetSafetyEnabled(bool enabled)
 {
-	m_drive.SetSafetyEnabled(enabled);
+	m_drive->SetSafetyEnabled(enabled);
 }
 
 // ---------------------- Motors ----------------------
@@ -91,12 +105,12 @@ void Drivetrain::ResetMotors()
 
 void Drivetrain::InvertRight(bool invert)
 {
-	m_right.SetInverted(invert);
+	m_right->SetInverted(invert);
 }
 
 void Drivetrain::InvertLeft(bool invert)
 {
-	m_left.SetInverted(invert);
+	m_left->SetInverted(invert);
 }
 
 void Drivetrain::PrintMotors()
@@ -111,12 +125,12 @@ void Drivetrain::PrintMotors()
 
 double Drivetrain::GetRightEncoders()
 {
-	return (m_frontRightEncoder.GetPosition() + m_backRightEncoder.GetPosition()) / 2;
+	return m_rightEncodersDirection * (m_frontRightEncoder->GetPosition() + m_backRightEncoder->GetPosition()) / 2;
 }
 
 double Drivetrain::GetLeftEncoders()
 {
-	return (m_frontLeftEncoder.GetPosition() + m_backLeftEncoder.GetPosition()) / 2;
+	return m_leftEncodersDirection * (m_frontLeftEncoder->GetPosition() + m_backLeftEncoder->GetPosition()) / 2;
 }
 
 double Drivetrain::GetEncoderAverage()
@@ -126,38 +140,36 @@ double Drivetrain::GetEncoderAverage()
 
 void Drivetrain::ResetEncoders()
 {
-	m_frontRightEncoder.SetPosition(0);
-	m_frontLeftEncoder.SetPosition(0);
-	m_backRightEncoder.SetPosition(0);
-	m_backLeftEncoder.SetPosition(0);
+	m_frontRightEncoder->SetPosition(0);
+	m_frontLeftEncoder->SetPosition(0);
+	m_backRightEncoder->SetPosition(0);
+	m_backLeftEncoder->SetPosition(0);
 }
 
 void Drivetrain::InvertRightEncoders(bool invert)
 {
-	m_frontRightEncoder.SetInverted(invert);
-	m_backRightEncoder.SetInverted(invert);
+	m_rightEncodersDirection = invert ? -1 : 1;
 }
 
 void Drivetrain::InvertLeftEncoders(bool invert)
 {
-	m_frontLeftEncoder.SetInverted(invert);
-	m_backLeftEncoder.SetInverted(invert);
+	m_leftEncodersDirection = invert ? -1 : 1;
 }
 
 void Drivetrain::PrintEncoders()
 {
-	SmartDashboard::PutNumber(GetName() + " FR Encoder", m_frontRightEncoder.GetPosition());
-	SmartDashboard::PutNumber(GetName() + " FL Encoder", m_frontLeftEncoder.GetPosition());
-	SmartDashboard::PutNumber(GetName() + " BR Encoder", m_backRightEncoder.GetPosition());
-	SmartDashboard::PutNumber(GetName() + " BL Encoder", m_backLeftEncoder.GetPosition());
+	SmartDashboard::PutNumber(GetName() + " FR Encoder", m_frontRightEncoder->GetPosition() * m_rightEncodersDirection);
+	SmartDashboard::PutNumber(GetName() + " FL Encoder", m_frontLeftEncoder->GetPosition() * m_leftEncodersDirection);
+	SmartDashboard::PutNumber(GetName() + " BR Encoder", m_backRightEncoder->GetPosition() * m_rightEncodersDirection);
+	SmartDashboard::PutNumber(GetName() + " BL Encoder", m_backLeftEncoder->GetPosition() * m_leftEncodersDirection);
 }
 
 void Drivetrain::SetPositionConversionFactor(double pcf)
 {
-	m_backRightEncoder.SetPositionConversionFactor(pcf);
-	m_backLeftEncoder.SetPositionConversionFactor(pcf);
-	m_frontRightEncoder.SetPositionConversionFactor(pcf);
-	m_frontLeftEncoder.SetPositionConversionFactor(pcf);
+	m_backRightEncoder->SetPositionConversionFactor(pcf);
+	m_backLeftEncoder->SetPositionConversionFactor(pcf);
+	m_frontRightEncoder->SetPositionConversionFactor(pcf);
+	m_frontLeftEncoder->SetPositionConversionFactor(pcf);
 }
 // ----------------------- Gyro -----------------------
 
@@ -347,7 +359,7 @@ void Drivetrain::ResetPIDControllers()
 
 double Drivetrain::GetAbsoluteAngle(double x, double y)
 {
-	float relAngle = atan(y / (x == 0 ? 0.01 : x));
+	double relAngle = atan(y / (x == 0 ? 0.01 : x));
 
 	if (x < 0)
 		relAngle += M_PI;

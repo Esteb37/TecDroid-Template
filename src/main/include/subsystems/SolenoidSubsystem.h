@@ -72,7 +72,7 @@ namespace TecDroid
 		 * @param forward The forward port
 		 * @param reverse The reverse port
 		 */
-		void ConfigureSolenoid(unsigned int, unsigned int);
+		void ConfigureSolenoid(int, int);
 
 		/**
 		 * @brief Set the solenoid ports
@@ -82,7 +82,7 @@ namespace TecDroid
 		 * @param leftForward The left forward port
 		 * @param leftReverse The left reverse port
 		 */
-		void ConfigureSolenoids(unsigned int, unsigned int, unsigned int, unsigned int);
+		void ConfigureSolenoids(int, int, int, int);
 
 		/**
 		 * @brief Invert which value is up or down

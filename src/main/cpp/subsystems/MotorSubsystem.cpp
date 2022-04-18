@@ -38,12 +38,13 @@ MotorSubsystem::MotorSubsystem(MotorConfig config, unsigned int motorPort)
 		m_motorSpark = new CANSparkMax(motorPort, CANSparkMaxLowLevel::MotorType::kBrushless);
 		break;
 	case MotorConfig::kSpark:
-		m_motorSpark = new CANSparkMax(motorPort, CANSparkMaxLowLevel::MotorType::kBrushless);
+		m_motorSpark = new CANSparkMax(motorPort, CANSparkMaxLowLevel::MotorType::kBrushed);
 		break;
 	case MotorConfig::kVictorCAN:
 		m_motorVictorCAN = new VictorSPX(motorPort);
 		break;
 	case MotorConfig::kVictorPWM:
+	default:
 		m_motorVictorPWM = new VictorSP(motorPort);
 		break;
 	}
@@ -68,7 +69,7 @@ MotorSubsystem::MotorSubsystem(MotorConfig config, vector<unsigned int> motorPor
 
 		m_motorSparkList = vector<CANSparkMax *>(m_motorCount);
 
-		for (int i = 0; i < 4; i++)
+		for (unsigned int i = 0; i < m_motorCount; i++)
 		{
 			m_motorSparkList.at(i) = new CANSparkMax(motorPorts.at(i), CANSparkMaxLowLevel::MotorType::kBrushless);
 		}
@@ -77,25 +78,25 @@ MotorSubsystem::MotorSubsystem(MotorConfig config, vector<unsigned int> motorPor
 
 		m_motorSparkList = vector<CANSparkMax *>(m_motorCount);
 
-		for (int i = 0; i < 4; i++)
+		for (unsigned int i = 0; i < m_motorCount; i++)
 		{
-			m_motorSparkList.at(i) = new CANSparkMax(motorPorts.at(i), CANSparkMaxLowLevel::MotorType::kBrushless);
+			m_motorSparkList.at(i) = new CANSparkMax(motorPorts.at(i), CANSparkMaxLowLevel::MotorType::kBrushed);
 		}
 		break;
 	case MotorConfig::kVictorCAN:
 
 		m_motorVictorCANList = vector<VictorSPX *>(m_motorCount);
 
-		for (int i = 0; i < 4; i++)
+		for (unsigned int i = 0; i < m_motorCount; i++)
 		{
 			m_motorVictorCANList.at(i) = new VictorSPX(motorPorts.at(i));
 		}
 		break;
 	case MotorConfig::kVictorPWM:
-
+	default:
 		m_motorVictorPWMList = vector<VictorSP *>(m_motorCount);
 
-		for (int i = 0; i < 4; i++)
+		for (unsigned int i = 0; i < m_motorCount; i++)
 		{
 			m_motorVictorPWMList.at(i) = new VictorSP(motorPorts.at(i));
 		}
@@ -141,6 +142,7 @@ void MotorSubsystem::SetMotor(double speed)
 		break;
 
 	case MotorConfig::kVictorPWM:
+	default:
 		m_motorVictorPWM->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 		break;
 	}
@@ -159,7 +161,7 @@ void MotorSubsystem::SetMotors(vector<double> speeds)
 	else
 	{
 
-		for (int i = 0; i < m_motorCount; i++)
+		for (unsigned int i = 0; i < m_motorCount; i++)
 		{
 
 			double speed = speeds[i];
@@ -188,6 +190,7 @@ void MotorSubsystem::SetMotors(vector<double> speeds)
 				break;
 
 			case MotorConfig::kVictorPWM:
+			default:
 				m_motorVictorPWMList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 				break;
 			}
@@ -215,6 +218,7 @@ double MotorSubsystem::GetMotor()
 		break;
 
 	case MotorConfig::kVictorPWM:
+	default:
 		return m_motorVictorPWM->Get();
 		break;
 	}
@@ -230,7 +234,7 @@ vector<double> MotorSubsystem::GetMotors()
 
 	vector<double> speeds(m_motorCount);
 
-	for (int i = 0; i < m_motorCount; i++)
+	for (unsigned int i = 0; i < m_motorCount; i++)
 	{
 		switch (m_motorConfig)
 		{
@@ -244,6 +248,7 @@ vector<double> MotorSubsystem::GetMotors()
 			break;
 
 		case MotorConfig::kVictorPWM:
+		default:
 			speeds[i] = m_motorVictorPWMList[i]->Get();
 			break;
 		}
@@ -272,6 +277,7 @@ void MotorSubsystem::InvertMotor(bool inverted)
 		break;
 
 	case MotorConfig::kVictorPWM:
+	default:
 		m_motorVictorPWM->SetInverted(inverted);
 		break;
 	}
@@ -291,7 +297,7 @@ void MotorSubsystem::InvertMotors(vector<bool> invert)
 	else
 	{
 
-		for (int i = 0; i < m_motorCount; i++)
+		for (unsigned int i = 0; i < m_motorCount; i++)
 		{
 			switch (m_motorConfig)
 			{
@@ -305,6 +311,7 @@ void MotorSubsystem::InvertMotors(vector<bool> invert)
 				break;
 
 			case MotorConfig::kVictorPWM:
+			default:
 				m_motorVictorPWMList[i]->SetInverted(invert[i]);
 				break;
 			}
@@ -332,7 +339,7 @@ void MotorSubsystem::PrintMotors()
 	{
 		vector<double> speeds = GetMotors();
 
-		for (int i = 0; i < m_motorCount; i++)
+		for (unsigned int i = 0; i < m_motorCount; i++)
 		{
 			SmartDashboard::PutNumber(GetName() + " Motor " + std::to_string(i), speeds[i]);
 		}

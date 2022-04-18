@@ -13,8 +13,8 @@
  * command-specific namespaces within this header, which can then be used where
  * they are needed.
  */
-
-#include <Math.h>
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 constexpr unsigned int can_frontRight = 0;
 constexpr unsigned int can_frontLeft = 1;
@@ -23,12 +23,12 @@ constexpr unsigned int can_backLeft = 3;
 constexpr unsigned int can_shooterMotor = 4;
 constexpr unsigned int can_elevatorRightMotor = 5;
 constexpr unsigned int can_elevatorLeftMotor = 6;
+constexpr unsigned int can_intakeMotor = 7;
 
-constexpr unsigned int pwm_intakeMotor = 1;
-constexpr unsigned int pwm_feederMotor = 2;
-constexpr unsigned int pwm_turretMotor = 3;
-constexpr unsigned int pwm_shooterRightServo = 4;
-constexpr unsigned int pwm_shooterLeftServo = 5;
+constexpr unsigned int pwm_feederMotor = 0;
+constexpr unsigned int pwm_turretMotor = 1;
+constexpr unsigned int pwm_shooterRightServo = 2;
+constexpr unsigned int pwm_shooterLeftServo = 3;
 
 constexpr unsigned int sl_clawForward = 0;
 constexpr unsigned int sl_clawReverse = 1;

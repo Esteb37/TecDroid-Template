@@ -247,11 +247,13 @@ namespace TecDroid
 
 		EncoderConfig m_encoderConfig;
 
-		PIDController *m_positionPID;
+		PIDController m_positionPID;
 
-		PIDController *m_speedPID;
+		PIDController m_speedPID;
 
 	protected:
+		int m_encoderDirection = 1;
+
 		int m_positionPIDDirection = 1;
 
 		int m_speedPIDDirection = 1;

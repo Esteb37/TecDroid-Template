@@ -34,6 +34,9 @@
 #include <frc2/command/SubsystemBase.h>
 #include <rev/CANSparkMax.h>
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 using namespace frc2;
 using namespace frc;
 using namespace rev;
@@ -369,23 +372,23 @@ namespace TecDroid
 
 		// ----- Motor controller groups-----
 
-		MotorControllerGroup m_right{*m_frontRight, *m_backRight};
+		MotorControllerGroup *m_right;
 
-		MotorControllerGroup m_left{*m_frontLeft, *m_backLeft};
+		MotorControllerGroup *m_left;
 
 		// ----- Chasis drive object -----
 
-		DifferentialDrive m_drive{m_left, m_right};
+		DifferentialDrive *m_drive;
 
 		// ----- Sensors -----
 
-		SparkMaxRelativeEncoder m_frontRightEncoder{m_frontRight->GetEncoder()};
+		SparkMaxRelativeEncoder *m_frontRightEncoder;
 
-		SparkMaxRelativeEncoder m_frontLeftEncoder{m_frontLeft->GetEncoder()};
+		SparkMaxRelativeEncoder *m_frontLeftEncoder;
 
-		SparkMaxRelativeEncoder m_backRightEncoder{m_backRight->GetEncoder()};
+		SparkMaxRelativeEncoder *m_backRightEncoder;
 
-		SparkMaxRelativeEncoder m_backLeftEncoder{m_backLeft->GetEncoder()};
+		SparkMaxRelativeEncoder *m_backLeftEncoder;
 
 		ADIS16448_IMU m_gyro;
 
@@ -403,6 +406,10 @@ namespace TecDroid
 
 	protected:
 		// ----- Attributes -----
+
+		int m_rightEncodersDirection = 1;
+
+		int m_leftEncodersDirection = 1;
 
 		int m_gyroDirection = 1;
 

@@ -47,7 +47,7 @@ private:
 
 	ShooterBase m_shooter{MotorConfig::kSpark, EncoderConfig::kFrc, can_shooterMotor, dio_shooterEncoderA, dio_shooterEncoderB};
 
-	IntakeBase m_intake{MotorConfig::kSpark, pwm_intakeMotor, sl_intakeRightForward, sl_intakeRightReverse, sl_intakeLeftForward, sl_intakeLeftReverse};
+	IntakeBase m_intake{MotorConfig::kSpark, can_intakeMotor, sl_intakeRightForward, sl_intakeRightReverse, sl_intakeLeftForward, sl_intakeLeftReverse};
 
 	FeederBase m_feeder{MotorConfig::kVictorPWM, pwm_feederMotor};
 
@@ -55,5 +55,5 @@ private:
 
 	ClawBase m_claw{sl_clawForward, sl_clawReverse, sl_wristForward, sl_wristReverse};
 
-	TurretBase m_turret{MotorConfig::kSpark, EncoderConfig::kFrc, pwm_turretMotor, dio_turretEncoderA, dio_turretEncoderB};
+	TurretBase m_turret{MotorConfig::kVictorPWM, EncoderConfig::kFrc, pwm_turretMotor, dio_turretEncoderA, dio_turretEncoderB};
 };

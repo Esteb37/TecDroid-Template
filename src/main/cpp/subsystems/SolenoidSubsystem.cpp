@@ -57,13 +57,13 @@ void SolenoidSubsystem::Periodic()
 {
 }
 
-void SolenoidSubsystem::ConfigureSolenoids(unsigned int rightA, unsigned int rightB, unsigned int leftA, unsigned int leftB)
+void SolenoidSubsystem::ConfigureSolenoids(int rightA, int rightB, int leftA, int leftB)
 {
 	m_rightSolenoid = new DoubleSolenoid(PneumaticsModuleType::REVPH, rightA, rightB);
 	m_leftSolenoid = new DoubleSolenoid{PneumaticsModuleType::REVPH, leftA, leftB};
 }
 
-void SolenoidSubsystem::ConfigureSolenoid(unsigned int rightA, unsigned int rightB)
+void SolenoidSubsystem::ConfigureSolenoid(int rightA, int rightB)
 {
 	m_rightSolenoid = new DoubleSolenoid(PneumaticsModuleType::REVPH, rightA, rightB);
 }
