@@ -138,14 +138,9 @@ void SolenoidSubsystem::PrintSolenoids()
 
 void SolenoidSubsystem::ToggleSolenoids()
 {
-	if (m_isOpen)
-	{
-		OpenSolenoids();
-	}
-	else
-	{
-		CloseSolenoids();
-	}
+	m_rightSolenoid->Toggle();
+	if (m_isDoubleSolenoid)
+		m_leftSolenoid->Toggle();
 }
 
 void SolenoidSubsystem::InvertSolenoids(bool inverted)
