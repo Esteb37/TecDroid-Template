@@ -47,6 +47,10 @@ namespace TecDroid
 	class Drivetrain : public SubsystemBase
 	{
 	public:
+		Drivetrain();
+
+		static Drivetrain &GetInstance();
+
 		/**
 		 * @brief Construct a new Drivetrain object
 		 * @param frontRight The CAN ID of the front right motor
@@ -54,7 +58,7 @@ namespace TecDroid
 		 * @param backRight The CAN ID of the back right motor
 		 * @param backLeft The CAN ID of the back left motor
 		 */
-		Drivetrain(unsigned int, unsigned int, unsigned int, unsigned int);
+		void Configure(unsigned int, unsigned int, unsigned int, unsigned int);
 
 		void Periodic() override;
 

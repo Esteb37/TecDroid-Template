@@ -30,6 +30,10 @@ class RobotContainer
 public:
 	RobotContainer();
 
+	void InitializeSubsystems();
+
+	void ConfigureSubsystems();
+
 	void RobotInit();
 
 	void RobotPeriodic();
@@ -43,17 +47,17 @@ public:
 	void TeleopPeriodic();
 
 private:
-	Drivetrain m_drivetrain{can_frontRight, can_frontLeft, can_backRight, can_backLeft};
+	Drivetrain m_drivetrain = Drivetrain::GetInstance();
 
-	ShooterBase m_shooter{MotorConfig::kSpark, EncoderConfig::kFrc, can_shooterMotor, dio_shooterEncoderA, dio_shooterEncoderB};
+	ShooterBase m_shooter = ShooterBase::GetInstance();
 
-	IntakeBase m_intake{MotorConfig::kSpark, can_intakeMotor, sl_intakeRightForward, sl_intakeRightReverse, sl_intakeLeftForward, sl_intakeLeftReverse};
+	IntakeBase m_intake = IntakeBase::GetInstance();
 
-	FeederBase m_feeder{MotorConfig::kVictorPWM, pwm_feederMotor};
+	FeederBase m_feeder = FeederBase::GetInstance();
 
-	ElevatorBase m_elevator{MotorConfig::kSpark, EncoderConfig::kFrc, {can_elevatorLeftMotor, can_elevatorRightMotor}, dio_elevatorEncoderA, dio_elevatorEncoderB};
+	ElevatorBase m_elevator = ElevatorBase::GetInstance();
 
-	ClawBase m_claw{sl_clawForward, sl_clawReverse, sl_wristForward, sl_wristReverse};
+	ClawBase m_claw = ClawBase::GetInstance();
 
-	TurretBase m_turret{MotorConfig::kVictorPWM, EncoderConfig::kFrc, pwm_turretMotor, dio_turretEncoderA, dio_turretEncoderB};
+	TurretBase m_turret = TurretBase::GetInstance();
 };

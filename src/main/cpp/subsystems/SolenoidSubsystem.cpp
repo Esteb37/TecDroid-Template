@@ -33,20 +33,21 @@ SolenoidSubsystem::SolenoidSubsystem()
 	SetName("SolenoidSubsystem");
 }
 
-SolenoidSubsystem::SolenoidSubsystem(unsigned int rightA, unsigned int rightB)
+void SolenoidSubsystem::Configure(unsigned int forward, unsigned int reverse)
 {
 
-	ConfigureSolenoid(rightA, rightB);
+	m_rightSolenoid = new DoubleSolenoid(PneumaticsModuleType::REVPH, forward, reverse);
 
 	m_isDoubleSolenoid = false;
 
 	SetName("SingleSolenoidSubsystem");
 }
 
-SolenoidSubsystem::SolenoidSubsystem(unsigned int rightA, unsigned int rightB, unsigned int leftA, unsigned int leftB)
+void SolenoidSubsystem::Configure(unsigned int forwardA, unsigned int reverseA, unsigned int forwardB, unsigned int reverseB)
 {
 
-	ConfigureSolenoids(rightA, rightB, leftA, leftB);
+	m_rightSolenoid = new DoubleSolenoid(PneumaticsModuleType::REVPH, forwardA, reverseA);
+	m_leftSolenoid = new DoubleSolenoid{PneumaticsModuleType::REVPH, forwardB, reverseB};
 
 	m_isDoubleSolenoid = true;
 
@@ -55,17 +56,6 @@ SolenoidSubsystem::SolenoidSubsystem(unsigned int rightA, unsigned int rightB, u
 
 void SolenoidSubsystem::Periodic()
 {
-}
-
-void SolenoidSubsystem::ConfigureSolenoids(int rightA, int rightB, int leftA, int leftB)
-{
-	m_rightSolenoid = new DoubleSolenoid(PneumaticsModuleType::REVPH, rightA, rightB);
-	m_leftSolenoid = new DoubleSolenoid{PneumaticsModuleType::REVPH, leftA, leftB};
-}
-
-void SolenoidSubsystem::ConfigureSolenoid(int rightA, int rightB)
-{
-	m_rightSolenoid = new DoubleSolenoid(PneumaticsModuleType::REVPH, rightA, rightB);
 }
 
 void SolenoidSubsystem::OpenSolenoids()

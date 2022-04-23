@@ -28,34 +28,28 @@
 
 using namespace TecDroid;
 
-IntakeBase::IntakeBase(MotorConfig config, unsigned int port) : MotorSubsystem(config, port)
+void IntakeBase::Configure(MotorConfig config, unsigned int port, unsigned int solenoidForward, unsigned int solenoidReverse)
 {
-	SetName("Intake");
+	MotorSubsystem::Configure(config, port);
+	SolenoidSubsystem::Configure(solenoidForward, solenoidReverse);
 }
 
-IntakeBase::IntakeBase(MotorConfig config, vector<unsigned int> ports) : MotorSubsystem(config, ports)
+void IntakeBase::Configure(MotorConfig config, vector<unsigned int> ports, unsigned int solenoidForward, unsigned int solenoidReverse)
 {
-	SetName("Intake");
+	MotorSubsystem::Configure(config, ports);
+	SolenoidSubsystem::Configure(solenoidForward, solenoidReverse);
 }
 
-IntakeBase::IntakeBase(MotorConfig config, unsigned int port, unsigned int solenoidA, unsigned int solenoidB) : MotorSubsystem(config, port), SolenoidSubsystem(solenoidA, solenoidB)
+void IntakeBase::Configure(MotorConfig config, unsigned int port, unsigned int rightForward, unsigned int rightReverse, unsigned int leftForward, unsigned int leftReverse)
 {
-	SetName("Intake");
+	MotorSubsystem::Configure(config, port);
+	SolenoidSubsystem::Configure(rightForward, rightReverse, leftForward, leftReverse);
 }
 
-IntakeBase::IntakeBase(MotorConfig config, vector<unsigned int> ports, unsigned int solenoidA, unsigned int solenoidB) : MotorSubsystem(config, ports), SolenoidSubsystem(solenoidA, solenoidB)
+void IntakeBase::Configure(MotorConfig config, vector<unsigned int> ports, unsigned int rightForward, unsigned int rightReverse, unsigned int leftForward, unsigned int leftReverse)
 {
-	SetName("Intake");
-}
-
-IntakeBase::IntakeBase(MotorConfig config, unsigned int port, unsigned int rightA, unsigned int rightB, unsigned int leftA, unsigned int leftB) : MotorSubsystem(config, port), SolenoidSubsystem(rightA, rightB, leftA, leftB)
-{
-	SetName("Intake");
-}
-
-IntakeBase::IntakeBase(MotorConfig config, vector<unsigned int> ports, unsigned int rightA, unsigned int rightB, unsigned int leftA, unsigned int leftB) : MotorSubsystem(config, ports), SolenoidSubsystem(rightA, rightB, leftA, leftB)
-{
-	SetName("Intake");
+	MotorSubsystem::Configure(config, ports);
+	SolenoidSubsystem::Configure(rightForward, rightReverse, leftForward, leftReverse);
 }
 
 void IntakeBase::Periodic()

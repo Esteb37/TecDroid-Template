@@ -29,7 +29,18 @@
 
 using namespace TecDroid;
 
-Drivetrain::Drivetrain(unsigned int frontRight, unsigned int frontLeft, unsigned int backRight, unsigned int backLeft)
+Drivetrain::Drivetrain()
+{
+	SetName("Drivetrain");
+}
+
+Drivetrain &Drivetrain::GetInstance()
+{
+	static Drivetrain instance;
+	return instance;
+}
+
+void Drivetrain::Configure(unsigned int frontRight, unsigned int frontLeft, unsigned int backRight, unsigned int backLeft)
 {
 	m_frontRight = new CANSparkMax(frontRight, CANSparkMaxLowLevel::MotorType::kBrushless);
 	m_frontLeft = new CANSparkMax(frontLeft, CANSparkMaxLowLevel::MotorType::kBrushless);
@@ -48,8 +59,6 @@ Drivetrain::Drivetrain(unsigned int frontRight, unsigned int frontLeft, unsigned
 
 	// initialize drivetrain
 	m_drive = new DifferentialDrive(*m_left, *m_right);
-
-	SetName("DT");
 }
 
 void Drivetrain::Periodic()

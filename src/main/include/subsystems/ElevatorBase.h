@@ -33,61 +33,9 @@ namespace TecDroid
 	class ElevatorBase : public EncoderSubsystem
 	{
 	public:
-		/**
-		 * @brief Construct a new Elevator object with no encoder and a single motor
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param motorPort The motor port
-		 */
-		ElevatorBase(MotorConfig, unsigned int);
+		ElevatorBase();
 
-		/**
-		 * @brief Construct a new Elevator object with no encoder and multiple motors
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param motorPorts The motor ports
-		 */
-		ElevatorBase(MotorConfig, vector<unsigned int>);
-
-		/**
-		 * @brief Construct a new Elevator object with a REV encoder and a single motor
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param encoderConfig The encoder configuration
-		 * @param motorPort The motor port
-		 */
-		ElevatorBase(MotorConfig, EncoderConfig, unsigned int);
-
-		/**
-		 * @brief Construct a new Elevator object with a REV encoder and multiple motors
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param encoderConfig The encoder configuration
-		 * @param motorPorts The motor ports
-		 */
-		ElevatorBase(MotorConfig, EncoderConfig, vector<unsigned int>);
-
-		/**
-		 * @brief Construct a new Elevator object with an FRC encoder and a single motor
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param encoderConfig The encoder configuration
-		 * @param motorPort The motor port
-		 * @param encoderA The A port of the encoder
-		 * @param encoderB The B port of the encoder
-		 */
-		ElevatorBase(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
-
-		/**
-		 * @brief Construct a new Elevator object with an FRC encoder and multiple motors
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param encoderConfig The encoder configuration
-		 * @param motorPorts The motor ports
-		 * @param encoderA The A port of the encoder
-		 * @param encoderB The B port of the encoder
-		 */
-		ElevatorBase(MotorConfig, EncoderConfig, vector<unsigned int>, unsigned int, unsigned int);
+		static ElevatorBase &GetInstance();
 
 		void Periodic() override;
 

@@ -44,13 +44,15 @@ namespace TecDroid
 		 */
 		SolenoidSubsystem();
 
+		static SolenoidSubsystem &GetInstance();
+
 		/**
 		 * @brief Construct a new SolenoidSubsystem object with a single solenoid
 		 *
 		 * @param solenoidForward The solenoid forward port
 		 * @param solenoidReverse The solenoid reverse port
 		 */
-		SolenoidSubsystem(unsigned int, unsigned int);
+		void Configure(unsigned int, unsigned int);
 
 		/**
 		 * @brief Construct a new SolenoidSubsystem object with two solenoids
@@ -60,7 +62,7 @@ namespace TecDroid
 		 * @param leftSolenoidForward The left solenoid forward port
 		 * @param leftSolenoidReverse The left solenoid reverse port
 		 */
-		SolenoidSubsystem(unsigned int, unsigned int, unsigned int, unsigned int);
+		void Configure(unsigned int, unsigned int, unsigned int, unsigned int);
 
 		void Periodic() override;
 

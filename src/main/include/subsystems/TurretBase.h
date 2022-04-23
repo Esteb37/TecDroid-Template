@@ -35,25 +35,9 @@ namespace TecDroid
 	class TurretBase : public EncoderSubsystem
 	{
 	public:
-		/**
-		 * @brief Construct a new Turret object with a REV encoder
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param encoderConfig The encoder configuration
-		 * @param motorPort The motor port
-		 */
-		TurretBase(MotorConfig, EncoderConfig, unsigned int);
+		TurretBase();
 
-		/**
-		 * @brief Construct a new Turret object with an FRC encoder
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param encoderConfig The encoder configuration
-		 * @param motorPort The motor port
-		 * @param encoderA The encoder A port
-		 * @param encoderB The encoder B port
-		 */
-		TurretBase(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
+		static TurretBase &GetInstance();
 
 		void Periodic() override;
 

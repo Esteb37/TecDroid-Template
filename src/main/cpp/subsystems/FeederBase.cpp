@@ -28,14 +28,15 @@
 
 using namespace TecDroid;
 
-FeederBase::FeederBase(MotorConfig config, unsigned int motorPort) : MotorSubsystem(config, motorPort)
+FeederBase::FeederBase()
 {
 	SetName("Feeder");
 }
 
-FeederBase::FeederBase(MotorConfig config, vector<unsigned int> motorPorts) : MotorSubsystem(config, motorPorts)
+FeederBase &FeederBase::GetInstance()
 {
-	SetName("Feeder");
+	static FeederBase instance;
+	return instance;
 }
 
 void FeederBase::Periodic()

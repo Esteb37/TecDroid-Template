@@ -28,36 +28,15 @@
 
 using namespace TecDroid;
 
-ElevatorBase::ElevatorBase(MotorConfig mconfig, unsigned int motorPort)
-	: EncoderSubsystem(mconfig, motorPort), MotorSubsystem(mconfig, motorPort)
+ElevatorBase::ElevatorBase()
 {
 	SetName("Elevator");
 }
 
-ElevatorBase::ElevatorBase(MotorConfig mconfig, vector<unsigned int> motorPorts)
-	: EncoderSubsystem(mconfig, motorPorts), MotorSubsystem(mconfig, motorPorts)
+ElevatorBase &ElevatorBase::GetInstance()
 {
-	SetName("Elevator");
-}
-
-ElevatorBase::ElevatorBase(MotorConfig mconfig, EncoderConfig econfig, unsigned int mport) : EncoderSubsystem(mconfig, econfig, mport), MotorSubsystem(mconfig, mport)
-{
-	SetName("Elevator");
-}
-
-ElevatorBase::ElevatorBase(MotorConfig mconfig, EncoderConfig econfig, vector<unsigned int> mports) : EncoderSubsystem(mconfig, econfig, mports), MotorSubsystem(mconfig, mports)
-{
-	SetName("Elevator");
-}
-
-ElevatorBase::ElevatorBase(MotorConfig mconfig, EncoderConfig econfig, unsigned int mport, unsigned int encoderA, unsigned int encoderB) : EncoderSubsystem(mconfig, econfig, mport, encoderA, encoderB), MotorSubsystem(mconfig, mport)
-{
-	SetName("Elevator");
-}
-
-ElevatorBase::ElevatorBase(MotorConfig mconfig, EncoderConfig econfig, vector<unsigned int> mports, unsigned int encoderA, unsigned int encoderB) : EncoderSubsystem(mconfig, econfig, mports, encoderA, encoderB), MotorSubsystem(mconfig, mports)
-{
-	SetName("Elevator");
+	static ElevatorBase instance;
+	return instance;
 }
 
 void ElevatorBase::Periodic()

@@ -34,21 +34,9 @@ namespace TecDroid
 	{
 
 	public:
-		/**
-		 * @brief Construct a new Feeder object with a single motor
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param motorPort The motor port
-		 */
-		FeederBase(MotorConfig, unsigned int);
+		FeederBase();
 
-		/**
-		 * @brief Construct a new Feeder object with multiple motors
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param motorPorts The motor ports
-		 */
-		FeederBase(MotorConfig, vector<unsigned int>);
+		static FeederBase &GetInstance();
 
 		void Periodic() override;
 

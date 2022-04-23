@@ -33,6 +33,12 @@ Limelight::Limelight()
 	limelight = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
 }
 
+Limelight &Limelight::GetInstance()
+{
+	static Limelight instance;
+	return instance;
+}
+
 void Limelight::ConfigureMount(double angle, double height)
 {
 	SetMountAngle(angle);

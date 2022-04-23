@@ -52,9 +52,13 @@ namespace TecDroid
 	{
 
 	public:
-		MotorSubsystem(MotorConfig, unsigned int);
+		MotorSubsystem();
 
-		MotorSubsystem(MotorConfig, vector<unsigned int>);
+		static MotorSubsystem &GetInstance();
+
+		void Configure(MotorConfig, unsigned int);
+
+		void Configure(MotorConfig, vector<unsigned int>);
 
 		void Periodic() override;
 

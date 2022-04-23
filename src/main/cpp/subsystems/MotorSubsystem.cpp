@@ -28,7 +28,18 @@
 
 using namespace TecDroid;
 
-MotorSubsystem::MotorSubsystem(MotorConfig config, unsigned int motorPort)
+MotorSubsystem::MotorSubsystem()
+{
+	SetName("MotorSubsystem");
+}
+
+MotorSubsystem &MotorSubsystem::GetInstance()
+{
+	static MotorSubsystem instance;
+	return instance;
+}
+
+void MotorSubsystem::Configure(MotorConfig config, unsigned int motorPort)
 {
 	m_motorConfig = config;
 
@@ -52,7 +63,7 @@ MotorSubsystem::MotorSubsystem(MotorConfig config, unsigned int motorPort)
 	SetName("MotorSubsystem");
 }
 
-MotorSubsystem::MotorSubsystem(MotorConfig config, vector<unsigned int> motorPorts)
+void MotorSubsystem::Configure(MotorConfig config, vector<unsigned int> motorPorts)
 {
 	m_motorConfig = config;
 

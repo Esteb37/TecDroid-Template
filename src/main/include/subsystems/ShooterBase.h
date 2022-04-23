@@ -37,33 +37,15 @@ namespace TecDroid
 	{
 
 	public:
-		/**
-		 * @brief Construct a new ShooterBase object without encoder
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param motorPort The motor port
-		 */
-		ShooterBase(MotorConfig, unsigned int);
+		ShooterBase();
 
-		/**
-		 * @brief Construct a new ShooterBase object with REV encoder
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param encoderConfig The encoder configuration
-		 * @param motorPort The motor port
-		 */
-		ShooterBase(MotorConfig, EncoderConfig, unsigned int);
+		static ShooterBase &GetInstance();
 
-		/**
-		 * @brief Construct a new ShooterBase object with FRC encoder
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param encoderConfig The encoder configuration
-		 * @param motorPort The motor port
-		 * @param encoderA The encoder A port
-		 * @param encoderB The encoder B port
-		 */
-		ShooterBase(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
+		using EncoderSubsystem::Configure;
+
+		void ConfigureSolenoid(unsigned int, unsigned int);
+
+		void ConfigureSolenoids(unsigned int, unsigned int, unsigned int, unsigned int);
 
 		void Periodic() override;
 

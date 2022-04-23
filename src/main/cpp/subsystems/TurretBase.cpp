@@ -27,14 +27,15 @@
 
 using namespace TecDroid;
 
-TurretBase::TurretBase(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort) : EncoderSubsystem(motorConfig, encoderConfig, motorPort), MotorSubsystem(motorConfig, motorPort)
+TurretBase::TurretBase()
 {
 	SetName("Turret");
 }
 
-TurretBase::TurretBase(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort, unsigned int encoderA, unsigned int encoderB) : EncoderSubsystem(motorConfig, encoderConfig, motorPort, encoderA, encoderB), MotorSubsystem(motorConfig, motorPort)
+TurretBase &TurretBase::GetInstance()
 {
-	SetName("Turret");
+	static TurretBase instance;
+	return instance;
 }
 
 void TurretBase::Periodic()

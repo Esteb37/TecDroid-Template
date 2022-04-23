@@ -48,6 +48,8 @@ namespace TecDroid
 	public:
 		Limelight();
 
+		static Limelight &GetInstance();
+
 		void ConfigureMount(double, double);
 
 		// ---------- Actions ----------

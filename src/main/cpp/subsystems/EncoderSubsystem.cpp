@@ -28,21 +28,33 @@
 
 using namespace TecDroid;
 
-EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, unsigned int motorPort)
-	: MotorSubsystem(motorConfig, motorPort)
+EncoderSubsystem::EncoderSubsystem()
 {
 	SetName("EncoderSubsystem");
 }
 
-EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, vector<unsigned int> motorPorts)
-	: MotorSubsystem(motorConfig, motorPorts)
+EncoderSubsystem &EncoderSubsystem::GetInstance()
 {
+	static EncoderSubsystem instance;
+	return instance;
+}
+
+void EncoderSubsystem::Configure(MotorConfig motorConfig, unsigned int motorPort)
+{
+	MotorSubsystem::Configure(motorConfig, motorPort);
 	SetName("EncoderSubsystem");
 }
 
-EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort)
-	: MotorSubsystem(motorConfig, motorPort)
+void EncoderSubsystem::Configure(MotorConfig motorConfig, vector<unsigned int> motorPorts)
 {
+	MotorSubsystem::Configure(motorConfig, motorPorts);
+	SetName("EncoderSubsystem");
+}
+
+void EncoderSubsystem::Configure(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort)
+{
+	MotorSubsystem::Configure(motorConfig, motorPort);
+
 	m_encoderConfig = encoderConfig;
 
 	if (motorConfig == MotorConfig::kNeo && encoderConfig == EncoderConfig::kRev)
@@ -57,9 +69,11 @@ EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, EncoderConfig encode
 	SetName("EncoderSubsystem");
 }
 
-EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts)
-	: MotorSubsystem(motorConfig, motorPorts)
+void EncoderSubsystem::Configure(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts)
 {
+
+	MotorSubsystem::Configure(motorConfig, motorPorts);
+
 	m_encoderConfig = encoderConfig;
 
 	if (motorConfig == MotorConfig::kNeo && encoderConfig == EncoderConfig::kRev)
@@ -74,9 +88,11 @@ EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, EncoderConfig encode
 	SetName("EncoderSubsystem");
 }
 
-EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort, unsigned int encoderA, unsigned int encoderB)
-	: MotorSubsystem(motorConfig, motorPort)
+void EncoderSubsystem::Configure(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort, unsigned int encoderA, unsigned int encoderB)
 {
+
+	MotorSubsystem::Configure(motorConfig, motorPort);
+
 	if (encoderConfig == EncoderConfig::kRev)
 	{
 		throw std::invalid_argument("Encoder must be FRC");
@@ -89,9 +105,10 @@ EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, EncoderConfig encode
 	SetName("EncoderSubsystem");
 }
 
-EncoderSubsystem::EncoderSubsystem(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts, unsigned int encoderA, unsigned int encoderB)
-	: MotorSubsystem(motorConfig, motorPorts)
+void EncoderSubsystem::Configure(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts, unsigned int encoderA, unsigned int encoderB)
 {
+
+	MotorSubsystem::Configure(motorConfig, motorPorts);
 
 	if (encoderConfig == EncoderConfig::kRev)
 	{

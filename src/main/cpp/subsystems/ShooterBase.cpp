@@ -28,19 +28,15 @@
 
 using namespace TecDroid;
 
-ShooterBase::ShooterBase(MotorConfig mconfig, unsigned int mport) : EncoderSubsystem(mconfig, mport), MotorSubsystem(mconfig, mport)
+ShooterBase::ShooterBase()
 {
 	SetName("Shooter");
 }
 
-ShooterBase::ShooterBase(MotorConfig mconfig, EncoderConfig econfig, unsigned int mport) : EncoderSubsystem(mconfig, econfig, mport), MotorSubsystem(mconfig, mport)
+ShooterBase &ShooterBase::GetInstance()
 {
-	SetName("Shooter");
-}
-
-ShooterBase::ShooterBase(MotorConfig mconfig, EncoderConfig econfig, unsigned int mport, unsigned int encoderA, unsigned int encoderB) : EncoderSubsystem(mconfig, econfig, mport, encoderA, encoderB), MotorSubsystem(mconfig, mport)
-{
-	SetName("Shooter");
+	static ShooterBase instance;
+	return instance;
 }
 
 void ShooterBase::Periodic()
@@ -97,4 +93,14 @@ void ShooterBase::PrintServos()
 void ShooterBase::Shoot()
 {
 	SetMotor(1);
+}
+
+void ShooterBase::ConfigureSolenoid(unsigned int forward, unsigned int reverse)
+{
+	SolenoidSubsystem::Configure(forward, reverse);
+}
+
+void ShooterBase::ConfigureSolenoids(unsigned int forwardA, unsigned int reverseA, unsigned int forwardB, unsigned int reverseB)
+{
+	SolenoidSubsystem::Configure(forwardA, reverseA, forwardB, reverseB);
 }

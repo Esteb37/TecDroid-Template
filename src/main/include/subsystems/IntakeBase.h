@@ -35,21 +35,9 @@ namespace TecDroid
 	{
 
 	public:
-		/**
-		 * @brief Construct a new Intake object with a single motor
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param motorPort The motor port
-		 */
-		IntakeBase(MotorConfig, unsigned int);
+		IntakeBase();
 
-		/**
-		 * @brief Construct a new Intake object with multiple motors
-		 *
-		 * @param motorConfig The motor configuration
-		 * @param motorPorts The motor ports
-		 */
-		IntakeBase(MotorConfig, vector<unsigned int>);
+		static IntakeBase &GetInstance();
 
 		/**
 		 * @brief Construct a new Intake object with a single motor and a single solenoid
@@ -59,7 +47,7 @@ namespace TecDroid
 		 * @param solenoidForward The solenoid forward port
 		 * @param solenoidReverse The solenoid reverse port
 		 */
-		IntakeBase(MotorConfig, unsigned int, unsigned int, unsigned int);
+		void Configure(MotorConfig, unsigned int, unsigned int, unsigned int);
 
 		/**
 		 * @brief Construct a new Intake object with multiple motors and a single solenoid
@@ -69,7 +57,7 @@ namespace TecDroid
 		 * @param solenoidForward The solenoid forward port
 		 * @param solenoidReverse The solenoid reverse port
 		 */
-		IntakeBase(MotorConfig, vector<unsigned int>, unsigned int, unsigned int);
+		void Configure(MotorConfig, vector<unsigned int>, unsigned int, unsigned int);
 
 		/**
 		 * @brief Construct a new Intake object with a single motor and multiple solenoids
@@ -81,7 +69,7 @@ namespace TecDroid
 		 * @param leftSolenoidForward The left solenoid forward port
 		 * @param leftSolenoidReverse The left solenoid reverse port
 		 */
-		IntakeBase(MotorConfig, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+		void Configure(MotorConfig, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 
 		/**
 		 * @brief Construct a new Intake object with multiple motors and multiple solenoids
@@ -93,7 +81,7 @@ namespace TecDroid
 		 * @param leftSolenoidForward The left solenoid forward port
 		 * @param leftSolenoidReverse The left solenoid reverse port
 		 */
-		IntakeBase(MotorConfig, vector<unsigned int>, unsigned int, unsigned int, unsigned int, unsigned int);
+		void Configure(MotorConfig, vector<unsigned int>, unsigned int, unsigned int, unsigned int, unsigned int);
 
 		void Periodic() override;
 

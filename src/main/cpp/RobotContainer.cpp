@@ -16,36 +16,34 @@ double GetBool(string name, double alt)
 
 RobotContainer::RobotContainer()
 {
+	InitializeSubsystems();
+	ConfigureSubsystems();
+}
 
-	m_shooter.ConfigureServos(pwm_shooterRightServo, pwm_shooterLeftServo);
-	m_shooter.m_limelight.ConfigureMount(72, 62);
+void RobotContainer::InitializeSubsystems()
+{
+	m_drivetrain.Configure(can_frontRight, can_frontLeft, can_backRight, can_backLeft);
 
-	m_shooter.SetEncoderPorts(dio_shooterEncoderA, dio_shooterEncoderB);
-	m_shooter.SetRPMConversionFactor(k_shooterVCF);
-	m_shooter.ConfigureSolenoids(0, 1, 2, 3);
+	m_shooter.Configure(MotorConfig::kSpark, EncoderConfig::kFrc, can_shooterMotor, dio_shooterEncoderA, dio_shooterEncoderB);
+
+	m_intake.Configure(MotorConfig::kSpark, can_intakeMotor, sl_intakeRightForward, sl_intakeRightReverse, sl_intakeLeftForward, sl_intakeLeftReverse);
+
+	m_feeder.Configure(MotorConfig::kVictorPWM, pwm_feederMotor);
+
+	m_elevator.Configure(MotorConfig::kSpark, EncoderConfig::kFrc, {can_elevatorLeftMotor, can_elevatorRightMotor}, dio_elevatorEncoderA, dio_elevatorEncoderB);
+
+	m_claw.Configure(sl_clawForward, sl_clawReverse, sl_wristForward, sl_wristReverse);
+
+	m_turret.Configure(MotorConfig::kVictorPWM, EncoderConfig::kFrc, pwm_turretMotor, dio_turretEncoderA, dio_turretEncoderB);
+}
+
+void RobotContainer::ConfigureSubsystems()
+{
 }
 
 void RobotContainer::TeleopInit()
 {
-	m_shooter.Reset();
-	m_shooter.ResetRPMPID();
-	m_shooter.ResetServos();
 }
 void RobotContainer::TeleopPeriodic()
 {
-	m_shooter.SetMaxSpeed(GetNumber("Max Speed", k_shooterMaxSpeed));
-	m_shooter.SetMotor(GetNumber("Speed", 1));
-	m_shooter.InvertEncoder(GetBool("IE", false));
-	m_shooter.InvertMotor(GetBool("IM", false));
-	m_shooter.PrintRPM();
-	m_shooter.SetAngleServos(GetNumber("Servos", 1));
-	m_shooter.PrintServos();
-	m_shooter.InvertSolenoids(GetNumber("IS", false));
-	m_shooter.OpenSolenoids();
-	m_shooter.PrintSolenoids();
-	/*m_shooter.Shoot();
-	m_shooter.ConfigureRPMPID(k_shooterP, k_shooterI, k_shooterD, k_shooterPIDTolerance, GetBool("IP", false));
-	m_shooter.SetRPM(GetNumber("SetSpeed", 360), GetNumber("Speed", 1));
-	m_shooter.PrintRPMError();
-	SmartDashboard::PutNumber("RPM", m_shooter.CalculateRPM(250));*/
 }
