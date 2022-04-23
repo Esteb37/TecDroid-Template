@@ -108,6 +108,12 @@ namespace TecDroid
 		void SetMotor(double);
 
 		/**
+		 * @brief Set all motors to the specified speed
+		 * @param speed The speed to set the motors to
+		 */
+		void SetMotors(double);
+
+		/**
 		 * @brief Set speeds of each motor with safety considered
 		 * @param speeds The speeds to set the motors to
 		 */
@@ -196,48 +202,48 @@ namespace TecDroid
 
 		/**
 		 * @brief Set the subsystem to a specified speed
-		 * @param speed The speed to set the subsystem to
+		 * @param rpm The velocity to set the subsystem to
 		 * @param acceleration The acceleration at which the speed will be set
 		 * @return True if the subsystem is at the speed, false otherwise
 		 */
-		bool SetSpeed(double, double);
+		bool SetRPM(double, double);
 
 		/**
 		 * @brief Get the encoder's rate
 		 * @return The encoder's rate
 		 */
-		double GetSpeed();
+		double GetRPM();
 
 		/**
-		 * @brief Configures the speed's PID values, tolerance and direction
+		 * @brief Configures the RPM's PID values, tolerance and direction
 		 * @param p The proportional value
 		 * @param i The integral value
 		 * @param d The derivative value
-		 * @param tolerance The tolerance of the speed
+		 * @param tolerance The tolerance of the RPM
 		 * @param inverted Invert PID calculation
 		 */
-		void ConfigureSpeedPID(double, double, double, double, bool = false);
+		void ConfigureRPMPID(double, double, double, double, bool = false);
 
 		/**
-		 * @brief Set the encoder's Speed Conversion Factor
+		 * @brief Set the encoder's RPM Conversion Factor
 		 * @param conversionFactor The conversion factor
 		 */
-		void SetSpeedConversionFactor(double);
+		void SetRPMConversionFactor(double);
 
 		/**
-		 * @brief Resets the speed PID
+		 * @brief Resets the RPM PID
 		 */
-		void ResetSpeedPID();
+		void ResetRPMPID();
 
 		/**
-		 * @brief Prints encoder's speed
+		 * @brief Prints encoder's RPM
 		 */
-		void PrintSpeed();
+		void PrintRPM();
 
 		/**
-		 * @brief Prints speed PID error
+		 * @brief Prints RPM PID error
 		 */
-		void PrintSpeedError();
+		void PrintRPMError();
 
 		// ---------- Elements ----------
 
@@ -249,16 +255,16 @@ namespace TecDroid
 
 		PIDController m_positionPID{0.1, 0, 0};
 
-		PIDController m_speedPID{0.1, 0, 0};
+		PIDController m_RPMPID{0.1, 0, 0};
 
 	protected:
 		int m_encoderDirection = 1;
 
 		int m_positionPIDDirection = 1;
 
-		int m_speedPIDDirection = 1;
+		int m_RPMPIDDirection = 1;
 
-		double m_speedConversionFactor = 1;
+		double m_RPMConversionFactor = 1;
 
 		double m_maxPosition = 100;
 
@@ -266,11 +272,7 @@ namespace TecDroid
 
 		double m_maxRPM = 100;
 
-		double m_speedCF;
-
 		bool m_keepingStill = false;
-
-		bool m_speedSafetyActive = false;
 
 		bool m_positionSafetyActive = false;
 	};

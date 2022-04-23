@@ -50,7 +50,7 @@ void ShooterBase::Periodic()
 void ShooterBase::Reset()
 {
 	ResetEncoder();
-	ResetSpeedPID();
+	ResetRPMPID();
 	ResetServos();
 	SolenoidsOff();
 }

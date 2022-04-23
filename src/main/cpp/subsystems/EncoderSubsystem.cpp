@@ -113,28 +113,11 @@ void EncoderSubsystem::Reset()
 {
 	ResetEncoder();
 	ResetPositionPID();
-	ResetSpeedPID();
+	ResetRPMPID();
 }
 
 void EncoderSubsystem::SetMotor(double speed)
 {
-
-	if (m_motorCount > 1)
-	{
-		throw std::invalid_argument("EncoderSubsystem: SetMotor() does not support multiple motors.");
-	}
-
-	if (m_limitSafetyActive)
-	{
-		if (GetUpperLimit())
-		{
-			speed = fmin(speed, 0);
-		}
-		else if (GetLowerLimit())
-		{
-			speed = fmax(speed, 0);
-		}
-	}
 
 	if (m_positionSafetyActive)
 	{
@@ -148,80 +131,45 @@ void EncoderSubsystem::SetMotor(double speed)
 		}
 	}
 
-	switch (m_motorConfig)
+	MotorSubsystem::SetMotor(speed);
+}
+
+void EncoderSubsystem::SetMotors(double speed)
+{
+
+	if (m_positionSafetyActive)
 	{
-	case MotorConfig::kNeo:
-	case MotorConfig::kSpark:
-		m_motorSpark->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-		break;
-
-	case MotorConfig::kVictorCAN:
-		m_motorVictorCAN->Set(VictorSPXControlMode::PercentOutput, std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-		break;
-
-	case MotorConfig::kVictorPWM:
-	default:
-		m_motorVictorPWM->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-		break;
+		if (GetPosition() >= m_maxPosition)
+		{
+			speed = fmin(speed, 0);
+		}
+		else if (GetPosition() <= m_minPosition)
+		{
+			speed = fmax(speed, 0);
+		}
 	}
+
+	MotorSubsystem::SetMotors(speed);
 }
 
 void EncoderSubsystem::SetMotors(vector<double> speeds)
 {
-
-	if (m_motorCount != speeds.size())
+	for (unsigned i = 0; i < speeds.size(); i++)
 	{
-		throw std::invalid_argument("EncoderSubsystem: Speed vector must be the same size as the number of motors.");
-	}
-	else if (m_motorCount <= 1)
-	{
-		throw std::invalid_argument("EncoderSubsystem: This subsystem has only one motor. Use SetMotor() instead.");
-	}
-
-	for (unsigned int i = 0; i < speeds.size(); i++)
-	{
-		double speed = speeds[i];
-		if (m_limitSafetyActive)
-		{
-			if (GetUpperLimit())
-			{
-				speed = fmin(speed, 0);
-			}
-			else if (GetLowerLimit())
-			{
-				speed = fmax(speed, 0);
-			}
-		}
-
 		if (m_positionSafetyActive)
 		{
 			if (GetPosition() >= m_maxPosition)
 			{
-				speeds[i] = fmin(speed, 0);
+				speeds[i] = fmin(speeds[i], 0);
 			}
 			else if (GetPosition() <= m_minPosition)
 			{
-				speeds[i] = fmax(speed, 0);
+				speeds[i] = fmax(speeds[i], 0);
 			}
 		}
-
-		switch (m_motorConfig)
-		{
-		case MotorConfig::kNeo:
-		case MotorConfig::kSpark:
-			m_motorSpark->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-			break;
-
-		case MotorConfig::kVictorCAN:
-			m_motorVictorCAN->Set(VictorSPXControlMode::PercentOutput, std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-			break;
-
-		case MotorConfig::kVictorPWM:
-		default:
-			m_motorVictorPWM->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-			break;
-		}
 	}
+
+	MotorSubsystem::SetMotors(speeds);
 }
 
 void EncoderSubsystem::ResetEncoder()
@@ -345,18 +293,18 @@ void EncoderSubsystem::SetPositionSafety(bool active)
 	m_positionSafetyActive = active;
 }
 
-bool EncoderSubsystem::SetSpeed(double speed, double acceleration)
+bool EncoderSubsystem::SetRPM(double speed, double acceleration)
 {
-	m_speedPID.SetSetpoint(speed);
+	m_RPMPID.SetSetpoint(speed);
 
-	double output = m_speedPID.Calculate(GetPosition() * m_speedPIDDirection);
+	double output = m_RPMPID.Calculate(GetPosition() * m_RPMPIDDirection);
 
 	SetMotor(output * acceleration);
 
 	return m_positionPID.AtSetpoint();
 }
 
-double EncoderSubsystem::GetSpeed()
+double EncoderSubsystem::GetRPM()
 {
 	switch (m_encoderConfig)
 	{
@@ -366,19 +314,19 @@ double EncoderSubsystem::GetSpeed()
 
 	case EncoderConfig::kFrc:
 	default:
-		return m_encoder->GetRate() * m_speedConversionFactor;
+		return m_encoder->GetRate() * m_RPMConversionFactor;
 		break;
 	}
 }
 
-void EncoderSubsystem::ConfigureSpeedPID(double p, double i, double d, double tolerance, bool inverted)
+void EncoderSubsystem::ConfigureRPMPID(double p, double i, double d, double tolerance, bool inverted)
 {
-	m_speedPID.SetPID(p, i, d);
-	m_speedPID.SetTolerance(tolerance);
-	m_speedPIDDirection = inverted ? -1 : 1;
+	m_RPMPID.SetPID(p, i, d);
+	m_RPMPID.SetTolerance(tolerance);
+	m_RPMPIDDirection = inverted ? -1 : 1;
 }
 
-void EncoderSubsystem::SetSpeedConversionFactor(double conversionFactor)
+void EncoderSubsystem::SetRPMConversionFactor(double conversionFactor)
 {
 	switch (m_encoderConfig)
 	{
@@ -388,24 +336,24 @@ void EncoderSubsystem::SetSpeedConversionFactor(double conversionFactor)
 
 	case EncoderConfig::kFrc:
 	default:
-		m_speedConversionFactor = conversionFactor;
+		m_RPMConversionFactor = conversionFactor;
 		break;
 	}
 }
 
-void EncoderSubsystem::ResetSpeedPID()
+void EncoderSubsystem::ResetRPMPID()
 {
-	m_speedPID.Reset();
+	m_RPMPID.Reset();
 }
 
-void EncoderSubsystem::PrintSpeed()
+void EncoderSubsystem::PrintRPM()
 {
-	SmartDashboard::PutNumber(GetName() + " Encoder Speed", GetSpeed());
+	SmartDashboard::PutNumber(GetName() + " Encoder Speed", GetRPM());
 }
 
-void EncoderSubsystem::PrintSpeedError()
+void EncoderSubsystem::PrintRPMError()
 {
-	SmartDashboard::PutNumber(GetName() + " Encoder Speed Error", m_speedPID.GetPositionError());
+	SmartDashboard::PutNumber(GetName() + " Encoder Speed Error", m_RPMPID.GetPositionError());
 }
 
 void EncoderSubsystem::SetMinMaxPosition(double min, double max)
