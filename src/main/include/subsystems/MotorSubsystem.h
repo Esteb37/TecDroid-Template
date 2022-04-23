@@ -66,6 +66,8 @@ namespace TecDroid
 		 */
 		void SetMotor(double);
 
+		void SetMotors(double);
+
 		void SetMotors(vector<double>);
 
 		void SetMaxSpeed(double);

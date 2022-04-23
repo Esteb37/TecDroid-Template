@@ -148,6 +148,51 @@ void MotorSubsystem::SetMotor(double speed)
 	}
 }
 
+void MotorSubsystem::SetMotors(double speed)
+{
+	if (m_motorCount <= 1)
+	{
+		throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use SetMotor instead.");
+	}
+
+	else
+	{
+
+		for (unsigned int i = 0; i < m_motorCount; i++)
+		{
+
+			if (m_limitSafetyActive)
+			{
+				if (GetUpperLimit())
+				{
+					speed = fmin(speed, 0);
+				}
+				else if (GetLowerLimit())
+				{
+					speed = fmax(speed, 0);
+				}
+			}
+
+			switch (m_motorConfig)
+			{
+			case MotorConfig::kNeo:
+			case MotorConfig::kSpark:
+				m_motorSparkList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
+				break;
+
+			case MotorConfig::kVictorCAN:
+				m_motorVictorCANList[i]->Set(VictorSPXControlMode::PercentOutput, std::clamp(speed, -m_maxSpeed, m_maxSpeed));
+				break;
+
+			case MotorConfig::kVictorPWM:
+			default:
+				m_motorVictorPWMList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
+				break;
+			}
+		}
+	}
+}
+
 void MotorSubsystem::SetMotors(vector<double> speeds)
 {
 	if (m_motorCount <= 1)
