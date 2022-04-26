@@ -28,6 +28,17 @@
 
 using namespace TecDroid;
 
+IntakeBase::IntakeBase()
+{
+	SetName("Intake");
+}
+
+IntakeBase &IntakeBase::GetInstance()
+{
+	static IntakeBase instance;
+	return instance;
+}
+
 void IntakeBase::Configure(MotorConfig config, unsigned int port, unsigned int solenoidForward, unsigned int solenoidReverse)
 {
 	MotorSubsystem::Configure(config, port);

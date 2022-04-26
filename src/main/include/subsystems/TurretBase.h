@@ -139,11 +139,11 @@ namespace TecDroid
 
 		// ---------- Components ----------
 
-		Limelight m_limelight;
-
 		PIDController m_alignPID{0.1, 0, 0};
 
 	protected:
+		Limelight m_limelight = Limelight::GetInstance();
+
 		// ---------- Attributes ----------
 
 		double m_angle;

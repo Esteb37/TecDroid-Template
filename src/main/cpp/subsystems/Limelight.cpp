@@ -39,7 +39,7 @@ Limelight &Limelight::GetInstance()
 	return instance;
 }
 
-void Limelight::ConfigureMount(double angle, double height)
+void Limelight::Configure(double angle, double height)
 {
 	SetMountAngle(angle);
 	SetMountHeight(height);

@@ -398,8 +398,6 @@ namespace TecDroid
 
 		ADIS16448_IMU m_gyro;
 
-		Limelight m_limelight;
-
 		// ----- Auto -----
 
 		PIDController m_movePIDController{0.1, 0, 0};
@@ -411,6 +409,8 @@ namespace TecDroid
 		PIDController m_distancePIDController{0.1, 0, 0};
 
 	protected:
+		Limelight m_limelight = Limelight::GetInstance();
+
 		// ----- Attributes -----
 
 		int m_rightEncodersDirection = 1;

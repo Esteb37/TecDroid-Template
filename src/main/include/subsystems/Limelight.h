@@ -42,15 +42,18 @@ namespace TecDroid
 {
 	class Limelight
 	{
-	private:
-		std::shared_ptr<nt::NetworkTable> limelight;
 
 	public:
 		Limelight();
 
 		static Limelight &GetInstance();
 
-		void ConfigureMount(double, double);
+		/**
+		 * @brief Configure the limelight's mount properties
+		 * @param angle The limelight's facing angle
+		 * @param height Height from floor to center of camera
+		 */
+		void Configure(double, double);
 
 		// ---------- Actions ----------
 
@@ -114,10 +117,12 @@ namespace TecDroid
 
 		void PrintSkew();
 
-	private:
+	protected:
 		double m_mountAngle = 45;
 
 		double m_mountHeight = 60;
+
+		std::shared_ptr<nt::NetworkTable> limelight;
 	};
 
 }

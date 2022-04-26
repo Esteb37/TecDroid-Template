@@ -119,9 +119,9 @@ namespace TecDroid
 
 		Servo *m_leftServo;
 
-		Limelight m_limelight;
-
 	protected:
 		double (*m_rpmCalculationFunction)(double);
+
+		Limelight m_limelight = Limelight::GetInstance();
 	};
 }

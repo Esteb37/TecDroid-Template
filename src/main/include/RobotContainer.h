@@ -10,6 +10,7 @@
 #include "subsystems/ElevatorBase.h"
 #include "subsystems/FeederBase.h"
 #include "subsystems/IntakeBase.h"
+#include "subsystems/Limelight.h"
 #include "subsystems/ShooterBase.h"
 #include "subsystems/TurretBase.h"
 
@@ -47,7 +48,7 @@ public:
 	void TeleopPeriodic();
 
 private:
-	Drivetrain m_drivetrain = Drivetrain::GetInstance();
+	Drivetrain m_drivetrain;
 
 	ShooterBase m_shooter = ShooterBase::GetInstance();
 
@@ -60,4 +61,6 @@ private:
 	ClawBase m_claw = ClawBase::GetInstance();
 
 	TurretBase m_turret = TurretBase::GetInstance();
+
+	Limelight m_limelight = Limelight::GetInstance();
 };

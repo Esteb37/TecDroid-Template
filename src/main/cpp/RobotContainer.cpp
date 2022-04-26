@@ -35,6 +35,8 @@ void RobotContainer::InitializeSubsystems()
 	m_claw.Configure(sl_clawForward, sl_clawReverse, sl_wristForward, sl_wristReverse);
 
 	m_turret.Configure(MotorConfig::kVictorPWM, EncoderConfig::kFrc, pwm_turretMotor, dio_turretEncoderA, dio_turretEncoderB);
+
+	m_limelight.Configure(k_limelightAngle, k_limelightHeight);
 }
 
 void RobotContainer::ConfigureSubsystems()
