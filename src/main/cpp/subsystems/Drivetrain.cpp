@@ -454,32 +454,30 @@ void Drivetrain::TankDriveVolts(units::volt_t left, units::volt_t right)
 	m_drive->Feed();
 }
 
-tuple<RamseteCommand, Trajectory> Drivetrain::OpenPath(string path)
+pair<RamseteCommand, Trajectory> Drivetrain::OpenPath(string path)
 {
 
 	fs::path deployDirectory = frc::filesystem::GetDeployDirectory();
 	deployDirectory = deployDirectory / "path" / path;
 	Trajectory trajectory = TrajectoryUtil::FromPathweaverJson(deployDirectory.string());
 
-	RamseteCommand ramseteCommand(
-		trajectory,
-		[this]()
-		{ return GetPosition(); },
-		RamseteController(m_pathB,
-						  m_pathZeta),
-		SimpleMotorFeedforward<units::meters>(m_pathKs,
-											  m_pathKv,
-											  m_pathKa),
-		m_kinematics,
-		[this]
-		{ return GetWheelSpeeds(); },
-		PIDController(m_pathLeftP, m_pathLeftI, m_pathLeftD),
-		PIDController(m_pathRightP, m_pathRightI, m_pathRightD),
-		[this](auto left, auto right)
-		{ TankDriveVolts(left, right); },
-		{this});
-
-	return make_tuple(ramseteCommand, trajectory);
+	return {
+		RamseteCommand(
+			trajectory,
+			[this]()
+			{ return GetPosition(); },
+			RamseteController(m_pathB,
+							  m_pathZeta),
+			SimpleMotorFeedforward<units::meters>(m_pathKs, m_pathKv, m_pathKa),
+			m_kinematics,
+			[this]
+			{ return GetWheelSpeeds(); },
+			PIDController(m_pathLeftP, m_pathLeftI, m_pathLeftD),
+			PIDController(m_pathRightP, m_pathRightI, m_pathRightD),
+			[this](auto left, auto right)
+			{ TankDriveVolts(left, right); },
+			{this}),
+		trajectory};
 }
 
 void Drivetrain::ConfigurePathFollower(units::unit_t<b_unit> b,

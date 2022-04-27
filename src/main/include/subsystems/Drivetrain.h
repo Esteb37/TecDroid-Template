@@ -429,7 +429,7 @@ namespace TecDroid
 
 		void TankDriveVolts(units::volt_t left, units::volt_t right);
 
-		tuple<RamseteCommand, Trajectory> OpenPath(string);
+		pair<RamseteCommand, Trajectory> OpenPath(string);
 
 		void ConfigurePathFollower(units::unit_t<b_unit>,
 								   units::unit_t<zeta_unit>,
