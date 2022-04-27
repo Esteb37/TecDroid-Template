@@ -39,28 +39,28 @@ IntakeBase &IntakeBase::GetInstance()
 	return instance;
 }
 
-void IntakeBase::Configure(MotorConfig config, unsigned int port, unsigned int solenoidForward, unsigned int solenoidReverse)
+void IntakeBase::Initialize(MotorConfig config, unsigned int port, unsigned int solenoidForward, unsigned int solenoidReverse)
 {
-	MotorSubsystem::Configure(config, port);
-	SolenoidSubsystem::Configure(solenoidForward, solenoidReverse);
+	MotorSubsystem::Initialize(config, port);
+	SolenoidSubsystem::Initialize(solenoidForward, solenoidReverse);
 }
 
-void IntakeBase::Configure(MotorConfig config, vector<unsigned int> ports, unsigned int solenoidForward, unsigned int solenoidReverse)
+void IntakeBase::Initialize(MotorConfig config, vector<unsigned int> ports, unsigned int solenoidForward, unsigned int solenoidReverse)
 {
-	MotorSubsystem::Configure(config, ports);
-	SolenoidSubsystem::Configure(solenoidForward, solenoidReverse);
+	MotorSubsystem::Initialize(config, ports);
+	SolenoidSubsystem::Initialize(solenoidForward, solenoidReverse);
 }
 
-void IntakeBase::Configure(MotorConfig config, unsigned int port, unsigned int rightForward, unsigned int rightReverse, unsigned int leftForward, unsigned int leftReverse)
+void IntakeBase::Initialize(MotorConfig config, unsigned int port, unsigned int rightForward, unsigned int rightReverse, unsigned int leftForward, unsigned int leftReverse)
 {
-	MotorSubsystem::Configure(config, port);
-	SolenoidSubsystem::Configure(rightForward, rightReverse, leftForward, leftReverse);
+	MotorSubsystem::Initialize(config, port);
+	SolenoidSubsystem::Initialize(rightForward, rightReverse, leftForward, leftReverse);
 }
 
-void IntakeBase::Configure(MotorConfig config, vector<unsigned int> ports, unsigned int rightForward, unsigned int rightReverse, unsigned int leftForward, unsigned int leftReverse)
+void IntakeBase::Initialize(MotorConfig config, vector<unsigned int> ports, unsigned int rightForward, unsigned int rightReverse, unsigned int leftForward, unsigned int leftReverse)
 {
-	MotorSubsystem::Configure(config, ports);
-	SolenoidSubsystem::Configure(rightForward, rightReverse, leftForward, leftReverse);
+	MotorSubsystem::Initialize(config, ports);
+	SolenoidSubsystem::Initialize(rightForward, rightReverse, leftForward, leftReverse);
 }
 
 void IntakeBase::Periodic()

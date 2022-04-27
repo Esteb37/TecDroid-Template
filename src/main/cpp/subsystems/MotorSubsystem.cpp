@@ -39,7 +39,7 @@ MotorSubsystem &MotorSubsystem::GetInstance()
 	return instance;
 }
 
-void MotorSubsystem::Configure(MotorConfig config, unsigned int motorPort)
+void MotorSubsystem::Initialize(MotorConfig config, unsigned int motorPort)
 {
 	m_motorConfig = config;
 
@@ -63,7 +63,7 @@ void MotorSubsystem::Configure(MotorConfig config, unsigned int motorPort)
 	SetName("MotorSubsystem");
 }
 
-void MotorSubsystem::Configure(MotorConfig config, vector<unsigned int> motorPorts)
+void MotorSubsystem::Initialize(MotorConfig config, vector<unsigned int> motorPorts)
 {
 	m_motorConfig = config;
 

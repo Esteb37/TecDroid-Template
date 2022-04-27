@@ -53,7 +53,7 @@ namespace TecDroid
 		 * @param angle The limelight's facing angle
 		 * @param height Height from floor to center of camera
 		 */
-		void Configure(double, double);
+		void Initialize(double, double);
 
 		// ---------- Actions ----------
 

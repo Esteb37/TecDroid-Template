@@ -47,7 +47,7 @@ namespace TecDroid
 		 * @param solenoidForward The solenoid forward port
 		 * @param solenoidReverse The solenoid reverse port
 		 */
-		void Configure(MotorConfig, unsigned int, unsigned int, unsigned int);
+		void Initialize(MotorConfig, unsigned int, unsigned int, unsigned int);
 
 		/**
 		 * @brief Construct a new Intake object with multiple motors and a single solenoid
@@ -57,7 +57,7 @@ namespace TecDroid
 		 * @param solenoidForward The solenoid forward port
 		 * @param solenoidReverse The solenoid reverse port
 		 */
-		void Configure(MotorConfig, vector<unsigned int>, unsigned int, unsigned int);
+		void Initialize(MotorConfig, vector<unsigned int>, unsigned int, unsigned int);
 
 		/**
 		 * @brief Construct a new Intake object with a single motor and multiple solenoids
@@ -69,7 +69,7 @@ namespace TecDroid
 		 * @param leftSolenoidForward The left solenoid forward port
 		 * @param leftSolenoidReverse The left solenoid reverse port
 		 */
-		void Configure(MotorConfig, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+		void Initialize(MotorConfig, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 
 		/**
 		 * @brief Construct a new Intake object with multiple motors and multiple solenoids
@@ -81,7 +81,7 @@ namespace TecDroid
 		 * @param leftSolenoidForward The left solenoid forward port
 		 * @param leftSolenoidReverse The left solenoid reverse port
 		 */
-		void Configure(MotorConfig, vector<unsigned int>, unsigned int, unsigned int, unsigned int, unsigned int);
+		void Initialize(MotorConfig, vector<unsigned int>, unsigned int, unsigned int, unsigned int, unsigned int);
 
 		void Periodic() override;
 

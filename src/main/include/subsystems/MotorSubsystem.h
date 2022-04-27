@@ -56,9 +56,9 @@ namespace TecDroid
 
 		static MotorSubsystem &GetInstance();
 
-		void Configure(MotorConfig, unsigned int);
+		void Initialize(MotorConfig, unsigned int);
 
-		void Configure(MotorConfig, vector<unsigned int>);
+		void Initialize(MotorConfig, vector<unsigned int>);
 
 		void Periodic() override;
 

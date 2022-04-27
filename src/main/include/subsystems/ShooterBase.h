@@ -41,7 +41,7 @@ namespace TecDroid
 
 		static ShooterBase &GetInstance();
 
-		using EncoderSubsystem::Configure;
+		using EncoderSubsystem::Initialize;
 
 		void ConfigureSolenoid(unsigned int, unsigned int);
 

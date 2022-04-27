@@ -51,14 +51,14 @@ namespace TecDroid
 		 * @param motorConfig The motor configuration
 		 * @param motorPort The CAN ID of the motor
 		 */
-		void Configure(MotorConfig, unsigned int);
+		void Initialize(MotorConfig, unsigned int);
 
 		/**
 		 * @brief Construct a new EncoderSubsystem object without encoder and various motors
 		 * @param motorConfig The motor configuration
 		 * @param motorPorts The CAN IDs of the motors
 		 */
-		void Configure(MotorConfig, vector<unsigned int>);
+		void Initialize(MotorConfig, vector<unsigned int>);
 
 		/**
 		 * @brief Construct a new EncoderSubsystem object with a single NEO motor
@@ -66,7 +66,7 @@ namespace TecDroid
 		 * @param encoderConfig The encoder configuration
 		 * @param motorPort The CAN ID of the motor
 		 */
-		void Configure(MotorConfig, EncoderConfig, unsigned int);
+		void Initialize(MotorConfig, EncoderConfig, unsigned int);
 
 		/**
 		 * @brief Construct a new EncoderSubsystem object with various NEO motors
@@ -74,7 +74,7 @@ namespace TecDroid
 		 * @param encoderConfig The encoder configuration
 		 * @param motorPorts The CAN IDs of the motors
 		 */
-		void Configure(MotorConfig, EncoderConfig, vector<unsigned int>);
+		void Initialize(MotorConfig, EncoderConfig, vector<unsigned int>);
 
 		/**
 		 * @brief Construct a new EncoderSubsystem object with an FRC encoder and a single motor
@@ -84,7 +84,7 @@ namespace TecDroid
 		 * @param encoderA The A port of the encoder
 		 * @param encoderB The B port of the encoder
 		 */
-		void Configure(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
+		void Initialize(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
 
 		/**
 		 * @brief Construct a new EncoderSubsystem object with an FRC encoder and various motors
@@ -94,7 +94,7 @@ namespace TecDroid
 		 * @param encoderA The A port of the encoder
 		 * @param encoderB The B port of the encoder
 		 */
-		void Configure(MotorConfig, EncoderConfig, vector<unsigned int>, unsigned int, unsigned int);
+		void Initialize(MotorConfig, EncoderConfig, vector<unsigned int>, unsigned int, unsigned int);
 
 		void Periodic() override;
 

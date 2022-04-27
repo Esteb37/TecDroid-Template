@@ -75,7 +75,7 @@ namespace TecDroid
 		 * @param backRight The CAN ID of the back right motor
 		 * @param backLeft The CAN ID of the back left motor
 		 */
-		void Configure(unsigned int, unsigned int, unsigned int, unsigned int);
+		void Initialize(unsigned int, unsigned int, unsigned int, unsigned int);
 
 		void Periodic() override;
 
@@ -435,9 +435,9 @@ namespace TecDroid
 								   units::unit_t<zeta_unit>,
 								   units::volt_t,
 								   units::unit_t<kv_unit>,
-								   units::unit_t<ka_unit>,
-								   double, double, double,
-								   double, double, double);
+								   units::unit_t<ka_unit>);
+
+		void ConfigurePathPIDs(double, double, double, double, double, double);
 
 		// ----- Motors -----
 
@@ -543,6 +543,7 @@ namespace TecDroid
 		units::volt_t m_pathKs;
 		units::unit_t<kv_unit> m_pathKv;
 		units::unit_t<ka_unit> m_pathKa;
+
 		double m_pathRightP = 8.5;
 		double m_pathRightI = 0;
 		double m_pathRightD = 0;

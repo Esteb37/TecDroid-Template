@@ -97,10 +97,10 @@ void ShooterBase::Shoot()
 
 void ShooterBase::ConfigureSolenoid(unsigned int forward, unsigned int reverse)
 {
-	SolenoidSubsystem::Configure(forward, reverse);
+	SolenoidSubsystem::Initialize(forward, reverse);
 }
 
 void ShooterBase::ConfigureSolenoids(unsigned int forwardA, unsigned int reverseA, unsigned int forwardB, unsigned int reverseB)
 {
-	SolenoidSubsystem::Configure(forwardA, reverseA, forwardB, reverseB);
+	SolenoidSubsystem::Initialize(forwardA, reverseA, forwardB, reverseB);
 }

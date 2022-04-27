@@ -22,23 +22,21 @@ RobotContainer::RobotContainer()
 
 void RobotContainer::InitializeSubsystems()
 {
-	m_drivetrain.Configure(can_frontRight, can_frontLeft, can_backRight, can_backLeft);
+	m_drivetrain.Initialize(can_frontRight, can_frontLeft, can_backRight, can_backLeft);
 
-	m_drivetrain.ConfigurePosition(Pose2d(units::centimeter_t(0), units::centimeter_t(0), Rotation2d(units::degree_t(0))));
+	m_shooter.Initialize(MotorConfig::kSpark, EncoderConfig::kFrc, can_shooterMotor, dio_shooterEncoderA, dio_shooterEncoderB);
 
-	m_shooter.Configure(MotorConfig::kSpark, EncoderConfig::kFrc, can_shooterMotor, dio_shooterEncoderA, dio_shooterEncoderB);
+	m_intake.Initialize(MotorConfig::kSpark, can_intakeMotor, sl_intakeRightForward, sl_intakeRightReverse, sl_intakeLeftForward, sl_intakeLeftReverse);
 
-	m_intake.Configure(MotorConfig::kSpark, can_intakeMotor, sl_intakeRightForward, sl_intakeRightReverse, sl_intakeLeftForward, sl_intakeLeftReverse);
+	m_feeder.Initialize(MotorConfig::kVictorPWM, pwm_feederMotor);
 
-	m_feeder.Configure(MotorConfig::kVictorPWM, pwm_feederMotor);
+	m_elevator.Initialize(MotorConfig::kSpark, EncoderConfig::kFrc, {can_elevatorLeftMotor, can_elevatorRightMotor}, dio_elevatorEncoderA, dio_elevatorEncoderB);
 
-	m_elevator.Configure(MotorConfig::kSpark, EncoderConfig::kFrc, {can_elevatorLeftMotor, can_elevatorRightMotor}, dio_elevatorEncoderA, dio_elevatorEncoderB);
+	m_claw.Initialize(sl_clawForward, sl_clawReverse, sl_wristForward, sl_wristReverse);
 
-	m_claw.Configure(sl_clawForward, sl_clawReverse, sl_wristForward, sl_wristReverse);
+	m_turret.Initialize(MotorConfig::kVictorPWM, EncoderConfig::kFrc, pwm_turretMotor, dio_turretEncoderA, dio_turretEncoderB);
 
-	m_turret.Configure(MotorConfig::kVictorPWM, EncoderConfig::kFrc, pwm_turretMotor, dio_turretEncoderA, dio_turretEncoderB);
-
-	m_limelight.Configure(k_limelightAngle, k_limelightHeight);
+	m_limelight.Initialize(k_limelightAngle, k_limelightHeight);
 }
 
 void RobotContainer::ConfigureSubsystems()

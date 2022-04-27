@@ -33,7 +33,7 @@ SolenoidSubsystem::SolenoidSubsystem()
 	SetName("SolenoidSubsystem");
 }
 
-void SolenoidSubsystem::Configure(int forward, int reverse)
+void SolenoidSubsystem::Initialize(int forward, int reverse)
 {
 
 	m_rightSolenoid = new DoubleSolenoid(PneumaticsModuleType::REVPH, forward, reverse);
@@ -43,7 +43,7 @@ void SolenoidSubsystem::Configure(int forward, int reverse)
 	SetName("SingleSolenoidSubsystem");
 }
 
-void SolenoidSubsystem::Configure(int forwardA, int reverseA, int forwardB, int reverseB)
+void SolenoidSubsystem::Initialize(int forwardA, int reverseA, int forwardB, int reverseB)
 {
 
 	m_rightSolenoid = new DoubleSolenoid(PneumaticsModuleType::REVPH, forwardA, reverseA);

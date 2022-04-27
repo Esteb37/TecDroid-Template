@@ -39,18 +39,18 @@ ClawBase &ClawBase::GetInstance()
 	return instance;
 }
 
-void ClawBase::Configure(unsigned int solenoidForward, unsigned int solenoidReverse)
+void ClawBase::Initialize(unsigned int solenoidForward, unsigned int solenoidReverse)
 {
 	m_hand.SetName("Claw Hand");
-	m_hand.Configure(solenoidForward, solenoidReverse);
+	m_hand.Initialize(solenoidForward, solenoidReverse);
 }
 
-void ClawBase::Configure(unsigned int handForward, unsigned int handReverse, unsigned int wristForward, unsigned int wristReverse)
+void ClawBase::Initialize(unsigned int handForward, unsigned int handReverse, unsigned int wristForward, unsigned int wristReverse)
 {
 	m_hand.SetName("Claw Hand");
 	m_wrist.SetName("Claw Wrist");
-	m_hand.Configure(handForward, handReverse);
-	m_wrist.Configure(wristForward, wristReverse);
+	m_hand.Initialize(handForward, handReverse);
+	m_wrist.Initialize(wristForward, wristReverse);
 }
 
 void ClawBase::Periodic()

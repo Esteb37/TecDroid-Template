@@ -40,7 +40,7 @@ Drivetrain &Drivetrain::GetInstance()
 	return instance;
 }
 
-void Drivetrain::Configure(unsigned int frontRight, unsigned int frontLeft, unsigned int backRight, unsigned int backLeft)
+void Drivetrain::Initialize(unsigned int frontRight, unsigned int frontLeft, unsigned int backRight, unsigned int backLeft)
 {
 	m_frontRight = new CANSparkMax(frontRight, CANSparkMaxLowLevel::MotorType::kBrushless);
 	m_frontLeft = new CANSparkMax(frontLeft, CANSparkMaxLowLevel::MotorType::kBrushless);
@@ -484,19 +484,21 @@ void Drivetrain::ConfigurePathFollower(units::unit_t<b_unit> b,
 									   units::unit_t<zeta_unit> z,
 									   units::volt_t ks,
 									   units::unit_t<kv_unit> kv,
-									   units::unit_t<ka_unit> ka,
-									   double rightP, double rightI, double rightD,
-									   double leftP, double leftI, double leftD)
+									   units::unit_t<ka_unit> ka)
 {
 	m_pathB = b;
 	m_pathZeta = z;
 	m_pathKs = ks;
 	m_pathKv = kv;
 	m_pathKa = ka;
-	m_pathRightD = rightD;
+};
+
+void Drivetrain::ConfigurePathPIDs(double rightP, double rightI, double rightD, double leftP, double leftI, double leftD)
+{
 	m_pathRightP = rightP;
 	m_pathRightI = rightI;
-	m_pathLeftD = leftD;
+	m_pathRightD = rightD;
 	m_pathLeftP = leftP;
 	m_pathLeftI = leftI;
-};
+	m_pathLeftD = leftD;
+}

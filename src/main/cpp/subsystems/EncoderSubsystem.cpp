@@ -39,21 +39,21 @@ EncoderSubsystem &EncoderSubsystem::GetInstance()
 	return instance;
 }
 
-void EncoderSubsystem::Configure(MotorConfig motorConfig, unsigned int motorPort)
+void EncoderSubsystem::Initialize(MotorConfig motorConfig, unsigned int motorPort)
 {
-	MotorSubsystem::Configure(motorConfig, motorPort);
+	MotorSubsystem::Initialize(motorConfig, motorPort);
 	SetName("EncoderSubsystem");
 }
 
-void EncoderSubsystem::Configure(MotorConfig motorConfig, vector<unsigned int> motorPorts)
+void EncoderSubsystem::Initialize(MotorConfig motorConfig, vector<unsigned int> motorPorts)
 {
-	MotorSubsystem::Configure(motorConfig, motorPorts);
+	MotorSubsystem::Initialize(motorConfig, motorPorts);
 	SetName("EncoderSubsystem");
 }
 
-void EncoderSubsystem::Configure(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort)
+void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort)
 {
-	MotorSubsystem::Configure(motorConfig, motorPort);
+	MotorSubsystem::Initialize(motorConfig, motorPort);
 
 	m_encoderConfig = encoderConfig;
 
@@ -69,10 +69,10 @@ void EncoderSubsystem::Configure(MotorConfig motorConfig, EncoderConfig encoderC
 	SetName("EncoderSubsystem");
 }
 
-void EncoderSubsystem::Configure(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts)
+void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts)
 {
 
-	MotorSubsystem::Configure(motorConfig, motorPorts);
+	MotorSubsystem::Initialize(motorConfig, motorPorts);
 
 	m_encoderConfig = encoderConfig;
 
@@ -88,10 +88,10 @@ void EncoderSubsystem::Configure(MotorConfig motorConfig, EncoderConfig encoderC
 	SetName("EncoderSubsystem");
 }
 
-void EncoderSubsystem::Configure(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort, unsigned int encoderA, unsigned int encoderB)
+void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort, unsigned int encoderA, unsigned int encoderB)
 {
 
-	MotorSubsystem::Configure(motorConfig, motorPort);
+	MotorSubsystem::Initialize(motorConfig, motorPort);
 
 	if (encoderConfig == EncoderConfig::kRev)
 	{
@@ -105,10 +105,10 @@ void EncoderSubsystem::Configure(MotorConfig motorConfig, EncoderConfig encoderC
 	SetName("EncoderSubsystem");
 }
 
-void EncoderSubsystem::Configure(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts, unsigned int encoderA, unsigned int encoderB)
+void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts, unsigned int encoderA, unsigned int encoderB)
 {
 
-	MotorSubsystem::Configure(motorConfig, motorPorts);
+	MotorSubsystem::Initialize(motorConfig, motorPorts);
 
 	if (encoderConfig == EncoderConfig::kRev)
 	{

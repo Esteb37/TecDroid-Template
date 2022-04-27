@@ -47,7 +47,7 @@ namespace TecDroid
 		 * @param solenoidForward The solenoid forward port
 		 * @param solenoidReverse The solenoid reverse port
 		 */
-		void Configure(unsigned int, unsigned int);
+		void Initialize(unsigned int, unsigned int);
 
 		/**
 		 * @brief Construct a new Claw object with hand and wrist solenoids
@@ -57,7 +57,7 @@ namespace TecDroid
 		 * @param solenoidWristForward The wrist solenoid forward port
 		 * @param solenoidWristReverse The wrist solenoid reverse port
 		 */
-		void Configure(unsigned int, unsigned int, unsigned int, unsigned int);
+		void Initialize(unsigned int, unsigned int, unsigned int, unsigned int);
 
 		void Periodic() override;
 
