@@ -70,10 +70,6 @@ void Drivetrain::Periodic()
 
 void Drivetrain::Drive(double speed, double rotation)
 {
-	m_rightEncodersTotal += speed * m_moveDirection * 10;
-	m_leftEncodersTotal += speed * m_moveDirection * 10;
-	m_gyroHeading += rotation * m_rotationDirection;
-
 	m_drive->ArcadeDrive(speed * m_moveDirection * m_maxMoveSpeed, rotation * m_rotationDirection * m_maxTurnSpeed);
 }
 
@@ -417,8 +413,7 @@ double Drivetrain::GetAbsoluteAngle(double x, double y)
 
 void Drivetrain::ConfigurePosition(Pose2d startingPosition)
 {
-	m_position = startingPosition;
-	m_odometry = new DifferentialDriveOdometry(Rotation2d(units::degree_t(GetGyroHeading())), startingPosition);
+	m_odometry.ResetPosition(startingPosition, Rotation2d(units::degree_t(GetGyroHeading())));
 	m_odometryConfigured = true;
 }
 
@@ -426,20 +421,84 @@ void Drivetrain::UpdatePosition()
 {
 	if (m_odometryConfigured)
 	{
-		m_position = m_odometry->Update(Rotation2d(units::degree_t(GetGyroHeading())),
-										units::centimeter_t(GetLeftEncodersTotal()),
-										units::centimeter_t(GetRightEncodersTotal()));
+		m_odometry.Update(Rotation2d(units::degree_t(GetGyroHeading())),
+						  units::centimeter_t(GetLeftEncodersTotal()),
+						  units::centimeter_t(GetRightEncodersTotal()));
+		m_field.SetRobotPose(m_odometry.GetPose());
 	}
 }
 
 Pose2d Drivetrain::GetPosition()
 {
-	return m_position;
+	return m_odometry.GetPose();
 }
 
 void Drivetrain::PrintPosition()
 {
-	SmartDashboard::PutNumber(GetName() + " X", m_position.X().value());
-	SmartDashboard::PutNumber(GetName() + " Y", m_position.Y().value());
-	SmartDashboard::PutNumber(GetName() + " Theta", m_position.Rotation().Degrees().value());
+	SmartDashboard::PutData("Field", &m_field);
+	SmartDashboard::PutNumber(GetName() + " X", m_odometry.GetPose().X().value());
+	SmartDashboard::PutNumber(GetName() + " Y", m_odometry.GetPose().Y().value());
+	SmartDashboard::PutNumber(GetName() + " Theta", m_odometry.GetPose().Rotation().Degrees().value());
 }
+
+DifferentialDriveWheelSpeeds Drivetrain::GetWheelSpeeds()
+{
+	return {units::meters_per_second_t(m_frontLeftEncoder->GetVelocity()),
+			units::meters_per_second_t(m_frontRightEncoder->GetVelocity())};
+}
+
+void Drivetrain::TankDriveVolts(units::volt_t left, units::volt_t right)
+{
+	m_right->SetVoltage(right);
+	m_left->SetVoltage(left);
+	m_drive->Feed();
+}
+
+tuple<RamseteCommand, Trajectory> Drivetrain::OpenPath(string path)
+{
+
+	fs::path deployDirectory = frc::filesystem::GetDeployDirectory();
+	deployDirectory = deployDirectory / "path" / path;
+	Trajectory trajectory = TrajectoryUtil::FromPathweaverJson(deployDirectory.string());
+
+	RamseteCommand ramseteCommand(
+		trajectory,
+		[this]()
+		{ return GetPosition(); },
+		RamseteController(m_pathB,
+						  m_pathZeta),
+		SimpleMotorFeedforward<units::meters>(m_pathKs,
+											  m_pathKv,
+											  m_pathKa),
+		m_kinematics,
+		[this]
+		{ return GetWheelSpeeds(); },
+		PIDController(m_pathLeftP, m_pathLeftI, m_pathLeftD),
+		PIDController(m_pathRightP, m_pathRightI, m_pathRightD),
+		[this](auto left, auto right)
+		{ TankDriveVolts(left, right); },
+		{this});
+
+	return make_tuple(ramseteCommand, trajectory);
+}
+
+void Drivetrain::ConfigurePathFollower(units::unit_t<b_unit> b,
+									   units::unit_t<zeta_unit> z,
+									   units::volt_t ks,
+									   units::unit_t<kv_unit> kv,
+									   units::unit_t<ka_unit> ka,
+									   double rightP, double rightI, double rightD,
+									   double leftP, double leftI, double leftD)
+{
+	m_pathB = b;
+	m_pathZeta = z;
+	m_pathKs = ks;
+	m_pathKv = kv;
+	m_pathKa = ka;
+	m_pathRightD = rightD;
+	m_pathRightP = rightP;
+	m_pathRightI = rightI;
+	m_pathLeftD = leftD;
+	m_pathLeftP = leftP;
+	m_pathLeftI = leftI;
+};

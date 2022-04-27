@@ -44,6 +44,7 @@ void RobotContainer::InitializeSubsystems()
 void RobotContainer::ConfigureSubsystems()
 {
 	m_drivetrain.InvertMove(true);
+	m_drivetrain.InvertRotation(true);
 }
 
 void RobotContainer::TeleopInit()
@@ -51,8 +52,19 @@ void RobotContainer::TeleopInit()
 }
 void RobotContainer::TeleopPeriodic()
 {
-	m_drivetrain.Drive(m_controller.GetLeftY(), m_controller.GetLeftX());
-	m_drivetrain.PrintPosition();
-	m_drivetrain.PrintEncoders();
-	m_drivetrain.PrintGyro();
+}
+
+frc2::Command *RobotContainer::GetAutonomousCommand()
+{
+	auto [command, trajectory] = m_drivetrain.OpenPath("path.json");
+
+	// Reset odometry to the starting pose of the trajectory.
+	m_drivetrain.ConfigurePosition(trajectory.InitialPose());
+
+	// no auto
+	return new SequentialCommandGroup(
+		move(command),
+		InstantCommand([this]
+					   { m_drivetrain.TankDriveVolts(0_V, 0_V); },
+					   {}));
 }

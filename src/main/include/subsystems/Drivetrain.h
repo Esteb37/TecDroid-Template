@@ -28,14 +28,28 @@
 
 #include "subsystems/Limelight.h"
 #include <frc/ADIS16448_IMU.h>
+#include <frc/Filesystem.h>
 #include <frc/controller/PIDController.h>
+#include <frc/controller/RamseteController.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/kinematics/ChassisSpeeds.h>
 #include <frc/kinematics/DifferentialDriveKinematics.h>
 #include <frc/kinematics/DifferentialDriveOdometry.h>
 #include <frc/motorcontrol/MotorControllerGroup.h>
+#include <frc/simulation/DifferentialDrivetrainSim.h>
+#include <frc/simulation/EncoderSim.h>
+#include <frc/smartdashboard/Field2d.h>
+#include <frc/trajectory/TrajectoryUtil.h>
+#include <frc2/command/Command.h>
+#include <frc2/command/InstantCommand.h>
+#include <frc2/command/PIDCommand.h>
+#include <frc2/command/ParallelRaceGroup.h>
+#include <frc2/command/RamseteCommand.h>
+#include <frc2/command/RunCommand.h>
+#include <frc2/command/SequentialCommandGroup.h>
 #include <frc2/command/SubsystemBase.h>
 #include <rev/CANSparkMax.h>
+#include <wpi/fs.h>
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -381,7 +395,7 @@ namespace TecDroid
 		 */
 		void ResetPIDControllers();
 
-		// ----- Kinematics -----
+		// ----- Odometry -----
 
 		/**
 		 * @brief Configures the odometry object for position estimation
@@ -396,6 +410,34 @@ namespace TecDroid
 		Pose2d GetPosition();
 
 		void PrintPosition();
+
+		using Velocity =
+			units::compound_unit<units::meters, units::inverse<units::seconds>>;
+		using Acceleration =
+			units::compound_unit<Velocity, units::inverse<units::seconds>>;
+		using kv_unit = units::compound_unit<units::volts, units::inverse<Velocity>>;
+		using ka_unit =
+			units::compound_unit<units::volts, units::inverse<Acceleration>>;
+		using b_unit =
+			units::compound_unit<units::squared<units::radians>,
+								 units::inverse<units::squared<units::meters>>>;
+		using zeta_unit = units::inverse<units::radians>;
+
+		// ----- Follow path -----
+
+		DifferentialDriveWheelSpeeds GetWheelSpeeds();
+
+		void TankDriveVolts(units::volt_t left, units::volt_t right);
+
+		tuple<RamseteCommand, Trajectory> OpenPath(string);
+
+		void ConfigurePathFollower(units::unit_t<b_unit>,
+								   units::unit_t<zeta_unit>,
+								   units::volt_t,
+								   units::unit_t<kv_unit>,
+								   units::unit_t<ka_unit>,
+								   double, double, double,
+								   double, double, double);
 
 		// ----- Motors -----
 
@@ -439,10 +481,6 @@ namespace TecDroid
 
 		PIDController m_distancePIDController{0.1, 0, 0};
 
-		// ----- Kinematics -----
-
-		DifferentialDriveOdometry *m_odometry;
-
 	protected:
 		Limelight m_limelight = Limelight::GetInstance();
 
@@ -484,8 +522,32 @@ namespace TecDroid
 
 		double m_gyroHeading = 0;
 
+		// ---- Kinematics ----
+
 		double m_odometryConfigured = false;
 
 		Pose2d m_position;
+
+		Field2d m_field;
+
+		DifferentialDriveKinematics m_kinematics{0.77_m};
+
+		Trajectory m_path;
+
+		DifferentialDriveOdometry m_odometry{Rotation2d(units::degree_t(GetGyro())), Pose2d(0_m, 0_m, Rotation2d(0_deg))};
+
+		// ----- Path follower -----
+
+		units::unit_t<b_unit> m_pathB;
+		units::unit_t<zeta_unit> m_pathZeta;
+		units::volt_t m_pathKs;
+		units::unit_t<kv_unit> m_pathKv;
+		units::unit_t<ka_unit> m_pathKa;
+		double m_pathRightP = 8.5;
+		double m_pathRightI = 0;
+		double m_pathRightD = 0;
+		double m_pathLeftP = 8.5;
+		double m_pathLeftI = 0;
+		double m_pathLeftD = 0;
 	};
 }

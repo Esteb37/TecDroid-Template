@@ -90,7 +90,7 @@ constexpr double k_elevatorHeightI = 0.0;
 constexpr double k_elevatorHeightD = 0.0;
 constexpr double k_elevatorHeightPIDTolerance = 0.5;
 
-constexpr double k_wheelDiameter = 6 * 2.54;
+constexpr double k_wheelDiameter = 6 * 0.0254;
 constexpr double k_wheelGearRatio = 10.71;
 
 constexpr double k_drivetrainDPR = k_wheelDiameter * M_PI / k_wheelGearRatio;

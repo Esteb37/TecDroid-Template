@@ -14,7 +14,14 @@
 #include "subsystems/ShooterBase.h"
 #include "subsystems/TurretBase.h"
 #include <frc/XboxController.h>
+#include <frc/controller/PIDController.h>
+#include <frc/smartdashboard/SendableChooser.h>
 #include <frc2/command/Command.h>
+#include <frc2/command/InstantCommand.h>
+#include <frc2/command/PIDCommand.h>
+#include <frc2/command/ParallelRaceGroup.h>
+#include <frc2/command/RunCommand.h>
+#include <frc2/command/SequentialCommandGroup.h>
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -25,11 +32,16 @@
  */
 
 using namespace TecDroid;
+using namespace std;
+using namespace frc;
+using namespace frc2;
 
 class RobotContainer
 {
 public:
 	RobotContainer();
+
+	frc2::Command *GetAutonomousCommand();
 
 	void InitializeSubsystems();
 
@@ -65,4 +77,6 @@ private:
 	Limelight m_limelight = Limelight::GetInstance();
 
 	XboxController m_controller = XboxController(0);
+
+	DifferentialDriveKinematics kDriveKinematics{0.77_m};
 };
