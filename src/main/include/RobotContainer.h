@@ -13,7 +13,7 @@
 #include "subsystems/Limelight.h"
 #include "subsystems/ShooterBase.h"
 #include "subsystems/TurretBase.h"
-
+#include <frc/XboxController.h>
 #include <frc2/command/Command.h>
 
 /**
@@ -63,4 +63,6 @@ private:
 	TurretBase m_turret = TurretBase::GetInstance();
 
 	Limelight m_limelight = Limelight::GetInstance();
+
+	XboxController m_controller = XboxController(0);
 };

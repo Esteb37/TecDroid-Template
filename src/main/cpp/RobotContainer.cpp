@@ -24,6 +24,8 @@ void RobotContainer::InitializeSubsystems()
 {
 	m_drivetrain.Configure(can_frontRight, can_frontLeft, can_backRight, can_backLeft);
 
+	m_drivetrain.ConfigurePosition(Pose2d(units::centimeter_t(0), units::centimeter_t(0), Rotation2d(units::degree_t(0))));
+
 	m_shooter.Configure(MotorConfig::kSpark, EncoderConfig::kFrc, can_shooterMotor, dio_shooterEncoderA, dio_shooterEncoderB);
 
 	m_intake.Configure(MotorConfig::kSpark, can_intakeMotor, sl_intakeRightForward, sl_intakeRightReverse, sl_intakeLeftForward, sl_intakeLeftReverse);
@@ -41,6 +43,7 @@ void RobotContainer::InitializeSubsystems()
 
 void RobotContainer::ConfigureSubsystems()
 {
+	m_drivetrain.InvertMove(true);
 }
 
 void RobotContainer::TeleopInit()
@@ -48,4 +51,8 @@ void RobotContainer::TeleopInit()
 }
 void RobotContainer::TeleopPeriodic()
 {
+	m_drivetrain.Drive(m_controller.GetLeftY(), m_controller.GetLeftX());
+	m_drivetrain.PrintPosition();
+	m_drivetrain.PrintEncoders();
+	m_drivetrain.PrintGyro();
 }

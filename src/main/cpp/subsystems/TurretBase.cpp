@@ -88,7 +88,7 @@ bool TurretBase::SetAngle(double angle, double speed)
 
 double TurretBase::GetAngle()
 {
-	return GetPosition();
+	return 0;
 }
 
 void TurretBase::ConfigureAnglePID(double p, double i, double d, double tolerance, bool inverted)

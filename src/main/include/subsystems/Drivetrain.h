@@ -30,6 +30,9 @@
 #include <frc/ADIS16448_IMU.h>
 #include <frc/controller/PIDController.h>
 #include <frc/drive/DifferentialDrive.h>
+#include <frc/kinematics/ChassisSpeeds.h>
+#include <frc/kinematics/DifferentialDriveKinematics.h>
+#include <frc/kinematics/DifferentialDriveOdometry.h>
 #include <frc/motorcontrol/MotorControllerGroup.h>
 #include <frc2/command/SubsystemBase.h>
 #include <rev/CANSparkMax.h>
@@ -148,6 +151,10 @@ namespace TecDroid
 		 */
 		double GetEncoderAverage();
 
+		double GetRightEncodersTotal();
+
+		double GetLeftEncodersTotal();
+
 		/**
 		 * @brief Resets the encoders to 0
 		 */
@@ -185,10 +192,18 @@ namespace TecDroid
 		double GetGyro();
 
 		/**
+		 * @brief Get the absolute angle to which the robot is heading
+		 * @return double the absolute angle
+		 */
+		double GetGyroHeading();
+
+		/**
 		 * @brief Get the gyro angle in radians
 		 * @return double angle radians
 		 */
 		double GetGyroRad();
+
+		double GetGyroHeadingRad();
 
 		/**
 		 * @brief Resets the angle to 0
@@ -366,6 +381,22 @@ namespace TecDroid
 		 */
 		void ResetPIDControllers();
 
+		// ----- Kinematics -----
+
+		/**
+		 * @brief Configures the odometry object for position estimation
+		 * @param startingPose the starting position of the robot
+		 */
+		void ConfigurePosition(Pose2d);
+
+		void UpdatePosition();
+
+		void ResetPosition();
+
+		Pose2d GetPosition();
+
+		void PrintPosition();
+
 		// ----- Motors -----
 
 		CANSparkMax *m_frontLeft;
@@ -408,10 +439,14 @@ namespace TecDroid
 
 		PIDController m_distancePIDController{0.1, 0, 0};
 
+		// ----- Kinematics -----
+
+		DifferentialDriveOdometry *m_odometry;
+
 	protected:
 		Limelight m_limelight = Limelight::GetInstance();
 
-		// ----- Attributes -----
+		// ----- Attributes -----s
 
 		int m_rightEncodersDirection = 1;
 
@@ -440,5 +475,17 @@ namespace TecDroid
 		double m_maxTurnSpeed = 1;
 
 		bool m_reachedAngle = false;
+
+		double m_trackWidth = 60;
+
+		double m_rightEncodersTotal = 0;
+
+		double m_leftEncodersTotal = 0;
+
+		double m_gyroHeading = 0;
+
+		double m_odometryConfigured = false;
+
+		Pose2d m_position;
 	};
 }

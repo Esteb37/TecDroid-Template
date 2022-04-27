@@ -63,12 +63,17 @@ void Drivetrain::Configure(unsigned int frontRight, unsigned int frontLeft, unsi
 
 void Drivetrain::Periodic()
 {
+	UpdatePosition();
 }
 
 // --------------------- Control ----------------------
 
 void Drivetrain::Drive(double speed, double rotation)
 {
+	m_rightEncodersTotal += speed * m_moveDirection * 10;
+	m_leftEncodersTotal += speed * m_moveDirection * 10;
+	m_gyroHeading += rotation * m_rotationDirection;
+
 	m_drive->ArcadeDrive(speed * m_moveDirection * m_maxMoveSpeed, rotation * m_rotationDirection * m_maxTurnSpeed);
 }
 
@@ -135,9 +140,19 @@ double Drivetrain::GetRightEncoders()
 	return m_rightEncodersDirection * (m_frontRightEncoder->GetPosition() + m_backRightEncoder->GetPosition()) / 2;
 }
 
+double Drivetrain::GetRightEncodersTotal()
+{
+	return m_rightEncodersTotal + GetRightEncoders();
+}
+
 double Drivetrain::GetLeftEncoders()
 {
 	return m_leftEncodersDirection * (m_frontLeftEncoder->GetPosition() + m_backLeftEncoder->GetPosition()) / 2;
+}
+
+double Drivetrain::GetLeftEncodersTotal()
+{
+	return m_leftEncodersTotal + GetLeftEncoders();
 }
 
 double Drivetrain::GetEncoderAverage()
@@ -147,6 +162,9 @@ double Drivetrain::GetEncoderAverage()
 
 void Drivetrain::ResetEncoders()
 {
+
+	m_rightEncodersTotal = GetRightEncodersTotal();
+	m_leftEncodersTotal = GetLeftEncodersTotal();
 	m_frontRightEncoder->SetPosition(0);
 	m_frontLeftEncoder->SetPosition(0);
 	m_backRightEncoder->SetPosition(0);
@@ -185,13 +203,24 @@ double Drivetrain::GetGyro()
 	return m_gyro.GetAngle().value() * m_gyroDirection;
 }
 
+double Drivetrain::GetGyroHeading()
+{
+	return m_gyroHeading + GetGyro();
+}
+
 double Drivetrain::GetGyroRad()
 {
 	return GetGyro() * (M_PI / 180);
 }
 
+double Drivetrain::GetGyroHeadingRad()
+{
+	return GetGyroHeading() * (M_PI / 180);
+}
+
 void Drivetrain::ResetGyro()
 {
+	m_gyroHeading = GetGyroHeading();
 	m_gyro.Reset();
 }
 
@@ -384,4 +413,33 @@ double Drivetrain::GetAbsoluteAngle(double x, double y)
 		relAngle += 2 * M_PI;
 
 	return (relAngle)*180 / M_PI;
+}
+
+void Drivetrain::ConfigurePosition(Pose2d startingPosition)
+{
+	m_position = startingPosition;
+	m_odometry = new DifferentialDriveOdometry(Rotation2d(units::degree_t(GetGyroHeading())), startingPosition);
+	m_odometryConfigured = true;
+}
+
+void Drivetrain::UpdatePosition()
+{
+	if (m_odometryConfigured)
+	{
+		m_position = m_odometry->Update(Rotation2d(units::degree_t(GetGyroHeading())),
+										units::centimeter_t(GetLeftEncodersTotal()),
+										units::centimeter_t(GetRightEncodersTotal()));
+	}
+}
+
+Pose2d Drivetrain::GetPosition()
+{
+	return m_position;
+}
+
+void Drivetrain::PrintPosition()
+{
+	SmartDashboard::PutNumber(GetName() + " X", m_position.X().value());
+	SmartDashboard::PutNumber(GetName() + " Y", m_position.Y().value());
+	SmartDashboard::PutNumber(GetName() + " Theta", m_position.Rotation().Degrees().value());
 }
