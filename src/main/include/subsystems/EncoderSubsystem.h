@@ -35,8 +35,8 @@ namespace TecDroid
 {
 	enum class EncoderConfig
 	{
-		kFrc,
-		kRev
+		Frc,
+		Rev
 	};
 
 	class EncoderSubsystem : virtual public MotorSubsystem

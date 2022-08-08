@@ -40,12 +40,13 @@ using namespace std;
 
 namespace TecDroid
 {
+
 	enum class MotorConfig
 	{
-		kNeo,
-		kSpark,
-		kVictorPWM,
-		kVictorCAN,
+		Neo,
+		Spark,
+		VictorPWM,
+		VictorCAN,
 	};
 
 	class MotorSubsystem : virtual public SubsystemBase

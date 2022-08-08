@@ -26,411 +26,413 @@
 
 #include "subsystems/MotorSubsystem.h"
 
-using namespace TecDroid;
-
-MotorSubsystem::MotorSubsystem()
+namespace TecDroid
 {
-	SetName("MotorSubsystem");
-}
 
-MotorSubsystem &MotorSubsystem::GetInstance()
-{
-	static MotorSubsystem instance;
-	return instance;
-}
-
-void MotorSubsystem::Initialize(MotorConfig config, unsigned int motorPort)
-{
-	m_motorConfig = config;
-
-	switch (config)
+	MotorSubsystem::MotorSubsystem()
 	{
-	case MotorConfig::kNeo:
-		m_motorSpark = new CANSparkMax(motorPort, CANSparkMaxLowLevel::MotorType::kBrushless);
-		break;
-	case MotorConfig::kSpark:
-		m_motorSpark = new CANSparkMax(motorPort, CANSparkMaxLowLevel::MotorType::kBrushed);
-		break;
-	case MotorConfig::kVictorCAN:
-		m_motorVictorCAN = new VictorSPX(motorPort);
-		break;
-	case MotorConfig::kVictorPWM:
-	default:
-		m_motorVictorPWM = new VictorSP(motorPort);
-		break;
+		SetName("MotorSubsystem");
 	}
 
-	SetName("MotorSubsystem");
-}
-
-void MotorSubsystem::Initialize(MotorConfig config, vector<unsigned int> motorPorts)
-{
-	m_motorConfig = config;
-
-	m_motorCount = motorPorts.size();
-
-	if (m_motorCount <= 1)
+	MotorSubsystem &MotorSubsystem::GetInstance()
 	{
-		throw std::invalid_argument("MotorSubsystem: Port list must have more than 1 motor, use single motor constructor instead.");
+		static MotorSubsystem instance;
+		return instance;
 	}
 
-	switch (config)
+	void MotorSubsystem::Initialize(MotorConfig config, unsigned int motorPort)
 	{
-	case MotorConfig::kNeo:
+		m_motorConfig = config;
 
-		m_motorSparkList = vector<CANSparkMax *>(m_motorCount);
-
-		for (unsigned int i = 0; i < m_motorCount; i++)
+		switch (config)
 		{
-			m_motorSparkList.at(i) = new CANSparkMax(motorPorts.at(i), CANSparkMaxLowLevel::MotorType::kBrushless);
+		case MotorConfig::Neo:
+			m_motorSpark = new CANSparkMax(motorPort, CANSparkMaxLowLevel::MotorType::kBrushless);
+			break;
+		case MotorConfig::Spark:
+			m_motorSpark = new CANSparkMax(motorPort, CANSparkMaxLowLevel::MotorType::kBrushed);
+			break;
+		case MotorConfig::VictorCAN:
+			m_motorVictorCAN = new VictorSPX(motorPort);
+			break;
+		case MotorConfig::VictorPWM:
+		default:
+			m_motorVictorPWM = new VictorSP(motorPort);
+			break;
 		}
-		break;
-	case MotorConfig::kSpark:
 
-		m_motorSparkList = vector<CANSparkMax *>(m_motorCount);
-
-		for (unsigned int i = 0; i < m_motorCount; i++)
-		{
-			m_motorSparkList.at(i) = new CANSparkMax(motorPorts.at(i), CANSparkMaxLowLevel::MotorType::kBrushed);
-		}
-		break;
-	case MotorConfig::kVictorCAN:
-
-		m_motorVictorCANList = vector<VictorSPX *>(m_motorCount);
-
-		for (unsigned int i = 0; i < m_motorCount; i++)
-		{
-			m_motorVictorCANList.at(i) = new VictorSPX(motorPorts.at(i));
-		}
-		break;
-	case MotorConfig::kVictorPWM:
-	default:
-		m_motorVictorPWMList = vector<VictorSP *>(m_motorCount);
-
-		for (unsigned int i = 0; i < m_motorCount; i++)
-		{
-			m_motorVictorPWMList.at(i) = new VictorSP(motorPorts.at(i));
-		}
-		break;
+		SetName("MotorSubsystem");
 	}
 
-	SetName("MotorSubsystem");
-}
-
-void MotorSubsystem::Periodic()
-{
-}
-
-void MotorSubsystem::SetMotor(double speed)
-{
-
-	if (m_motorCount > 1)
+	void MotorSubsystem::Initialize(MotorConfig config, vector<unsigned int> motorPorts)
 	{
-		throw std::invalid_argument("MotorSubsystem: SetMotor() is not supported for multiple motors.");
-	}
+		m_motorConfig = config;
 
-	if (m_limitSafetyActive)
-	{
-		if (GetUpperLimit())
+		m_motorCount = motorPorts.size();
+
+		if (m_motorCount <= 1)
 		{
-			speed = fmin(speed, 0);
+			throw std::invalid_argument("MotorSubsystem: Port list must have more than 1 motor, use single motor constructor instead.");
 		}
-		else if (GetLowerLimit())
+
+		switch (config)
 		{
-			speed = fmax(speed, 0);
-		}
-	}
+		case MotorConfig::Neo:
 
-	switch (m_motorConfig)
-	{
-	case MotorConfig::kNeo:
-	case MotorConfig::kSpark:
-		m_motorSpark->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-		break;
+			m_motorSparkList = vector<CANSparkMax *>(m_motorCount);
 
-	case MotorConfig::kVictorCAN:
-		m_motorVictorCAN->Set(VictorSPXControlMode::PercentOutput, std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-		break;
-
-	case MotorConfig::kVictorPWM:
-	default:
-		m_motorVictorPWM->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-		break;
-	}
-}
-
-void MotorSubsystem::SetMotors(double speed)
-{
-	if (m_motorCount <= 1)
-	{
-		throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use SetMotor instead.");
-	}
-
-	else
-	{
-
-		for (unsigned int i = 0; i < m_motorCount; i++)
-		{
-
-			if (m_limitSafetyActive)
+			for (unsigned int i = 0; i < m_motorCount; i++)
 			{
-				if (GetUpperLimit())
-				{
-					speed = fmin(speed, 0);
-				}
-				else if (GetLowerLimit())
-				{
-					speed = fmax(speed, 0);
-				}
+				m_motorSparkList.at(i) = new CANSparkMax(motorPorts.at(i), CANSparkMaxLowLevel::MotorType::kBrushless);
 			}
+			break;
+		case MotorConfig::Spark:
 
-			switch (m_motorConfig)
+			m_motorSparkList = vector<CANSparkMax *>(m_motorCount);
+
+			for (unsigned int i = 0; i < m_motorCount; i++)
 			{
-			case MotorConfig::kNeo:
-			case MotorConfig::kSpark:
-				m_motorSparkList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-				break;
+				m_motorSparkList.at(i) = new CANSparkMax(motorPorts.at(i), CANSparkMaxLowLevel::MotorType::kBrushed);
+			}
+			break;
+		case MotorConfig::VictorCAN:
 
-			case MotorConfig::kVictorCAN:
-				m_motorVictorCANList[i]->Set(VictorSPXControlMode::PercentOutput, std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-				break;
+			m_motorVictorCANList = vector<VictorSPX *>(m_motorCount);
 
-			case MotorConfig::kVictorPWM:
-			default:
-				m_motorVictorPWMList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-				break;
+			for (unsigned int i = 0; i < m_motorCount; i++)
+			{
+				m_motorVictorCANList.at(i) = new VictorSPX(motorPorts.at(i));
+			}
+			break;
+		case MotorConfig::VictorPWM:
+		default:
+			m_motorVictorPWMList = vector<VictorSP *>(m_motorCount);
+
+			for (unsigned int i = 0; i < m_motorCount; i++)
+			{
+				m_motorVictorPWMList.at(i) = new VictorSP(motorPorts.at(i));
+			}
+			break;
+		}
+
+		SetName("MotorSubsystem");
+	}
+
+	void MotorSubsystem::Periodic()
+	{
+	}
+
+	void MotorSubsystem::SetMotor(double speed)
+	{
+
+		if (m_motorCount > 1)
+		{
+			throw std::invalid_argument("MotorSubsystem: SetMotor() is not supported for multiple motors.");
+		}
+
+		if (m_limitSafetyActive)
+		{
+			if (GetUpperLimit())
+			{
+				speed = fmin(speed, 0);
+			}
+			else if (GetLowerLimit())
+			{
+				speed = fmax(speed, 0);
 			}
 		}
-	}
-}
 
-void MotorSubsystem::SetMotors(vector<double> speeds)
-{
-	if (m_motorCount <= 1)
-	{
-		throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use SetMotor instead.");
-	}
-	else if (m_motorCount != speeds.size())
-	{
-		throw std::invalid_argument("MotorSubsystem: Speed vector must have same size as motor count.");
-	}
-	else
-	{
-
-		for (unsigned int i = 0; i < m_motorCount; i++)
-		{
-
-			double speed = speeds[i];
-
-			if (m_limitSafetyActive)
-			{
-				if (GetUpperLimit())
-				{
-					speed = fmin(speeds[i], 0);
-				}
-				else if (GetLowerLimit())
-				{
-					speed = fmax(speeds[i], 0);
-				}
-			}
-
-			switch (m_motorConfig)
-			{
-			case MotorConfig::kNeo:
-			case MotorConfig::kSpark:
-				m_motorSparkList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-				break;
-
-			case MotorConfig::kVictorCAN:
-				m_motorVictorCANList[i]->Set(VictorSPXControlMode::PercentOutput, std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-				break;
-
-			case MotorConfig::kVictorPWM:
-			default:
-				m_motorVictorPWMList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
-				break;
-			}
-		}
-	}
-}
-
-double MotorSubsystem::GetMotor()
-{
-
-	if (m_motorCount > 1)
-	{
-		throw std::invalid_argument("MotorSubsystem: GetMotor() is not supported for multiple motors.");
-	}
-
-	switch (m_motorConfig)
-	{
-	case MotorConfig::kNeo:
-	case MotorConfig::kSpark:
-		return m_motorSpark->Get();
-		break;
-
-	case MotorConfig::kVictorCAN:
-		return m_motorVictorCAN->GetMotorOutputPercent();
-		break;
-
-	case MotorConfig::kVictorPWM:
-	default:
-		return m_motorVictorPWM->Get();
-		break;
-	}
-}
-
-vector<double> MotorSubsystem::GetMotors()
-{
-
-	if (m_motorCount <= 1)
-	{
-		throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use GetMotor instead.");
-	}
-
-	vector<double> speeds(m_motorCount);
-
-	for (unsigned int i = 0; i < m_motorCount; i++)
-	{
 		switch (m_motorConfig)
 		{
-		case MotorConfig::kNeo:
-		case MotorConfig::kSpark:
-			speeds[i] = m_motorSparkList[i]->Get();
+		case MotorConfig::Neo:
+		case MotorConfig::Spark:
+			m_motorSpark->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 			break;
 
-		case MotorConfig::kVictorCAN:
-			speeds[i] = m_motorVictorCANList[i]->GetMotorOutputPercent();
+		case MotorConfig::VictorCAN:
+			m_motorVictorCAN->Set(VictorSPXControlMode::PercentOutput, std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 			break;
 
-		case MotorConfig::kVictorPWM:
+		case MotorConfig::VictorPWM:
 		default:
-			speeds[i] = m_motorVictorPWMList[i]->Get();
+			m_motorVictorPWM->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 			break;
 		}
 	}
 
-	return speeds;
-}
-
-void MotorSubsystem::InvertMotor(bool inverted)
-{
-
-	if (m_motorCount > 1)
+	void MotorSubsystem::SetMotors(double speed)
 	{
-		throw std::invalid_argument("MotorSubsystem: InvertMotor() is not supported for multiple motors.");
+		if (m_motorCount <= 1)
+		{
+			throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use SetMotor instead.");
+		}
+
+		else
+		{
+
+			for (unsigned int i = 0; i < m_motorCount; i++)
+			{
+
+				if (m_limitSafetyActive)
+				{
+					if (GetUpperLimit())
+					{
+						speed = fmin(speed, 0);
+					}
+					else if (GetLowerLimit())
+					{
+						speed = fmax(speed, 0);
+					}
+				}
+
+				switch (m_motorConfig)
+				{
+				case MotorConfig::Neo:
+				case MotorConfig::Spark:
+					m_motorSparkList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
+					break;
+
+				case MotorConfig::VictorCAN:
+					m_motorVictorCANList[i]->Set(VictorSPXControlMode::PercentOutput, std::clamp(speed, -m_maxSpeed, m_maxSpeed));
+					break;
+
+				case MotorConfig::VictorPWM:
+				default:
+					m_motorVictorPWMList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
+					break;
+				}
+			}
+		}
 	}
 
-	switch (m_motorConfig)
+	void MotorSubsystem::SetMotors(vector<double> speeds)
 	{
-	case MotorConfig::kNeo:
-	case MotorConfig::kSpark:
-		m_motorSpark->SetInverted(inverted);
-		break;
+		if (m_motorCount <= 1)
+		{
+			throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use SetMotor instead.");
+		}
+		else if (m_motorCount != speeds.size())
+		{
+			throw std::invalid_argument("MotorSubsystem: Speed vector must have same size as motor count.");
+		}
+		else
+		{
 
-	case MotorConfig::kVictorCAN:
-		m_motorVictorCAN->SetInverted(inverted);
-		break;
+			for (unsigned int i = 0; i < m_motorCount; i++)
+			{
 
-	case MotorConfig::kVictorPWM:
-	default:
-		m_motorVictorPWM->SetInverted(inverted);
-		break;
+				double speed = speeds[i];
+
+				if (m_limitSafetyActive)
+				{
+					if (GetUpperLimit())
+					{
+						speed = fmin(speeds[i], 0);
+					}
+					else if (GetLowerLimit())
+					{
+						speed = fmax(speeds[i], 0);
+					}
+				}
+
+				switch (m_motorConfig)
+				{
+				case MotorConfig::Neo:
+				case MotorConfig::Spark:
+					m_motorSparkList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
+					break;
+
+				case MotorConfig::VictorCAN:
+					m_motorVictorCANList[i]->Set(VictorSPXControlMode::PercentOutput, std::clamp(speed, -m_maxSpeed, m_maxSpeed));
+					break;
+
+				case MotorConfig::VictorPWM:
+				default:
+					m_motorVictorPWMList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
+					break;
+				}
+			}
+		}
 	}
-}
 
-void MotorSubsystem::InvertMotors(vector<bool> invert)
-{
+	double MotorSubsystem::GetMotor()
+	{
 
-	if (m_motorCount <= 1)
-	{
-		throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use InvertMotor instead.");
+		if (m_motorCount > 1)
+		{
+			throw std::invalid_argument("MotorSubsystem: GetMotor() is not supported for multiple motors.");
+		}
+
+		switch (m_motorConfig)
+		{
+		case MotorConfig::Neo:
+		case MotorConfig::Spark:
+			return m_motorSpark->Get();
+			break;
+
+		case MotorConfig::VictorCAN:
+			return m_motorVictorCAN->GetMotorOutputPercent();
+			break;
+
+		case MotorConfig::VictorPWM:
+		default:
+			return m_motorVictorPWM->Get();
+			break;
+		}
 	}
-	else if (m_motorCount != invert.size())
+
+	vector<double> MotorSubsystem::GetMotors()
 	{
-		throw std::invalid_argument("MotorSubsystem: Invert values do not match the amount of motors.");
-	}
-	else
-	{
+
+		if (m_motorCount <= 1)
+		{
+			throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use GetMotor instead.");
+		}
+
+		vector<double> speeds(m_motorCount);
 
 		for (unsigned int i = 0; i < m_motorCount; i++)
 		{
 			switch (m_motorConfig)
 			{
-			case MotorConfig::kNeo:
-			case MotorConfig::kSpark:
-				m_motorSparkList[i]->SetInverted(invert[i]);
+			case MotorConfig::Neo:
+			case MotorConfig::Spark:
+				speeds[i] = m_motorSparkList[i]->Get();
 				break;
 
-			case MotorConfig::kVictorCAN:
-				m_motorVictorCANList[i]->SetInverted(invert[i]);
+			case MotorConfig::VictorCAN:
+				speeds[i] = m_motorVictorCANList[i]->GetMotorOutputPercent();
 				break;
 
-			case MotorConfig::kVictorPWM:
+			case MotorConfig::VictorPWM:
 			default:
-				m_motorVictorPWMList[i]->SetInverted(invert[i]);
+				speeds[i] = m_motorVictorPWMList[i]->Get();
 				break;
 			}
 		}
+
+		return speeds;
 	}
-}
 
-void MotorSubsystem::PrintMotor()
-{
-	if (m_motorCount > 1)
+	void MotorSubsystem::InvertMotor(bool inverted)
 	{
-		throw std::invalid_argument("MotorSubsystem: PrintMotor() is not supported for multiple motors.");
-	}
-	SmartDashboard::PutNumber(GetName() + " Motor", GetMotor());
-}
 
-void MotorSubsystem::PrintMotors()
-{
-
-	if (m_motorCount <= 1)
-	{
-		throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use PrintMotor instead.");
-	}
-	else
-	{
-		vector<double> speeds = GetMotors();
-
-		for (unsigned int i = 0; i < m_motorCount; i++)
+		if (m_motorCount > 1)
 		{
-			SmartDashboard::PutNumber(GetName() + " Motor " + std::to_string(i), speeds[i]);
+			throw std::invalid_argument("MotorSubsystem: InvertMotor() is not supported for multiple motors.");
+		}
+
+		switch (m_motorConfig)
+		{
+		case MotorConfig::Neo:
+		case MotorConfig::Spark:
+			m_motorSpark->SetInverted(inverted);
+			break;
+
+		case MotorConfig::VictorCAN:
+			m_motorVictorCAN->SetInverted(inverted);
+			break;
+
+		case MotorConfig::VictorPWM:
+		default:
+			m_motorVictorPWM->SetInverted(inverted);
+			break;
 		}
 	}
-}
 
-bool MotorSubsystem::GetUpperLimit()
-{
-	return m_upperLimit->Get();
-}
+	void MotorSubsystem::InvertMotors(vector<bool> invert)
+	{
 
-bool MotorSubsystem::GetLowerLimit()
-{
-	return m_lowerLimit->Get();
-}
+		if (m_motorCount <= 1)
+		{
+			throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use InvertMotor instead.");
+		}
+		else if (m_motorCount != invert.size())
+		{
+			throw std::invalid_argument("MotorSubsystem: Invert values do not match the amount of motors.");
+		}
+		else
+		{
 
-void MotorSubsystem::ConfigureLimitSwitches(unsigned int upperLimitPort, unsigned int lowerLimitPort)
-{
-	m_upperLimit = new DigitalInput(upperLimitPort);
-	m_lowerLimit = new DigitalInput(lowerLimitPort);
-}
+			for (unsigned int i = 0; i < m_motorCount; i++)
+			{
+				switch (m_motorConfig)
+				{
+				case MotorConfig::Neo:
+				case MotorConfig::Spark:
+					m_motorSparkList[i]->SetInverted(invert[i]);
+					break;
 
-void MotorSubsystem::SetLimitSafety(bool active)
-{
-	m_limitSafetyActive = active;
-}
+				case MotorConfig::VictorCAN:
+					m_motorVictorCANList[i]->SetInverted(invert[i]);
+					break;
 
-// print limits
-void MotorSubsystem::PrintLimits()
-{
-	SmartDashboard::PutBoolean(GetName() + " Upper Limit", GetUpperLimit());
-	SmartDashboard::PutBoolean(GetName() + " Lower Limit", GetLowerLimit());
-}
+				case MotorConfig::VictorPWM:
+				default:
+					m_motorVictorPWMList[i]->SetInverted(invert[i]);
+					break;
+				}
+			}
+		}
+	}
 
-void MotorSubsystem::SetMaxSpeed(double maxSpeed)
-{
-	m_maxSpeed = maxSpeed;
+	void MotorSubsystem::PrintMotor()
+	{
+		if (m_motorCount > 1)
+		{
+			throw std::invalid_argument("MotorSubsystem: PrintMotor() is not supported for multiple motors.");
+		}
+		SmartDashboard::PutNumber(GetName() + " Motor", GetMotor());
+	}
+
+	void MotorSubsystem::PrintMotors()
+	{
+
+		if (m_motorCount <= 1)
+		{
+			throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use PrintMotor instead.");
+		}
+		else
+		{
+			vector<double> speeds = GetMotors();
+
+			for (unsigned int i = 0; i < m_motorCount; i++)
+			{
+				SmartDashboard::PutNumber(GetName() + " Motor " + std::to_string(i), speeds[i]);
+			}
+		}
+	}
+
+	bool MotorSubsystem::GetUpperLimit()
+	{
+		return m_upperLimit->Get();
+	}
+
+	bool MotorSubsystem::GetLowerLimit()
+	{
+		return m_lowerLimit->Get();
+	}
+
+	void MotorSubsystem::ConfigureLimitSwitches(unsigned int upperLimitPort, unsigned int lowerLimitPort)
+	{
+		m_upperLimit = new DigitalInput(upperLimitPort);
+		m_lowerLimit = new DigitalInput(lowerLimitPort);
+	}
+
+	void MotorSubsystem::SetLimitSafety(bool active)
+	{
+		m_limitSafetyActive = active;
+	}
+
+	// print limits
+	void MotorSubsystem::PrintLimits()
+	{
+		SmartDashboard::PutBoolean(GetName() + " Upper Limit", GetUpperLimit());
+		SmartDashboard::PutBoolean(GetName() + " Lower Limit", GetLowerLimit());
+	}
+
+	void MotorSubsystem::SetMaxSpeed(double maxSpeed)
+	{
+		m_maxSpeed = maxSpeed;
+	}
 }

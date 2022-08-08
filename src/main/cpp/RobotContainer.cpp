@@ -22,21 +22,46 @@ RobotContainer::RobotContainer()
 
 void RobotContainer::InitializeSubsystems()
 {
-	m_drivetrain.Initialize(can_frontRight, can_frontLeft, can_backRight, can_backLeft);
+	m_drivetrain.Initialize(
+		M::CAN::FRONT_RIGHT,
+		M::CAN::FRONT_LEFT,
+		M::CAN::BACK_RIGHT,
+		M::CAN::BACK_LEFT);
 
-	m_shooter.Initialize(MotorConfig::kSpark, EncoderConfig::kFrc, can_shooterMotor, dio_shooterEncoderA, dio_shooterEncoderB);
+	m_shooter.Initialize(
+		MotorConfig::Spark,
+		EncoderConfig::kFrc,
+		M::CAN::SHOOTER,
+		DIO::ENCODER::SHOOTER_A,
+		DIO::ENCODER::SHOOTER_B);
 
-	m_intake.Initialize(MotorConfig::kSpark, can_intakeMotor, sl_intakeRightForward, sl_intakeRightReverse, sl_intakeLeftForward, sl_intakeLeftReverse);
+	m_intake.Initialize(MotorConfig::Spark,
+						M::CAN::INTAKE,
+						SOL::INTAKE_RIGHT_FORWARD,
+						SOL::INTAKE_RIGHT_REVERSE,
+						SOL::INTAKE_LEFT_FORWARD,
+						SOL::INTAKE_LEFT_REVERSE);
 
-	m_feeder.Initialize(MotorConfig::kVictorPWM, pwm_feederMotor);
+	m_feeder.Initialize(MotorConfig::VictorPWM, M::PWM::FEEDER);
 
-	m_elevator.Initialize(MotorConfig::kSpark, EncoderConfig::kFrc, {can_elevatorLeftMotor, can_elevatorRightMotor}, dio_elevatorEncoderA, dio_elevatorEncoderB);
+	m_elevator.Initialize(MotorConfig::Spark,
+						  EncoderConfig::kFrc,
+						  {M::CAN::ELEVATOR_LEFT, M::CAN::ELEVATOR_RIGHT},
+						  DIO::ENCODER::ELEVATOR_A,
+						  DIO::ENCODER::ELEVATOR_B);
 
-	m_claw.Initialize(sl_clawForward, sl_clawReverse, sl_wristForward, sl_wristReverse);
+	m_claw.Initialize(SOL::CLAW_FORWARD,
+					  SOL::CLAW_REVERSE,
+					  SOL::WRIST_FORWARD,
+					  SOL::WRIST_REVERSE);
 
-	m_turret.Initialize(MotorConfig::kVictorPWM, EncoderConfig::kFrc, pwm_turretMotor, dio_turretEncoderA, dio_turretEncoderB);
+	m_turret.Initialize(MotorConfig::VictorPWM,
+						EncoderConfig::kFrc,
+						M::PWM::TURRET,
+						DIO::ENCODER::TURRET_A,
+						DIO::ENCODER::TURRET_B);
 
-	m_limelight.Initialize(k_limelightAngle, k_limelightHeight);
+	m_limelight.Initialize(LIMELIGHT::ANGLE_DEG, LIMELIGHT::HEIGHT);
 }
 
 void RobotContainer::ConfigureSubsystems()
