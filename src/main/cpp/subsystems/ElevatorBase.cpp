@@ -26,7 +26,7 @@
 
 #include "subsystems/ElevatorBase.h"
 
-using namespace TecDroid;
+using namespace TD;
 
 ElevatorBase::ElevatorBase()
 {

@@ -28,7 +28,7 @@
 
 #include "subsystems/MotorSubsystem.h"
 
-namespace TecDroid
+namespace TD
 {
 	class FeederBase : public MotorSubsystem
 	{

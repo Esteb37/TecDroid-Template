@@ -16,7 +16,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-namespace TecDroid
+namespace TD
 {
 
 	using port = unsigned int;

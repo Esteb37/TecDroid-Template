@@ -31,7 +31,7 @@
 #include <frc/controller/PIDController.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
-namespace TecDroid
+namespace TD
 {
 	enum class EncoderConfig
 	{

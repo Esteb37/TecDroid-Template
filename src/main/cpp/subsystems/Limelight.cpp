@@ -26,7 +26,7 @@
 
 #include "subsystems/Limelight.h"
 
-using namespace TecDroid;
+using namespace TD;
 
 Limelight::Limelight()
 {

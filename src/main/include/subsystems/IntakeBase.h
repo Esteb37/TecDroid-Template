@@ -29,7 +29,7 @@
 #include "subsystems/MotorSubsystem.h"
 #include "subsystems/SolenoidSubsystem.h"
 
-namespace TecDroid
+namespace TD
 {
 	class IntakeBase : public MotorSubsystem, public SolenoidSubsystem
 	{

@@ -26,7 +26,7 @@
 
 #include "subsystems/MotorSubsystem.h"
 
-namespace TecDroid
+namespace TD
 {
 
 	MotorSubsystem::MotorSubsystem()

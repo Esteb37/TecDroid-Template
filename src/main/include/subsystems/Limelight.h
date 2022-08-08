@@ -38,7 +38,7 @@
 
 using namespace frc;
 
-namespace TecDroid
+namespace TD
 {
 	class Limelight
 	{

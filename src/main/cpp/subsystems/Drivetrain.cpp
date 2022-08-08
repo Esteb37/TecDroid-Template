@@ -27,7 +27,7 @@
 #include "subsystems/Drivetrain.h"
 #include <cmath>
 
-using namespace TecDroid;
+using namespace TD;
 
 Drivetrain::Drivetrain()
 {

@@ -26,7 +26,7 @@
 
 #include "subsystems/ClawBase.h"
 
-using namespace TecDroid;
+using namespace TD;
 
 ClawBase::ClawBase()
 {

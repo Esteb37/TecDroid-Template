@@ -28,7 +28,7 @@
 
 #include "subsystems/SolenoidSubsystem.h"
 
-namespace TecDroid
+namespace TD
 {
 	class ClawBase : public SubsystemBase
 	{

@@ -31,7 +31,7 @@
 #include "subsystems/SolenoidSubsystem.h"
 #include <frc/Servo.h>
 
-namespace TecDroid
+namespace TD
 {
 	class ShooterBase : public EncoderSubsystem, public SolenoidSubsystem
 	{

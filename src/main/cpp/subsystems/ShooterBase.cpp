@@ -26,7 +26,7 @@
 
 #include "subsystems/ShooterBase.h"
 
-using namespace TecDroid;
+using namespace TD;
 
 ShooterBase::ShooterBase()
 {

@@ -26,7 +26,7 @@
 
 #include "subsystems/IntakeBase.h"
 
-using namespace TecDroid;
+using namespace TD;
 
 IntakeBase::IntakeBase()
 {

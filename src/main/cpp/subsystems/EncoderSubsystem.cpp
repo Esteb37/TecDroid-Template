@@ -26,7 +26,7 @@
 
 #include "subsystems/EncoderSubsystem.h"
 
-using namespace TecDroid;
+using namespace TD;
 
 EncoderSubsystem::EncoderSubsystem()
 {

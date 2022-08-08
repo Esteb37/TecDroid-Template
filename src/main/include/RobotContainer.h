@@ -31,7 +31,7 @@
  * commands, and button mappings) should be declared here.
  */
 
-using namespace TecDroid;
+using namespace TD;
 using namespace std;
 using namespace frc;
 using namespace frc2;

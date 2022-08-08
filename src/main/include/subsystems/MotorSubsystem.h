@@ -38,7 +38,7 @@ using namespace frc2;
 using namespace rev;
 using namespace std;
 
-namespace TecDroid
+namespace TD
 {
 
 	enum class MotorConfig

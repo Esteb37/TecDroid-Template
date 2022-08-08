@@ -26,7 +26,7 @@
 
 #include "subsystems/SolenoidSubsystem.h"
 
-using namespace TecDroid;
+using namespace TD;
 
 SolenoidSubsystem::SolenoidSubsystem()
 {

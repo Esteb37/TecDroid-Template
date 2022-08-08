@@ -25,7 +25,7 @@
 
 #include "subsystems/TurretBase.h"
 
-using namespace TecDroid;
+using namespace TD;
 
 TurretBase::TurretBase()
 {

@@ -59,7 +59,7 @@ using namespace frc;
 using namespace rev;
 using namespace std;
 
-namespace TecDroid
+namespace TD
 {
 	class Drivetrain : public SubsystemBase
 	{

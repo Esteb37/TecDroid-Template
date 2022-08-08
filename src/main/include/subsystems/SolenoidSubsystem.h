@@ -33,7 +33,7 @@
 using namespace frc;
 using namespace frc2;
 
-namespace TecDroid
+namespace TD
 {
 	class SolenoidSubsystem : virtual public SubsystemBase
 	{

@@ -26,7 +26,7 @@
 
 #include "subsystems/FeederBase.h"
 
-using namespace TecDroid;
+using namespace TD;
 
 FeederBase::FeederBase()
 {
