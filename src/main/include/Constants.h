@@ -42,15 +42,14 @@ namespace TD
 			port TURRET = 1;
 		};
 
-		namespace SERVO
+		namespace Servo
 		{
 			port SHOOTER_RIGHT = 2;
 			port SHOOTER_LEFT = 3;
 		};
 	}
 
-	// SOLENOIDS
-	namespace SOL
+	namespace Solenoid
 	{
 		port CLAW_FORWARD = 0;
 		port CLAW_REVERSE = 1;
@@ -64,7 +63,7 @@ namespace TD
 
 	namespace DIO
 	{
-		namespace ENCODER
+		namespace Encoder
 		{
 			port SHOOTER_A = 0;
 			port SHOOTER_B = 1;
@@ -74,7 +73,7 @@ namespace TD
 			port ELEVATOR_B = 7;
 		};
 
-		namespace LIMIT
+		namespace Limit
 		{
 			port TURRET_LEFT = 4;
 			port TURRET_RIGHT = 5;
@@ -85,7 +84,7 @@ namespace TD
 
 	namespace PID
 	{
-		namespace MOVE
+		namespace Move
 		{
 			double P = 0.01;
 			double I = 0.0;
@@ -93,7 +92,7 @@ namespace TD
 			double TOLERANCE = 0.5;
 		}
 
-		namespace TURN
+		namespace Turn
 		{
 			double P = 0.01;
 			double I = 0.0;
@@ -101,7 +100,7 @@ namespace TD
 			double TOLERANCE = 0.5;
 		}
 
-		namespace ALIGN
+		namespace Align
 		{
 			double P = 0.01;
 			double I = 0.0;
@@ -109,7 +108,7 @@ namespace TD
 			double TOLERANCE = 0.5;
 		}
 
-		namespace DISTANCE
+		namespace Distance
 		{
 			double P = 0.01;
 			double I = 0.0;
@@ -117,7 +116,7 @@ namespace TD
 			double TOLERANCE = 0.5;
 		}
 
-		namespace SHOOTER
+		namespace Shooter
 		{
 			double P = 0.01;
 			double I = 0.0;
@@ -125,7 +124,7 @@ namespace TD
 			double TOLERANCE = 0.5;
 		}
 
-		namespace TURRET_ALIGN
+		namespace TurretAlign
 		{
 			double P = 0.01;
 			double I = 0.0;
@@ -133,7 +132,7 @@ namespace TD
 			double TOLERANCE = 0.5;
 		}
 
-		namespace TURRET_ANGLE
+		namespace TurretAngle
 		{
 			double P = 0.01;
 			double I = 0.0;
@@ -141,7 +140,7 @@ namespace TD
 			double TOLERANCE = 0.5;
 		}
 
-		namespace ELEVATOR
+		namespace Elevator
 		{
 			double P = 0.01;
 			double I = 0.0;
@@ -150,7 +149,7 @@ namespace TD
 		}
 	}
 
-	namespace LIMELIGHT
+	namespace LL
 	{
 		double OBJECTIVE_HEIGHT = 135;
 		double HEIGHT = 35;
@@ -159,7 +158,7 @@ namespace TD
 		double TO_FRONT = 68;
 	}
 
-	namespace WHEEL
+	namespace Wheel
 	{
 		double DIAMETER_IN = 6;
 		double DIAMETER = DIAMETER_IN * 2.54;
@@ -170,13 +169,13 @@ namespace TD
 
 	namespace DPR
 	{
-		double DRIVETRAIN = WHEEL::CIRCUMFERENCE / WHEEL::GEAR_RATIO;
+		double DRIVETRAIN = Wheel::CIRCUMFERENCE / Wheel::GEAR_RATIO;
 		double TURRET = 360;   // TODO Define turret encoder to angle ratio
 		double ELEVATOR = 180; // TODO Define elevator distance per revolution
 		double SHOOTER = 180;  // TODO Define shooter conversion factor
 	}
 
-	namespace SPEED
+	namespace Speed
 	{
 		double DRIVETRAIN_MOVE = 1;
 		double DRIVETRAIN_TURN = 1;
@@ -186,13 +185,13 @@ namespace TD
 		double ELEVATOR = 1;
 	}
 
-	namespace TIME
+	namespace Time
 	{
 		double SHOOTER_LOAD = 2;
 		double FEEDER = 5;
 	}
 
-	namespace MINMAX
+	namespace Minmax
 	{
 		double TURRET_MIN = 0;
 		double TURRET_MAX = 360;
@@ -207,8 +206,8 @@ namespace TD
 
 	enum class GyroConfig
 	{
-		kADXRS450,
-		kADIS16470,
-		kADIS16448
+		ADXRS450,
+		ADIS16470,
+		ADIS16448
 	};
 }

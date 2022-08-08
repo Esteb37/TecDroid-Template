@@ -30,38 +30,38 @@ void RobotContainer::InitializeSubsystems()
 
 	m_shooter.Initialize(
 		MotorConfig::Spark,
-		EncoderConfig::kFrc,
+		EncoderConfig::Frc,
 		M::CAN::SHOOTER,
-		DIO::ENCODER::SHOOTER_A,
-		DIO::ENCODER::SHOOTER_B);
+		DIO::Encoder::SHOOTER_A,
+		DIO::Encoder::SHOOTER_B);
 
 	m_intake.Initialize(MotorConfig::Spark,
 						M::CAN::INTAKE,
-						SOL::INTAKE_RIGHT_FORWARD,
-						SOL::INTAKE_RIGHT_REVERSE,
-						SOL::INTAKE_LEFT_FORWARD,
-						SOL::INTAKE_LEFT_REVERSE);
+						TD::Solenoid::INTAKE_RIGHT_FORWARD,
+						TD::Solenoid::INTAKE_RIGHT_REVERSE,
+						TD::Solenoid::INTAKE_LEFT_FORWARD,
+						TD::Solenoid::INTAKE_LEFT_REVERSE);
 
 	m_feeder.Initialize(MotorConfig::VictorPWM, M::PWM::FEEDER);
 
 	m_elevator.Initialize(MotorConfig::Spark,
-						  EncoderConfig::kFrc,
+						  EncoderConfig::Frc,
 						  {M::CAN::ELEVATOR_LEFT, M::CAN::ELEVATOR_RIGHT},
-						  DIO::ENCODER::ELEVATOR_A,
-						  DIO::ENCODER::ELEVATOR_B);
+						  DIO::Encoder::ELEVATOR_A,
+						  DIO::Encoder::ELEVATOR_B);
 
-	m_claw.Initialize(SOL::CLAW_FORWARD,
-					  SOL::CLAW_REVERSE,
-					  SOL::WRIST_FORWARD,
-					  SOL::WRIST_REVERSE);
+	m_claw.Initialize(TD::Solenoid::CLAW_FORWARD,
+					  TD::Solenoid::CLAW_REVERSE,
+					  TD::Solenoid::WRIST_FORWARD,
+					  TD::Solenoid::WRIST_REVERSE);
 
 	m_turret.Initialize(MotorConfig::VictorPWM,
-						EncoderConfig::kFrc,
+						EncoderConfig::Frc,
 						M::PWM::TURRET,
-						DIO::ENCODER::TURRET_A,
-						DIO::ENCODER::TURRET_B);
+						DIO::Encoder::TURRET_A,
+						DIO::Encoder::TURRET_B);
 
-	m_limelight.Initialize(LIMELIGHT::ANGLE_DEG, LIMELIGHT::HEIGHT);
+	m_limelight.Initialize(LL::ANGLE_DEG, LL::HEIGHT);
 }
 
 void RobotContainer::ConfigureSubsystems()
