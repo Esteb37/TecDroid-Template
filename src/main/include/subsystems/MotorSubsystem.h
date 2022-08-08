@@ -43,10 +43,17 @@ namespace TD
 
 	enum class MotorConfig
 	{
-		Neo,
-		Spark,
-		VictorPWM,
-		VictorCAN,
+		NEO,
+		SPARK,
+		VICTOR_PWM,
+		VICTOR_CAN,
+	};
+
+	enum class GyroConfig
+	{
+		ADXRS450,
+		ADIS16470,
+		ADIS16448
 	};
 
 	class MotorSubsystem : virtual public SubsystemBase

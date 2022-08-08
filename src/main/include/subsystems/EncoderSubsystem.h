@@ -35,8 +35,8 @@ namespace TD
 {
 	enum class EncoderConfig
 	{
-		Frc,
-		Rev
+		FRC,
+		REV
 	};
 
 	class EncoderSubsystem : virtual public MotorSubsystem

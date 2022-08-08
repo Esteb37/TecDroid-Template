@@ -57,7 +57,7 @@ void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoder
 
 	m_encoderConfig = encoderConfig;
 
-	if (motorConfig == MotorConfig::Neo && encoderConfig == EncoderConfig::Rev)
+	if (motorConfig == MotorConfig::NEO && encoderConfig == EncoderConfig::REV)
 	{
 		m_encoderSpark = new SparkMaxRelativeEncoder(m_motorSpark->GetEncoder());
 	}
@@ -76,7 +76,7 @@ void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoder
 
 	m_encoderConfig = encoderConfig;
 
-	if (motorConfig == MotorConfig::Neo && encoderConfig == EncoderConfig::Rev)
+	if (motorConfig == MotorConfig::NEO && encoderConfig == EncoderConfig::REV)
 	{
 		m_encoderSpark = new SparkMaxRelativeEncoder(m_motorSparkList[0]->GetEncoder());
 	}
@@ -93,7 +93,7 @@ void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoder
 
 	MotorSubsystem::Initialize(motorConfig, motorPort);
 
-	if (encoderConfig == EncoderConfig::Rev)
+	if (encoderConfig == EncoderConfig::REV)
 	{
 		throw std::invalid_argument("Encoder must be FRC");
 	}
@@ -110,7 +110,7 @@ void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoder
 
 	MotorSubsystem::Initialize(motorConfig, motorPorts);
 
-	if (encoderConfig == EncoderConfig::Rev)
+	if (encoderConfig == EncoderConfig::REV)
 	{
 		throw std::invalid_argument("Encoder must be FRC");
 	}
@@ -193,10 +193,10 @@ void EncoderSubsystem::ResetEncoder()
 {
 	switch (m_encoderConfig)
 	{
-	case EncoderConfig::Rev:
+	case EncoderConfig::REV:
 		m_encoderSpark->SetPosition(0);
 		break;
-	case EncoderConfig::Frc:
+	case EncoderConfig::FRC:
 	default:
 		m_encoder->Reset();
 		break;
@@ -207,7 +207,7 @@ void EncoderSubsystem::InvertEncoder(bool invert)
 {
 	switch (m_encoderConfig)
 	{
-	case EncoderConfig::Rev:
+	case EncoderConfig::REV:
 		if (m_motorSpark->GetMotorType() == CANSparkMaxLowLevel::MotorType::kBrushless)
 		{
 			m_encoderDirection = invert ? -1 : 1;
@@ -219,7 +219,7 @@ void EncoderSubsystem::InvertEncoder(bool invert)
 		}
 
 		break;
-	case EncoderConfig::Frc:
+	case EncoderConfig::FRC:
 	default:
 		m_encoder->SetReverseDirection(invert);
 		break;
@@ -230,11 +230,11 @@ void EncoderSubsystem::SetEncoderPorts(unsigned int A, unsigned int B)
 {
 	switch (m_encoderConfig)
 	{
-	case EncoderConfig::Rev:
+	case EncoderConfig::REV:
 		throw std::invalid_argument("This function cannot be used with REV encoder.");
 		break;
 
-	case EncoderConfig::Frc:
+	case EncoderConfig::FRC:
 	default:
 		m_encoder = new Encoder(A, B, false, Encoder::EncodingType::k4X);
 		break;
@@ -257,11 +257,11 @@ double EncoderSubsystem::GetPosition()
 {
 	switch (m_encoderConfig)
 	{
-	case EncoderConfig::Rev:
+	case EncoderConfig::REV:
 		return m_encoderSpark->GetPosition() * m_encoderDirection;
 		break;
 
-	case EncoderConfig::Frc:
+	case EncoderConfig::FRC:
 	default:
 		return m_encoder->Get();
 		break;
@@ -279,11 +279,11 @@ void EncoderSubsystem::SetPositionConversionFactor(double conversionFactor)
 {
 	switch (m_encoderConfig)
 	{
-	case EncoderConfig::Rev:
+	case EncoderConfig::REV:
 		m_encoderSpark->SetPositionConversionFactor(conversionFactor);
 		break;
 
-	case EncoderConfig::Frc:
+	case EncoderConfig::FRC:
 	default:
 		m_encoder->SetDistancePerPulse(conversionFactor);
 		break;
@@ -325,11 +325,11 @@ double EncoderSubsystem::GetRPM()
 {
 	switch (m_encoderConfig)
 	{
-	case EncoderConfig::Rev:
+	case EncoderConfig::REV:
 		return m_encoderSpark->GetVelocity() * m_encoderDirection;
 		break;
 
-	case EncoderConfig::Frc:
+	case EncoderConfig::FRC:
 	default:
 		return m_encoder->GetRate() * m_RPMConversionFactor;
 		break;
@@ -347,11 +347,11 @@ void EncoderSubsystem::SetRPMConversionFactor(double conversionFactor)
 {
 	switch (m_encoderConfig)
 	{
-	case EncoderConfig::Rev:
+	case EncoderConfig::REV:
 		m_encoderSpark->SetVelocityConversionFactor(conversionFactor);
 		break;
 
-	case EncoderConfig::Frc:
+	case EncoderConfig::FRC:
 	default:
 		m_RPMConversionFactor = conversionFactor;
 		break;

@@ -46,16 +46,16 @@ namespace TD
 
 		switch (config)
 		{
-		case MotorConfig::Neo:
+		case MotorConfig::NEO:
 			m_motorSpark = new CANSparkMax(motorPort, CANSparkMaxLowLevel::MotorType::kBrushless);
 			break;
-		case MotorConfig::Spark:
+		case MotorConfig::SPARK:
 			m_motorSpark = new CANSparkMax(motorPort, CANSparkMaxLowLevel::MotorType::kBrushed);
 			break;
-		case MotorConfig::VictorCAN:
+		case MotorConfig::VICTOR_CAN:
 			m_motorVictorCAN = new VictorSPX(motorPort);
 			break;
-		case MotorConfig::VictorPWM:
+		case MotorConfig::VICTOR_PWM:
 		default:
 			m_motorVictorPWM = new VictorSP(motorPort);
 			break;
@@ -77,7 +77,7 @@ namespace TD
 
 		switch (config)
 		{
-		case MotorConfig::Neo:
+		case MotorConfig::NEO:
 
 			m_motorSparkList = vector<CANSparkMax *>(m_motorCount);
 
@@ -86,7 +86,7 @@ namespace TD
 				m_motorSparkList.at(i) = new CANSparkMax(motorPorts.at(i), CANSparkMaxLowLevel::MotorType::kBrushless);
 			}
 			break;
-		case MotorConfig::Spark:
+		case MotorConfig::SPARK:
 
 			m_motorSparkList = vector<CANSparkMax *>(m_motorCount);
 
@@ -95,7 +95,7 @@ namespace TD
 				m_motorSparkList.at(i) = new CANSparkMax(motorPorts.at(i), CANSparkMaxLowLevel::MotorType::kBrushed);
 			}
 			break;
-		case MotorConfig::VictorCAN:
+		case MotorConfig::VICTOR_CAN:
 
 			m_motorVictorCANList = vector<VictorSPX *>(m_motorCount);
 
@@ -104,7 +104,7 @@ namespace TD
 				m_motorVictorCANList.at(i) = new VictorSPX(motorPorts.at(i));
 			}
 			break;
-		case MotorConfig::VictorPWM:
+		case MotorConfig::VICTOR_PWM:
 		default:
 			m_motorVictorPWMList = vector<VictorSP *>(m_motorCount);
 
@@ -144,16 +144,16 @@ namespace TD
 
 		switch (m_motorConfig)
 		{
-		case MotorConfig::Neo:
-		case MotorConfig::Spark:
+		case MotorConfig::NEO:
+		case MotorConfig::SPARK:
 			m_motorSpark->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 			break;
 
-		case MotorConfig::VictorCAN:
+		case MotorConfig::VICTOR_CAN:
 			m_motorVictorCAN->Set(VictorSPXControlMode::PercentOutput, std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 			break;
 
-		case MotorConfig::VictorPWM:
+		case MotorConfig::VICTOR_PWM:
 		default:
 			m_motorVictorPWM->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 			break;
@@ -187,16 +187,16 @@ namespace TD
 
 				switch (m_motorConfig)
 				{
-				case MotorConfig::Neo:
-				case MotorConfig::Spark:
+				case MotorConfig::NEO:
+				case MotorConfig::SPARK:
 					m_motorSparkList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 					break;
 
-				case MotorConfig::VictorCAN:
+				case MotorConfig::VICTOR_CAN:
 					m_motorVictorCANList[i]->Set(VictorSPXControlMode::PercentOutput, std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 					break;
 
-				case MotorConfig::VictorPWM:
+				case MotorConfig::VICTOR_PWM:
 				default:
 					m_motorVictorPWMList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 					break;
@@ -237,16 +237,16 @@ namespace TD
 
 				switch (m_motorConfig)
 				{
-				case MotorConfig::Neo:
-				case MotorConfig::Spark:
+				case MotorConfig::NEO:
+				case MotorConfig::SPARK:
 					m_motorSparkList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 					break;
 
-				case MotorConfig::VictorCAN:
+				case MotorConfig::VICTOR_CAN:
 					m_motorVictorCANList[i]->Set(VictorSPXControlMode::PercentOutput, std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 					break;
 
-				case MotorConfig::VictorPWM:
+				case MotorConfig::VICTOR_PWM:
 				default:
 					m_motorVictorPWMList[i]->Set(std::clamp(speed, -m_maxSpeed, m_maxSpeed));
 					break;
@@ -265,16 +265,16 @@ namespace TD
 
 		switch (m_motorConfig)
 		{
-		case MotorConfig::Neo:
-		case MotorConfig::Spark:
+		case MotorConfig::NEO:
+		case MotorConfig::SPARK:
 			return m_motorSpark->Get();
 			break;
 
-		case MotorConfig::VictorCAN:
+		case MotorConfig::VICTOR_CAN:
 			return m_motorVictorCAN->GetMotorOutputPercent();
 			break;
 
-		case MotorConfig::VictorPWM:
+		case MotorConfig::VICTOR_PWM:
 		default:
 			return m_motorVictorPWM->Get();
 			break;
@@ -295,16 +295,16 @@ namespace TD
 		{
 			switch (m_motorConfig)
 			{
-			case MotorConfig::Neo:
-			case MotorConfig::Spark:
+			case MotorConfig::NEO:
+			case MotorConfig::SPARK:
 				speeds[i] = m_motorSparkList[i]->Get();
 				break;
 
-			case MotorConfig::VictorCAN:
+			case MotorConfig::VICTOR_CAN:
 				speeds[i] = m_motorVictorCANList[i]->GetMotorOutputPercent();
 				break;
 
-			case MotorConfig::VictorPWM:
+			case MotorConfig::VICTOR_PWM:
 			default:
 				speeds[i] = m_motorVictorPWMList[i]->Get();
 				break;
@@ -324,16 +324,16 @@ namespace TD
 
 		switch (m_motorConfig)
 		{
-		case MotorConfig::Neo:
-		case MotorConfig::Spark:
+		case MotorConfig::NEO:
+		case MotorConfig::SPARK:
 			m_motorSpark->SetInverted(inverted);
 			break;
 
-		case MotorConfig::VictorCAN:
+		case MotorConfig::VICTOR_CAN:
 			m_motorVictorCAN->SetInverted(inverted);
 			break;
 
-		case MotorConfig::VictorPWM:
+		case MotorConfig::VICTOR_PWM:
 		default:
 			m_motorVictorPWM->SetInverted(inverted);
 			break;
@@ -358,16 +358,16 @@ namespace TD
 			{
 				switch (m_motorConfig)
 				{
-				case MotorConfig::Neo:
-				case MotorConfig::Spark:
+				case MotorConfig::NEO:
+				case MotorConfig::SPARK:
 					m_motorSparkList[i]->SetInverted(invert[i]);
 					break;
 
-				case MotorConfig::VictorCAN:
+				case MotorConfig::VICTOR_CAN:
 					m_motorVictorCANList[i]->SetInverted(invert[i]);
 					break;
 
-				case MotorConfig::VictorPWM:
+				case MotorConfig::VICTOR_PWM:
 				default:
 					m_motorVictorPWMList[i]->SetInverted(invert[i]);
 					break;
