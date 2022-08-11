@@ -491,7 +491,7 @@ void Drivetrain::ConfigurePathFollower(units::unit_t<b_unit> b,
 	m_pathKs = ks;
 	m_pathKv = kv;
 	m_pathKa = ka;
-};
+}
 
 void Drivetrain::ConfigurePathPIDs(double rightP, double rightI, double rightD, double leftP, double leftI, double leftD)
 {

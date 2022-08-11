@@ -23,180 +23,180 @@ namespace M
 {
 	namespace CAN
 	{
-		port FRONT_RIGHT = 0;
-		port FRONT_LEFT = 1;
-		port BACK_RIGHT = 2;
-		port BACK_LEFT = 3;
-		port SHOOTER = 4;
-		port ELEVATOR_RIGHT = 5;
-		port ELEVATOR_LEFT = 6;
-		port INTAKE = 7;
-	};
+		constexpr port FRONT_RIGHT = 0;
+		constexpr port FRONT_LEFT = 1;
+		constexpr port BACK_RIGHT = 2;
+		constexpr port BACK_LEFT = 3;
+		constexpr port SHOOTER = 4;
+		constexpr port ELEVATOR_RIGHT = 5;
+		constexpr port ELEVATOR_LEFT = 6;
+		constexpr port INTAKE = 7;
+	}
 
 	namespace PWM
 	{
-		port FEEDER = 0;
-		port TURRET = 1;
-	};
+		constexpr port FEEDER = 0;
+		constexpr port TURRET = 1;
+	}
 
 	namespace Servo
 	{
-		port SHOOTER_RIGHT = 2;
-		port SHOOTER_LEFT = 3;
-	};
+		constexpr port SHOOTER_RIGHT = 2;
+		constexpr port SHOOTER_LEFT = 3;
+	}
 }
 
 namespace Solenoid
 {
-	port CLAW_FORWARD = 0;
-	port CLAW_REVERSE = 1;
-	port WRIST_FORWARD = 2;
-	port WRIST_REVERSE = 3;
-	port INTAKE_RIGHT_FORWARD = 4;
-	port INTAKE_RIGHT_REVERSE = 5;
-	port INTAKE_LEFT_FORWARD = 6;
-	port INTAKE_LEFT_REVERSE = 7;
+	constexpr port CLAW_FORWARD = 0;
+	constexpr port CLAW_REVERSE = 1;
+	constexpr port WRIST_FORWARD = 2;
+	constexpr port WRIST_REVERSE = 3;
+	constexpr port INTAKE_RIGHT_FORWARD = 4;
+	constexpr port INTAKE_RIGHT_REVERSE = 5;
+	constexpr port INTAKE_LEFT_FORWARD = 6;
+	constexpr port INTAKE_LEFT_REVERSE = 7;
 }
 
 namespace DIO
 {
 	namespace Encoder
 	{
-		port SHOOTER_A = 0;
-		port SHOOTER_B = 1;
-		port TURRET_A = 2;
-		port TURRET_B = 3;
-		port ELEVATOR_A = 6;
-		port ELEVATOR_B = 7;
-	};
+		constexpr port SHOOTER_A = 0;
+		constexpr port SHOOTER_B = 1;
+		constexpr port TURRET_A = 2;
+		constexpr port TURRET_B = 3;
+		constexpr port ELEVATOR_A = 6;
+		constexpr port ELEVATOR_B = 7;
+	}
 
 	namespace Limit
 	{
-		port TURRET_LEFT = 4;
-		port TURRET_RIGHT = 5;
-		port ELEVATOR_TOP = 8;
-		port ELEVATOR_BOTTOM = 9;
-	};
+		constexpr port TURRET_LEFT = 4;
+		constexpr port TURRET_RIGHT = 5;
+		constexpr port ELEVATOR_TOP = 8;
+		constexpr port ELEVATOR_BOTTOM = 9;
+	}
 }
 
 namespace PID
 {
 	namespace Move
 	{
-		double P = 0.01;
-		double I = 0.0;
-		double D = 0.0;
-		double TOLERANCE = 0.5;
+		constexpr double P = 0.01;
+		constexpr double I = 0.0;
+		constexpr double D = 0.0;
+		constexpr double TOLERANCE = 0.5;
 	}
 
 	namespace Turn
 	{
-		double P = 0.01;
-		double I = 0.0;
-		double D = 0.0;
-		double TOLERANCE = 0.5;
+		constexpr double P = 0.01;
+		constexpr double I = 0.0;
+		constexpr double D = 0.0;
+		constexpr double TOLERANCE = 0.5;
 	}
 
 	namespace Align
 	{
-		double P = 0.01;
-		double I = 0.0;
-		double D = 0.0;
-		double TOLERANCE = 0.5;
+		constexpr double P = 0.01;
+		constexpr double I = 0.0;
+		constexpr double D = 0.0;
+		constexpr double TOLERANCE = 0.5;
 	}
 
 	namespace Distance
 	{
-		double P = 0.01;
-		double I = 0.0;
-		double D = 0.0;
-		double TOLERANCE = 0.5;
+		constexpr double P = 0.01;
+		constexpr double I = 0.0;
+		constexpr double D = 0.0;
+		constexpr double TOLERANCE = 0.5;
 	}
 
 	namespace Shooter
 	{
-		double P = 0.01;
-		double I = 0.0;
-		double D = 0.0;
-		double TOLERANCE = 0.5;
+		constexpr double P = 0.01;
+		constexpr double I = 0.0;
+		constexpr double D = 0.0;
+		constexpr double TOLERANCE = 0.5;
 	}
 
 	namespace TurretAlign
 	{
-		double P = 0.01;
-		double I = 0.0;
-		double D = 0.0;
-		double TOLERANCE = 0.5;
+		constexpr double P = 0.01;
+		constexpr double I = 0.0;
+		constexpr double D = 0.0;
+		constexpr double TOLERANCE = 0.5;
 	}
 
 	namespace TurretAngle
 	{
-		double P = 0.01;
-		double I = 0.0;
-		double D = 0.0;
-		double TOLERANCE = 0.5;
+		constexpr double P = 0.01;
+		constexpr double I = 0.0;
+		constexpr double D = 0.0;
+		constexpr double TOLERANCE = 0.5;
 	}
 
 	namespace Elevator
 	{
-		double P = 0.01;
-		double I = 0.0;
-		double D = 0.0;
-		double TOLERANCE = 0.5;
+		constexpr double P = 0.01;
+		constexpr double I = 0.0;
+		constexpr double D = 0.0;
+		constexpr double TOLERANCE = 0.5;
 	}
 }
 
 namespace LL
 {
-	double OBJECTIVE_HEIGHT = 135;
-	double HEIGHT = 35;
-	double ANGLE_DEG = 45;
-	double ANGLE_RAD = ANGLE_DEG * M_PI / 180;
-	double TO_FRONT = 68;
+	constexpr double OBJECTIVE_HEIGHT = 135;
+	constexpr double HEIGHT = 35;
+	constexpr double ANGLE_DEG = 45;
+	constexpr double ANGLE_RAD = ANGLE_DEG * M_PI / 180;
+	constexpr double TO_FRONT = 68;
 }
 
 namespace Wheel
 {
-	double DIAMETER_IN = 6;
-	double DIAMETER = DIAMETER_IN * 2.54;
-	double CIRCUMFERENCE = DIAMETER * M_PI;
-	double RADIUS = DIAMETER / 2;
-	double GEAR_RATIO = 10.71;
+	constexpr double DIAMETER_IN = 6;
+	constexpr double DIAMETER = DIAMETER_IN * 2.54;
+	constexpr double CIRCUMFERENCE = DIAMETER * M_PI;
+	constexpr double RADIUS = DIAMETER / 2;
+	constexpr double GEAR_RATIO = 10.71;
 }
 
 namespace DPR
 {
-	double DRIVETRAIN = Wheel::CIRCUMFERENCE / Wheel::GEAR_RATIO;
-	double TURRET = 360;   // TODO Define turret encoder to angle ratio
-	double ELEVATOR = 180; // TODO Define elevator distance per revolution
-	double SHOOTER = 180;  // TODO Define shooter conversion factor
+	constexpr double DRIVETRAIN = Wheel::CIRCUMFERENCE / Wheel::GEAR_RATIO;
+	constexpr double TURRET = 360;	 // TODO Define turret encoder to angle ratio
+	constexpr double ELEVATOR = 180; // TODO Define elevator distance per revolution
+	constexpr double SHOOTER = 180;	 // TODO Define shooter conversion factor
 }
 
 namespace Speed
 {
-	double DRIVETRAIN_MOVE = 1;
-	double DRIVETRAIN_TURN = 1;
-	double SHOOTER = 1;
-	double TURRET = 1;
-	double FEEDER = 1;
-	double ELEVATOR = 1;
+	constexpr double DRIVETRAIN_MOVE = 1;
+	constexpr double DRIVETRAIN_TURN = 1;
+	constexpr double SHOOTER = 1;
+	constexpr double TURRET = 1;
+	constexpr double FEEDER = 1;
+	constexpr double ELEVATOR = 1;
 }
 
 namespace Time
 {
-	double SHOOTER_LOAD = 2;
-	double FEEDER = 5;
+	constexpr double SHOOTER_LOAD = 2;
+	constexpr double FEEDER = 5;
 }
 
 namespace Minmax
 {
-	double TURRET_MIN = 0;
-	double TURRET_MAX = 360;
-	double ELEVATOR_MIN = 250;
-	double ELEVATOR_MAX = 30;
-};
+	constexpr double TURRET_MIN = 0;
+	constexpr double TURRET_MAX = 360;
+	constexpr double ELEVATOR_MIN = 250;
+	constexpr double ELEVATOR_MAX = 30;
+}
 
-double shooterRPMFromDistance(double distance)
+constexpr double shooterRPMFromDistance(double distance)
 {
 	return 60; // TODO: place RPM function here
 }
