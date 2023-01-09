@@ -241,6 +241,8 @@ namespace TD
 		 */
 		void PrintGyroRad();
 
+		Rotation2d GetRotation2d();
+
 		// ----------------------- Auto -----------------------
 
 		/**
@@ -249,7 +251,8 @@ namespace TD
 		 * @param speed The speed at which to drive.
 		 * @return Wether or not the drivetrain is at the desired heading.
 		 */
-		bool Move(double, double);
+		bool
+		Move(double, double);
 
 		/**
 		 * @brief Prints the move PID error to the dashboard
@@ -535,7 +538,11 @@ namespace TD
 
 		Trajectory m_path;
 
-		DifferentialDriveOdometry m_odometry{Rotation2d(units::degree_t(GetGyro())), Pose2d(0_m, 0_m, Rotation2d(0_deg))};
+		DifferentialDriveOdometry m_odometry{
+			GetRotation2d(),
+			units::meter_t{GetLeftEncoders()},
+			units::meter_t{GetRightEncoders()},
+			frc::Pose2d{0_m, 0_m, 0_rad}};
 
 		// ----- Path follower -----
 

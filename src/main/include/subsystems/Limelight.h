@@ -30,7 +30,6 @@
 #include "networktables/NetworkTableEntry.h"
 #include "networktables/NetworkTableInstance.h"
 #include "networktables/NetworkTableValue.h"
-#include "wpi/span.h"
 #include <frc/smartdashboard/smartdashboard.h>
 
 #define _USE_MATH_DEFINES

@@ -185,12 +185,12 @@ void Drivetrain::PrintEncoders()
 	SmartDashboard::PutNumber(GetName() + " BL Encoder", m_backLeftEncoder->GetPosition() * m_leftEncodersDirection);
 }
 
-void Drivetrain::SetPositionConversionFactor(double pcf)
+void Drivetrain::SetPositionConversionFactor(double pcf_meters)
 {
-	m_backRightEncoder->SetPositionConversionFactor(pcf);
-	m_backLeftEncoder->SetPositionConversionFactor(pcf);
-	m_frontRightEncoder->SetPositionConversionFactor(pcf);
-	m_frontLeftEncoder->SetPositionConversionFactor(pcf);
+	m_backRightEncoder->SetPositionConversionFactor(pcf_meters);
+	m_backLeftEncoder->SetPositionConversionFactor(pcf_meters);
+	m_frontRightEncoder->SetPositionConversionFactor(pcf_meters);
+	m_frontLeftEncoder->SetPositionConversionFactor(pcf_meters);
 }
 // ----------------------- Gyro -----------------------
 
@@ -233,6 +233,11 @@ void Drivetrain::PrintGyro()
 void Drivetrain::PrintGyroRad()
 {
 	SmartDashboard::PutNumber(GetName() + "Gyro Rad", GetGyroRad());
+}
+
+Rotation2d Drivetrain::GetRotation2d()
+{
+	return Rotation2d{units::degree_t{GetGyroHeading()}};
 }
 
 // ----------------------- Auto -----------------------
@@ -413,7 +418,10 @@ double Drivetrain::GetAbsoluteAngle(double x, double y)
 
 void Drivetrain::ConfigurePosition(Pose2d startingPosition)
 {
-	m_odometry.ResetPosition(startingPosition, Rotation2d(units::degree_t(GetGyroHeading())));
+	m_odometry.ResetPosition(GetRotation2d(),
+							 units::meter_t{GetLeftEncodersTotal()},
+							 units::meter_t{GetRightEncodersTotal()},
+							 startingPosition);
 	m_odometryConfigured = true;
 }
 
@@ -421,9 +429,9 @@ void Drivetrain::UpdatePosition()
 {
 	if (m_odometryConfigured)
 	{
-		m_odometry.Update(Rotation2d(units::degree_t(GetGyroHeading())),
-						  units::centimeter_t(GetLeftEncodersTotal()),
-						  units::centimeter_t(GetRightEncodersTotal()));
+		m_odometry.Update(GetRotation2d(),
+						  units::meter_t(GetLeftEncodersTotal()),
+						  units::meter_t(GetRightEncodersTotal()));
 		m_field.SetRobotPose(m_odometry.GetPose());
 	}
 }
