@@ -26,14 +26,14 @@
 
 #pragma once
 
-#include "subsystems/EncoderSubsystem.h"
+#include "subsystems/EncoderSubsystemBase.h"
 #include "subsystems/Limelight.h"
 #include "subsystems/SolenoidSubsystem.h"
 #include <frc/Servo.h>
 
 namespace TD
 {
-	class ShooterBase : public EncoderSubsystem, public SolenoidSubsystem
+	class ShooterBase : public EncoderSubsystemBase, public SolenoidSubsystem
 	{
 
 	public:
@@ -41,7 +41,7 @@ namespace TD
 
 		static ShooterBase &GetInstance();
 
-		using EncoderSubsystem::Initialize;
+		using EncoderSubsystemBase::Initialize;
 
 		void ConfigureSolenoid(unsigned int, unsigned int);
 

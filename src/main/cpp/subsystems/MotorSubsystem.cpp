@@ -24,23 +24,23 @@
 	Open Source Software; you can modify and/or share it under the terms of
 */
 
-#include "subsystems/MotorSubsystem.h"
+#include "subsystems/MotorSubsystemBase.h"
 
 namespace TD
 {
 
-	MotorSubsystem::MotorSubsystem()
+	MotorSubsystemBase::MotorSubsystemBase()
 	{
-		SetName("MotorSubsystem");
+		SetName("MotorSubsystemBase");
 	}
 
-	MotorSubsystem &MotorSubsystem::GetInstance()
+	MotorSubsystemBase &MotorSubsystemBase::GetInstance()
 	{
-		static MotorSubsystem instance;
+		static MotorSubsystemBase instance;
 		return instance;
 	}
 
-	void MotorSubsystem::Initialize(MotorConfig config, unsigned int motorPort)
+	void MotorSubsystemBase::Initialize(MotorConfig config, unsigned int motorPort)
 	{
 		m_motorConfig = config;
 
@@ -61,10 +61,10 @@ namespace TD
 			break;
 		}
 
-		SetName("MotorSubsystem");
+		SetName("MotorSubsystemBase");
 	}
 
-	void MotorSubsystem::Initialize(MotorConfig config, vector<unsigned int> motorPorts)
+	void MotorSubsystemBase::Initialize(MotorConfig config, vector<unsigned int> motorPorts)
 	{
 		m_motorConfig = config;
 
@@ -72,7 +72,7 @@ namespace TD
 
 		if (m_motorCount <= 1)
 		{
-			throw std::invalid_argument("MotorSubsystem: Port list must have more than 1 motor, use single motor constructor instead.");
+			throw std::invalid_argument("MotorSubsystemBase: Port list must have more than 1 motor, use single motor constructor instead.");
 		}
 
 		switch (config)
@@ -115,19 +115,19 @@ namespace TD
 			break;
 		}
 
-		SetName("MotorSubsystem");
+		SetName("MotorSubsystemBase");
 	}
 
-	void MotorSubsystem::Periodic()
+	void MotorSubsystemBase::Periodic()
 	{
 	}
 
-	void MotorSubsystem::SetMotor(double speed)
+	void MotorSubsystemBase::SetMotor(double speed)
 	{
 
 		if (m_motorCount > 1)
 		{
-			throw std::invalid_argument("MotorSubsystem: SetMotor() is not supported for multiple motors.");
+			throw std::invalid_argument("MotorSubsystemBase: SetMotor() is not supported for multiple motors.");
 		}
 
 		if (m_limitSafetyActive)
@@ -160,11 +160,11 @@ namespace TD
 		}
 	}
 
-	void MotorSubsystem::SetMotors(double speed)
+	void MotorSubsystemBase::SetMotors(double speed)
 	{
 		if (m_motorCount <= 1)
 		{
-			throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use SetMotor instead.");
+			throw std::invalid_argument("MotorSubsystemBase: This subsystem has only one motor. Use SetMotor instead.");
 		}
 
 		else
@@ -205,15 +205,15 @@ namespace TD
 		}
 	}
 
-	void MotorSubsystem::SetMotors(vector<double> speeds)
+	void MotorSubsystemBase::SetMotors(vector<double> speeds)
 	{
 		if (m_motorCount <= 1)
 		{
-			throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use SetMotor instead.");
+			throw std::invalid_argument("MotorSubsystemBase: This subsystem has only one motor. Use SetMotor instead.");
 		}
 		else if (m_motorCount != speeds.size())
 		{
-			throw std::invalid_argument("MotorSubsystem: Speed vector must have same size as motor count.");
+			throw std::invalid_argument("MotorSubsystemBase: Speed vector must have same size as motor count.");
 		}
 		else
 		{
@@ -255,12 +255,12 @@ namespace TD
 		}
 	}
 
-	double MotorSubsystem::GetMotor()
+	double MotorSubsystemBase::GetMotor()
 	{
 
 		if (m_motorCount > 1)
 		{
-			throw std::invalid_argument("MotorSubsystem: GetMotor() is not supported for multiple motors.");
+			throw std::invalid_argument("MotorSubsystemBase: GetMotor() is not supported for multiple motors.");
 		}
 
 		switch (m_motorConfig)
@@ -281,12 +281,12 @@ namespace TD
 		}
 	}
 
-	vector<double> MotorSubsystem::GetMotors()
+	vector<double> MotorSubsystemBase::GetMotors()
 	{
 
 		if (m_motorCount <= 1)
 		{
-			throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use GetMotor instead.");
+			throw std::invalid_argument("MotorSubsystemBase: This subsystem has only one motor. Use GetMotor instead.");
 		}
 
 		vector<double> speeds(m_motorCount);
@@ -314,12 +314,12 @@ namespace TD
 		return speeds;
 	}
 
-	void MotorSubsystem::InvertMotor(bool inverted)
+	void MotorSubsystemBase::InvertMotor(bool inverted)
 	{
 
 		if (m_motorCount > 1)
 		{
-			throw std::invalid_argument("MotorSubsystem: InvertMotor() is not supported for multiple motors.");
+			throw std::invalid_argument("MotorSubsystemBase: InvertMotor() is not supported for multiple motors.");
 		}
 
 		switch (m_motorConfig)
@@ -340,16 +340,16 @@ namespace TD
 		}
 	}
 
-	void MotorSubsystem::InvertMotors(vector<bool> invert)
+	void MotorSubsystemBase::InvertMotors(vector<bool> invert)
 	{
 
 		if (m_motorCount <= 1)
 		{
-			throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use InvertMotor instead.");
+			throw std::invalid_argument("MotorSubsystemBase: This subsystem has only one motor. Use InvertMotor instead.");
 		}
 		else if (m_motorCount != invert.size())
 		{
-			throw std::invalid_argument("MotorSubsystem: Invert values do not match the amount of motors.");
+			throw std::invalid_argument("MotorSubsystemBase: Invert values do not match the amount of motors.");
 		}
 		else
 		{
@@ -376,21 +376,21 @@ namespace TD
 		}
 	}
 
-	void MotorSubsystem::PrintMotor()
+	void MotorSubsystemBase::PrintMotor()
 	{
 		if (m_motorCount > 1)
 		{
-			throw std::invalid_argument("MotorSubsystem: PrintMotor() is not supported for multiple motors.");
+			throw std::invalid_argument("MotorSubsystemBase: PrintMotor() is not supported for multiple motors.");
 		}
 		SmartDashboard::PutNumber(GetName() + " Motor", GetMotor());
 	}
 
-	void MotorSubsystem::PrintMotors()
+	void MotorSubsystemBase::PrintMotors()
 	{
 
 		if (m_motorCount <= 1)
 		{
-			throw std::invalid_argument("MotorSubsystem: This subsystem has only one motor. Use PrintMotor instead.");
+			throw std::invalid_argument("MotorSubsystemBase: This subsystem has only one motor. Use PrintMotor instead.");
 		}
 		else
 		{
@@ -403,35 +403,35 @@ namespace TD
 		}
 	}
 
-	bool MotorSubsystem::GetUpperLimit()
+	bool MotorSubsystemBase::GetUpperLimit()
 	{
 		return m_upperLimit->Get();
 	}
 
-	bool MotorSubsystem::GetLowerLimit()
+	bool MotorSubsystemBase::GetLowerLimit()
 	{
 		return m_lowerLimit->Get();
 	}
 
-	void MotorSubsystem::ConfigureLimitSwitches(unsigned int upperLimitPort, unsigned int lowerLimitPort)
+	void MotorSubsystemBase::ConfigureLimitSwitches(unsigned int upperLimitPort, unsigned int lowerLimitPort)
 	{
 		m_upperLimit = new DigitalInput(upperLimitPort);
 		m_lowerLimit = new DigitalInput(lowerLimitPort);
 	}
 
-	void MotorSubsystem::SetLimitSafety(bool active)
+	void MotorSubsystemBase::SetLimitSafety(bool active)
 	{
 		m_limitSafetyActive = active;
 	}
 
 	// print limits
-	void MotorSubsystem::PrintLimits()
+	void MotorSubsystemBase::PrintLimits()
 	{
 		SmartDashboard::PutBoolean(GetName() + " Upper Limit", GetUpperLimit());
 		SmartDashboard::PutBoolean(GetName() + " Lower Limit", GetLowerLimit());
 	}
 
-	void MotorSubsystem::SetMaxSpeed(double maxSpeed)
+	void MotorSubsystemBase::SetMaxSpeed(double maxSpeed)
 	{
 		m_maxSpeed = maxSpeed;
 	}

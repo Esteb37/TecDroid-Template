@@ -26,13 +26,13 @@
 
 #pragma once
 
-#include "subsystems/EncoderSubsystem.h"
+#include "subsystems/EncoderSubsystemBase.h"
 #include "subsystems/Limelight.h"
 #include <frc/controller/PIDController.h>
 
 namespace TD
 {
-	class TurretBase : public EncoderSubsystem
+	class TurretBase : public EncoderSubsystemBase
 	{
 	public:
 		TurretBase();

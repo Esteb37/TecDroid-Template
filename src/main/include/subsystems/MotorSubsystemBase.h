@@ -56,13 +56,13 @@ namespace TD
 		ADIS16448
 	};
 
-	class MotorSubsystem : virtual public SubsystemBase
+	class MotorSubsystemBase : virtual public SubsystemBase
 	{
 
 	public:
-		MotorSubsystem();
+		MotorSubsystemBase();
 
-		static MotorSubsystem &GetInstance();
+		static MotorSubsystemBase &GetInstance();
 
 		void Initialize(MotorConfig, unsigned int);
 
@@ -89,7 +89,8 @@ namespace TD
 		 */
 		double GetMotor();
 
-		vector<double> GetMotors();
+		vector<double>
+		GetMotors();
 
 		/**
 		 * @brief Invert motor direction
@@ -124,11 +125,14 @@ namespace TD
 
 		VictorSP *m_motorVictorPWM;
 
-		vector<CANSparkMax *> m_motorSparkList;
+		vector<CANSparkMax *>
+			m_motorSparkList;
 
-		vector<VictorSPX *> m_motorVictorCANList;
+		vector<VictorSPX *>
+			m_motorVictorCANList;
 
-		vector<VictorSP *> m_motorVictorPWMList;
+		vector<VictorSP *>
+			m_motorVictorPWMList;
 
 		DigitalInput *m_upperLimit;
 

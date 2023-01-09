@@ -26,12 +26,12 @@
 
 #pragma once
 
-#include "subsystems/MotorSubsystem.h"
+#include "subsystems/MotorSubsystemBase.h"
 #include "subsystems/SolenoidSubsystem.h"
 
 namespace TD
 {
-	class IntakeBase : public MotorSubsystem, public SolenoidSubsystem
+	class IntakeBase : public MotorSubsystemBase, public SolenoidSubsystem
 	{
 
 	public:

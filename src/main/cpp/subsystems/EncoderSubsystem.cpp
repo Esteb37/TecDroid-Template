@@ -24,36 +24,36 @@
 	Open Source Software; you can modify and/or share it under the terms of
 */
 
-#include "subsystems/EncoderSubsystem.h"
+#include "subsystems/EncoderSubsystemBase.h"
 
 using namespace TD;
 
-EncoderSubsystem::EncoderSubsystem()
+EncoderSubsystemBase::EncoderSubsystemBase()
 {
-	SetName("EncoderSubsystem");
+	SetName("EncoderSubsystemBase");
 }
 
-EncoderSubsystem &EncoderSubsystem::GetInstance()
+EncoderSubsystemBase &EncoderSubsystemBase::GetInstance()
 {
-	static EncoderSubsystem instance;
+	static EncoderSubsystemBase instance;
 	return instance;
 }
 
-void EncoderSubsystem::Initialize(MotorConfig motorConfig, unsigned int motorPort)
+void EncoderSubsystemBase::Initialize(MotorConfig motorConfig, unsigned int motorPort)
 {
-	MotorSubsystem::Initialize(motorConfig, motorPort);
-	SetName("EncoderSubsystem");
+	MotorSubsystemBase::Initialize(motorConfig, motorPort);
+	SetName("EncoderSubsystemBase");
 }
 
-void EncoderSubsystem::Initialize(MotorConfig motorConfig, vector<unsigned int> motorPorts)
+void EncoderSubsystemBase::Initialize(MotorConfig motorConfig, vector<unsigned int> motorPorts)
 {
-	MotorSubsystem::Initialize(motorConfig, motorPorts);
-	SetName("EncoderSubsystem");
+	MotorSubsystemBase::Initialize(motorConfig, motorPorts);
+	SetName("EncoderSubsystemBase");
 }
 
-void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort)
+void EncoderSubsystemBase::Initialize(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort)
 {
-	MotorSubsystem::Initialize(motorConfig, motorPort);
+	MotorSubsystemBase::Initialize(motorConfig, motorPort);
 
 	m_encoderConfig = encoderConfig;
 
@@ -66,13 +66,13 @@ void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoder
 		throw std::invalid_argument("Encoder must be Spark and Motor must be Neo");
 	}
 
-	SetName("EncoderSubsystem");
+	SetName("EncoderSubsystemBase");
 }
 
-void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts)
+void EncoderSubsystemBase::Initialize(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts)
 {
 
-	MotorSubsystem::Initialize(motorConfig, motorPorts);
+	MotorSubsystemBase::Initialize(motorConfig, motorPorts);
 
 	m_encoderConfig = encoderConfig;
 
@@ -85,13 +85,13 @@ void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoder
 		throw std::invalid_argument("Encoder must be Spark and Motor must be Neo");
 	}
 
-	SetName("EncoderSubsystem");
+	SetName("EncoderSubsystemBase");
 }
 
-void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort, unsigned int encoderA, unsigned int encoderB)
+void EncoderSubsystemBase::Initialize(MotorConfig motorConfig, EncoderConfig encoderConfig, unsigned int motorPort, unsigned int encoderA, unsigned int encoderB)
 {
 
-	MotorSubsystem::Initialize(motorConfig, motorPort);
+	MotorSubsystemBase::Initialize(motorConfig, motorPort);
 
 	if (encoderConfig == EncoderConfig::REV)
 	{
@@ -102,13 +102,13 @@ void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoder
 
 	m_encoder = new Encoder(encoderA, encoderB, false, Encoder::EncodingType::k4X);
 
-	SetName("EncoderSubsystem");
+	SetName("EncoderSubsystemBase");
 }
 
-void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts, unsigned int encoderA, unsigned int encoderB)
+void EncoderSubsystemBase::Initialize(MotorConfig motorConfig, EncoderConfig encoderConfig, vector<unsigned int> motorPorts, unsigned int encoderA, unsigned int encoderB)
 {
 
-	MotorSubsystem::Initialize(motorConfig, motorPorts);
+	MotorSubsystemBase::Initialize(motorConfig, motorPorts);
 
 	if (encoderConfig == EncoderConfig::REV)
 	{
@@ -119,21 +119,21 @@ void EncoderSubsystem::Initialize(MotorConfig motorConfig, EncoderConfig encoder
 
 	m_encoder = new Encoder(encoderA, encoderB, false, Encoder::EncodingType::k4X);
 
-	SetName("EncoderSubsystem");
+	SetName("EncoderSubsystemBase");
 }
 
-void EncoderSubsystem::Periodic()
+void EncoderSubsystemBase::Periodic()
 {
 }
 
-void EncoderSubsystem::Reset()
+void EncoderSubsystemBase::Reset()
 {
 	ResetEncoder();
 	ResetPositionPID();
 	ResetRPMPID();
 }
 
-void EncoderSubsystem::SetMotor(double speed)
+void EncoderSubsystemBase::SetMotor(double speed)
 {
 
 	if (m_positionSafetyActive)
@@ -148,10 +148,10 @@ void EncoderSubsystem::SetMotor(double speed)
 		}
 	}
 
-	MotorSubsystem::SetMotor(speed);
+	MotorSubsystemBase::SetMotor(speed);
 }
 
-void EncoderSubsystem::SetMotors(double speed)
+void EncoderSubsystemBase::SetMotors(double speed)
 {
 
 	if (m_positionSafetyActive)
@@ -166,10 +166,10 @@ void EncoderSubsystem::SetMotors(double speed)
 		}
 	}
 
-	MotorSubsystem::SetMotors(speed);
+	MotorSubsystemBase::SetMotors(speed);
 }
 
-void EncoderSubsystem::SetMotors(vector<double> speeds)
+void EncoderSubsystemBase::SetMotors(vector<double> speeds)
 {
 	for (unsigned i = 0; i < speeds.size(); i++)
 	{
@@ -186,10 +186,10 @@ void EncoderSubsystem::SetMotors(vector<double> speeds)
 		}
 	}
 
-	MotorSubsystem::SetMotors(speeds);
+	MotorSubsystemBase::SetMotors(speeds);
 }
 
-void EncoderSubsystem::ResetEncoder()
+void EncoderSubsystemBase::ResetEncoder()
 {
 	switch (m_encoderConfig)
 	{
@@ -203,7 +203,7 @@ void EncoderSubsystem::ResetEncoder()
 	}
 }
 
-void EncoderSubsystem::InvertEncoder(bool invert)
+void EncoderSubsystemBase::InvertEncoder(bool invert)
 {
 	switch (m_encoderConfig)
 	{
@@ -226,7 +226,7 @@ void EncoderSubsystem::InvertEncoder(bool invert)
 	}
 }
 
-void EncoderSubsystem::SetEncoderPorts(unsigned int A, unsigned int B)
+void EncoderSubsystemBase::SetEncoderPorts(unsigned int A, unsigned int B)
 {
 	switch (m_encoderConfig)
 	{
@@ -241,7 +241,7 @@ void EncoderSubsystem::SetEncoderPorts(unsigned int A, unsigned int B)
 	}
 }
 
-bool EncoderSubsystem::SetPosition(double position, double speed)
+bool EncoderSubsystemBase::SetPosition(double position, double speed)
 {
 
 	m_positionPID.SetSetpoint(position);
@@ -253,7 +253,7 @@ bool EncoderSubsystem::SetPosition(double position, double speed)
 	return m_positionPID.AtSetpoint();
 }
 
-double EncoderSubsystem::GetPosition()
+double EncoderSubsystemBase::GetPosition()
 {
 	switch (m_encoderConfig)
 	{
@@ -268,14 +268,14 @@ double EncoderSubsystem::GetPosition()
 	}
 }
 
-void EncoderSubsystem::ConfigurePositionPID(double p, double i, double d, double tolerance, bool inverted)
+void EncoderSubsystemBase::ConfigurePositionPID(double p, double i, double d, double tolerance, bool inverted)
 {
 	m_positionPID.SetPID(p, i, d);
 	m_positionPID.SetTolerance(tolerance);
 	m_positionPIDDirection = inverted ? -1 : 1;
 }
 
-void EncoderSubsystem::SetPositionConversionFactor(double conversionFactor)
+void EncoderSubsystemBase::SetPositionConversionFactor(double conversionFactor)
 {
 	switch (m_encoderConfig)
 	{
@@ -290,27 +290,27 @@ void EncoderSubsystem::SetPositionConversionFactor(double conversionFactor)
 	}
 }
 
-void EncoderSubsystem::ResetPositionPID()
+void EncoderSubsystemBase::ResetPositionPID()
 {
 	m_positionPID.Reset();
 }
 
-void EncoderSubsystem::PrintPosition()
+void EncoderSubsystemBase::PrintPosition()
 {
 	SmartDashboard::PutNumber(GetName() + " Encoder Position", GetPosition());
 }
 
-void EncoderSubsystem::PrintPositionError()
+void EncoderSubsystemBase::PrintPositionError()
 {
 	SmartDashboard::PutNumber(GetName() + " Encoder Position Error", m_positionPID.GetPositionError());
 }
 
-void EncoderSubsystem::SetPositionSafety(bool active)
+void EncoderSubsystemBase::SetPositionSafety(bool active)
 {
 	m_positionSafetyActive = active;
 }
 
-bool EncoderSubsystem::SetRPM(double speed, double acceleration)
+bool EncoderSubsystemBase::SetRPM(double speed, double acceleration)
 {
 	m_RPMPID.SetSetpoint(speed);
 
@@ -321,7 +321,7 @@ bool EncoderSubsystem::SetRPM(double speed, double acceleration)
 	return m_positionPID.AtSetpoint();
 }
 
-double EncoderSubsystem::GetRPM()
+double EncoderSubsystemBase::GetRPM()
 {
 	switch (m_encoderConfig)
 	{
@@ -336,14 +336,14 @@ double EncoderSubsystem::GetRPM()
 	}
 }
 
-void EncoderSubsystem::ConfigureRPMPID(double p, double i, double d, double tolerance, bool inverted)
+void EncoderSubsystemBase::ConfigureRPMPID(double p, double i, double d, double tolerance, bool inverted)
 {
 	m_RPMPID.SetPID(p, i, d);
 	m_RPMPID.SetTolerance(tolerance);
 	m_RPMPIDDirection = inverted ? -1 : 1;
 }
 
-void EncoderSubsystem::SetRPMConversionFactor(double conversionFactor)
+void EncoderSubsystemBase::SetRPMConversionFactor(double conversionFactor)
 {
 	switch (m_encoderConfig)
 	{
@@ -358,22 +358,22 @@ void EncoderSubsystem::SetRPMConversionFactor(double conversionFactor)
 	}
 }
 
-void EncoderSubsystem::ResetRPMPID()
+void EncoderSubsystemBase::ResetRPMPID()
 {
 	m_RPMPID.Reset();
 }
 
-void EncoderSubsystem::PrintRPM()
+void EncoderSubsystemBase::PrintRPM()
 {
 	SmartDashboard::PutNumber(GetName() + " Encoder Speed", GetRPM());
 }
 
-void EncoderSubsystem::PrintRPMError()
+void EncoderSubsystemBase::PrintRPMError()
 {
 	SmartDashboard::PutNumber(GetName() + " Encoder Speed Error", m_RPMPID.GetPositionError());
 }
 
-void EncoderSubsystem::SetMinMaxPosition(double min, double max)
+void EncoderSubsystemBase::SetMinMaxPosition(double min, double max)
 {
 	m_minPosition = min;
 	m_maxPosition = max;

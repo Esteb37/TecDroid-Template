@@ -41,25 +41,25 @@ IntakeBase &IntakeBase::GetInstance()
 
 void IntakeBase::Initialize(MotorConfig config, unsigned int port, unsigned int solenoidForward, unsigned int solenoidReverse)
 {
-	MotorSubsystem::Initialize(config, port);
+	MotorSubsystemBase::Initialize(config, port);
 	SolenoidSubsystem::Initialize(solenoidForward, solenoidReverse);
 }
 
 void IntakeBase::Initialize(MotorConfig config, vector<unsigned int> ports, unsigned int solenoidForward, unsigned int solenoidReverse)
 {
-	MotorSubsystem::Initialize(config, ports);
+	MotorSubsystemBase::Initialize(config, ports);
 	SolenoidSubsystem::Initialize(solenoidForward, solenoidReverse);
 }
 
 void IntakeBase::Initialize(MotorConfig config, unsigned int port, unsigned int rightForward, unsigned int rightReverse, unsigned int leftForward, unsigned int leftReverse)
 {
-	MotorSubsystem::Initialize(config, port);
+	MotorSubsystemBase::Initialize(config, port);
 	SolenoidSubsystem::Initialize(rightForward, rightReverse, leftForward, leftReverse);
 }
 
 void IntakeBase::Initialize(MotorConfig config, vector<unsigned int> ports, unsigned int rightForward, unsigned int rightReverse, unsigned int leftForward, unsigned int leftReverse)
 {
-	MotorSubsystem::Initialize(config, ports);
+	MotorSubsystemBase::Initialize(config, ports);
 	SolenoidSubsystem::Initialize(rightForward, rightReverse, leftForward, leftReverse);
 }
 

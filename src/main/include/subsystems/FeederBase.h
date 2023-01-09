@@ -26,11 +26,11 @@
 
 #pragma once
 
-#include "subsystems/MotorSubsystem.h"
+#include "subsystems/MotorSubsystemBase.h"
 
 namespace TD
 {
-	class FeederBase : public MotorSubsystem
+	class FeederBase : public MotorSubsystemBase
 	{
 
 	public:

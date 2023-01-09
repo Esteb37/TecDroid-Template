@@ -62,17 +62,17 @@ public:
 private:
 	Drivetrain m_drivetrain;
 
-	ShooterBase m_shooter = ShooterBase::GetInstance();
+	ShooterBase m_shooter;
 
-	IntakeBase m_intake = IntakeBase::GetInstance();
+	IntakeBase m_intake;
 
-	FeederBase m_feeder = FeederBase::GetInstance();
+	FeederBase m_feeder;
 
-	ElevatorBase m_elevator = ElevatorBase::GetInstance();
+	ElevatorBase m_elevator;
 
-	ClawBase m_claw = ClawBase::GetInstance();
+	ClawBase m_claw;
 
-	TurretBase m_turret = TurretBase::GetInstance();
+	TurretBase m_turret;
 
 	Limelight m_limelight = Limelight::GetInstance();
 

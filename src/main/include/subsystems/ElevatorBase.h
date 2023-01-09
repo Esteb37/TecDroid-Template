@@ -26,11 +26,11 @@
 
 #pragma once
 
-#include "subsystems/EncoderSubsystem.h"
+#include "subsystems/EncoderSubsystemBase.h"
 
 namespace TD
 {
-	class ElevatorBase : public EncoderSubsystem
+	class ElevatorBase : public EncoderSubsystemBase
 	{
 	public:
 		ElevatorBase();

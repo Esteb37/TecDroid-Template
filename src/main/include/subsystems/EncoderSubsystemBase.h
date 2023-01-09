@@ -26,7 +26,7 @@
 
 #pragma once
 
-#include "subsystems/MotorSubsystem.h"
+#include "subsystems/MotorSubsystemBase.h"
 #include <frc/Encoder.h>
 #include <frc/controller/PIDController.h>
 #include <frc/smartdashboard/SmartDashboard.h>
@@ -39,29 +39,29 @@ namespace TD
 		REV
 	};
 
-	class EncoderSubsystem : virtual public MotorSubsystem
+	class EncoderSubsystemBase : virtual public MotorSubsystemBase
 	{
 	public:
-		EncoderSubsystem();
+		EncoderSubsystemBase();
 
-		static EncoderSubsystem &GetInstance();
+		static EncoderSubsystemBase &GetInstance();
 
 		/**
-		 * @brief Construct a new EncoderSubsystem object without encoder and a single motor
+		 * @brief Construct a new EncoderSubsystemBase object without encoder and a single motor
 		 * @param motorConfig The motor configuration
 		 * @param motorPort The CAN ID of the motor
 		 */
 		void Initialize(MotorConfig, unsigned int);
 
 		/**
-		 * @brief Construct a new EncoderSubsystem object without encoder and various motors
+		 * @brief Construct a new EncoderSubsystemBase object without encoder and various motors
 		 * @param motorConfig The motor configuration
 		 * @param motorPorts The CAN IDs of the motors
 		 */
 		void Initialize(MotorConfig, vector<unsigned int>);
 
 		/**
-		 * @brief Construct a new EncoderSubsystem object with a single NEO motor
+		 * @brief Construct a new EncoderSubsystemBase object with a single NEO motor
 		 * @param motorConfig The motor configuration
 		 * @param encoderConfig The encoder configuration
 		 * @param motorPort The CAN ID of the motor
@@ -69,7 +69,7 @@ namespace TD
 		void Initialize(MotorConfig, EncoderConfig, unsigned int);
 
 		/**
-		 * @brief Construct a new EncoderSubsystem object with various NEO motors
+		 * @brief Construct a new EncoderSubsystemBase object with various NEO motors
 		 * @param motorConfig The motor configuration
 		 * @param encoderConfig The encoder configuration
 		 * @param motorPorts The CAN IDs of the motors
@@ -77,7 +77,7 @@ namespace TD
 		void Initialize(MotorConfig, EncoderConfig, vector<unsigned int>);
 
 		/**
-		 * @brief Construct a new EncoderSubsystem object with an FRC encoder and a single motor
+		 * @brief Construct a new EncoderSubsystemBase object with an FRC encoder and a single motor
 		 * @param motorConfig The motor configuration
 		 * @param encoderConfig The encoder configuration
 		 * @param motorPort The CAN ID of the motor
@@ -87,7 +87,7 @@ namespace TD
 		void Initialize(MotorConfig, EncoderConfig, unsigned int, unsigned int, unsigned int);
 
 		/**
-		 * @brief Construct a new EncoderSubsystem object with an FRC encoder and various motors
+		 * @brief Construct a new EncoderSubsystemBase object with an FRC encoder and various motors
 		 * @param motorConfig The motor configuration
 		 * @param encoderConfig The encoder configuration
 		 * @param motorPorts The CAN IDs of the motors
