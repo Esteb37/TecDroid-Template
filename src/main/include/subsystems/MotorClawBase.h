@@ -26,38 +26,38 @@
 
 #pragma once
 
-#include "subsystems/SolenoidSubsystem.h"
+#include "subsystems/MotorSubsystemBase.h"
 
 namespace TD
 {
-	class ClawBase : public SubsystemBase
+
+	class MotorClawBase : public SubsystemBase
 	{
 
 	public:
 		/**
-		 * @brief Construct a new Claw object with no solenoids attached
+		 * @brief Construct a new Claw object with no motors attached
 		 */
-		ClawBase();
+		MotorClawBase();
 
-		static ClawBase &GetInstance();
-
-		/**
-		 * @brief Construct a new Claw object with a single solenoid
-		 *
-		 * @param solenoidForward The solenoid forward port
-		 * @param solenoidReverse The solenoid reverse port
-		 */
-		void Initialize(unsigned int, unsigned int);
+		static MotorClawBase &GetInstance();
 
 		/**
-		 * @brief Construct a new Claw object with hand and wrist solenoids
+		 * @brief Construct a new Claw object with a single motor
 		 *
-		 * @param solenoidHandForward The hand solenoid forward port
-		 * @param solenoidHandReverse The hand solenoid reverse port
-		 * @param solenoidWristForward The wrist solenoid forward port
-		 * @param solenoidWristReverse The wrist solenoid reverse port
+		 * @param config The motor type
+		 * @param motorPort
 		 */
-		void Initialize(unsigned int, unsigned int, unsigned int, unsigned int);
+		void Initialize(MotorConfig, unsigned int);
+
+		/**
+		 * @brief Construct a new Claw object with a claw motor and a wrist motor
+		 *
+		 * @param config The motor type
+		 * @param motorClawPort The claw motor port
+		 * @param motorWristPort The wrist motor port
+		 */
+		void Initialize(MotorConfig, unsigned int, unsigned int);
 
 		void Periodic() override;
 
@@ -93,7 +93,7 @@ namespace TD
 		 */
 		void ToggleWrist();
 
-		// ---------- Hand Solenoid --------
+		// ---------- Hand Motor --------
 
 		/**
 		 * @brief Inverts open and close status
@@ -102,22 +102,17 @@ namespace TD
 		void InvertHand(bool);
 
 		/**
-		 * @brief Turns the hand solenoid off
-		 */
-		void HandOff();
-
-		/**
-		 * @brief Get the hand solenoid status
-		 * @return the solenoid status
+		 * @brief Get the hand motor status
+		 * @return the motor status
 		 */
 		unsigned int GetHand();
 
 		/**
-		 * @brief Publishes the hand solenoid status to the dashboard
+		 * @brief Publishes the hand motor status to the dashboard
 		 */
 		void PrintHand();
 
-		// ---------- Wrist Solenoid --------
+		// ---------- Wrist Motor --------
 
 		/**
 		 * @brief Inverts low and up status
@@ -126,24 +121,19 @@ namespace TD
 		void InvertWrist(bool);
 
 		/**
-		 * @brief Turns the wrist solenoid off
-		 */
-		void WristOff();
-
-		/**
-		 * @brief Get the wrist solenoid status
-		 * @return the solenoid status
+		 * @brief Get the wrist motor status
+		 * @return the motor status
 		 */
 		unsigned int GetWrist();
 
 		/**
-		 * @brief Publishes the wrist solenoid status to the dashboard
+		 * @brief Publishes the wrist motor status to the dashboard
 		 */
 		void PrintWrist();
 
 		// ---------- Components ----------
-		SolenoidSubsystem m_hand;
-		SolenoidSubsystem m_wrist;
+		MotorSubsystemBase m_hand;
+		MotorSubsystemBase m_wrist;
 
 	protected:
 		bool m_wristLowered = false;

@@ -70,7 +70,7 @@ private:
 
 	ElevatorBase m_elevator;
 
-	ClawBase m_claw;
+	SolenoidClawBase m_claw;
 
 	TurretBase m_turret;
 

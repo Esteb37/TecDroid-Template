@@ -24,16 +24,16 @@
 	Open Source Software; you can modify and/or share it under the terms of
 */
 
-#include "subsystems/SolenoidSubsystem.h"
+#include "subsystems/SolenoidSubsystemBase.h"
 
 using namespace TD;
 
-SolenoidSubsystem::SolenoidSubsystem()
+SolenoidSubsystemBase::SolenoidSubsystemBase()
 {
 	SetName("SolenoidSubsystem");
 }
 
-void SolenoidSubsystem::Initialize(int forward, int reverse)
+void SolenoidSubsystemBase::Initialize(int forward, int reverse)
 {
 
 	m_rightSolenoid = new DoubleSolenoid(PneumaticsModuleType::REVPH, forward, reverse);
@@ -43,7 +43,7 @@ void SolenoidSubsystem::Initialize(int forward, int reverse)
 	SetName("SingleSolenoidSubsystem");
 }
 
-void SolenoidSubsystem::Initialize(int forwardA, int reverseA, int forwardB, int reverseB)
+void SolenoidSubsystemBase::Initialize(int forwardA, int reverseA, int forwardB, int reverseB)
 {
 
 	m_rightSolenoid = new DoubleSolenoid(PneumaticsModuleType::REVPH, forwardA, reverseA);
@@ -54,11 +54,11 @@ void SolenoidSubsystem::Initialize(int forwardA, int reverseA, int forwardB, int
 	SetName("DoubleSolenoidSubsystem");
 }
 
-void SolenoidSubsystem::Periodic()
+void SolenoidSubsystemBase::Periodic()
 {
 }
 
-void SolenoidSubsystem::OpenSolenoids()
+void SolenoidSubsystemBase::OpenSolenoids()
 {
 	if (m_solenoidsInverted)
 	{
@@ -74,7 +74,7 @@ void SolenoidSubsystem::OpenSolenoids()
 	}
 }
 
-void SolenoidSubsystem::CloseSolenoids()
+void SolenoidSubsystemBase::CloseSolenoids()
 {
 	if (!m_solenoidsInverted)
 	{
@@ -90,29 +90,29 @@ void SolenoidSubsystem::CloseSolenoids()
 	}
 }
 
-void SolenoidSubsystem::SolenoidsOff()
+void SolenoidSubsystemBase::SolenoidsOff()
 {
 	m_rightSolenoid->Set(DoubleSolenoid::Value::kOff);
 	if (m_isDoubleSolenoid)
 		m_leftSolenoid->Set(DoubleSolenoid::Value::kOff);
 }
 
-unsigned int SolenoidSubsystem::GetRightSolenoid()
+unsigned int SolenoidSubsystemBase::GetRightSolenoid()
 {
 	return m_rightSolenoid->Get();
 }
 
-unsigned int SolenoidSubsystem::GetLeftSolenoid()
+unsigned int SolenoidSubsystemBase::GetLeftSolenoid()
 {
 	return m_leftSolenoid->Get();
 }
 
-unsigned int SolenoidSubsystem::GetSolenoid()
+unsigned int SolenoidSubsystemBase::GetSolenoid()
 {
 	return GetRightSolenoid();
 }
 
-void SolenoidSubsystem::PrintSolenoids()
+void SolenoidSubsystemBase::PrintSolenoids()
 {
 
 	if (m_isDoubleSolenoid)
@@ -126,14 +126,14 @@ void SolenoidSubsystem::PrintSolenoids()
 	}
 }
 
-void SolenoidSubsystem::ToggleSolenoids()
+void SolenoidSubsystemBase::ToggleSolenoids()
 {
 	m_rightSolenoid->Toggle();
 	if (m_isDoubleSolenoid)
 		m_leftSolenoid->Toggle();
 }
 
-void SolenoidSubsystem::InvertSolenoids(bool inverted)
+void SolenoidSubsystemBase::InvertSolenoids(bool inverted)
 {
 	m_solenoidsInverted = inverted;
 }

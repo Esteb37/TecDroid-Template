@@ -24,105 +24,109 @@
 	Open Source Software; you can modify and/or share it under the terms of
 */
 
-#include "subsystems/ClawBase.h"
+#include "subsystems/MotorClawBase.h"
 
 using namespace TD;
 
-ClawBase::ClawBase()
+MotorClawBase::MotorClawBase()
 {
 	SetName("Claw");
 }
 
-ClawBase &ClawBase::GetInstance()
+MotorClawBase &MotorClawBase::GetInstance()
 {
-	static ClawBase instance;
+	static MotorClawBase instance;
 	return instance;
 }
 
-void ClawBase::Initialize(unsigned int solenoidForward, unsigned int solenoidReverse)
+void MotorClawBase::Initialize(MotorConfig config, unsigned int motorPort)
 {
 	m_hand.SetName("Claw Hand");
-	m_hand.Initialize(solenoidForward, solenoidReverse);
+	m_hand.Initialize(config, motorPort);
 }
 
-void ClawBase::Initialize(unsigned int handForward, unsigned int handReverse, unsigned int wristForward, unsigned int wristReverse)
+void MotorClawBase::Initialize(MotorConfig config, unsigned int motorPortClaw, unsigned int motorPortWrist)
 {
 	m_hand.SetName("Claw Hand");
 	m_wrist.SetName("Claw Wrist");
-	m_hand.Initialize(handForward, handReverse);
-	m_wrist.Initialize(wristForward, wristReverse);
+	m_hand.Initialize(config, motorPortClaw);
+	m_wrist.Initialize(config, motorPortWrist);
 }
 
-void ClawBase::Periodic()
+void MotorClawBase::Periodic()
 {
 }
 
-void ClawBase::OpenHand()
+void MotorClawBase::OpenHand()
 {
-	m_hand.OpenSolenoids();
+	m_hand.SetMotor(1);
 }
 
-void ClawBase::CloseHand()
+void MotorClawBase::CloseHand()
 {
-	m_hand.CloseSolenoids();
+	m_hand.SetMotor(-1);
 }
 
-void ClawBase::ToggleHand()
+void MotorClawBase::ToggleHand()
 {
-	m_hand.ToggleSolenoids();
+	if (m_handOpen)
+	{
+		CloseHand();
+	}
+	else
+	{
+		OpenHand();
+	}
 }
 
-void ClawBase::InvertHand(bool invert)
+void MotorClawBase::InvertHand(bool invert)
 {
-	m_hand.InvertSolenoids(invert);
+	m_hand.InvertMotor(invert);
 }
 
-void ClawBase::HandOff()
+unsigned int MotorClawBase::GetHand()
 {
-	m_hand.SolenoidsOff();
+	return m_hand.GetMotor();
 }
 
-unsigned int ClawBase::GetHand()
+void MotorClawBase::PrintHand()
 {
-	return m_hand.GetSolenoid();
+	m_hand.PrintMotor();
 }
 
-void ClawBase::PrintHand()
+void MotorClawBase::RaiseWrist()
 {
-	m_hand.PrintSolenoids();
+	m_wrist.SetMotor(1);
 }
 
-void ClawBase::RaiseWrist()
+void MotorClawBase::LowerWrist()
 {
-	m_wrist.CloseSolenoids();
+	m_wrist.SetMotor(-1);
 }
 
-void ClawBase::LowerWrist()
+void MotorClawBase::ToggleWrist()
 {
-	m_wrist.OpenSolenoids();
+	if (m_wristLowered)
+	{
+		RaiseWrist();
+	}
+	else
+	{
+		LowerWrist();
+	}
 }
 
-void ClawBase::ToggleWrist()
+void MotorClawBase::InvertWrist(bool invert)
 {
-	m_wrist.ToggleSolenoids();
+	m_wrist.InvertMotor(invert);
 }
 
-void ClawBase::InvertWrist(bool invert)
+unsigned int MotorClawBase::GetWrist()
 {
-	m_wrist.InvertSolenoids(invert);
+	return m_wrist.GetMotor();
 }
 
-void ClawBase::WristOff()
+void MotorClawBase::PrintWrist()
 {
-	m_wrist.SolenoidsOff();
-}
-
-unsigned int ClawBase::GetWrist()
-{
-	return m_wrist.GetSolenoid();
-}
-
-void ClawBase::PrintWrist()
-{
-	m_wrist.PrintSolenoids();
+	m_wrist.PrintMotor();
 }

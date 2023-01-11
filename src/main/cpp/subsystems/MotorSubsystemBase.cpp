@@ -268,16 +268,13 @@ namespace TD
 		case MotorConfig::NEO:
 		case MotorConfig::SPARK:
 			return m_motorSpark->Get();
-			break;
 
 		case MotorConfig::VICTOR_CAN:
 			return m_motorVictorCAN->GetMotorOutputPercent();
-			break;
 
 		case MotorConfig::VICTOR_PWM:
 		default:
 			return m_motorVictorPWM->Get();
-			break;
 		}
 	}
 
@@ -312,6 +309,16 @@ namespace TD
 		}
 
 		return speeds;
+	}
+
+	void MotorSubsystemBase::SetPDPChannel(unsigned int channel)
+	{
+		m_pdpChannel = channel;
+	}
+
+	double MotorSubsystemBase::GetCurrent()
+	{
+		return m_pdp.GetCurrent(m_pdpChannel);
 	}
 
 	void MotorSubsystemBase::InvertMotor(bool inverted)

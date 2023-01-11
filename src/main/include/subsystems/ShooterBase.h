@@ -28,12 +28,12 @@
 
 #include "subsystems/EncoderSubsystemBase.h"
 #include "subsystems/Limelight.h"
-#include "subsystems/SolenoidSubsystem.h"
+#include "subsystems/SolenoidSubsystemBase.h"
 #include <frc/Servo.h>
 
 namespace TD
 {
-	class ShooterBase : public EncoderSubsystemBase, public SolenoidSubsystem
+	class ShooterBase : public EncoderSubsystemBase, public SolenoidSubsystemBase
 	{
 
 	public:

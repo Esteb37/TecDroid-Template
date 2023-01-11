@@ -35,19 +35,20 @@ using namespace frc2;
 
 namespace TD
 {
-	class SolenoidSubsystem : virtual public SubsystemBase
+
+	class SolenoidSubsystemBase : virtual public SubsystemBase
 	{
 
 	public:
 		/**
-		 * @brief Construct a new SolenoidSubsystem object with no solenoids attached
+		 * @brief Construct a new SolenoidSubsystemBase object with no solenoids attached
 		 */
-		SolenoidSubsystem();
+		SolenoidSubsystemBase();
 
-		static SolenoidSubsystem &GetInstance();
+		static SolenoidSubsystemBase &GetInstance();
 
 		/**
-		 * @brief Construct a new SolenoidSubsystem object with a single solenoid
+		 * @brief Construct a new SolenoidSubsystemBase object with a single solenoid
 		 *
 		 * @param solenoidForward The solenoid forward port
 		 * @param solenoidReverse The solenoid reverse port
@@ -55,7 +56,7 @@ namespace TD
 		void Initialize(int, int);
 
 		/**
-		 * @brief Construct a new SolenoidSubsystem object with two solenoids
+		 * @brief Construct a new SolenoidSubsystemBase object with two solenoids
 		 *
 		 * @param rightSolenoidForward The right solenoid forward port
 		 * @param rightSolenoidReverse The left solenoid reverse port

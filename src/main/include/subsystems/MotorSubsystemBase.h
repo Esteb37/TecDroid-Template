@@ -28,6 +28,7 @@
 
 #include <ctre/Phoenix.h>
 #include <frc/DigitalInput.h>
+#include <frc/PowerDistribution.h>
 #include <frc/motorcontrol/VictorSP.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/SubsystemBase.h>
@@ -89,8 +90,11 @@ namespace TD
 		 */
 		double GetMotor();
 
-		vector<double>
-		GetMotors();
+		vector<double> GetMotors();
+
+		void SetPDPChannel(unsigned int);
+
+		double GetCurrent();
 
 		/**
 		 * @brief Invert motor direction
@@ -146,5 +150,11 @@ namespace TD
 		bool m_limitSafetyActive = false;
 
 		unsigned int m_motorCount = 1;
+
+		PowerDistribution m_pdp{0, PowerDistribution::ModuleType::kCTRE};
+
+		const double kMotorStallThreshold = 10;
+
+		double m_pdpChannel = 0;
 	};
 }
